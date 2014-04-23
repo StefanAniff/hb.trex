@@ -6,7 +6,7 @@
              xmlns:DesignData="clr-namespace:Trex.SmartClient.Project.DesignData"
              xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
              Mc:Ignorable="D" 
-             D:DesignHeight="590"
+             D:DesignHeight="610"
              D:DesignWidth="900"
              D:DataContext="{D:DesignInstance  DesignData:DesignProjectAdministration, IsDesignTimeCreatable=True }">
     <UserControl.Resources>
@@ -25,7 +25,6 @@
                     <Telerik:RadComboBox 
                         x:Name="_customerCbx"
                         MinWidth="200" 
-                        Telerik:StyleManager.Theme="Windows8"
                         DisplayMemberPath="Name"
                         SelectedItem="{Binding SelectedCompany, Mode=TwoWay}"
                         ItemsSource="{Binding AvailableCompanies, Mode=OneWay}"/>
@@ -33,17 +32,20 @@
                 
                 <!-- Projects MASTER overview  -->
                 <Grid Margin="0,5,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
                     
+                    <Label Content="_Projects:" Target="{Binding ElementName=_projectsGrid}" />
                     <Telerik:RadGridView 
+                        Grid.Row="1"
                         ShowGroupPanel="False" 
                         Height="200"
                         ShowInsertRow="False"
                         AutoGenerateColumns="False"
                         RowIndicatorVisibility="Collapsed"
+                        x:Name="_projectsGrid"
                         ItemsSource="{Binding Projects, Mode=OneWay}">
                         <Telerik:RadGridView.Resources>
                             <Style TargetType="Telerik:GridViewDataColumn">
@@ -53,15 +55,16 @@
                         <Telerik:RadGridView.Columns>
                             <Telerik:GridViewDataColumn Header="Id" MinWidth="30" DataMemberBinding="{Binding Id}" TextAlignment="Right" />
                             <Telerik:GridViewDataColumn Header="Name" MinWidth="200" DataMemberBinding="{Binding Name}" />
-                            <Telerik:GridViewDataColumn Header="Column 1" />
-                            <Telerik:GridViewDataColumn Header="Column 2" />
-                            <Telerik:GridViewDataColumn Header="Column 3" />
+                            <Telerik:GridViewDataColumn Header="Invoicegroup" MinWidth="160" DataMemberBinding="{Binding Field1}" />
+                            <Telerik:GridViewDataColumn Header="Manager" MinWidth="160" DataMemberBinding="{Binding Field2}" />
                         </Telerik:RadGridView.Columns>
                     </Telerik:RadGridView>
                 </Grid>
                 
                 <!-- Selected project details SLAVE-->
-                <Telerik:RadTabControl Focusable="False">                    
+                <Telerik:RadTabControl 
+                    Focusable="False" 
+                    AllTabsEqualHeight="True">   
                     <Telerik:RadTabControl.Items>
                         
                         <!-- General tab -->
@@ -87,13 +90,12 @@
                                 <Label Content="Description:" Grid.Row="1" Grid.Column="0" />
                                 <TextBox Text="Some project description" Grid.Row="1" Grid.Column="1" />
 
-                                <Label Content="Invoice group:" Grid.Row="2" Grid.Column="0" />
+                                <Label Content="Invoicegroup:" Grid.Row="2" Grid.Column="0" />
                                 <Telerik:RadComboBox 
                                     Grid.Row="2"
                                     Grid.Column="1"
                                     x:Name="_invoiceGroupCbx"
                                     MinWidth="100"
-                                    Telerik:StyleManager.Theme="Windows8"
                                     DisplayMemberPath="Name"
                                     HorizontalContentAlignment="Right"
                                     HorizontalAlignment="Left"
@@ -105,22 +107,15 @@
                                     Grid.Row="3"
                                     Grid.Column="1"
                                     MinWidth="100"
-                                    Telerik:StyleManager.Theme="Windows8"
                                     DisplayMemberPath="Name"
                                     HorizontalContentAlignment="Right"
                                     HorizontalAlignment="Left"
                                     SelectedItem="{Binding SelectedProjectManager, Mode=TwoWay}"
                                     ItemsSource="{Binding AvailableProjectManagers, Mode=OneWay}"/>
-
-                                <Label Content="?" Grid.Row="4" Grid.Column="0" Background="DarkRed" />
-                                <TextBox Text="?" Grid.Row="4" Grid.Column="1" Background="DarkRed" />
-
-                                <Label Content="?" Grid.Row="5" Grid.Column="0" Background="DarkRed" />
-                                <TextBox Text="?" Grid.Row="5" Grid.Column="1" Background="DarkRed" />
                                 
-                                <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" Margin="0,10">
-                                    <Telerik:RadButton Content="Save" Telerik:StyleManager.Theme="Windows8"/>
-                                    <Telerik:RadButton Content="New" Telerik:StyleManager.Theme="Windows8"/>
+                                <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" Margin="0,10" Height="30">
+                                    <Telerik:RadButton Content="Save" Style="{StaticResource ButtonClusterStyle}" />
+                                    <Telerik:RadButton Content="New" Style="{StaticResource ButtonClusterStyle}" />
                                 </StackPanel>
                             </Grid>                            
                         </Telerik:RadTabItem>
@@ -130,7 +125,7 @@
                             <StackPanel Margin="10">
                                 <Telerik:RadGridView 
                                     ShowGroupPanel="False" 
-                                    Height="130"
+                                    Height="110"
                                     ShowInsertRow="False"
                                     AutoGenerateColumns="False"
                                     RowIndicatorVisibility="Collapsed"
@@ -165,7 +160,6 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         MinWidth="100"
-                                        Telerik:StyleManager.Theme="Windows8"
                                         DisplayMemberPath="Name"
                                         HorizontalAlignment="Left"
                                         SelectedItem="{Binding SelectedFileType, Mode=TwoWay}"
@@ -176,15 +170,15 @@
 
                                     <Label Content="File:" Grid.Row="2" Grid.Column="0" />
                                     <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                                        <TextBox Text="forkalk.xlsx" VerticalAlignment="Center" IsEnabled="False"/>
-                                        <Telerik:RadButton Margin="3,0" Content="..." Width="25" Telerik:StyleManager.Theme="Windows8" />
+                                        <TextBox Text="forkalk.xlsx" VerticalAlignment="Stretch" IsEnabled="False" />
+                                        <Telerik:RadButton Margin="3,0" Content="..." Width="25"  />
                                     </StackPanel>
                                 </Grid>
                                 
-                                <StackPanel Orientation="Horizontal" Margin="0,10">
-                                    <Telerik:RadButton Telerik:StyleManager.Theme="Windows8" Content="Save"/>
-                                    <Telerik:RadButton Telerik:StyleManager.Theme="Windows8" Content="Download"/>
-                                    <Telerik:RadButton Telerik:StyleManager.Theme="Windows8" Content="Delete"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,10" Height="30">
+                                    <Telerik:RadButton Content="Save" Style="{StaticResource ButtonClusterStyle}"/>
+                                    <Telerik:RadButton Content="Delete" Style="{StaticResource ButtonClusterStyle}"/>
+                                    <Telerik:RadButton Content="Download file" Style="{StaticResource ButtonClusterStyle}"/>
                                 </StackPanel>
                             </StackPanel>
                         </Telerik:RadTabItem>
@@ -194,8 +188,8 @@
                 
                 <Telerik:RadButton 
                     Width="Auto" 
-                    HorizontalAlignment="Right" 
-                    Telerik:StyleManager.Theme="Windows8">
+                    HorizontalAlignment="Right"
+                    Margin="5,5,0,5">
                     <ContentControl>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="To projectdisposition" />

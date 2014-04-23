@@ -46,7 +46,6 @@
             <Telerik:RadComboBox 
                 Grid.Row="2"
                 Grid.Column="1"
-                telerik:StyleManager.Theme="Windows8"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 MinWidth="100"
@@ -93,7 +92,6 @@
             <Telerik:RadComboBox 
                 Grid.Row="5"
                 Grid.Column="1"
-                telerik:StyleManager.Theme="Windows8"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 MinWidth="150"
@@ -111,11 +109,9 @@
                 VerticalAlignment="Bottom">
                 <telerik:RadButton 
                     Width="50"
-                    telerik:StyleManager.Theme="Windows8"
                     Content="Ok"/>
                 <telerik:RadButton 
                     Width="50"
-                    telerik:StyleManager.Theme="Windows8"
                     Margin="5,0,0,0"
                     Content="Cancel"/>
             </StackPanel>            

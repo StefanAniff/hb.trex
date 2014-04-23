@@ -1,35 +1,35 @@
 ﻿using System.Collections.ObjectModel;
 using Trex.SmartClient.Core.Implemented;
-using Trex.SmartClient.Core.Model;
-using TempProject = Trex.SmartClient.Core.Model.Project;
 
 namespace Trex.SmartClient.Project.DesignData
 {
     public class DesignProjectAdministration : ViewModelDirtyHandlingBase
     {
-        private readonly Company _someCompany = Company.Create("Company X", 25, false, false);
-        private readonly DummyObject _selectedInvoiceGroup = new DummyObject {Id = 1, Name = "Default invoicegroup"};
-        private readonly DummyObject _selectedProjectManager = new DummyObject {Id = 1, Name = "Anders Andersen"};
-        private readonly DummyObject _selectedFileType = new DummyObject { Id = 1, Name = "Estimation" };
+        private const string DefaultInvoiceGroup = "Default invoicegroup";
 
-        public ObservableCollection<TempProject> Projects
+        private readonly DummyObject _someCompany = new DummyObject { Id = 25, Name = "Company X"};
+        private readonly DummyObject _selectedInvoiceGroup = new DummyObject {Id = 1, Name = DefaultInvoiceGroup};
+        private readonly DummyObject _selectedProjectManager = new DummyObject {Id = 1, Name = "Anders Andersen"};
+        private readonly DummyObject _selectedFileType = new DummyObject { Id = 1, Name = "Estimate" };
+
+        public ObservableCollection<DummyObject> Projects
         {
             get
             {
-                return new ObservableCollection<TempProject>
+                return new ObservableCollection<DummyObject>
                     {
-                        TempProject.Create(1, "Optimize cashflow", _someCompany, false),
-                        TempProject.Create(2, "Resource optimization", _someCompany, false),
-                        TempProject.Create(2, "Peptalk training", _someCompany, false),
+                        new DummyObject { Id = 1, Name = "Optimize cashflow", Field1 = DefaultInvoiceGroup, Field2 = "Anders Andersen"},
+                        new DummyObject { Id = 2, Name = "Resource optimization", Field1 = DefaultInvoiceGroup, Field2 = "Lone Pedersen"},
+                        new DummyObject { Id = 3, Name = "Peptalk training", Field1 = DefaultInvoiceGroup, Field2 = "Peter Pedersen"}                        
                     };
             }
         }
 
-        public Company SelectedCompany { get { return _someCompany; } set { value = null; } }
+        public DummyObject SelectedCompany { get { return _someCompany; } set { value = null; } }
 
-        public ObservableCollection<Company> AvailableCompanies
+        public ObservableCollection<DummyObject> AvailableCompanies
         {
-            get { return new ObservableCollection<Company> { _someCompany }; }
+            get { return new ObservableCollection<DummyObject> { _someCompany }; }
         }
 
 
@@ -48,8 +48,8 @@ namespace Trex.SmartClient.Project.DesignData
             {
                 return new ObservableCollection<DummyObject>
                     {
-                        new DummyObject { Id = 1, Name = "Project x forkalk", Field1 = "Estimation", Field2 = "forkalk.xlsx"},
-                        new DummyObject { Id = 2, Name = "Project x noter", Field1 = "Diverse", Field2 = "Initiel møde - noter.doc"}
+                        new DummyObject { Id = 1, Name = "Project x forkalk", Field1 = "Estimate", Field2 = "forkalk.xlsx"},
+                        new DummyObject { Id = 2, Name = "Project x noter", Field1 = "Assorted", Field2 = "Initiel møde - noter.doc"}
                     };
             }
         }
