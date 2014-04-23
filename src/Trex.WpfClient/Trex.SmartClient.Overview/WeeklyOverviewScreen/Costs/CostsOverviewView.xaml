@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Trex.SmartClient.Overview.WeeklyOverviewScreen.Costs.CostsOverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView"
+             xmlns:DesignData="clr-namespace:Trex.SmartClient.Overview.WeeklyOverviewScreen.Costs.DesignData"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             Mc:Ignorable="D" 
+             D:DesignHeight="300" 
+             D:DesignWidth="400"
+             D:DataContext="{D:DesignInstance  DesignData:DesignCostsOverviewViewModel, IsDesignTimeCreatable=True }">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>    
+    <Grid>
+        <Border Style="{StaticResource RootBorderStyle}">
+            <StackPanel Margin="10">
+                <TextBlock Text="Expenses on wednesday 23-04-2014" Style="{StaticResource WindowTitleTextBlockStyle}"/>
+                <Telerik:RadGridView 
+                    ShowGroupPanel="False" 
+                    Height="200"
+                    ShowInsertRow="False"
+                    AutoGenerateColumns="False"
+                    RowIndicatorVisibility="Collapsed"
+                    ItemsSource="{Binding Costs, Mode=OneWay}">
+                    <Telerik:RadGridView.Resources>
+                        <Style TargetType="Telerik:GridViewDataColumn">
+                            <Setter Property="IsReadOnly" Value="True" />
+                        </Style>
+                    </Telerik:RadGridView.Resources>
+                    <Telerik:RadGridView.Columns>
+                        <Telerik:GridViewDataColumn Header="Type" MinWidth="70" DataMemberBinding="{Binding Name}" />
+                        <Telerik:GridViewDataColumn Header="Description" MinWidth="200" DataMemberBinding="{Binding Field1}" />
+                        <Telerik:GridViewDataColumn Header="Amount" MinWidth="50" DataMemberBinding="{Binding Field2}" />
+                    </Telerik:RadGridView.Columns>
+                </Telerik:RadGridView>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,0,0">
+                    <telerik:RadButton Content="Add" Style="{StaticResource ButtonClusterStyle}" />
+                    <telerik:RadButton Content="Delete" Style="{StaticResource ButtonClusterStyle}" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

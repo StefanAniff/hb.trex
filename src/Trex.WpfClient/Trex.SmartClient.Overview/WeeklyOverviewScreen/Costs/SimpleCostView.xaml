@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="Trex.SmartClient.Overview.WeeklyOverviewScreen.Costs.SimpleCostView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             Mc:Ignorable="D" 
+             D:DesignHeight="200" 
+             D:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>    
+    <Grid>
+        <Border Style="{StaticResource RootBorderStyle}">
+            <StackPanel Margin="10">
+                
+                <TextBlock Text="Register unit-based expense" Style="{StaticResource WindowTitleTextBlockStyle}" />
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="_Description:" Grid.Row="0" Grid.Column="0" />
+                    <TextBox Text="Parkering Århus midtby" Grid.Row="0" Grid.Column="1" />
+
+                    <Label Content="_Unit:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=_unitCbx}"/>
+                    <Telerik:RadComboBox 
+                        x:Name="_unitCbx"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"                        
+                        Width="100"
+                        Height="25"
+                        SelectedItem="{Binding ElementName=_cb}">
+                        <ComboBoxItem Name="_cb">kr</ComboBoxItem>
+                    </Telerik:RadComboBox>
+                    
+                    <Label Content="_Amount:" Grid.Row="2" Grid.Column="0" />
+                    <TextBox Text="100" Grid.Row="2" Grid.Column="1" Width="100" HorizontalAlignment="Left" />
+
+                </Grid>
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                    <Telerik:RadButton Content="OK" Style="{StaticResource ButtonClusterStyle}" />
+                    <Telerik:RadButton Content="Cancel" Style="{StaticResource ButtonClusterStyle}" />
+                </StackPanel>
+            </StackPanel>            
+        </Border>
+    </Grid>
+</UserControl>

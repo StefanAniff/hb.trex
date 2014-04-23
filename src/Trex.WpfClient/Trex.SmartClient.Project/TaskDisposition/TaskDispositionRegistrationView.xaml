@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:DesignData="clr-namespace:Trex.SmartClient.Project.DesignData"
              xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
-             xmlns:TelerikControls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"             
              mc:Ignorable="d" 
              d:DesignHeight="510"
              d:DesignWidth="900"
@@ -13,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Resources\styles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>

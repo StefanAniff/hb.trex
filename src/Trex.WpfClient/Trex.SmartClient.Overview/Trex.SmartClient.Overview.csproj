@@ -38,7 +38,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>d60codesigning.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>  
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
     <OutputPath>bin\Releaseexternal\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -307,6 +307,16 @@
     <Compile Include="SelectTaskBox\SelectTaskBox.xaml.cs">
       <DependentUpon>SelectTaskBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WeeklyOverviewScreen\Costs\CostsOverviewView.xaml.cs">
+      <DependentUpon>CostsOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyOverviewScreen\Costs\DesignData\DesignCostsOverviewViewModel.cs" />
+    <Compile Include="WeeklyOverviewScreen\Costs\MileageCostView.xaml.cs">
+      <DependentUpon>MileageCostView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyOverviewScreen\Costs\SimpleCostView.xaml.cs">
+      <DependentUpon>SimpleCostView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WeeklyOverviewScreen\Designdata\DesignWeeklyOverviewViewmodel.cs" />
     <Compile Include="WeeklyOverviewScreen\Viewmodels\Itemviewmodel\DayItemHeaderViewmodel.cs" />
     <Compile Include="WeeklyOverviewScreen\Viewmodels\Itemviewmodel\DayItemViewmodel.cs" />
@@ -344,6 +354,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SelectTaskBox\SelectTaskBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeeklyOverviewScreen\Costs\CostsOverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeeklyOverviewScreen\Costs\MileageCostView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeeklyOverviewScreen\Costs\SimpleCostView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
