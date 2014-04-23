@@ -13,7 +13,7 @@
 			</customBinding>
 		</bindings>
 		<client>      
-      
+      <!-- IVA: H&B setup -->
       <!-- *****************************************************************
            ***** A BINDING IS DEFINED BELOW PER BUILD CONFIGURATION.   *****
            ***** WHICH TYPE TO USE PASSED TO SILVERLIGHT-APP AS PARAMS *****
@@ -36,7 +36,7 @@
         name="Debug_FileServiceEndpoint"/>
 
       <!-- ******************** TEST ******************** -->
-      <endpoint
+      <!--<endpoint
         address="http://trexadminservicetest.azurewebsites.net/service.svc"
         binding="customBinding"
         bindingConfiguration="CustomBinding_DomainService"
@@ -48,10 +48,10 @@
         binding="customBinding"
         bindingConfiguration="CustomBinding_FileService"
 				contract="FileDownloadService.IFileDownloadService"
-        name="Test_FileServiceEndpoint"/>
+        name="Test_FileServiceEndpoint"/>-->
 
       <!-- ******************** RELEASE ******************** -->
-      <endpoint
+      <!--<endpoint
         address="http://trexadminservice.azurewebsites.net/service.svc"
         binding="customBinding"
         bindingConfiguration="CustomBinding_DomainService"
@@ -63,10 +63,10 @@
         binding="customBinding"
         bindingConfiguration="CustomBinding_FileService"
 				contract="FileDownloadService.IFileDownloadService"
-        name="Release_FileServiceEndpoint"/>
+        name="Release_FileServiceEndpoint"/>-->
 
       <!-- ******************** RELEASEEXTERNAL ******************** -->
-      <endpoint
+      <!--<endpoint
         address="http://trexcustomersadminservice.azurewebsites.net/service.svc"
         binding="customBinding"
         bindingConfiguration="CustomBinding_DomainService"
@@ -78,7 +78,7 @@
         binding="customBinding"
         bindingConfiguration="CustomBinding_FileService"
 				contract="FileDownloadService.IFileDownloadService"
-        name="ReleaseExternal_FileServiceEndpoint"/>
+        name="ReleaseExternal_FileServiceEndpoint"/>-->
 
     </client>
 	</system.serviceModel>
