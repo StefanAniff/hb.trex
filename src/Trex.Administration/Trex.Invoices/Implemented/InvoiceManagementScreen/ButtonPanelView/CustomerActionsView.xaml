@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Trex.Invoices.InvoiceManagementScreen.ButtonPanelView.CustomerActionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="clr-namespace:Trex.Infrastructure.Controls;assembly=Trex.Infrastructure"
+             xmlns:Commands="clr-namespace:Microsoft.Practices.Prism.Commands;assembly=Microsoft.Practices.Prism">
+    
+    <UserControl.Resources>  
+        <Style TargetType="Button" BasedOn="ButtonStyle">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
+        <Button VerticalAlignment="Center" 
+                Content="Auto invoice" 
+                Commands:Click.Command="{Binding Path=AutoInvoice}"  />
+        
+        <Button VerticalAlignment="Center" 
+                Content="Create new invoice" 
+                Commands:Click.Command="{Binding Path=CreateNewInvoice}" />
+        
+        <Button Content="Edit billing details" 
+                Commands:Click.Command="{Binding Path=EditBillingDetails}" />
+    </StackPanel>
+</UserControl>

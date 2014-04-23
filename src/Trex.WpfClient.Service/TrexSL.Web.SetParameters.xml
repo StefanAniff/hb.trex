@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="trex.d60.dk/ServiceWpfClient" />
+  <setParameter name="TrexDefault-Web.config Connection String" value="Server=.\SQLEXPRESS;Database=dbname;Trusted_Connection=yes" />
+  <setParameter name="TrexBase-Web.config Connection String" value="Server=.\SQLEXPRESS;Database=trex_base;Trusted_Connection=yes" />
+  <setParameter name="memberDB-Web.config Connection String" value="Data Source=.\sqlexpress;Initial Catalog=trexcloud_membership;Trusted_connection=yes" />
+</parameters>

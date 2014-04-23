@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Trex.Server.Core.Model" assembly="Trex.Server.Core">
+	<class name="Project" table="Projects">
+		<id name="Id" type="Int32" unsaved-value="0">
+			<column name="ProjectID" length="4" sql-type="int" not-null="true" unique="true" index="PK_Projects"/>
+			<generator class="native" />
+		</id>
+        <property name="Guid" type="Guid">
+            <column name="Guid" length="16" sql-type="uniqueidentifier" not-null="true" />
+        </property>
+        <property name="Name" type="String">
+			<column name="ProjectName" length="50" sql-type="nvarchar" not-null="true"/>
+		</property>
+		
+        <many-to-one name="CreatedBy" class="User">
+            <column name="CreatedBy" length="4" sql-type="int" not-null="true" />
+        </many-to-one>
+        <property name="CreateDate" type="DateTime">
+            <column name="CreateDate" length="8" sql-type="datetime" not-null="true"/>
+        </property>
+        <many-to-one name="ChangedBy" class="User">
+            <column name="ChangedBy" length="4" sql-type="int" not-null="false" />
+        </many-to-one>
+        <property name="ChangeDate" type="DateTime">
+            <column name="ChangeDate" length="8" sql-type="datetime" not-null="false"/>
+        </property>
+        <property name="Inactive" type="Boolean">
+            <column name="Inactive" length="1" sql-type="bit" not-null="true"/>
+        </property>
+        <property name="IsEstimatesEnabled" type="Boolean">
+            <column name="IsEstimatesEnabled" length="1" sql-type="bit" not-null="true"/>
+        </property>
+		<many-to-one name="Customer" class="Customer">
+			<column name="CustomerID" length="4" sql-type="int" not-null="true"/>
+		</many-to-one>
+		
+		<bag name="Tasks" inverse="true" lazy="true" cascade="all-delete-orphan" where="ParentId IS NULL">
+			<key column="ProjectID" />
+			<one-to-many class="Task"/>
+		</bag>
+
+        <bag name="Users" table="UsersProjects" lazy="true" >
+            <key column="ProjectId"></key>
+            <many-to-many class="User" column="UserId"></many-to-many>
+        </bag>
+	</class>
+</hibernate-mapping>

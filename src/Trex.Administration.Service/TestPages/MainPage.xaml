@@ -1,0 +1,64 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Expander="clr-namespace:Trex.Expander;assembly=Trex.Expander" 
+    mc:Ignorable="d" x:Class="TestPages.MainPage"
+
+    d:DesignWidth="640" d:DesignHeight="480">
+
+    <Expander:Expander Width="600">
+        <Expander:Expander.HeaderContent>
+            <TextBlock Text="Header"></TextBlock>
+        </Expander:Expander.HeaderContent>
+        <ScrollViewer>
+    		<StackPanel Height="0" Width="0">
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+    			<Expander:Expander>
+    				<Expander:Expander.HeaderContent>
+    					<TextBlock Text="Header"/>
+    				</Expander:Expander.HeaderContent>
+    				<TextBlock Text="Content"/>
+    			</Expander:Expander>
+
+
+    		</StackPanel>
+        
+    	</ScrollViewer>
+    </Expander:Expander>
+
+</UserControl>

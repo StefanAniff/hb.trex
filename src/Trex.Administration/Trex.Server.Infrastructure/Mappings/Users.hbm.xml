@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Trex.Server.Core.Model" assembly="Trex.Server.Core">
+	<class name="User" table="Users">
+		<id name="Id" type="Int32" unsaved-value="0">
+			<column name="UserID" length="4" sql-type="int" not-null="true" unique="true" index="PK_Users"/>
+			<generator class="native" />
+		</id>
+		<property name="UserName" type="String">
+			<column name="UserName" length="255" sql-type="nvarchar" not-null="true"/>
+		</property>
+        <property name="Name" type="String">
+            <column name="Name" length="200" sql-type="nvarchar" not-null="false"/>
+        </property>
+        <property name="Email" type="String">
+            <column name="Email" length="100" sql-type="nvarchar" not-null="false"/>
+        </property>
+        <property name="Price" type="Double">
+            <column name="Price" length="8" sql-type="float" not-null="false"/>
+        </property>
+        <property name="Inactive" type="Boolean">
+            <column name="Inactive" length="1" sql-type="bit" not-null="true"/>
+        </property>
+
+		<property name="NumOfTimeEntries" formula="
+              (Select Count(*) from TimeEntries t where t.UserId = UserId)"/>
+
+		<property name="TotalBillableTime" formula="
+              (Select Sum(t.BillableTime) from TimeEntries t where t.UserId = UserId)"/>
+
+		<property name="TotalTime" formula="
+              (Select Sum(t.TimeSpent) from TimeEntries t where t.UserId = UserId)"/>
+      
+		
+    
+        <bag name="Projects" table="UsersProjects" lazy="true" cascade="all" >
+            <key column="UserId"></key>
+            <many-to-many class="Project" column="ProjectId"></many-to-many>
+        </bag>
+    
+        <bag name="CustomerInfo" lazy="true"  cascade="all">
+            <key  column="UserId"></key>
+            <one-to-many class="UserCustomerInfo"/>
+            
+        </bag>
+     
+
+    </class>
+</hibernate-mapping>

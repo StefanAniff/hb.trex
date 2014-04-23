@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Trex.Reports.InteractiveReportScreen.InteractiveReportView.InteractiveReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation">
+    
+
+        <Grid x:Name="LayoutRoot" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--Controls-->
+        <StackPanel Orientation="Horizontal" Margin="10,0,0,4">
+            <TextBlock Text="Start date" 
+                       VerticalAlignment="Center"/>
+
+            <Controls:DatePicker Margin="10,0,0,0" 
+                                  SelectedDate="{Binding StartDate,Mode=TwoWay}"/>
+            
+            <TextBlock Text="End date" 
+                       Margin="20,0,0,0" 
+                       VerticalAlignment="Center" />
+
+            <Controls:DatePicker Margin="10,0,0,0" 
+                                  SelectedDate="{Binding EndDate,Mode=TwoWay}"/>
+            
+            <Button  Margin="10,0,0,0" 
+                     Command="{Binding ReloadCommand}" 
+                     ToolTipService.ToolTip="Reload chart">
+                <Button.Content>
+                    <Image Source="/Trex.Reports;Component/Assets/reload.png" Height="20" Width="20" />
+                </Button.Content>
+            </Button>
+
+            <Button  Margin="10,0,0,0" 
+                     Click="Button_Click" 
+                     ToolTipService.ToolTip="Go to full screen">
+                <Button.Content>
+                    <Image Source="/Trex.Reports;Component/Assets/full_screen.png" Height="20" Width="20"/>
+                </Button.Content>
+            </Button>           
+        </StackPanel>
+        
+        <!--DataView-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            
+            <!--Data-->
+            <!--<telerikChart:RadChart x:Name="Chart"/>-->
+            
+            
+            <!--Table-->
+            <telerik:RadGridView 
+                Grid.Row="1" 
+                ItemsSource="{Binding Result, Mode=OneWay}" 
+                x:Name="GridView"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,148 @@
+body
+{
+    background-color:#ffffff;
+    text-align:center;
+    margin:0px 0px 0px 0px;
+    font-family:Arial;
+	font-size:13px;
+	min-height:100%; 
+}
+
+a
+{
+    text-decoration:none;
+color:#058b04
+}
+a:hover
+{
+  text-decoration:underline;
+}
+
+h2
+{
+font-size:18px;
+font-weight:bold;
+font-family:Verdana;
+display:inline;
+}
+
+img {
+ border-style:none;
+ border-width:0px 0px 0px 0px;
+ margin:0px 0px 0px 0px;
+
+}
+
+#trexlogo{
+    float:left;
+
+    margin-top:39px;
+
+}
+
+#slogan
+{
+    float:left;
+     background-image:url('/media/244/yourtimeisvaluable.png');
+    background-repeat:no-repeat;
+    width:138px;
+    height:21px;
+    margin-top:9px;
+
+}
+
+#canvas
+{
+
+    background-color:#ffffff;
+    min-height:100%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#innerCanvas
+{
+
+}
+
+#topBannerBar
+{
+    height:132px;
+    background-image:url('/media/2/headerbg.png');
+    background-repeat:repeat-x;
+}
+
+#menuBar
+{
+    height:41px;
+    background-image:url('/media/18/menubg.png');
+    background-repeat:repeat-x;
+    
+}
+
+
+#languageSelector
+{
+    float:right;
+    margin-top:20px;
+    margin-right:40px;
+}
+
+.innerContent
+{
+	width:850px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* EDITOR PROPERTIES - PLEASE DON'T DELETE THIS LINE TO AVOID DUPLICATE PROPERTIES */

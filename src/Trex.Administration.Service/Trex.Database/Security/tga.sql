@@ -1,0 +1,2 @@
+﻿CREATE USER [tga] WITHOUT LOGIN;
+

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Trex.Server.Core.Model" assembly="Trex.Server.Core">
+    <class name="Invoice" table="Invoices">
+        <id name="ID" type="Int32" unsaved-value="0">
+            <column name="ID" length="4" sql-type="int" not-null="true" unique="true" index="PK_Invoices"/>
+            <generator class="native" />
+        </id>
+        <property name="CreateDate" type="DateTime">
+            <column name="CreateDate" length="8" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="StartDate" type="DateTime">
+            <column name="StartDate" length="8" sql-type="datetime" not-null="true"/>
+        </property>
+        
+        <property name="EndDate" type="DateTime">
+            <column name="EndDate" length="8" sql-type="datetime" not-null="true"/>
+        </property>
+
+        <property name="DueDate" type="DateTime">
+            <column name="DueDate" length="8" sql-type="datetime" not-null="false"/>
+        </property>
+        <property name="InvoiceDate" type="DateTime">
+            <column name="InvoiceDate" length="8" sql-type="datetime" not-null="true"/>
+        </property>
+        <many-to-one name="CreatedBy" class="User">
+            <column name="CreatedBy" length="4" sql-type="int" not-null="true" />
+        </many-to-one>
+        <many-to-one name="Customer" class="Customer">
+            <column name="CustomerID" length="4" sql-type="int" not-null="true"/>
+        </many-to-one>
+       
+        <property name="CustomerName" type="String">
+            <column name="CustomerName" length="200" sql-type="nvarchar" not-null="false"/>
+        </property>
+        <property name="StreetAddress" type="String">
+            <column name="StreetAddress" length="400" sql-type="nvarchar" not-null="false"/>
+        </property>
+		<property name="Address2" type="String">
+			<column name="Address2" length="400" sql-type="nvarchar" not-null="false"/>
+		</property>
+        <property name="ZipCode" type="String">
+            <column name="ZipCode" length="50" sql-type="nvarchar" not-null="false"/>
+        </property>
+        <property name="City" type="String">
+            <column name="City" length="100" sql-type="nvarchar" not-null="false"/>
+        </property>
+        <property name="Country" type="String">
+            <column name="Country" length="200" sql-type="nvarchar" not-null="false"/>
+        </property>
+     
+        <property name="Attention" type="String">
+            <column name="Attention" length="300" sql-type="nvarchar" not-null="false"/>
+        </property>
+
+        <property name="Regarding" type="String">
+            <column name="Regarding" length="100" sql-type="nvarchar" not-null="false"/>
+        </property>
+       
+     
+        <property name="VATPercentage" type="Double">
+            <column name="VAT" length="8" sql-type="float" not-null="true"/>
+        </property>
+       
+        <property name="FooterText" type="String">
+            <column name="FooterText" length="1000" sql-type="nvarchar" not-null="false"/>
+        </property>
+        <property name="Closed" type="Boolean">
+            <column name="Closed" length="1" sql-type="bit" not-null="true"/>
+        </property>
+
+        <bag name="InvoiceLines" lazy="true" cascade="all" order-by="SortIndex"    >
+            <key column="InvoiceID"/>
+            <one-to-many class="InvoiceLine"/>
+        </bag>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="Trex.Server.Core.Model" assembly="Trex.Server.Core">
+	<class name="Task" table="Tasks">
+		<id name="Id" type="Int32" unsaved-value="0">
+			<column name="TaskID" length="4" sql-type="int" not-null="true" unique="true" index="PK_Tasks"/>
+			<generator class="native" />
+		</id>
+        <property name="Guid" type="Guid">
+            <column name="Guid" length="16" sql-type="uniqueidentifier" not-null="true" />
+        </property>		
+		<property name="Name" type="String">
+			<column name="TaskName" length="350" sql-type="nvarchar" not-null="true"/>
+		</property>		
+		<property name="Description" type="String">
+			<column name="Description" length="500" sql-type="nvarchar" not-null="false"/>
+		</property>
+		
+		<property name="TimeEstimated" type="Double">
+			<column name="TimeEstimated" length="8" sql-type="float" not-null="true"/>
+		</property>
+        <property name="TimeLeft" type="Double">
+            <column name="TimeLeft" length="8" sql-type="float" not-null="true"/>
+        </property>
+        <property name="WorstCaseEstimate" type="Double">
+            <column name="WorstCaseEstimate" length="8" sql-type="float" not-null="true"/>
+        </property>
+        
+        <property name="BestCaseEstimate" type="Double">
+            <column name="BestCaseEstimate" length="8" sql-type="float" not-null="true"/>
+        </property>
+        <property name="RealisticEstimate" type="Double">
+            <column name="RealisticEstimate" length="8" sql-type="float" not-null="true"/>
+        </property>
+        <property name="Closed" type="Boolean">
+			<column name="Closed" length="1" sql-type="bit" not-null="true"/>
+		</property>
+		<many-to-one name="Project" class="Project">
+			<column name="ProjectID" length="4" sql-type="int" not-null="true"/>
+		</many-to-one>
+        <many-to-one name="CreatedBy" class="User">
+            <column name="CreatedBy" length="4" sql-type="int" not-null="true" />
+        </many-to-one>
+        <property name="CreateDate" type="DateTime">
+            <column name="CreateDate" length="8" sql-type="datetime" not-null="true"/>
+        </property>
+        <many-to-one name="ChangedBy" class="User">
+            <column name="ChangedBy" length="4" sql-type="int" not-null="false" />
+        </many-to-one>
+        <property name="ChangeDate" type="DateTime">
+            <column name="ChangeDate" length="8" sql-type="datetime" not-null="false"/>
+        </property>
+        <many-to-one name="Tag" class="Tag"  >
+            <column name="TagID" length="4" sql-type="int" not-null="false" />
+        </many-to-one  >
+        <many-to-one name="ParentTask" class="Task"  >
+            <column name="ParentID" length="4" sql-type="int" not-null="false" />
+        </many-to-one  >
+        
+        
+		<bag name="TimeEntries" inverse="true" lazy="true" cascade="all" order-by="StartTime"    >
+			<key column="TaskID"/>
+            
+            <one-to-many class="TimeEntry"/>
+		</bag>
+
+        <bag name="SubTasks" inverse="true" lazy="true" cascade="all">
+            <key column="ParentID"></key>
+            <one-to-many class="Task"/>
+        </bag>
+	</class>
+</hibernate-mapping>

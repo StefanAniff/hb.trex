@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.ServiceContracts.SL</RootNamespace>
+    <AssemblyName>Trex.ServiceContracts.SL</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
+    <OutputPath>bin\Releaseexternal\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Trex.ServiceContracts.WPF\BugtrackerIntegrationProject.cs">
+      <Link>BugtrackerIntegrationProject.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\BugtrackerIntegrationTask.cs">
+      <Link>BugtrackerIntegrationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\BugtrackerIntegrationUser.cs">
+      <Link>BugtrackerIntegrationUser.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\BugtrackerTaskImport.cs">
+      <Link>BugtrackerTaskImport.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\BugtrackerTimeEntryExport.cs">
+      <Link>BugtrackerTimeEntryExport.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\ChangeTrackingExtension.cs">
+      <Link>ChangeTrackingExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\CreditNote.cs">
+      <Link>CreditNote.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Customer.cs">
+      <Link>Customer.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\CustomerInvoiceGroup.cs">
+      <Link>CustomerInvoiceGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\CustomersInvoiceView.cs">
+      <Link>CustomersInvoiceView.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\DocumentType.cs">
+      <Link>DocumentType.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\DownloadInvoiceRequest.cs">
+      <Link>DownloadInvoiceRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\ExceptionInfo.cs">
+      <Link>ExceptionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\FileDownloadRequestMessage.cs">
+      <Link>FileDownloadRequestMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\FileDownloadReturnMessage.cs">
+      <Link>FileDownloadReturnMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\GetCustomerByIdCriterias.cs">
+      <Link>GetCustomerByIdCriterias.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\GetSpecificationData_Project_Result.cs">
+      <Link>GetSpecificationData_Project_Result.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\GetSpecificationData_Tasks_Result.cs">
+      <Link>GetSpecificationData_Tasks_Result.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\IFileDownloadService.cs">
+      <Link>IFileDownloadService.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Invoice.cs">
+      <Link>Invoice.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\InvoiceComment.cs">
+      <Link>InvoiceComment.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\InvoiceFile.cs">
+      <Link>InvoiceFile.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\InvoiceLine.cs">
+      <Link>InvoiceLine.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\InvoiceListItemView.cs">
+      <Link>InvoiceListItemView.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\InvoiceTemplate.cs">
+      <Link>InvoiceTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\InvoiceTemplateFiles.cs">
+      <Link>InvoiceTemplateFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\ITrexService.cs">
+      <Link>ITrexService.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Model.cs">
+      <Link>Model.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Model\CustomerInvoiceViewPartial.cs">
+      <Link>CustomerInvoiceViewPartial.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Model\CustomerPartial.cs">
+      <Link>CustomerPartial.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Model\IEntity.cs">
+      <Link>IEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Permissions.cs">
+      <Link>Permissions.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Project.cs">
+      <Link>Project.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Role.cs">
+      <Link>Role.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\RoundedTimeSpentPrDayPrUser.cs">
+      <Link>RoundedTimeSpentPrDayPrUser.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\RoundedTimeSpentPrDayPrUserEx.cs">
+      <Link>RoundedTimeSpentPrDayPrUserEx.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\RoundedTimeSpentPrDayPrUserHalfHour.cs">
+      <Link>RoundedTimeSpentPrDayPrUserHalfHour.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\RoundedTimeSpentPrTaskPrDay.cs">
+      <Link>RoundedTimeSpentPrTaskPrDay.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\ServerResponse.cs">
+      <Link>ServerResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\ServiceClients.cs">
+      <Link>ServiceClients.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Tag.cs">
+      <Link>Tag.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Task.cs">
+      <Link>Task.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\TimeEntry.cs">
+      <Link>TimeEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\TimeEntryType.cs">
+      <Link>TimeEntryType.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\TimeEntryView.cs">
+      <Link>TimeEntryView.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\User.cs">
+      <Link>User.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\UserCreationResponse.cs">
+      <Link>UserCreationResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\UserPermission.cs">
+      <Link>UserPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\UsersCustomer.cs">
+      <Link>UsersCustomer.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\UserTimeEntryStat.cs">
+      <Link>UserTimeEntryStat.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\Version.cs">
+      <Link>Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Trex.ServiceContracts.WPF\ViewInventoryValue.cs">
+      <Link>ViewInventoryValue.cs</Link>
+    </Compile>
+    <Compile Include="InvoiceLinePartial.cs" />
+    <Compile Include="InvoicePartial.cs" />
+    <Compile Include="InvoiceTemplatePartial.cs" />
+    <Compile Include="ProjectPartial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TaskPartial.cs" />
+    <Compile Include="TimeEntryPartial.cs" />
+    <Compile Include="TimeEntryTypePartial.cs" />
+    <Compile Include="UnitTypes.cs" />
+    <Compile Include="UserCustomerInfoPartial.cs" />
+    <Compile Include="UserPartial.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

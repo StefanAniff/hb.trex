@@ -1,0 +1,92 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:activeTaskView="clr-namespace:Trex.SmartClient.TaskModule.TaskScreen.ActiveTaskView"
+    xmlns:inactiveTaskView="clr-namespace:Trex.SmartClient.TaskModule.TaskScreen.InactiveTaskView"
+    mc:Ignorable="d" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+    xmlns:commands="clr-namespace:Microsoft.Practices.Prism.Commands;assembly=Microsoft.Practices.Prism"
+    xmlns:regions1="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+    xmlns:taskScreenMasterView="clr-namespace:Trex.SmartClient.TaskModule.TaskScreen.TaskScreenMasterView"
+    xmlns:converters="clr-namespace:Trex.SmartClient.Infrastructure.Converters;assembly=Trex.SmartClient.Infrastructure"
+    x:Class="Trex.SmartClient.TaskModule.TaskScreen.TaskScreenMasterView.TaskScreenMasterView"
+    d:DesignWidth="1000" d:DesignHeight="522"
+    d:DataContext="{d:DesignInstance taskScreenMasterView:TaskScreenMasterViewModel}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:DecimalToGridLengthConverter x:Key="DecimalToGridLengthConverter" />
+        <DataTemplate x:Key="InActiveDataTemplate" DataType="{x:Type inactiveTaskView:InActiveTaskViewModel}">
+            <inactiveTaskView:InactiveTaskView DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Key="ActiveTaskTemplate" DataType="{x:Type activeTaskView:ActiveTaskViewModel}">
+            <activeTaskView:ActiveTaskView DataContext="{Binding}" />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" MinHeight="120" />
+                <RowDefinition Height="3" />
+                <RowDefinition
+                    Height="{Binding TabHistoryHeight, Converter={StaticResource DecimalToGridLengthConverter}, Mode=TwoWay}"
+                    MinHeight="33"
+                    x:Name="rowDef" />
+            </Grid.RowDefinitions>
+            <ItemsControl ItemsSource="{Binding InactiveTasks}" ItemTemplate="{StaticResource InActiveDataTemplate}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <StackPanel x:Name="BottomPanel" VerticalAlignment="Bottom" Grid.Row="0">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Button x:Name="NewTaskButton" HorizontalAlignment="Left" Margin="20,0,0,50"
+                        commands:Click.Command="{Binding StartNewTask}">
+                    <Button.Effect>
+                        <DropShadowEffect />
+                    </Button.Effect>
+                    <Image Width="71" Height="59"
+                           Source="/Trex.SmartClient.TaskModule;Component/Resources/newtaskButton.png" Stretch="Fill">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseEnter">
+                                <ic:ChangePropertyAction PropertyName="LayoutTransform">
+                                    <ic:ChangePropertyAction.Value>
+                                        <MatrixTransform Matrix="Identity" />
+                                    </ic:ChangePropertyAction.Value>
+                                </ic:ChangePropertyAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Image>
+                </Button>
+            </StackPanel>
+            <GridSplitter Margin="0, 0, 0, -66" x:Name="splitter"
+                          Grid.Row="1" Height="3" HorizontalAlignment="Stretch" ResizeDirection="Rows" />
+            <ContentControl
+                Grid.Row="2"
+                x:Name="historyFeedRegion"
+                regions1:RegionManager.RegionName="HistoryRegion" />
+        </Grid>
+        <Canvas Name="MasterScreen">
+            <ContentControl ContentTemplate="{StaticResource ActiveTaskTemplate}"
+                            Name="ActiveTask"
+                            Content="{Binding ActiveTask,Mode=OneWay}"
+                            Canvas.Top="{Binding ActiveTaskY, Mode=TwoWay}"
+                            Canvas.Left="{Binding ActiveTaskX, Mode=TwoWay}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Stretch"
+                            MouseWheel="Img_MouseWheel" MouseMove="Img_MouseMove"
+                            MouseDown="Img_MouseDown" MouseUp="Img_MouseUp"
+                            Visibility="{Binding IsActiveTaskVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" />
+        </Canvas>
+    </Grid>
+</UserControl>

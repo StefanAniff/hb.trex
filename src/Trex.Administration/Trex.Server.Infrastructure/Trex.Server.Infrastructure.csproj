@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9E973655-6628-4A5D-AC11-555C0BE21402}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.Server.Infrastructure</RootNamespace>
+    <AssemblyName>Trex.Server.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblies\StructureMap-2.0-Binaries\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Handlers\ExcelExportHandler.cs" />
+    <Compile Include="Implemented\ApplicationSettings.cs" />
+    <Compile Include="Implemented\CustomerRepository.cs" />
+    <Compile Include="Implemented\EmailComposer.cs" />
+    <Compile Include="Implemented\ExcelExportService.cs" />
+    <Compile Include="Implemented\Factories\AppStateSessionFactory.cs" />
+    <Compile Include="Implemented\Factories\CustomerFactory.cs" />
+    <Compile Include="Implemented\Factories\InvoiceFactory.cs" />
+    <Compile Include="Implemented\Factories\InvoiceLineFactory.cs" />
+    <Compile Include="Implemented\Factories\UserCustomerInfoFactory.cs" />
+    <Compile Include="Implemented\Factories\ProjectFactory.cs" />
+    <Compile Include="Implemented\Factories\TaskFactory.cs" />
+    <Compile Include="Implemented\Factories\TimeEntryFactory.cs" />
+    <Compile Include="Implemented\HttpUserSession.cs" />
+    <Compile Include="Implemented\HybridSessionBuilder.cs" />
+    <Compile Include="Implemented\InvoiceManager.cs" />
+    <Compile Include="Implemented\InvoiceRepository.cs" />
+    <Compile Include="Implemented\NHibernateSessionModule.cs" />
+    <Compile Include="Implemented\PriceService.cs" />
+    <Compile Include="Implemented\ProjectRepository.cs" />
+    <Compile Include="Implemented\RepositoryBase.cs" />
+    <Compile Include="Implemented\SelectionFilter.cs" />
+    <Compile Include="Implemented\TaskRepository.cs" />
+    <Compile Include="Implemented\TimeEntryRepository.cs" />
+    <Compile Include="Implemented\TimeEntryTypeFactory.cs" />
+    <Compile Include="Implemented\TimeEntryTypeRepository.cs" />
+    <Compile Include="Implemented\UserManagementService.cs" />
+    <Compile Include="Implemented\UserPreferences.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Implemented\UserRepository.cs" />
+    <Compile Include="Implemented\XmlPermissionService.cs" />
+    <Compile Include="ISessionBuilder.cs" />
+    <EmbeddedResource Include="Mappings\UserCustomerInfo.hbm.xml" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implemented\DBVersionRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Customers.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Projects.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Tasks.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TimeEntries.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Users.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database\Create\Create_v_0_10_0.sql" />
+    <None Include="Database\Create\Create_v_0_7.sql" />
+    <None Include="Database\Create\Create_v_0_9_5.sql" />
+    <None Include="Database\Create\Create_v_1_0.sql" />
+    <None Include="Database\Update\0.x\0.11.0.sql" />
+    <None Include="Database\Update\0.x\0.12.0.sql" />
+    <None Include="Database\Update\0.x\0.12.1.sql" />
+    <None Include="Database\Update\0.x\0.12.2.sql" />
+    <None Include="Database\Update\0.x\0.12.3.sql" />
+    <None Include="Database\Update\0.x\0.12.4.sql" />
+    <None Include="Database\Update\0.x\v_0_10_0.sql" />
+    <None Include="Database\Update\0.x\v_0_10_1.sql" />
+    <None Include="Database\Update\0.x\v_0_7_1.sql" />
+    <None Include="Database\Update\0.x\v_0_7_2.sql" />
+    <None Include="Database\Update\0.x\v_0_7_3.sql" />
+    <None Include="Database\Update\0.x\v_0_9_0.sql" />
+    <None Include="Database\Update\0.x\v_0_9_1.sql" />
+    <None Include="Database\Update\0.x\v_0_9_1_1.sql" />
+    <None Include="Database\Update\0.x\v_0_9_2.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_10.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_1_springover.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_2.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_3.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_4.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_5.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_6.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_7.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_8.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_9.sql" />
+    <None Include="Database\Update\0.x\v_0_9_3_tilsidst.sql" />
+    <None Include="Database\Update\0.x\v_0_9_4.sql" />
+    <None Include="Database\Update\0.x\v_0_9_5.sql" />
+    <None Include="Database\Update\0.x\v_0_9_6.sql" />
+    <None Include="Database\Update\0.x\v_0_9_7.sql" />
+    <None Include="Database\Update\0.x\v_0_9_8.sql" />
+    <None Include="Database\Update\0.x\v_0_9_9.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trex.Server.Core\Trex.Server.Core.csproj">
+      <Project>{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}</Project>
+      <Name>Trex.Server.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Tags.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Version.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Invoice.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\InvoiceLine.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Excel\Excel.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\TimeEntryTypes.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Create\Create_v_1_1.sql" />
+    <Content Include="Database\Update\1.x\1.0.0.sql" />
+    <Content Include="Database\Update\1.x\1.1.0.sql" />
+    <Content Include="Database\Update\1.x\1.1.1.sql" />
+    <Content Include="Database\Update\1.x\1.1.2.sql" />
+    <Content Include="Database\Update\1.x\1.1.3.sql" />
+    <Content Include="Database\Update\updates for invoicing.sql" />
+  </ItemGroup>
+
+</Project>

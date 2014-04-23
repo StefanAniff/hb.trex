@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="/Imports">
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd0" />
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Trex.Server.DataAccess" />
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+      <xsd:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CustomerService_ExistsApplicationName_InputMessage">
+    <wsdl:part name="parameters" element="ExistsApplicationName" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_ExistsApplicationName_OutputMessage">
+    <wsdl:part name="parameters" element="ExistsApplicationNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_GetCustomerByCustomerId_InputMessage">
+    <wsdl:part name="parameters" element="GetCustomerByCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_GetCustomerByCustomerId_OutputMessage">
+    <wsdl:part name="parameters" element="GetCustomerByCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_SaveCustomer_InputMessage">
+    <wsdl:part name="parameters" element="SaveCustomer" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_SaveCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="SaveCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_RegisterNewUser_InputMessage">
+    <wsdl:part name="parameters" element="RegisterNewUser" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_RegisterNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="RegisterNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_ActivateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="ActivateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="CustomerService_ActivateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="ActivateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CustomerService">
+    <wsdl:operation name="ExistsApplicationName">
+      <wsdl:input wsaw:Action="urn:CustomerService/ExistsApplicationName" message="CustomerService_ExistsApplicationName_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/ExistsApplicationNameResponse" message="CustomerService_ExistsApplicationName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByCustomerId">
+      <wsdl:input wsaw:Action="urn:CustomerService/GetCustomerByCustomerId" message="CustomerService_GetCustomerByCustomerId_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/GetCustomerByCustomerIdResponse" message="CustomerService_GetCustomerByCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <wsdl:input wsaw:Action="urn:CustomerService/SaveCustomer" message="CustomerService_SaveCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/SaveCustomerResponse" message="CustomerService_SaveCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewUser">
+      <wsdl:input wsaw:Action="urn:CustomerService/RegisterNewUser" message="CustomerService_RegisterNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/RegisterNewUserResponse" message="CustomerService_RegisterNewUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateCustomer">
+      <wsdl:input wsaw:Action="urn:CustomerService/ActivateCustomer" message="CustomerService_ActivateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="urn:CustomerService/ActivateCustomerResponse" message="CustomerService_ActivateCustomer_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

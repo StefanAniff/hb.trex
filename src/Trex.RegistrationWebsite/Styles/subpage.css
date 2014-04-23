@@ -1,0 +1,59 @@
+#contentbanner
+{
+    width: 1100px;
+    height: 164px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#contentBannerBg
+{
+    background-image: url(../Images/subpage_bg_outer.png);
+    background-repeat: repeat-x;
+    height: 164px;
+}
+#content
+{
+    background-image: url(../Images/contentbg.png);
+    background-color: #ffffff;
+    margin-top: 1px;
+    min-height: 1000px;
+    background-repeat: repeat-x;
+    clear: both;
+}
+#leftmenu
+{
+    min-height: 500px;
+    width: 296px;
+    float: left;
+    padding-top: 59px;
+}
+#innerContentBorder
+{
+    background-image: url(../Images/subpage_bg.png);
+    background-repeat: repeat-x;
+    height: 15px;
+}
+#innercontent
+{
+    position: relative;
+    background-color: #ffffff;
+    margin-top: 2px;
+    min-height: 500px;
+    width: 500px;
+    float: left;
+    top: -76px;
+}
+#contenttext
+{
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.topBanner
+{
+    width: 1100px;
+    height: 164px;
+    margin-left: auto;
+    margin-right: auto;
+}

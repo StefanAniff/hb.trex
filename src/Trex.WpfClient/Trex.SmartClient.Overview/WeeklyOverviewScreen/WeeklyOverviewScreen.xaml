@@ -1,0 +1,549 @@
+﻿<UserControl x:Class="Trex.SmartClient.Overview.WeeklyOverviewScreen.WeeklyOverviewScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerikControls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+             xmlns:controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+             xmlns:weeklyOverviewScreen="clr-namespace:Trex.SmartClient.Overview.WeeklyOverviewScreen"
+             xmlns:dialog="clr-namespace:Trex.Dialog;assembly=Trex.Dialog"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:utils="clr-namespace:Trex.SmartClient.Core.Utils;assembly=Trex.SmartClient.Core"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance weeklyOverviewScreen:DesignWeeklyOverviewViewmodel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="500"
+             d:DesignWidth="1440">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="WeeklyOverviewStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <GridLength x:Key="ColumnWidth">110</GridLength>
+            <system:Double x:Key="FontHeaderSize">18</system:Double>
+            <system:Double x:Key="FontHeaderDateSize">12</system:Double>
+            <system:Double x:Key="FontSizeInput">15</system:Double>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+        <Border Margin="0" Background="White" BorderThickness="1" CornerRadius="10" Padding="2">
+            <Grid Margin="2,2,2,2" Style="{StaticResource SynchronizingGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!-- Header -->
+                <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource MainBorder}"
+                        Margin="0,2,0,0"
+                        CornerRadius="10,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="108" />
+                            <ColumnDefinition Width="109" />
+                            <ColumnDefinition Width="109" />
+                            <ColumnDefinition Width="109" />
+                            <ColumnDefinition Width="109" />
+                            <ColumnDefinition Width="109" />
+                            <ColumnDefinition Width="109" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1"
+                                Style="{StaticResource Dayheader}"
+                                DataContext="{Binding Day1}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave"
+                                CommandParameter="{Binding Date}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="2"
+                                DataContext="{Binding Day2}"
+                                Style="{StaticResource Dayheader}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="3"
+                                DataContext="{Binding Day3}"
+                                Style="{StaticResource Dayheader}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave"
+                                CommandParameter="{Binding Date}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="4"
+                                DataContext="{Binding Day4}"
+                                Style="{StaticResource Dayheader}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave"
+                                CommandParameter="{Binding Date}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="5"
+                                DataContext="{Binding Day5}"
+                                Style="{StaticResource Dayheader}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave"
+                                CommandParameter="{Binding Date}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="6"
+                                DataContext="{Binding Day6}"
+                                Style="{StaticResource Dayheader}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave"
+                                CommandParameter="{Binding Date}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                        <Button Grid.Column="7"
+                                DataContext="{Binding Day7}"
+                                Style="{StaticResource Dayheader}"
+                                PreviewMouseMove="OnPreviewMouseMove"
+                                MouseLeave="OnMouseLeave"
+                                CommandParameter="{Binding Date}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Button.Template>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Header}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderSize}" />
+                                <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
+                                           TextAlignment="Left"
+                                           FontSize="{StaticResource FontHeaderDateSize}" />
+                                <controls:RadComboBox
+                                    telerikControls:StyleManager.Theme="Windows8"
+                                    Style="{StaticResource timeEntryTypesBox}" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+                <!-- Body -->
+                <ItemsControl Grid.Row="2" Grid.Column="1"
+                              ItemsSource="{Binding Rows}"
+                              MinHeight="35"
+                              ScrollViewer.CanContentScroll="True"
+                              AlternationCount="2"
+                              Style="{StaticResource ScrollableItemsControl}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DataTemplate.Resources>
+                            </DataTemplate.Resources>
+                            <Grid x:Name="yahoo" RenderTransformOrigin="0.5, 0.5">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform x:Name="MyAnimatedScaleTransform" ScaleY="1" />
+                                </Grid.RenderTransform>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="5" />
+                                    <RowDefinition />
+                                    <RowDefinition Height="5" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="1" KeyboardNavigation.IsTabStop="False">
+                                    <ContentControl Margin="5,2" Template="{StaticResource TaskDescription}"
+                                                    KeyboardNavigation.IsTabStop="False">
+                                        <ContentControl.ToolTip>
+                                            <ContentControl Margin="5,2" Grid.Row="1"
+                                                            Template="{StaticResource TaskDescriptionTooltip}" />
+                                        </ContentControl.ToolTip>
+                                    </ContentControl>
+                                    <ContentControl Template="{StaticResource BillableBannerButton}"
+                                                    KeyboardNavigation.IsTabStop="False"
+                                                    PreviewMouseMove="OnPreviewMouseMove"
+                                                    MouseLeave="OnMouseLeave">
+                                    </ContentControl>
+                                </Grid>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Monday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}"
+                                        TabIndex="1" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Tuesday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}"
+                                        TabIndex="2" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Wednesday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}"
+                                        TabIndex="3" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="4" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Thursday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}"
+                                        TabIndex="4" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="5" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Friday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}" TabIndex="5" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="6" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Saturday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}" TabIndex="6" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" Grid.Column="7" Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            DataContext="{Binding Sunday}">
+                                    <TextBox
+                                        KeyDown="TimeEntry_OnKeyDown"
+                                        utils:EnterKeyTraversal.IsEnabled="True"
+                                        Style="{StaticResource TimeEntryTextbox}"
+                                        TabIndex="7" />
+                                    <dialog:SpeechBubble />
+                                </StackPanel>
+                                <TextBlock Grid.Column="8" Grid.Row="1"
+                                           Margin="0,0,5,0"
+                                           HorizontalAlignment="Right"
+                                           TextAlignment="Right"
+                                           FontSize="{StaticResource FontSizeInput}"
+                                           Text="{Binding Total, StringFormat=N2}"
+                                           VerticalAlignment="Center" />
+                                <dialog:CrossButton Grid.Column="9" Grid.Row="1"
+                                                    Height="13"
+                                                    Command="{Binding DataContext.DeleteTimeEntry, 
+                                                RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                </dialog:CrossButton>
+                                <Border Grid.Row="2" Grid.ColumnSpan="10" BorderThickness="0,0,0,1"
+                                        BorderBrush="Gray" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsDeleted}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="MyAnimatedScaleTransform"
+                                                    Storyboard.TargetProperty="ScaleY"
+                                                    To="0" Duration="0:0:1" AutoReverse="False" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Initial}" Value="False">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard x:Name="LoadingBeginStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="MyAnimatedScaleTransform"
+                                                    Storyboard.TargetProperty="ScaleY"
+                                                    From="0"
+                                                    FillBehavior="Stop"
+                                                    To="1" Duration="0:0:0.5"
+                                                    AutoReverse="False" />
+                                                <DoubleAnimation
+                                                    Storyboard.TargetName="yahoo"
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="0"
+                                                    FillBehavior="Stop"
+                                                    To="1" Duration="0:0:0.5"
+                                                    AutoReverse="False" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <RemoveStoryboard BeginStoryboardName="LoadingBeginStoryboard" />
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                    <Setter Property="Background"
+                                            TargetName="yahoo">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFEFEFEF" Offset="0" />
+                                                <GradientStop Color="#FFEFEFEF" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                    <Setter Property="Background"
+                                            TargetName="yahoo">
+                                        <Setter.Value>
+                                            <LinearGradientBrush EndPoint="0,0" StartPoint="0,0">
+                                                <GradientStop Color="#DCDCDCDC" Offset="0" />
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding CanCopyPreviousTimesheet, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Hyperlink Command="{Binding CopyPreviousTasksToSelectedDate}">
+                        <TextBlock Text="Copy over rows from previous timesheet!" />
+                    </Hyperlink>
+                </TextBlock>
+                <!-- Footer -->
+                <Border Grid.Column="1" Grid.Row="3" Style="{StaticResource MainBorder}"
+                        CornerRadius="0,0,0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="{StaticResource ColumnWidth}" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Margin="5,8,0,8" Height="25">
+                            <Button Height="25" Width="Auto" Padding="5,0" Margin="0,0,10,0"
+                                    Command="{Binding AddTaskCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Template="{StaticResource PlusPath}" />
+                                    <TextBlock Text="Add Task" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </Button>
+                            <Button Content="Save" Height="25" Width="75" Padding="5,0"
+                                    IsEnabled="{Binding HasChanges}"
+                                    Command="{Binding SaveCommand}"
+                                    Style="{StaticResource SaveButton}" />
+
+                        </StackPanel>
+                        <TextBlock Grid.Column="1"
+                                   DataContext="{Binding Day1}"
+                                   Style="{StaticResource BottomHeader}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Style="{StaticResource BottomHeader}"
+                                   Grid.Column="2"
+                                   DataContext="{Binding Day2}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Style="{StaticResource BottomHeader}"
+                                   Grid.Column="3"
+                                   DataContext="{Binding Day3}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Style="{StaticResource BottomHeader}"
+                                   Grid.Column="4"
+                                   DataContext="{Binding Day4}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Grid.Column="5" DataContext="{Binding Day5}"
+                                   Style="{StaticResource BottomHeader}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Style="{StaticResource BottomHeader}"
+                                   Grid.Column="6" DataContext="{Binding Day6}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Style="{StaticResource BottomHeader}"
+                                   Grid.Column="7" DataContext="{Binding Day7}"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                        <TextBlock Grid.Column="8"
+                                   HorizontalAlignment="Right"
+                                   Margin="0,0,5,0"
+                                   Style="{StaticResource BottomHeader}"
+                                   FontWeight="Bold"
+                                   FontSize="{StaticResource FontSizeInput}"
+                                   TextAlignment="Right" />
+                    </Grid>
+                </Border>
+                <!-- Window Header -->
+                <Border Grid.ColumnSpan="3" Margin="0" BorderThickness="0,0,0,2" BorderBrush="#FFBDBDBD">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF5D5D5D" Offset="0.069" />
+                            <GradientStop Color="#FF4E4E4E" Offset="0.534" />
+                            <GradientStop Color="#FF393939" Offset="0.552" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <StackPanel Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <telerikControls:RadButton x:Name="PreviousDateButton"
+                                                   Height="18"
+                                                   Width="45"
+                                                   Command="{Binding PreviousDateCommand}">
+                            <TextBlock Text="Previous" VerticalAlignment="Center" FontSize="9" />
+                        </telerikControls:RadButton>
+                        <controls:RadDateTimePicker x:Name="cal"
+                                                    SelectedDate="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                    InputMode="DatePicker" Height="23"
+                                                    Margin="5,0,0,0">
+                        </controls:RadDateTimePicker>
+                        <telerikControls:RadButton x:Name="TodayDateButton"
+                                                   ToolTip="This week"
+                                                   Height="23.6"
+                                                   Margin="0,0,5,0"
+                                                   Command="{Binding TodayCommand}">
+                            <TextBlock Text="T" VerticalAlignment="Center" FontSize="9" />
+                        </telerikControls:RadButton>
+                        <telerikControls:RadButton
+                            Height="18" Width="45"
+                            Command="{Binding NextDayCommand}">
+                            <TextBlock x:Name="NextDayButton" Text="Next" VerticalAlignment="Center" FontSize="9" />
+                        </telerikControls:RadButton>
+                    </StackPanel>
+                </Border>
+                <Grid Grid.Row="1" Grid.RowSpan="3"
+                      Grid.ColumnSpan="2"
+                      Background="White"
+                      Opacity="0.4"
+                      Visibility="{Binding IsSyncing, Converter={StaticResource BooleanToVisibilityConverter}}">
+                </Grid>
+                <dialog:CircularProgressBar Grid.Row="1" Grid.RowSpan="3"
+                                            Grid.ColumnSpan="2"
+                                            Visibility="{Binding IsSyncing, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                            Height="120" Width="120" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

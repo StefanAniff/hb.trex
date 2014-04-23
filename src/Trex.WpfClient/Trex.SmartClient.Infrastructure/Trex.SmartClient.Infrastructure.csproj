@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2F238BF-8C25-4619-B46C-12577EDFFFF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.SmartClient.Infrastructure</RootNamespace>
+    <AssemblyName>Trex.SmartClient.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>d60codesigning.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
+    <OutputPath>bin\Releaseexternal\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-client\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.UnityExtensions">
+      <HintPath>..\packages\Prism.UnityExtensions.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=3.9.59.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Common.3.9.59\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=3.9.59.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Common.3.9.59\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Text.4.0.15\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="appSettings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>appSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="AttachedProperties\DataBindingToolTip.cs" />
+    <Compile Include="AttachedProperties\PermissionControl.cs" />
+    <Compile Include="Commands\ApplicationCommands.cs" />
+    <Compile Include="Commands\OverviewCommands.cs" />
+    <Compile Include="Commands\TaskCommands.cs" />
+    <Compile Include="Converters\AdditionNumberConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibiltyConverter.cs" />
+    <Compile Include="Converters\DateTimeToStringConverter.cs" />
+    <Compile Include="Converters\DecimalNullToEmptyStringConverter.cs" />
+    <Compile Include="Converters\DecimalToGridLengthConverter.cs" />
+    <Compile Include="Converters\DecimalZeroToEmptyStringConverter.cs" />
+    <Compile Include="Converters\SavedStateToColorConverter.cs" />
+    <Compile Include="Converters\TimeSpanToHourStringConverter.cs" />
+    <Compile Include="Converters\TimeSpanToStringConverter.cs" />
+    <Compile Include="Converters\ValueToForegroundColorConverter.cs" />
+    <Compile Include="Extensions\CopyObjectAgent.cs" />
+    <Compile Include="Extensions\RegionExtensions.cs" />
+    <Compile Include="Extensions\TaskExtensions.cs" />
+    <Compile Include="Functions\MediaHelper.cs" />
+    <Compile Include="Helpers\BinarySerializer.cs" />
+    <Compile Include="Implemented\ApplicationStateService.cs" />
+    <Compile Include="Implemented\AppSettings.cs" />
+    <Compile Include="Implemented\AppSettingsUserDataService.cs" />
+    <Compile Include="Implemented\BusyService.cs" />
+    <Compile Include="Implemented\CommonDialogs.cs" />
+    <Compile Include="Implemented\ExceptionWindow.xaml.cs">
+      <DependentUpon>ExceptionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\IsolatedStorageFileProvider.cs" />
+    <Compile Include="Implemented\LocalStorage\ClientCompanyRepository.cs" />
+    <Compile Include="Implemented\LocalStorage\ClientProjectRepository.cs" />
+    <Compile Include="Implemented\LocalStorage\ClientTaskRepository.cs" />
+    <Compile Include="Implemented\LocalStorage\ClientTimeEntryRepository.cs" />
+    <Compile Include="Implemented\LocalStorage\ClientTimeEntryTypeRepository.cs" />
+    <Compile Include="Implemented\ConnectivityService.cs" />
+    <Compile Include="Implemented\LocalStorage\DataSetWrapper.cs" />
+    <Compile Include="Implemented\DialogManagerBase.cs" />
+    <Compile Include="Implemented\LocalStorage\Forecast\ForecastDataSetWrapper.cs" />
+    <Compile Include="Implemented\LocalStorage\Forecast\ForecastUserListPresetRepository.cs" />
+    <Compile Include="Implemented\LoginSettings.cs" />
+    <Compile Include="Implemented\MenuRegistry.cs" />
+    <Compile Include="Implemented\NotificationEventListener.cs" />
+    <Compile Include="Implemented\NotificationService.cs" />
+    <Compile Include="Implemented\PermissionHelper.cs" />
+    <Compile Include="Implemented\RegionNames.cs" />
+    <Compile Include="Implemented\ScreenConductor.cs" />
+    <Compile Include="Implemented\ScreenFactoryRegistry.cs" />
+    <Compile Include="Implemented\SyncService.cs" />
+    <Compile Include="Implemented\TaskSearchService.cs" />
+    <Compile Include="Implemented\TimeEntryTimerService.cs" />
+    <Compile Include="Implemented\TransitionService.cs" />
+    <Compile Include="Implemented\UserContext.cs" />
+    <Compile Include="Implemented\UserPreferences.cs" />
+    <Compile Include="Implemented\UserSession.cs" />
+    <Compile Include="Implemented\LocalStorage\WindowStateXmlPersister.cs" />
+    <Compile Include="Implemented\UserWlanSettingsService.cs" />
+    <Compile Include="Implemented\WLAN\Interop.cs" />
+    <Compile Include="Implemented\WLAN\WlanApi.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="d60codesigning.pfx" />
+    <None Include="packages.config" />
+    <Compile Include="Releasenotes\Version3_14_2.cs" />
+    <Compile Include="Releasenotes\Version3_13_0.cs" />
+    <Compile Include="Releasenotes\Version3_10_0.cs" />
+    <Compile Include="Releasenotes\Version3_10_1.cs" />
+    <Compile Include="Releasenotes\Version3_11_0.cs" />
+    <Compile Include="Releasenotes\Version3_12_0.cs" />
+    <Compile Include="Releasenotes\Version3_14_0.cs" />
+    <Compile Include="Releasenotes\Version3_14_1.cs" />
+    <Compile Include="Releasenotes\Version3_14_3.cs" />
+    <Compile Include="Releasenotes\Version3_14_4.cs" />
+    <Compile Include="Releasenotes\Version3_14_5.cs" />
+    <Compile Include="Releasenotes\Version3_15_0.cs" />
+    <Compile Include="Releasenotes\Version3_15_1.cs" />
+    <Compile Include="Releasenotes\Version3_15_3.cs" />
+    <Compile Include="Releasenotes\Version3_8_1.cs" />
+    <None Include="Resources\isettingsviewmodel.cs" />
+    <Compile Include="Releasenotes\Version3_4_0.cs" />
+    <Compile Include="Releasenotes\Version3_5_0.cs" />
+    <Compile Include="Releasenotes\Version3_7_0.cs" />
+    <Compile Include="Releasenotes\Version3_7_1.cs" />
+    <Compile Include="Releasenotes\Version3_7_2.cs" />
+    <Compile Include="Releasenotes\Version3_7_3.cs" />
+    <Compile Include="Releasenotes\Version3_7_4.cs" />
+    <Compile Include="Releasenotes\Version3_8_0.cs" />
+    <Compile Include="Releasenotes\Version3_9.cs" />
+    <Compile Include="Releasenotes\Version3_9_1.cs" />
+    <Compile Include="Releasenotes\Version3_9_2.cs" />
+    <Compile Include="Releasenotes\Version3_15_2.cs" />
+    <Compile Include="Releasenotes\VersionInfoBase.cs" />
+    <Compile Include="Releasenotes\Version3_3_5.cs" />
+    <Compile Include="Releasenotes\Version3_6_0.cs" />
+    <Compile Include="Resources\NotificationResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotificationResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="appSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>appSettings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trex.SmartClient.Core\Trex.SmartClient.Core.csproj">
+      <Project>{B97E0761-2167-49FD-84C9-0BD68705C58B}</Project>
+      <Name>Trex.SmartClient.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Data\Trex.SmartClient.Data.csproj">
+      <Project>{5757D50C-1DB2-45D3-AB0C-9DDA4A06B9C5}</Project>
+      <Name>Trex.SmartClient.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Service\Trex.SmartClient.Service.csproj">
+      <Project>{F6539617-0432-48CB-8203-6A4301D777EC}</Project>
+      <Name>Trex.SmartClient.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\NotificationResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NotificationResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Implemented\ExceptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"  ?>
+<roles >
+	<role name="Administrator">
+		<permissions>
+			<permission name="CreateTaskPermission"/>
+		</permissions>
+	</role>
+	<role name="External">
+		<permissions></permissions>
+	</role>
+	<role name="Consultant">
+		<permissions>
+			<permission name="CreateTaskPermission"/>
+		</permissions>
+	</role>
+</roles>

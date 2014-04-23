@@ -1,0 +1,31 @@
+﻿namespace Trex.ServiceContracts
+{
+    public enum Permissions
+    {
+        ApplicationLoginPermission,
+        UserAdministrationPermission,
+        EditUserPermission,
+        CreateUserPermission,
+        DeactivateUserPermission,
+        TaskManagementPermission,
+        TimeEntryTypesPermission,
+        ReportPermission,
+        InvoicePermission,
+        DeleteUserPermission,
+        UserDeactivatePermission,
+        EditUserPricesPermission,
+        CreateCustomerPermission,
+        CreateProjectPermission,
+        CreateTaskPermission,
+        CreateTimeEntryPermission,
+        EditCustomerPermission,
+        EditProjectPermission,
+        EditTaskPermission,
+        EditTimeEntryPermission,
+        ChangeRolePermission,
+        EditSelfPermission,
+        FinalizeDraftPermission,
+        TemplateManagementPermission,
+        GenerateDeleteDraftPermission
+    }
+}

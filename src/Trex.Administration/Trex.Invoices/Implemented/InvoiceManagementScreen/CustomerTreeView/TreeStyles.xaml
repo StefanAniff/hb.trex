@@ -1,0 +1,130 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation" xmlns:Telerik_Windows_Controls_Animation="clr-namespace:Telerik.Windows.Controls.Animation;assembly=Telerik.Windows.Controls" xmlns:Telerik_Windows_Controls_Animation1="clr-namespace:Telerik.Windows.Controls.Animation;assembly=Telerik.Windows.Controls.Navigation" xmlns:Telerik_Windows_Controls_DragDrop="clr-namespace:Telerik.Windows.Controls.DragDrop;assembly=Telerik.Windows.Controls" >
+	<!-- Resource dictionary entries should be defined here. -->
+	<SolidColorBrush x:Key="DragBetweenItemsFeedback_BackgroundBrush" Color="#FFFA8C3B"/>
+	<telerik:Office_BlackTheme x:Key="Theme"/>
+	<SolidColorBrush x:Key="DisabledBrush" Color="#99FFFFFF"/>
+	<Style x:Key="RadTreeViewStyle" TargetType="telerikNavigation:RadTreeView">
+		<Setter Property="Telerik_Windows_Controls_Animation:AnimationManager.AnimationSelector">
+			<Setter.Value>
+				<Telerik_Windows_Controls_Animation:AnimationSelector>
+					<Telerik_Windows_Controls_Animation1:TreeViewExpandCollapseAnimation AnimationName="Expand" Direction="In" TargetName="ItemsHost"/>
+					<Telerik_Windows_Controls_Animation1:TreeViewExpandCollapseAnimation AnimationName="Collapse" Direction="Out" TargetName="ItemsHost"/>
+				</Telerik_Windows_Controls_Animation:AnimationSelector>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="IsDragTooltipEnabled" Value="True"/>
+		<Setter Property="IsEnabled" Value="True"/>
+		<Setter Property="IsDropPreviewLineEnabled" Value="True"/>
+		<Setter Property="IsRootLinesEnabled" Value="True"/>
+		<Setter Property="IsExpandOnDblClickEnabled" Value="True"/>
+		<Setter Property="PathSeparator" Value="\\"/>
+		<Setter Property="IsDragPreviewEnabled" Value="True"/>
+		<Setter Property="SelectionMode" Value="Single"/>
+		<Setter Property="ItemsIndent" Value="20"/>
+		<Setter Property="Telerik_Windows_Controls_DragDrop:RadDragAndDropManager.AllowDrop" Value="True"/>
+		<Setter Property="ItemEditTemplate">
+			<Setter.Value>
+				<DataTemplate>
+					<TextBox/>
+				</DataTemplate>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ExpanderStyle">
+			<Setter.Value>
+				<Style TargetType="ToggleButton">
+					<Setter Property="IsEnabled" Value="True"/>
+					<Setter Property="BorderBrush" Value="#FF262626"/>
+					<Setter Property="IsTabStop" Value="False"/>
+					<Setter Property="Cursor" Value="Hand"/>
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="ToggleButton">
+								<Grid Margin="5,0,0,0">
+									<VisualStateManager.VisualStateGroups>
+										<VisualStateGroup x:Name="CommonStates">
+											<VisualState x:Name="Normal"/>
+											<VisualState x:Name="MouseOver">
+												<Storyboard>
+													<DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="ExpandedVisualOver" Storyboard.TargetProperty="Opacity" To="1"/>
+													<DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="CollapsedVisualOver" Storyboard.TargetProperty="Opacity" To="1"/>
+												</Storyboard>
+											</VisualState>
+										</VisualStateGroup>
+										<VisualStateGroup x:Name="CheckStates">
+											<VisualState x:Name="Checked">
+												<Storyboard>
+													<DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="ExpandedStates" Storyboard.TargetProperty="Opacity" To="1"/>
+													<DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="CollapsedStates" Storyboard.TargetProperty="Opacity" To="0"/>
+												</Storyboard>
+											</VisualState>
+											<VisualState x:Name="Unchecked">
+												<Storyboard>
+													<DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="ExpandedStates" Storyboard.TargetProperty="Opacity" To="0"/>
+													<DoubleAnimation Duration="0:0:0.05" Storyboard.TargetName="CollapsedStates" Storyboard.TargetProperty="Opacity" To="1"/>
+												</Storyboard>
+											</VisualState>
+										</VisualStateGroup>
+									</VisualStateManager.VisualStateGroups>
+									<Grid x:Name="CollapsedStates">
+										<Path x:Name="CollapsedVisual" Fill="#FF989898" Stretch="Fill" Stroke="#FF989898" Height="9" HorizontalAlignment="Left" Margin="3,1,0,0" VerticalAlignment="Center" Width="6" RenderTransformOrigin="0.5,1" Data="M0.5,0.5 L5.2,5.4 L5.2,5.4 L0.5,10.5 z"/>
+										<Path x:Name="CollapsedVisualOver" Fill="#FFFDBA64" Stretch="Fill" Stroke="#FFFDBA64" Height="9" HorizontalAlignment="Left" Margin="3,1,0,0" VerticalAlignment="Center" Width="6" Opacity="0" RenderTransformOrigin="0.5,1" Data="M0.5,0.5 L5.2,5.4 L5.2,5.4 L0.5,10.5 z"/>
+									</Grid>
+									<Grid x:Name="ExpandedStates" Opacity="0">
+										<Path x:Name="ExpandedVisual" Fill="#595959" Stretch="Fill" Stroke="{TemplateBinding BorderBrush}" Height="7" HorizontalAlignment="Left" Margin="2,1,0,0" VerticalAlignment="Center" Width="7" Data="M3.27,3.75 L6.5,0.5 L6.5,6.5 L0.5,6.5 z"/>
+										<Path x:Name="ExpandedVisualOver" Fill="#595959" Stretch="Fill" Stroke="{TemplateBinding BorderBrush}" Height="7" HorizontalAlignment="Left" Margin="2,1,0,0" VerticalAlignment="Center" Width="7" Opacity="0" Data="M3.27,3.75 L6.5,0.5 L6.5,6.5 L0.5,6.5 z"/>
+									</Grid>
+								</Grid>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="telerikNavigation:RadTreeView">
+					<Grid x:Name="RootElement">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="DropStates">
+								<VisualState x:Name="DropImpossible"/>
+								<VisualState x:Name="DropPossible"/>
+								<VisualState x:Name="DropRootPossible">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="ScrollViewer" Storyboard.TargetProperty="Background">
+											<DiscreteObjectKeyFrame KeyTime="0">
+												<DiscreteObjectKeyFrame.Value>
+													<SolidColorBrush Color="#7fFCD590"/>
+												</DiscreteObjectKeyFrame.Value>
+											</DiscreteObjectKeyFrame>
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+							<ScrollViewer x:Name="ScrollViewer" BorderThickness="0" IsTabStop="False" Padding="{TemplateBinding Padding}" telerik:StyleManager.Theme="{StaticResource Theme}" telerik:ScrollViewerExtensions.EnableMouseWheel="True">
+								<Grid>
+									<ItemsPresenter/>
+									<Grid x:Name="DragBetweenItemsFeedback" Height="8" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False" Visibility="Collapsed">
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="8"/>
+											<ColumnDefinition/>
+										</Grid.ColumnDefinitions>
+										<Ellipse Stroke="{StaticResource DragBetweenItemsFeedback_BackgroundBrush}" StrokeThickness="2" Height="8" HorizontalAlignment="Left" VerticalAlignment="Center" Width="8"/>
+										<Rectangle Fill="{StaticResource DragBetweenItemsFeedback_BackgroundBrush}" RadiusX="2" RadiusY="2" Height="2" Margin="-2,3,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+									</Grid>
+								</Grid>
+							</ScrollViewer>
+						</Border>
+						<Rectangle x:Name="DisabledVisual" Fill="{StaticResource DisabledBrush}" IsHitTestVisible="true" Visibility="Collapsed"/>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+		<StackPanel/>
+	</ItemsPanelTemplate>
+</ResourceDictionary>

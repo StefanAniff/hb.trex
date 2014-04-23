@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Trex.SmartClient.Forecast.ForecastRegistration.ForecastRegistrationRootView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ForecastRegistration="clr-namespace:Trex.SmartClient.Forecast.ForecastRegistration"
+             xmlns:ForecastStatistics="clr-namespace:Trex.SmartClient.Forecast.ForecastStatistics"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1410">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3" />
+            <RowDefinition MinHeight="33"                           
+                           MaxHeight="200"
+                           x:Name="_tabRowDefinition"
+                           Height="{Binding ForecastStatisticsTabHeight}" />
+        </Grid.RowDefinitions>
+
+        <ForecastRegistration:ForecastRegistrationView DataContext="{Binding ForecastRegistrationVm}"
+                        Grid.Row="0"/>
+
+        <GridSplitter
+            Grid.Row="1"
+            Height="3" 
+            Margin="0,0,0,-66"
+            HorizontalAlignment="Stretch"
+            ResizeDirection="Rows"/>
+
+        <ForecastStatistics:ForecastStatisticsTabView 
+            DataContext="{Binding ForecastStatisticsTabVm}"
+            Grid.Row="2"/>
+    </Grid>
+</UserControl>

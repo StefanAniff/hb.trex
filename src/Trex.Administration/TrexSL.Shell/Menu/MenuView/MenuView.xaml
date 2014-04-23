@@ -1,0 +1,81 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:conv="clr-namespace:Trex.Infrastructure.Converters;assembly=Trex.Infrastructure" mc:Ignorable="d" 
+    xmlns:telerikNavigation="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation" 
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+    xmlns:Commands="clr-namespace:Microsoft.Practices.Prism.Commands;assembly=Microsoft.Practices.Prism"
+    x:Class="TrexSL.Shell.Menu.MenuView.MenuView"
+    d:DesignWidth="1001.333" >
+    <UserControl.Resources>
+    	<ResourceDictionary>
+    		<ResourceDictionary.MergedDictionaries>
+    			<ResourceDictionary Source="RadmenuStyle.xaml"/>
+				<ResourceDictionary Source="MenuStyle.xaml"/>
+    		</ResourceDictionary.MergedDictionaries>
+            
+    		<telerik:ContainerBindingCollection x:Key="ContainerBindings">
+    			<telerik:ContainerBinding PropertyName="IsCheckable" Binding="{Binding IsCheckable}" />
+    			<telerik:ContainerBinding PropertyName="IsChecked" Binding="{Binding IsChecked}" />
+    			<telerik:ContainerBinding PropertyName="IsSeparator" Binding="{Binding IsSeparator}" />
+    			<telerik:ContainerBinding PropertyName="IsEnabled" Binding="{Binding IsEnabled}" />
+    			<telerik:ContainerBinding PropertyName="StaysOpenOnClick"
+    				Binding="{Binding StaysOpenOnClick}" />
+    			<telerik:ContainerBinding PropertyName="Icon" Binding="{Binding Image}" />
+    		</telerik:ContainerBindingCollection>
+
+    		<telerik:HierarchicalDataTemplate x:Key="MenuItemTemplate" ItemsSource="{Binding Items,Mode=OneWay}"
+    			telerik:ContainerBinding.ContainerBindings="{StaticResource ContainerBindings}">
+    			<TextBlock Text="{Binding Text}" d:DesignWidth="128" d:DesignHeight="26" Foreground="White" />
+    		</telerik:HierarchicalDataTemplate>
+    		
+            <conv:BooleanToVisibiltyConverter x:Key="boolToVisibility"/>
+
+
+    	</ResourceDictionary>
+
+
+    </UserControl.Resources>
+    <Grid Height="25"  Visibility="{Binding IsUserLoggedIn, Converter={StaticResource boolToVisibility}, Mode=TwoWay}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel 
+            x:Name="loginPanel" 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Left" 
+            Margin="0" 
+            d:LayoutOverrides="Height">
+            
+            <TextBlock 
+                Text="{Binding UserName, Mode=TwoWay}" 
+                TextWrapping="Wrap"  
+                VerticalAlignment="Center" 
+                Foreground="#FFF6F6F6"/>
+            
+            <Button Width="75" 
+                    Content="Log Out" 
+                    Height="25" 
+                    Margin="10,0,0,0" 
+                    Commands:Click.Command="{Binding LogOutCommand}" 
+                    Style="{StaticResource MenuStyle}" />
+        </StackPanel>
+        
+        <telerikNavigation:RadMenu 
+            HorizontalContentAlignment="Right" 
+            Margin="0" 
+            Grid.Column="1" 
+            BorderThickness="0" 
+            HorizontalAlignment="Right" 
+            ItemClick="ItemClicked"
+            Style="{StaticResource RadMenuStyle1}" 
+            ItemsSource="{Binding Items, Mode=OneWay}" 
+            ItemTemplate="{StaticResource MenuItemTemplate}" 
+            ItemContainerStyle="{StaticResource RadMenuItemStyle1}"  />
+
+    </Grid>
+</UserControl>

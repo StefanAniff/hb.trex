@@ -1,0 +1,63 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:Converters="clr-namespace:Trex.Infrastructure.Converters;assembly=Trex.Infrastructure" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Trex_Infrastructure_Behaviors="clr-namespace:Trex.Infrastructure.Behaviors;assembly=Trex.Infrastructure"  x:Class="Trex.TaskAdministration.SearchView.SearchView"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400" VerticalAlignment="Top">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="ProjectResultTemplate" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="22"/>
+                    <RowDefinition Height="22"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding ProjectName}" FontWeight="Bold"/>
+                <TextBlock Text="{Binding CustomerName}" Grid.Row="1" VerticalAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="TaskResultTemplate" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="22"/>
+                    <RowDefinition Height="22"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding TaskName}" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <TextBlock Text="{Binding ProjectName}" VerticalAlignment="Center" />
+                    <TextBlock Text="=" FontFamily="Webdings" Margin="4,0,4,0" VerticalAlignment="Center" FontSize="10.667"/>
+                    <TextBlock Text="{Binding CustomerName}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+            </Grid>
+
+        </DataTemplate>
+        <Converters:BooleanToVisibiltyConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left"  Orientation="Horizontal" d:LayoutOverrides="Height" Margin="5,0,0,0">
+            <TextBlock Text="Item selection shortcut:" VerticalAlignment="Center" />
+            <TextBox TextWrapping="Wrap" x:Name="_searchTextBox" VerticalAlignment="Center" Width="140" Height="22" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=Explicit}" Margin="5,0,0,0">
+                <!--<ToolTipService.ToolTip>
+                    
+                </ToolTipService.ToolTip>-->
+            </TextBox>
+            <ComboBox SelectedIndex="{Binding SelectedSearchMode,Mode=TwoWay}" Height="22" Margin="10,0,0,0" >
+                <ComboBoxItem Content="Tasks" Name="Tasks" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="Projects" Name="Projects"  ></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <Grid  Background="White" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="800" Height="*"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="TaskResultList" Visibility="{Binding HasTaskResults, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" Margin="0"  ItemTemplate="{StaticResource TaskResultTemplate}"  ItemsSource="{Binding TaskResults, Mode=OneWay}" SelectedItem="{Binding SelectedTask, Mode=TwoWay}" HorizontalContentAlignment="Stretch"/>
+            <ListBox x:Name="ProjectResultList" Visibility="{Binding HasProjectResults, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" Margin="0"  ItemTemplate="{StaticResource ProjectResultTemplate}"  ItemsSource="{Binding ProjectResults, Mode=OneWay}" SelectedItem="{Binding SelectedProject, Mode=TwoWay}" HorizontalContentAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</UserControl>

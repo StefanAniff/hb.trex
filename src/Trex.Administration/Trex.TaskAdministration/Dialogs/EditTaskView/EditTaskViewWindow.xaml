@@ -1,0 +1,92 @@
+﻿<basics:ChildWindow
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:basics="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+	xmlns:labels="clr-namespace:Trex.TaskAdministration.Resources"
+	xmlns:System="clr-namespace:System;assembly=mscorlib"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" xmlns:Controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+	xmlns:Behaviors1="clr-namespace:Trex.Infrastructure.Behaviors;assembly=Trex.Infrastructure"
+	xmlns:Commands="clr-namespace:Microsoft.Practices.Prism.Commands;assembly=Microsoft.Practices.Prism"
+	x:Class="Trex.TaskAdministration.Dialogs.EditTaskView.EditTaskViewWindow"
+	Title="{Binding WindowTitle,Mode=OneWay}"
+	Width="330" Height="400">
+    <basics:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TrexSL.Shell;component/Resources/ChildWindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <GridLength x:Key="RowHeight">30</GridLength>
+            <System:Double x:Key="TextBoxHeight">26</System:Double>
+            <labels:EditTaskResources x:Key="Labels" />
+            <Controls:BooleanToVisibilityConverter x:Key="boolToVisibilityConverter" />
+        </ResourceDictionary>
+    </basics:ChildWindow.Resources>
+    <basics:ChildWindow.Style>
+        <StaticResource ResourceKey="ChildWindowStyle"/>
+    </basics:ChildWindow.Style>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <CheckBox Content="Active" Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding IsActive,Mode=TwoWay}"></CheckBox>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="OKButton"  Content="{Binding Save, Source={StaticResource Labels}}" Commands:Click.Command="{Binding SaveCommand}" Width="75" Height="23" Margin="0,0,10,0" />
+            <Button x:Name="CancelButton" Content="{Binding Cancel, Source={StaticResource Labels}}" Commands:Click.Command="{Binding CancelCommand}"  Width="75" Height="23"   />
+        </StackPanel>
+
+        <basics:TabControl Margin="0,0,0,20">
+            <basics:TabItem Margin="0"  Header="{Binding tabTask, Source={StaticResource Labels}}" d:LayoutOverrides="Width, Height">
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBox VerticalAlignment="Center" Name="taskName" Margin="0,0,0,10" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}" Height="{StaticResource TextBoxHeight}">
+                        <i:Interaction.Behaviors>
+                            <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+                        </i:Interaction.Behaviors>
+                    </TextBox>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding tabTask, Source={StaticResource Labels}}" TextWrapping="Wrap"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Grid.Row="1" Text="{Binding Description, Source={StaticResource Labels}}" TextWrapping="Wrap"/>
+                    <TextBox Margin="0" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Height="70" Background="White" Text="{Binding Description, Mode=TwoWay}"/>
+                </Grid>
+            </basics:TabItem>
+            <basics:TabItem Header="{Binding tabEstimate, Source={StaticResource Labels}}" d:LayoutOverrides="Width, Height" Visibility="{Binding IsEstimatesEnabled,Mode=OneWay,Converter={StaticResource boolToVisibilityConverter}}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.337*"/>
+                        <ColumnDefinition Width="0.757*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource RowHeight}"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="{StaticResource RowHeight}"/>
+                        <RowDefinition Height="{StaticResource RowHeight}"/>
+                        <RowDefinition Height="47"/>
+                        <RowDefinition Height="{StaticResource RowHeight}"/>
+                        <RowDefinition Height="{StaticResource RowHeight}"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="0" Text="{Binding estimateOptimistic, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" VerticalAlignment="Center"/>
+                    <TextBlock Margin="0" Text="{Binding estimateRealistic, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="1" VerticalAlignment="Center"/>
+                    <TextBlock Margin="0" Text="{Binding estimatePessimistic, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width" VerticalAlignment="Center"/>
+                    <TextBlock Margin="0" Text="{Binding estimateCalculated, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" VerticalAlignment="Center"/>
+                    <TextBox Margin="0" TextWrapping="Wrap" Grid.Column="1" Text="{Binding EstimatePessimistic, Mode=TwoWay}" GotFocus="textBoxGotFocus" Height="{StaticResource TextBoxHeight}"/>
+                    <TextBox Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="1" Grid.Column="1" Text="{Binding EstimateRealistic, Mode=TwoWay}" GotFocus="textBoxGotFocus" Height="{StaticResource TextBoxHeight}"/>
+                    <TextBox Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" Grid.Column="1" Text="{Binding EstimateOptimistic, Mode=TwoWay}" GotFocus="textBoxGotFocus" Height="{StaticResource TextBoxHeight}"/>
+                    <TextBlock Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="3" Grid.Column="1" Text="{Binding EstimateCalculated, Mode=TwoWay}" Foreground="{Binding StatusColor, Mode=TwoWay}" FontSize="18.667" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="4" Grid.Column="1" Text="{Binding EstimateStatusText}" Foreground="{Binding StatusColor, Mode=TwoWay}" Margin="0"/>
+                    <TextBlock Text="{Binding TimeLeft, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="5" Margin="0" VerticalAlignment="Center"/>
+                    <TextBox Margin="0" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="5" Grid.Column="1" Height="{StaticResource TextBoxHeight}" GotFocus="textBoxGotFocus" Text="{Binding TimeLeft, Mode=TwoWay}"/>
+                </Grid>
+            </basics:TabItem>
+        </basics:TabControl>
+    </Grid>
+</basics:ChildWindow>

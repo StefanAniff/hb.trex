@@ -1,0 +1,133 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+    xmlns:trexSmartClientLoginStatusView="clr-namespace:Trex.SmartClient.LoginStatusView"
+    xmlns:menuView="clr-namespace:Trex.SmartClient.MenuView"
+    xmlns:designdata="clr-namespace:Trex.SmartClient.MenuView.Designdata"
+    xmlns:dialogs="clr-namespace:Trex.SmartClient.Dialogs"
+    x:Class="Trex.SmartClient.MenuView.MenuView"
+    d:DesignWidth="1352" d:DesignHeight="203"
+    d:DataContext="{d:DesignInstance designdata:DesignMenuViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MenuButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <DataTemplate x:Key="MenuItemTemplate">
+                <Grid Width="90" Height="Auto" d:DesignWidth="139" d:DesignHeight="41" 
+                      d:DataContext="{d:DesignInstance menuView:MenuItemViewModel}">
+                    <Rectangle Stroke="Black" Visibility="{Binding IsSelected, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFDAF5D0" Offset="0"/>
+                                <GradientStop Color="#FFBDEDAA" Offset="0.455"/>
+                                <GradientStop Color="#FF9EE582" Offset="0.5"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Button Content="{Binding ItemName, Mode=OneWay}" 
+                            Command="{Binding ItemClicked}"  
+                            BorderBrush="{x:Null}"
+                            IsEnabled="{Binding IsEnabled}"
+                            Margin="0"
+                            Foreground="White" Style="{StaticResource MenuButton}"
+                            />
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="SubMenuItemTemplate">
+                <ToggleButton d:DataContext="{d:DesignInstance menuView:SubMenuItemViewModel}"
+                    Content="{Binding DisplayName, Mode=OneWay}"
+                        Command="{Binding ItemClicked}"
+                              IsChecked="{Binding IsChecked, Mode=OneWay}"
+                        MinWidth="100"
+                              IsEnabled="{Binding CanClick}"
+                        Margin="10,0,0,0"
+                        Foreground="Black"
+                        Style="{StaticResource MenuSubButton}" 
+                        Focusable="False"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel>
+        <Border Margin="0" Height="28" BorderBrush="#FF888888" BorderThickness="0,1,0,0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF393939" Offset="1"/>
+                    <GradientStop Color="#FF575757"/>
+                    <GradientStop Color="#FF575757" Offset="0.532"/>
+                    <GradientStop Color="#FF393939" Offset="0.541"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <trexSmartClientLoginStatusView:LoginStatusView 
+                    DataContext="{Binding LoginStatus, Mode=OneWay}" Margin="0"/>
+                <ItemsControl HorizontalAlignment="Right" Grid.Column="1" 
+                              ItemTemplate="{StaticResource MenuItemTemplate}" 
+                              ItemsSource="{Binding MenuItems}"
+                              Visibility="{Binding IsVisible, Mode=OneWay,Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </Border>
+        <Border BorderBrush="#FFBDBDBD" BorderThickness="0,1,0,0" Height="32">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox">
+                    <GradientStop Color="White" Offset="0.179"/>
+                    <GradientStop Color="#FFECECEC" Offset="0.97"/>
+                    <GradientStop Color="White" Offset="0.978"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <ItemsControl ItemTemplate="{StaticResource SubMenuItemTemplate}"
+                              Grid.Column="1"
+                              ItemsSource="{Binding SubMenuItems}"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Width="1300"
+                              Height="32"
+                              Focusable="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel IsItemsHost="True"
+                            Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+                <StackPanel Orientation="Horizontal"
+                         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <ToggleButton Name="pbutton" 
+                              IsChecked="{Binding ShowReleaseNotes}"
+                              PreviewMouseMove="Pbutton_OnPreviewMouseMove"
+                              MouseLeave="Pbutton_OnMouseLeave" Background="{x:Null}">
+                        <ToggleButton.Template>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <TextBlock Text="{Binding Version}"
+                                       ToolTip="{Binding VersionToolTip}"
+                                       Foreground="#ffbebebe" />
+                            </ControlTemplate>
+                        </ToggleButton.Template>
+                    </ToggleButton>
+                    <Popup IsOpen="{Binding IsChecked, ElementName=pbutton}"
+                                           PlacementTarget="{Binding ElementName=pbutton}"
+                                           AllowsTransparency="False"
+                                           Placement="Right"
+                                           StaysOpen="False"
+                                           PopupAnimation="Slide">
+                        <dialogs:ReleaseNotesView DataContext="{Binding VersionViewModel}"/>
+                    </Popup>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

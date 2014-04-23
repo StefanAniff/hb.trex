@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Trex.Reports.StatusReportScreen.StatusReportView.StatusReportView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"           
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Silverlight="clr-namespace:Telerik.ReportViewer.Silverlight;assembly=Telerik.ReportViewer.Silverlight">
+
+    <Silverlight:ReportViewer   
+        Name="ReportViewer" 
+        ReportServerUri="http://localhost.:60248/ReportService.svc" 
+        Report="Trex.Server.Reports.CustomerStatus,Trex.Server.Reports,Version=1.5.0.0,Culture=neutral,PublicKeyToken=null">
+
+    </Silverlight:ReportViewer>
+
+</UserControl>

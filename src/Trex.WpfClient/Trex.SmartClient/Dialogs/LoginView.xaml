@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="Trex.SmartClient.Dialogs.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             d:DesignWidth="500"
+             xmlns:dialogs="clr-namespace:Trex.SmartClient.Dialogs" mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance dialogs:LoginViewModel}"
+             Background="White">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <GridLength x:Key="RowHeight">30</GridLength>
+            <system:Double x:Key="TextBoxHeight">22</system:Double>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LoginGrid" Width="300" Height="Auto" >
+        <Grid.InputBindings>
+            <KeyBinding Key="Enter" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=_pwdBox}"/>
+        </Grid.InputBindings>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19" />
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="19"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="19"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="7" />
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Username" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBox Margin="0,2" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" Height="{StaticResource TextBoxHeight}" GotFocus="TextBoxGotFocus" TabIndex="1" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Password" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center"/>
+        <PasswordBox Margin="0,2" x:Name="_pwdBox" Grid.Row="3" Height="{StaticResource TextBoxHeight}" TabIndex="2" />
+        <TextBlock Margin="0" Text="Customer ID" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="4"/>
+        <TextBox Margin="0" Text="{Binding CustomerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Height="{StaticResource TextBoxHeight}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="5" TabIndex="3"/>
+        <ScrollViewer Grid.Row="6" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+            <TextBlock Margin="0" 
+                       Text="{Binding StatusMessage}" 
+                       ToolTip="{Binding StatusMessage}"
+                       TextWrapping="Wrap"
+                       Foreground="#FFE49307" />
+        </ScrollViewer>
+        <Expander Header="Forgot password" Grid.Row="7" Grid.RowSpan="5">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="75*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Username" VerticalAlignment="Center"  />
+                <TextBox Grid.Column="1" Height="{StaticResource TextBoxHeight}" Text="{Binding UserName, Mode=TwoWay}" 
+                         VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="1" Text="Customer ID" VerticalAlignment="Center" />
+                <TextBox Grid.Row="1" Grid.Column="1" Height="{StaticResource TextBoxHeight}" Text="{Binding CustomerId, Mode=TwoWay}" 
+                         VerticalAlignment="Center"  />
+
+                <TextBlock Text="{Binding ResetPasswordStatusMessage,Mode=OneWay}" Foreground="#FFE49307" 
+                           Grid.Row="2" Grid.ColumnSpan="2" TextWrapping="NoWrap" />
+
+                <Button Content="Send new password" Margin="10,0,0,0" Command="{Binding ForgotPasswordCommand}" Grid.Row="3" Height="20" Grid.Column="1" 
+                            HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+            </Grid>
+        </Expander>
+        <StackPanel HorizontalAlignment="Right" Grid.Row="7" Orientation="Horizontal" Margin="0" VerticalAlignment="Bottom">
+            <Button x:Name="_okButton" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=_pwdBox}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

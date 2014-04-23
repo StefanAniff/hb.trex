@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CustomerStatusDataSet" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TrexConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TrexConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Trex.Server.Reports.Properties.Settings.GlobalReference.Default.TrexConnectionString" Provider="System.Data.SqlClient" />
+          <Connection ConnectionStringObject="Data Source=WIN7DEV2010;Initial Catalog=Trex_test;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="win7dev2010.Trex_test.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+          <Connection ConnectionStringObject="Data Source=WIN7DEV2010;Initial Catalog=trex_drift;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="win7dev2010.trex_drift.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RoundedTimeSpentPrDayPrUserTableAdapter" GeneratorDataComponentClassName="RoundedTimeSpentPrDayPrUserTableAdapter" Name="RoundedTimeSpentPrDayPrUser" UserDataComponentName="RoundedTimeSpentPrDayPrUserTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="win7dev2010.trex_drift.dbo" DbObjectName="trex_drift.dbo.RoundedTimeSpentPrDayPrUser" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        RoundedTimeSpentPrDayPrUser.*
+FROM            RoundedTimeSpentPrDayPrUser</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StartDate" DataSetColumn="StartDate" />
+              <Mapping SourceColumn="Customer" DataSetColumn="Customer" />
+              <Mapping SourceColumn="Project" DataSetColumn="Project" />
+              <Mapping SourceColumn="Task" DataSetColumn="Task" />
+              <Mapping SourceColumn="TimeSpent" DataSetColumn="TimeSpent" />
+              <Mapping SourceColumn="Remaining" DataSetColumn="Remaining" />
+              <Mapping SourceColumn="Estimate" DataSetColumn="Estimate" />
+              <Mapping SourceColumn="UserName" DataSetColumn="UserName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CustomerStatusDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CustomerStatusDataSet" msprop:Generator_UserDSName="CustomerStatusDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="RoundedTimeSpentPrDayPrUser" msprop:Generator_TableClassName="RoundedTimeSpentPrDayPrUserDataTable" msprop:Generator_TableVarName="tableRoundedTimeSpentPrDayPrUser" msprop:Generator_TablePropName="RoundedTimeSpentPrDayPrUser" msprop:Generator_RowDeletingName="RoundedTimeSpentPrDayPrUserRowDeleting" msprop:Generator_UserTableName="RoundedTimeSpentPrDayPrUser" msprop:Generator_RowChangingName="RoundedTimeSpentPrDayPrUserRowChanging" msprop:Generator_RowEvHandlerName="RoundedTimeSpentPrDayPrUserRowChangeEventHandler" msprop:Generator_RowDeletedName="RoundedTimeSpentPrDayPrUserRowDeleted" msprop:Generator_RowEvArgName="RoundedTimeSpentPrDayPrUserRowChangeEvent" msprop:Generator_RowChangedName="RoundedTimeSpentPrDayPrUserRowChanged" msprop:Generator_RowClassName="RoundedTimeSpentPrDayPrUserRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StartDate" msprop:Generator_ColumnVarNameInTable="columnStartDate" msprop:Generator_ColumnPropNameInRow="StartDate" msprop:Generator_ColumnPropNameInTable="StartDateColumn" msprop:Generator_UserColumnName="StartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Customer" msprop:Generator_ColumnVarNameInTable="columnCustomer" msprop:Generator_ColumnPropNameInRow="Customer" msprop:Generator_ColumnPropNameInTable="CustomerColumn" msprop:Generator_UserColumnName="Customer">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Project" msprop:Generator_ColumnVarNameInTable="columnProject" msprop:Generator_ColumnPropNameInRow="Project" msprop:Generator_ColumnPropNameInTable="ProjectColumn" msprop:Generator_UserColumnName="Project">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Task" msprop:Generator_ColumnVarNameInTable="columnTask" msprop:Generator_ColumnPropNameInRow="Task" msprop:Generator_ColumnPropNameInTable="TaskColumn" msprop:Generator_UserColumnName="Task">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="350" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TimeSpent" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTimeSpent" msprop:Generator_ColumnPropNameInRow="TimeSpent" msprop:Generator_ColumnPropNameInTable="TimeSpentColumn" msprop:Generator_UserColumnName="TimeSpent" type="xs:double" minOccurs="0" />
+              <xs:element name="Remaining" msprop:Generator_ColumnVarNameInTable="columnRemaining" msprop:Generator_ColumnPropNameInRow="Remaining" msprop:Generator_ColumnPropNameInTable="RemainingColumn" msprop:Generator_UserColumnName="Remaining" type="xs:int" />
+              <xs:element name="Estimate" msprop:Generator_ColumnVarNameInTable="columnEstimate" msprop:Generator_ColumnPropNameInRow="Estimate" msprop:Generator_ColumnPropNameInTable="EstimateColumn" msprop:Generator_UserColumnName="Estimate" type="xs:double" />
+              <xs:element name="UserName" msprop:Generator_ColumnVarNameInTable="columnUserName" msprop:Generator_ColumnPropNameInRow="UserName" msprop:Generator_ColumnPropNameInTable="UserNameColumn" msprop:Generator_UserColumnName="UserName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

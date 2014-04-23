@@ -1,0 +1,21 @@
+﻿<navigation:Page 
+    x:Class="Trex.Invoices.Implemented.InvoiceManagementScreen.PreviewInvoiceView.PreviewInvoiceView" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:liquid="clr-namespace:Liquid;assembly=Liquid"
+    xmlns:liquid3="clr-namespace:Liquid;assembly=Liquid.Menu"
+    xmlns:liquid4="clr-namespace:Liquid;assembly=Liquid.Popup"
+    mc:Ignorable="d"
+    xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
+    d:DesignWidth="640" d:DesignHeight="480"
+    Title="PreviewInvoiceView Page">
+    
+    <Grid x:Name="LayoutRoot">
+        <liquid:Viewer>
+
+        </liquid:Viewer>
+
+    </Grid>
+</navigation:Page>

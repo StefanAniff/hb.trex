@@ -1,0 +1,159 @@
+﻿<UserControl x:Class="Trex.Roles.RoleScreen.MainView.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Resources="clr-namespace:Trex.Roles.Resources"
+    mc:Ignorable="d"
+    VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" d:DesignWidth="1006.5" d:DesignHeight="818" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="ToolbarBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFEFEFE" Offset="0.048"/>
+                <GradientStop Color="#FFECECEC" Offset="0.968"/>
+                <GradientStop Color="#FFD4D4D4" Offset="0.984"/>
+            </LinearGradientBrush>
+
+            <Resources:TextResources x:Key="Labels"/>
+            <DataTemplate x:Key="PermissionItemTemplate" >
+                <CheckBox Content="{Binding Path=Permission}" IsChecked="{Binding Mode=TwoWay, Path=IsEnabled}" x:Name="chk"/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+
+
+    </UserControl.Resources>
+
+
+    <Grid Background="White" Margin="0">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="290"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Margin="0" Grid.Column="1" Background="#FFFAFAFA" BorderBrush="#FFE5E5E5" BorderThickness="1,0,0,0">
+            <Grid Margin="0" d:LayoutOverrides="Height">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="51"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Background="#FFFAFAFA">
+                    <TextBlock HorizontalAlignment="Left" Margin="20,17,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" Text="{Binding PermissionsHeaderLabel, Source={StaticResource Labels}}" TextWrapping="Wrap"/>
+                </Border>
+
+                <Border Grid.Row="1" x:Name="buttonPanel" BorderBrush="#FFD4D4D4" BorderThickness="0,1" Padding="0,1,0,0" Margin="0" Background="{StaticResource ToolbarBackground}">
+
+                    <StackPanel  Orientation="Horizontal">
+
+                        <Button Content="{Binding SaveChangesButtonLabel, Source={StaticResource Labels}}" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" Background="{x:Null}" Height="22" Name="savePermissionsChangesButton" Command="{Binding SaveChangesCommand}" Width="160" Margin="10,0,0,0" VerticalAlignment="Bottom">
+                            <Button.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFA3AEB9" Offset="0" />
+                                    <GradientStop Color="#FF8399A9" Offset="0.375" />
+                                    <GradientStop Color="#FF718597" Offset="0.375" />
+                                    <GradientStop Color="#FF617584" Offset="1" />
+                                </LinearGradientBrush>
+                            </Button.BorderBrush>
+                        </Button>
+
+                    </StackPanel>
+                </Border>
+                <sdk:TabControl Grid.Row="2" Name="PermissionstabControl" BorderThickness="0,1,0,0" SelectedIndex="{Binding Path=SelectedTab, Mode=TwoWay}" >
+                    <sdk:TabItem Header="Administration"  Name="AdministrationTab">
+                        <ListBox Grid.Row="2" Name="permissionsListBox" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" ItemTemplate="{StaticResource PermissionItemTemplate}" ItemsSource="{Binding PermissionsList, Mode=TwoWay}" Background="#FFFAFAFA" BorderThickness="0">
+                            
+                        </ListBox>
+                    </sdk:TabItem>
+                    <sdk:TabItem Header="Wpf Client" Name="WpfClientTab">
+                        <ListBox Grid.Row="2" Name="wpfClientPermissionsListBox" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" ItemTemplate="{StaticResource PermissionItemTemplate}" ItemsSource="{Binding PermissionsList, Mode=TwoWay}" Background="#FFFAFAFA" BorderThickness="0">
+                          
+                        </ListBox>
+                    </sdk:TabItem>
+
+                    <sdk:TabItem Header="Silverlight Client" Name="SilverlightClientTab">
+                        <ListBox Grid.Row="2" Name="silverlightClientPermissionsListBox" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" ItemTemplate="{StaticResource PermissionItemTemplate}" ItemsSource="{Binding PermissionsList, Mode=TwoWay}" Background="#FFFAFAFA" BorderThickness="0">
+                           
+                        </ListBox>
+                    </sdk:TabItem>
+
+                    <sdk:TabItem Header="Windows Phone 7 Client" Name="ClientTab">
+                        <ListBox Grid.Row="2" Name="wpClientPermissionsListBox" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" ItemTemplate="{StaticResource PermissionItemTemplate}" ItemsSource="{Binding PermissionsList, Mode=TwoWay}" Background="#FFFAFAFA" BorderThickness="0">
+                            
+                        </ListBox>
+                    </sdk:TabItem>
+                </sdk:TabControl>
+                <!--<ListBox Grid.Row="2" Name="permissionsListBox" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" ItemsSource="{Binding PermissionsList, Mode=TwoWay}" Background="#FFFAFAFA" BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox Content="{Binding Path=PermissionName}" IsChecked="{Binding Mode=TwoWay, Path=IsEnabled}" x:Name="chk"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>-->
+
+            </Grid>
+        </Border>
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <Border  Grid.Row="0" Grid.Column="0" BorderThickness="1" Margin="0,0,0,1">
+                <StackPanel Margin="20,15,0,0" Orientation="Horizontal" d:LayoutOverrides="Height">
+                    <TextBlock Text="{Binding RoleHeaderLabel, Source={StaticResource Labels}}" TextWrapping="Wrap" FontFamily="Arial" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Center" BorderThickness="0" Command="{Binding RefreshRolesCommand}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="10,0,0,10">
+                        <Image Source="refresh.png"/>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Row="1" x:Name="buttonPanel2" BorderBrush="#FFD4D4D4" BorderThickness="0,0,0,1" Padding="0,1,0,0" Margin="0" Background="{StaticResource ToolbarBackground}">
+
+                <StackPanel  Orientation="Horizontal">
+
+                    <Button Content="{Binding CreateNewRoleButtonLabel, Source={StaticResource Labels}}" Height="22" Background="{x:Null}" Name="createNewRoleButton" Width="100" Command="{Binding CreateNewRoleCommand}" Margin="5,0,0,0" VerticalAlignment="Bottom">
+                        <Button.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA3AEB9" Offset="0" />
+                                <GradientStop Color="#FF8399A9" Offset="0.375" />
+                                <GradientStop Color="#FF718597" Offset="0.375" />
+                                <GradientStop Color="#FF617584" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.BorderBrush>
+                    </Button>
+
+                    <Button Content="{Binding DeleteRoleButtonLabel, Source={StaticResource Labels}}" Height="22" IsEnabled="{Binding Path=IsListEnabled, Mode=TwoWay}" Background="{x:Null}" Name="deleteButton" Width="75" Command="{Binding DeleteRoleCommand}" Margin="3,0,0,0" VerticalAlignment="Bottom">
+                        <Button.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFA3AEB9" Offset="0" />
+                                <GradientStop Color="#FF8399A9" Offset="0.375" />
+                                <GradientStop Color="#FF718597" Offset="0.375" />
+                                <GradientStop Color="#FF617584" Offset="1" />
+                            </LinearGradientBrush>
+                        </Button.BorderBrush>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+            <ListBox Grid.Row="3" Name="rolesListBox" ItemsSource="{Binding RolesList}" SelectedItem="{Binding SelectedRole, Mode=TwoWay}" DisplayMemberPath="RoleName" BorderThickness="0,0,0,0" BorderBrush="Black" Margin="20,0,5,0">
+
+            </ListBox>
+
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

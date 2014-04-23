@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="TrexService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="TrexService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="TrexService/Imports">
+      <xsd:import schemaLocation="http://localhost:60248/Service.svc?xsd=xsd0" namespace="TrexService" />
+      <xsd:import schemaLocation="http://localhost:60248/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60248/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+      <xsd:import schemaLocation="http://localhost:60248/Service.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:60248/Service.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITrexService_ValidateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ValidateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_PingService_InputMessage">
+    <wsdl:part name="parameters" element="tns:PingService" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_PingService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUnsyncedCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnsyncedCompanies" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUnsyncedCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnsyncedCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUnsyncedProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnsyncedProjects" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUnsyncedProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnsyncedProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUnsyncedTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnsyncedTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUnsyncedTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnsyncedTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UploadNewTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadNewTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UploadNewTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadNewTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UploadNewTimeEntries_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadNewTimeEntries" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UploadNewTimeEntries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadNewTimeEntriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdateUserRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserRoles" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdateUserRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateRole_ExceptionInfoFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" name="detail" element="q1:ExceptionInfo" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteRole_ExceptionInfoFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" name="detail" element="q2:ExceptionInfo" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ExistsRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistsRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ExistsRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistsRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetPermissionsForSingleRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsForSingleRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetPermissionsForSingleRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPermissionsForSingleRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdatePermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePermissions" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdatePermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceById" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ValidateUserWithCustomerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUserWithCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ValidateUserWithCustomerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateUserWithCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllInvoiceTemplates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllInvoiceTemplates" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllInvoiceTemplates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllInvoiceTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllPermissionsByClientId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPermissionsByClientId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllPermissionsByClientId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPermissionsByClientIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetLatestWorkedOnCustomersByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestWorkedOnCustomersByUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetLatestWorkedOnCustomersByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestWorkedOnCustomersByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetLatestWorkedOnProjectsByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestWorkedOnProjectsByUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetLatestWorkedOnProjectsByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestWorkedOnProjectsByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetLatestWorkedOnTasksByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestWorkedOnTasksByUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetLatestWorkedOnTasksByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestWorkedOnTasksByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GenerateInvoicesFromCustomerID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateInvoicesFromCustomerID" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GenerateInvoicesFromCustomerID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateInvoicesFromCustomerIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GenerateCreditnote_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateCreditnote" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GenerateCreditnote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateCreditnoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdateTimeEntryPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTimeEntryPrice" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdateTimeEntryPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTimeEntryPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerByCriteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByCriteria" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerByCriteria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByCriteriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_LoadComments_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadComments" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_LoadComments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadCommentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveComment" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetDebitList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebitList" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetDebitList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebitListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntryByTimeEntry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntryByTimeEntry" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntryByTimeEntry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntryByTimeEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceByInvoiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceByInvoiceId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceByInvoiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceByInvoiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllInvoiceIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllInvoiceIds" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllInvoiceIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllInvoiceIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_RecalculateInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecalculateInvoice" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_RecalculateInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecalculateInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteInvoiceTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInvoiceTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteInvoiceTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInvoiceTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdateExclVAT_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExclVAT" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_UpdateExclVAT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateExclVATResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetFinalizedInvoiceDataByInvoiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinalizedInvoiceDataByInvoiceId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetFinalizedInvoiceDataByInvoiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFinalizedInvoiceDataByInvoiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceTemplateFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceTemplateFile" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceTemplateFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceTemplateFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceTemplates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceTemplates" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceTemplates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_OverWriteCig_InputMessage">
+    <wsdl:part name="parameters" element="tns:OverWriteCig" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_OverWriteCig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OverWriteCigResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveCIG_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCIG" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveCIG_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCIGResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceChanges" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoicesByCustomerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoicesByCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoicesByCustomerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoicesByCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GenerateInvoiceLines_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateInvoiceLines" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GenerateInvoiceLines_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateInvoiceLinesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateNewInvoiceLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewInvoiceLine" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_CreateNewInvoiceLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewInvoiceLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SetStandardInvoicePrintTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStandardInvoicePrintTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SetStandardInvoicePrintTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStandardInvoicePrintTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SetStandardInvoiceMailTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStandardInvoiceMailTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SetStandardInvoiceMailTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStandardInvoiceMailTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SetStandardSpecificationTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetStandardSpecificationTemplate" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SetStandardSpecificationTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetStandardSpecificationTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SendInvoiceEmailToCustomerInvoiceGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvoiceEmailToCustomerInvoiceGroup" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SendInvoiceEmailToCustomerInvoiceGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendInvoiceEmailToCustomerInvoiceGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerInvoiceGroupByCustomerInvoiceFGroupId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceGroupByCustomerInvoiceFGroupId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerInvoiceGroupByCustomerInvoiceFGroupId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceGroupByCustomerInvoiceFGroupIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteCustomerInvoiceGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerInvoiceGroup" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteCustomerInvoiceGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerInvoiceGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerInvoiceGroupByCustomerId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceGroupByCustomerId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerInvoiceGroupByCustomerId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceGroupByCustomerIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_InsertCustomerInvoiceGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCustomerInvoiceGroup" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_InsertCustomerInvoiceGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCustomerInvoiceGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ReCalculateInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReCalculateInvoice" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ReCalculateInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReCalculateInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceDataByInvoiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceDataByInvoiceId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceDataByInvoiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceDataByInvoiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceLinesByInvoiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceLinesByInvoiceId" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetInvoiceLinesByInvoiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInvoiceLinesByInvoiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntriesForInvoicing_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntriesForInvoicing" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntriesForInvoicing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntriesForInvoicingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerInvoiceViews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceViews" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerInvoiceViews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerInvoiceViewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerById" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetCustomerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetProjectById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectById" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetProjectById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTaskById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskById" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTaskById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_EntityCompanyRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:EntityCompanyRequest" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_EntityCompanyRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EntityCompanyRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_EntityProjectRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:EntityProjectRequest" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_EntityProjectRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EntityProjectRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_EntityTaskRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:EntityTaskRequest" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_EntityTaskRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EntityTaskRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntriesByPeriodAndUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntriesByPeriodAndUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntriesByPeriodAndUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntriesByPeriodAndUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntriesByPeriod_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntriesByPeriod" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetTimeEntriesByPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeEntriesByPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUserByUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUserName" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetUserByUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeactivateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeactivateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeactivateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ActivateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ActivateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveTimeEntry_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTimeEntry" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveTimeEntry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTimeEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ExcludeTimeEntry_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExcludeTimeEntry" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_ExcludeTimeEntry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExcludeTimeEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceLine" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoiceLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoice" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTask" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProject" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteInvoiceLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInvoiceLine" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteInvoiceLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInvoiceLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteInvoiceDraft_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInvoiceDraft" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteInvoiceDraft_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteInvoiceDraftResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTask" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteTimeEntry_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTimeEntry" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_DeleteTimeEntry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTimeEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetGlobalTimeEntryTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGlobalTimeEntryTypes" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetGlobalTimeEntryTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGlobalTimeEntryTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllTimeEntryTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTimeEntryTypes" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_GetAllTimeEntryTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTimeEntryTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveTimeEntryType_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTimeEntryType" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SaveTimeEntryType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTimeEntryTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SearchTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SearchTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SearchProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProjects" />
+  </wsdl:message>
+  <wsdl:message name="ITrexService_SearchProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchProjectsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITrexService">
+    <wsdl:operation name="ValidateUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ValidateUser" message="tns:ITrexService_ValidateUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ValidateUserResponse" message="tns:ITrexService_ValidateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetUser" message="tns:ITrexService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetUserResponse" message="tns:ITrexService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PingService">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/PingService" message="tns:ITrexService_PingService_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/PingServiceResponse" message="tns:ITrexService_PingService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedCompanies">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetUnsyncedCompanies" message="tns:ITrexService_GetUnsyncedCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetUnsyncedCompaniesResponse" message="tns:ITrexService_GetUnsyncedCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedProjects">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetUnsyncedProjects" message="tns:ITrexService_GetUnsyncedProjects_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetUnsyncedProjectsResponse" message="tns:ITrexService_GetUnsyncedProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedTasks">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetUnsyncedTasks" message="tns:ITrexService_GetUnsyncedTasks_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetUnsyncedTasksResponse" message="tns:ITrexService_GetUnsyncedTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadNewTasks">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/UploadNewTasks" message="tns:ITrexService_UploadNewTasks_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/UploadNewTasksResponse" message="tns:ITrexService_UploadNewTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadNewTimeEntries">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/UploadNewTimeEntries" message="tns:ITrexService_UploadNewTimeEntries_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/UploadNewTimeEntriesResponse" message="tns:ITrexService_UploadNewTimeEntries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ChangePassword" message="tns:ITrexService_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ChangePasswordResponse" message="tns:ITrexService_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetRoles" message="tns:ITrexService_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetRolesResponse" message="tns:ITrexService_GetRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserRoles">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/UpdateUserRoles" message="tns:ITrexService_UpdateUserRoles_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/UpdateUserRolesResponse" message="tns:ITrexService_UpdateUserRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRole">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/CreateRole" message="tns:ITrexService_CreateRole_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/CreateRoleResponse" message="tns:ITrexService_CreateRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="TrexService/ITrexService/CreateRoleExceptionInfoFault" name="ExceptionInfoFault" message="tns:ITrexService_CreateRole_ExceptionInfoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteRole" message="tns:ITrexService_DeleteRole_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteRoleResponse" message="tns:ITrexService_DeleteRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="TrexService/ITrexService/DeleteRoleExceptionInfoFault" name="ExceptionInfoFault" message="tns:ITrexService_DeleteRole_ExceptionInfoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRole">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ExistsRole" message="tns:ITrexService_ExistsRole_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ExistsRoleResponse" message="tns:ITrexService_ExistsRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionsForSingleRole">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetPermissionsForSingleRole" message="tns:ITrexService_GetPermissionsForSingleRole_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetPermissionsForSingleRoleResponse" message="tns:ITrexService_GetPermissionsForSingleRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePermissions">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/UpdatePermissions" message="tns:ITrexService_UpdatePermissions_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/UpdatePermissionsResponse" message="tns:ITrexService_UpdatePermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceById">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetInvoiceById" message="tns:ITrexService_GetInvoiceById_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetInvoiceByIdResponse" message="tns:ITrexService_GetInvoiceById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUserWithCustomerId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ValidateUserWithCustomerId" message="tns:ITrexService_ValidateUserWithCustomerId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ValidateUserWithCustomerIdResponse" message="tns:ITrexService_ValidateUserWithCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/CreateUser" message="tns:ITrexService_CreateUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/CreateUserResponse" message="tns:ITrexService_CreateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ResetPassword" message="tns:ITrexService_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ResetPasswordResponse" message="tns:ITrexService_ResetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvoiceTemplates">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetAllInvoiceTemplates" message="tns:ITrexService_GetAllInvoiceTemplates_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetAllInvoiceTemplatesResponse" message="tns:ITrexService_GetAllInvoiceTemplates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvoiceTemplate">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveInvoiceTemplate" message="tns:ITrexService_SaveInvoiceTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveInvoiceTemplateResponse" message="tns:ITrexService_SaveInvoiceTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPermissionsByClientId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetAllPermissionsByClientId" message="tns:ITrexService_GetAllPermissionsByClientId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetAllPermissionsByClientIdResponse" message="tns:ITrexService_GetAllPermissionsByClientId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestWorkedOnCustomersByUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetLatestWorkedOnCustomersByUser" message="tns:ITrexService_GetLatestWorkedOnCustomersByUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetLatestWorkedOnCustomersByUserResponse" message="tns:ITrexService_GetLatestWorkedOnCustomersByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestWorkedOnProjectsByUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetLatestWorkedOnProjectsByUser" message="tns:ITrexService_GetLatestWorkedOnProjectsByUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetLatestWorkedOnProjectsByUserResponse" message="tns:ITrexService_GetLatestWorkedOnProjectsByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestWorkedOnTasksByUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetLatestWorkedOnTasksByUser" message="tns:ITrexService_GetLatestWorkedOnTasksByUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetLatestWorkedOnTasksByUserResponse" message="tns:ITrexService_GetLatestWorkedOnTasksByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateInvoicesFromCustomerID">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GenerateInvoicesFromCustomerID" message="tns:ITrexService_GenerateInvoicesFromCustomerID_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GenerateInvoicesFromCustomerIDResponse" message="tns:ITrexService_GenerateInvoicesFromCustomerID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateCreditnote">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GenerateCreditnote" message="tns:ITrexService_GenerateCreditnote_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GenerateCreditnoteResponse" message="tns:ITrexService_GenerateCreditnote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTimeEntryPrice">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/UpdateTimeEntryPrice" message="tns:ITrexService_UpdateTimeEntryPrice_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/UpdateTimeEntryPriceResponse" message="tns:ITrexService_UpdateTimeEntryPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerByCriteria">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetCustomerByCriteria" message="tns:ITrexService_GetCustomerByCriteria_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetCustomerByCriteriaResponse" message="tns:ITrexService_GetCustomerByCriteria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadComments">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/LoadComments" message="tns:ITrexService_LoadComments_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/LoadCommentsResponse" message="tns:ITrexService_LoadComments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveComment">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveComment" message="tns:ITrexService_SaveComment_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveCommentResponse" message="tns:ITrexService_SaveComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDebitList">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetDebitList" message="tns:ITrexService_GetDebitList_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetDebitListResponse" message="tns:ITrexService_GetDebitList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeEntryByTimeEntry">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetTimeEntryByTimeEntry" message="tns:ITrexService_GetTimeEntryByTimeEntry_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetTimeEntryByTimeEntryResponse" message="tns:ITrexService_GetTimeEntryByTimeEntry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceByInvoiceId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetInvoiceByInvoiceId" message="tns:ITrexService_GetInvoiceByInvoiceId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetInvoiceByInvoiceIdResponse" message="tns:ITrexService_GetInvoiceByInvoiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvoiceIds">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetAllInvoiceIds" message="tns:ITrexService_GetAllInvoiceIds_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetAllInvoiceIdsResponse" message="tns:ITrexService_GetAllInvoiceIds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecalculateInvoice">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/RecalculateInvoice" message="tns:ITrexService_RecalculateInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/RecalculateInvoiceResponse" message="tns:ITrexService_RecalculateInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInvoiceTemplate">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteInvoiceTemplate" message="tns:ITrexService_DeleteInvoiceTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteInvoiceTemplateResponse" message="tns:ITrexService_DeleteInvoiceTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateExclVAT">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/UpdateExclVAT" message="tns:ITrexService_UpdateExclVAT_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/UpdateExclVATResponse" message="tns:ITrexService_UpdateExclVAT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFinalizedInvoiceDataByInvoiceId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetFinalizedInvoiceDataByInvoiceId" message="tns:ITrexService_GetFinalizedInvoiceDataByInvoiceId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetFinalizedInvoiceDataByInvoiceIdResponse" message="tns:ITrexService_GetFinalizedInvoiceDataByInvoiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvoiceTemplateFile">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveInvoiceTemplateFile" message="tns:ITrexService_SaveInvoiceTemplateFile_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveInvoiceTemplateFileResponse" message="tns:ITrexService_SaveInvoiceTemplateFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceTemplates">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetInvoiceTemplates" message="tns:ITrexService_GetInvoiceTemplates_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetInvoiceTemplatesResponse" message="tns:ITrexService_GetInvoiceTemplates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OverWriteCig">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/OverWriteCig" message="tns:ITrexService_OverWriteCig_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/OverWriteCigResponse" message="tns:ITrexService_OverWriteCig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCIG">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveCIG" message="tns:ITrexService_SaveCIG_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveCIGResponse" message="tns:ITrexService_SaveCIG_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvoiceChanges">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveInvoiceChanges" message="tns:ITrexService_SaveInvoiceChanges_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveInvoiceChangesResponse" message="tns:ITrexService_SaveInvoiceChanges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoicesByCustomerId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetInvoicesByCustomerId" message="tns:ITrexService_GetInvoicesByCustomerId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetInvoicesByCustomerIdResponse" message="tns:ITrexService_GetInvoicesByCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateInvoiceLines">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GenerateInvoiceLines" message="tns:ITrexService_GenerateInvoiceLines_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GenerateInvoiceLinesResponse" message="tns:ITrexService_GenerateInvoiceLines_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewInvoiceLine">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/CreateNewInvoiceLine" message="tns:ITrexService_CreateNewInvoiceLine_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/CreateNewInvoiceLineResponse" message="tns:ITrexService_CreateNewInvoiceLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStandardInvoicePrintTemplate">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SetStandardInvoicePrintTemplate" message="tns:ITrexService_SetStandardInvoicePrintTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SetStandardInvoicePrintTemplateResponse" message="tns:ITrexService_SetStandardInvoicePrintTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStandardInvoiceMailTemplate">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SetStandardInvoiceMailTemplate" message="tns:ITrexService_SetStandardInvoiceMailTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SetStandardInvoiceMailTemplateResponse" message="tns:ITrexService_SetStandardInvoiceMailTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStandardSpecificationTemplate">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SetStandardSpecificationTemplate" message="tns:ITrexService_SetStandardSpecificationTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SetStandardSpecificationTemplateResponse" message="tns:ITrexService_SetStandardSpecificationTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendInvoiceEmailToCustomerInvoiceGroup">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SendInvoiceEmailToCustomerInvoiceGroup" message="tns:ITrexService_SendInvoiceEmailToCustomerInvoiceGroup_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SendInvoiceEmailToCustomerInvoiceGroupResponse" message="tns:ITrexService_SendInvoiceEmailToCustomerInvoiceGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInvoiceGroupByCustomerInvoiceFGroupId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetCustomerInvoiceGroupByCustomerInvoiceFGroupId" message="tns:ITrexService_GetCustomerInvoiceGroupByCustomerInvoiceFGroupId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetCustomerInvoiceGroupByCustomerInvoiceFGroupIdResponse" message="tns:ITrexService_GetCustomerInvoiceGroupByCustomerInvoiceFGroupId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomerInvoiceGroup">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteCustomerInvoiceGroup" message="tns:ITrexService_DeleteCustomerInvoiceGroup_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteCustomerInvoiceGroupResponse" message="tns:ITrexService_DeleteCustomerInvoiceGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInvoiceGroupByCustomerId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetCustomerInvoiceGroupByCustomerId" message="tns:ITrexService_GetCustomerInvoiceGroupByCustomerId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetCustomerInvoiceGroupByCustomerIdResponse" message="tns:ITrexService_GetCustomerInvoiceGroupByCustomerId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomerInvoiceGroup">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/InsertCustomerInvoiceGroup" message="tns:ITrexService_InsertCustomerInvoiceGroup_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/InsertCustomerInvoiceGroupResponse" message="tns:ITrexService_InsertCustomerInvoiceGroup_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReCalculateInvoice">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ReCalculateInvoice" message="tns:ITrexService_ReCalculateInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ReCalculateInvoiceResponse" message="tns:ITrexService_ReCalculateInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceDataByInvoiceId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetInvoiceDataByInvoiceId" message="tns:ITrexService_GetInvoiceDataByInvoiceId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetInvoiceDataByInvoiceIdResponse" message="tns:ITrexService_GetInvoiceDataByInvoiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInvoiceLinesByInvoiceId">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetInvoiceLinesByInvoiceId" message="tns:ITrexService_GetInvoiceLinesByInvoiceId_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetInvoiceLinesByInvoiceIdResponse" message="tns:ITrexService_GetInvoiceLinesByInvoiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeEntriesForInvoicing">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetTimeEntriesForInvoicing" message="tns:ITrexService_GetTimeEntriesForInvoicing_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetTimeEntriesForInvoicingResponse" message="tns:ITrexService_GetTimeEntriesForInvoicing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInvoiceViews">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetCustomerInvoiceViews" message="tns:ITrexService_GetCustomerInvoiceViews_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetCustomerInvoiceViewsResponse" message="tns:ITrexService_GetCustomerInvoiceViews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerById">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetCustomerById" message="tns:ITrexService_GetCustomerById_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetCustomerByIdResponse" message="tns:ITrexService_GetCustomerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectById">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetProjectById" message="tns:ITrexService_GetProjectById_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetProjectByIdResponse" message="tns:ITrexService_GetProjectById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskById">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetTaskById" message="tns:ITrexService_GetTaskById_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetTaskByIdResponse" message="tns:ITrexService_GetTaskById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetAllCustomers" message="tns:ITrexService_GetAllCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetAllCustomersResponse" message="tns:ITrexService_GetAllCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EntityCompanyRequest">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/EntityCompanyRequest" message="tns:ITrexService_EntityCompanyRequest_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/EntityCompanyRequestResponse" message="tns:ITrexService_EntityCompanyRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EntityProjectRequest">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/EntityProjectRequest" message="tns:ITrexService_EntityProjectRequest_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/EntityProjectRequestResponse" message="tns:ITrexService_EntityProjectRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EntityTaskRequest">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/EntityTaskRequest" message="tns:ITrexService_EntityTaskRequest_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/EntityTaskRequestResponse" message="tns:ITrexService_EntityTaskRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeEntriesByPeriodAndUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetTimeEntriesByPeriodAndUser" message="tns:ITrexService_GetTimeEntriesByPeriodAndUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetTimeEntriesByPeriodAndUserResponse" message="tns:ITrexService_GetTimeEntriesByPeriodAndUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeEntriesByPeriod">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetTimeEntriesByPeriod" message="tns:ITrexService_GetTimeEntriesByPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetTimeEntriesByPeriodResponse" message="tns:ITrexService_GetTimeEntriesByPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetAllUsers" message="tns:ITrexService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetAllUsersResponse" message="tns:ITrexService_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserName">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetUserByUserName" message="tns:ITrexService_GetUserByUserName_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetUserByUserNameResponse" message="tns:ITrexService_GetUserByUserName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveUser" message="tns:ITrexService_SaveUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveUserResponse" message="tns:ITrexService_SaveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteUser" message="tns:ITrexService_DeleteUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteUserResponse" message="tns:ITrexService_DeleteUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeactivateUser" message="tns:ITrexService_DeactivateUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeactivateUserResponse" message="tns:ITrexService_DeactivateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateUser">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ActivateUser" message="tns:ITrexService_ActivateUser_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ActivateUserResponse" message="tns:ITrexService_ActivateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTimeEntry">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveTimeEntry" message="tns:ITrexService_SaveTimeEntry_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveTimeEntryResponse" message="tns:ITrexService_SaveTimeEntry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcludeTimeEntry">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/ExcludeTimeEntry" message="tns:ITrexService_ExcludeTimeEntry_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/ExcludeTimeEntryResponse" message="tns:ITrexService_ExcludeTimeEntry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvoiceLine">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveInvoiceLine" message="tns:ITrexService_SaveInvoiceLine_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveInvoiceLineResponse" message="tns:ITrexService_SaveInvoiceLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveInvoice">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveInvoice" message="tns:ITrexService_SaveInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveInvoiceResponse" message="tns:ITrexService_SaveInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTask">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveTask" message="tns:ITrexService_SaveTask_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveTaskResponse" message="tns:ITrexService_SaveTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProject">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveProject" message="tns:ITrexService_SaveProject_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveProjectResponse" message="tns:ITrexService_SaveProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomer">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveCustomer" message="tns:ITrexService_SaveCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveCustomerResponse" message="tns:ITrexService_SaveCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInvoiceLine">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteInvoiceLine" message="tns:ITrexService_DeleteInvoiceLine_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteInvoiceLineResponse" message="tns:ITrexService_DeleteInvoiceLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInvoiceDraft">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteInvoiceDraft" message="tns:ITrexService_DeleteInvoiceDraft_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteInvoiceDraftResponse" message="tns:ITrexService_DeleteInvoiceDraft_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteCustomer" message="tns:ITrexService_DeleteCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteCustomerResponse" message="tns:ITrexService_DeleteCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteTask" message="tns:ITrexService_DeleteTask_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteTaskResponse" message="tns:ITrexService_DeleteTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteProject" message="tns:ITrexService_DeleteProject_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteProjectResponse" message="tns:ITrexService_DeleteProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTimeEntry">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/DeleteTimeEntry" message="tns:ITrexService_DeleteTimeEntry_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/DeleteTimeEntryResponse" message="tns:ITrexService_DeleteTimeEntry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGlobalTimeEntryTypes">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetGlobalTimeEntryTypes" message="tns:ITrexService_GetGlobalTimeEntryTypes_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetGlobalTimeEntryTypesResponse" message="tns:ITrexService_GetGlobalTimeEntryTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTimeEntryTypes">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/GetAllTimeEntryTypes" message="tns:ITrexService_GetAllTimeEntryTypes_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/GetAllTimeEntryTypesResponse" message="tns:ITrexService_GetAllTimeEntryTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTimeEntryType">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SaveTimeEntryType" message="tns:ITrexService_SaveTimeEntryType_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SaveTimeEntryTypeResponse" message="tns:ITrexService_SaveTimeEntryType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchTasks">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SearchTasks" message="tns:ITrexService_SearchTasks_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SearchTasksResponse" message="tns:ITrexService_SearchTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchProjects">
+      <wsdl:input wsaw:Action="TrexService/ITrexService/SearchProjects" message="tns:ITrexService_SearchProjects_InputMessage" />
+      <wsdl:output wsaw:Action="TrexService/ITrexService/SearchProjectsResponse" message="tns:ITrexService_SearchProjects_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

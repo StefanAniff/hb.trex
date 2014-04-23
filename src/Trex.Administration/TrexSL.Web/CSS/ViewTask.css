@@ -1,0 +1,47 @@
+﻿
+#taskHeaderBox
+{
+border-bottom:solid 1px #b5c7de;
+  margin-bottom:10px;
+  height:30px;
+}
+.taskHeader
+{
+    float:left;
+}
+.taskId
+{
+    float:right;
+}
+
+.taskImage
+{
+    float:left;
+}
+
+.description
+{
+    clear:both;
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:12px;
+}
+
+.textColumn {
+float:left;
+width:150px;
+}
+
+.row {
+clear:both;
+height:15px;
+}
+
+.valueColumn {
+float:left;
+width:250px;
+}
+
+#timeEntryDiv {
+clear:both;
+}

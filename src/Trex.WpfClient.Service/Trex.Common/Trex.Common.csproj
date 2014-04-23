@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF1F8985-9636-40AB-9E0F-5DD627EF10DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.Common</RootNamespace>
+    <AssemblyName>Trex.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>d60codesigning.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-TEST|AnyCPU'">
+    <OutputPath>bin\Release-TEST\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
+    <OutputPath>bin\Releaseexternal\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ServiceStack">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.3.9.59\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.Common.3.9.59\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.Common.3.9.59\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.OrmLite.SqlServer.3.9.59\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.OrmLite.SqlServer.3.9.59\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.Redis.3.9.59\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.3.9.59\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\Trex.WpfClient\packages\ServiceStack.Text.3.9.59\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataTransferObjects\CompanyDto.cs" />
+    <Compile Include="DataTransferObjects\ForecastDto.cs" />
+    <Compile Include="DataTransferObjects\ForecastStatisticsDto.cs" />
+    <Compile Include="DataTransferObjects\HolidayDto.cs" />
+    <Compile Include="DataTransferObjects\FullTaskDto.cs" />
+    <Compile Include="DataTransferObjects\ProjectDto.cs" />
+    <Compile Include="DataTransferObjects\TimeEntryDto.cs" />
+    <Compile Include="DataTransferObjects\TimeEntryUpdatedStatusDto.cs" />
+    <Compile Include="DataTransferObjects\TimeRegistrationTypeEnum.cs" />
+    <Compile Include="Interfaces\EntityChanged.cs" />
+    <Compile Include="Interfaces\IEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataTransferObjects\TaskDto.cs" />
+    <Compile Include="ServiceStack\ForecastsByUserAndMonthRequest.cs" />
+    <Compile Include="ServiceStack\ForecastSearchOptionsRequest.cs" />
+    <Compile Include="ServiceStack\ForecastSearchByRegistrationRequest.cs" />
+    <Compile Include="ServiceStack\ForecastStatisticsRequest.cs" />
+    <Compile Include="ServiceStack\ForecastTypesRequest.cs" />
+    <Compile Include="ServiceStack\GetGeneralSettingsRequest.cs" />
+    <Compile Include="ServiceStack\GetTimeEntryByPeriodAndUserRequest.cs" />
+    <Compile Include="ServiceStack\GetTimeEntryByPeriodAndUserResponse.cs" />
+    <Compile Include="ServiceStack\GetUserStatisticsRequest.cs" />
+    <Compile Include="ServiceStack\ReadonlyRequest.cs" />
+    <Compile Include="ServiceStack\SaveForecastsRequest.cs" />
+    <Compile Include="ServiceStack\SaveOrUpdateTimeEntriesRequest.cs" />
+    <Compile Include="ServiceStack\TasksRequest.cs" />
+    <Compile Include="Subscribe\TaskCreated.cs" />
+    <Compile Include="Subscribe\TimeEntryCreated.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="d60codesigning.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,199 @@
+﻿<UserControl 
+    x:Class="Trex.Invoices.InvoiceTemplatesScreen.InvoiceTemplatesListView.InvoiceTemplatesListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Resources="clr-namespace:Trex.Invoices.Resources"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+    mc:Ignorable="d"
+    d:DesignHeight="430" 
+    d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <LinearGradientBrush x:Key="ToolbarBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFFEFEFE" Offset="0.048"/>
+                <GradientStop Color="#FFECECEC" Offset="0.968"/>
+                <GradientStop Color="#FFD4D4D4" Offset="0.984"/>
+            </LinearGradientBrush>
+
+            <Resources:TextResources x:Key="Labels"/>
+
+            <telerik:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+            <Style x:Key="ItemStyle" TargetType="Control">
+                <Setter Property="Height" Value="30" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="0 0 5 0" />
+            </Style>
+
+            <Style TargetType="RadioButton">
+                <Setter Property="Margin" Value="0 0 0 5" />
+                <Setter Property="GroupName" Value="SendFormat" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid Margin="0" d:LayoutOverrides="Height">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Background="#FFFAFAFA" BorderBrush="#FFD7D7D7" BorderThickness="0">
+                <TextBlock 
+                    HorizontalAlignment="Left" 
+                    Margin="20,17,0,0" 
+                    VerticalAlignment="Top" 
+                    FontFamily="Arial" 
+                    FontSize="18" 
+                    Text="{Binding InvoiceTemplateHeader, Source={StaticResource Labels}}" 
+                    TextWrapping="Wrap"/>
+            </Border>
+
+            <Border 
+                x:Name="buttonPanel" 
+                BorderBrush="#FFD4D4D4" 
+                BorderThickness="0,1" 
+                Padding="0,1,0,0" 
+                Margin="0" 
+                Grid.Row="1" 
+                Background="{StaticResource ToolbarBackground}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        d:LayoutOverrides="Height"
+                        Margin="10 0 0 0">
+
+                        <Button 
+                            Content="Create new template" 
+                            Command="{Binding CreateNewTemplateCommand}" />
+
+                        <Button 
+                            Content="Delete template" 
+                            Command="{Binding DeleteCommand}"/>
+
+                        <Button 
+                            Content="Download template"
+                            Command="{Binding DownloadTemplateCommand}"/>
+
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <ListBox 
+                    ItemsSource="{Binding InvoiceTemplates,Mode=OneWay}"  
+                    SelectedItem="{Binding SelectedTemplate,Mode=TwoWay}"  
+                    DisplayMemberPath="TemplateName" 
+                    ItemContainerStyle="{StaticResource ItemStyle}" 
+                    Margin="10" />
+
+                <StackPanel 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Left" 
+                    Visibility="{Binding IsTemplateSelected, 
+                                Mode=OneWay, 
+                                Converter={StaticResource BoolToVisibilityConverter}}" 
+                    Margin="10">
+
+                    <TextBlock Text="Template Name" />
+
+                    <TextBox 
+                        Grid.Column="1" 
+                        Margin="0,0,0,5" 
+                        Text="{Binding TemplateName,Mode=TwoWay}" 
+                        Width="150" 
+                        HorizontalAlignment="Left"
+                        TabIndex="1"/>
+
+                    <RadioButton
+                        TabIndex="2"
+                        Content="Standard invoice mail"
+                        IsChecked="{Binding TemplateStandardMail, Mode=TwoWay}" />
+
+                    <RadioButton
+                        TabIndex="3"
+                        Content="Standard invoice print" 
+                        IsChecked="{Binding TemplateStandardPrint, Mode=TwoWay}" />
+
+                    <RadioButton
+                        TabIndex="4"
+                        Content="Standard invoice specification"
+                        IsChecked="{Binding TemplateStandardSpecification, Mode=TwoWay}" />
+
+                    <RadioButton
+                        TabIndex="5"
+                        Content="Standard credit note mail"
+                        IsChecked="{Binding TemplateCreditNoteMail, Mode=TwoWay}" />
+
+                    <RadioButton
+                        TabIndex="6"
+                        Content="Standard credit note print"
+                        IsChecked="{Binding TemplateCreditNotePrint, Mode=TwoWay}" />
+
+                    <!--TODO:Ret sti til Enviroment.SpecialFolder-->
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button 
+                            Content="Upload File"
+                            Height="25" 
+                            Width="70" 
+                            Margin="0,5,5,5"
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Top" 
+                            Command="{Binding UploadInvoiceTemplate}"/>
+
+                        <Button 
+                            Content="Save" 
+                            Grid.Row="1" 
+                            Grid.Column="1" 
+                            Width="70" 
+                            HorizontalAlignment="Right" 
+                            Height="25" 
+                            Command="{Binding SaveCommand}" />
+                        
+                    </StackPanel>
+                    
+                    <!--<telerik:RadUpload 
+                        TabIndex="5"
+                        Name="RadUpload" 
+                        IsMultiselect="False" 
+                        OverwriteExistingFiles="True"  
+                        Visibility="{Binding UploadVisible,
+                                    Mode=OneWay,
+                                    Converter={StaticResource BoolToVisibilityConverter}}" 
+                        IsAppendFilesEnabled="False" 
+                        UploadServiceUrl="FileUploadHandler.ashx" 
+                        IsAutomaticUpload="True"  
+                        Filter="Word templates (*.dotx;) | *.dotx;"  
+                        UploadFinished="RadUpload_UploadFinished"/>-->
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

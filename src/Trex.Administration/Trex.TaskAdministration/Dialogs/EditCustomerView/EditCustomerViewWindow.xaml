@@ -1,0 +1,144 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+		   xmlns:System="clr-namespace:System;assembly=mscorlib"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:Converters="clr-namespace:Trex.Infrastructure.Converters;assembly=Trex.Infrastructure"
+           xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+           xmlns:Behaviors1="clr-namespace:Trex.Infrastructure.Behaviors;assembly=Trex.Infrastructure"
+           x:Class="Trex.TaskAdministration.Dialogs.EditCustomerView.EditCustomerViewWindow"
+           Width="400" Height="470" 
+           Title="Edit Customer" mc:Ignorable="d">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TrexSL.Shell;component/Resources/ChildWindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <GridLength x:Key="RowHeight">30</GridLength>
+            <System:Double x:Key="TextBoxHeight">26</System:Double>
+        	<Converters:BooleanToVisibiltyConverter x:Key="BoolToVisibilityConverter" />
+
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <controls:ChildWindow.Style>
+        <StaticResource ResourceKey="ChildWindowStyle"/>
+    </controls:ChildWindow.Style>
+    
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+                        <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition Height="{StaticResource RowHeight}"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.347*"/>
+            <ColumnDefinition Width="0.653*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="OKButton" Content="Save" Command="{Binding SaveCommand}" Height="23" Margin="93,0,79,0" Grid.Row="12" Grid.Column="1" />
+        <Button x:Name="CancelButton" Content="Cancel" Command="{Binding CancelCommand}" Width="75" Height="23" HorizontalAlignment="Right" Margin="0" Grid.Row="12" Grid.Column="1"  />
+        
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Name" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Streetaddress" TextWrapping="Wrap" Grid.Row="1" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Zipcode/City" TextWrapping="Wrap" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Country" TextWrapping="Wrap" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Contact name (Invoice reciever)" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.Row="5"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Contact phone" TextWrapping="Wrap" Grid.Row="6" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Invoice format" TextWrapping="Wrap" Grid.Row="7" VerticalAlignment="Center"/>
+        
+        <TextBox Margin="0"  Name="txtCustomerName" Grid.Column="1" Text="{Binding CustomerName, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" Height="{StaticResource TextBoxHeight}" VerticalAlignment="Center">
+            <i:Interaction.Behaviors>
+                <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        
+        <TextBox Margin="0" Grid.Column="1" Text="{Binding StreetAddress, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" TextWrapping="Wrap" Grid.Row="1" AcceptsReturn="True" >
+            <i:Interaction.Behaviors>
+                <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        
+        <TextBlock Text="Address2" Grid.Row="2" VerticalAlignment="Center"></TextBlock>
+        
+        <TextBox Height="{StaticResource TextBoxHeight}" Text="{Binding Address2,Mode=TwoWay}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1">
+            <i:Interaction.Behaviors>
+                <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="3"  Grid.Column="1">
+            <TextBox Height="{StaticResource TextBoxHeight}" Text="{Binding ZipCode, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" TextWrapping="Wrap" VerticalAlignment="Center" Width="50" >
+                <i:Interaction.Behaviors>
+                    <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+                </i:Interaction.Behaviors>
+            </TextBox>
+            <TextBox Height="{StaticResource TextBoxHeight}" VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding City, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" TextWrapping="Wrap" Width="186" >
+                <i:Interaction.Behaviors>
+                    <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+                </i:Interaction.Behaviors>
+            </TextBox>
+        </StackPanel>
+        
+        <TextBox Height="{StaticResource TextBoxHeight}" Margin="0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Country, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" TextWrapping="Wrap" Grid.Row="4">
+            <i:Interaction.Behaviors>
+                <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        
+        <TextBox Height="{StaticResource TextBoxHeight}" Margin="0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding ContactName, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" TextWrapping="Wrap" Grid.Row="5">
+            <i:Interaction.Behaviors>
+                <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        
+        <TextBox Height="{StaticResource TextBoxHeight}" Margin="0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding ContactPhone, Mode=TwoWay}" TextWrapping="Wrap" Grid.Row="6"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1"  VerticalAlignment="Center">
+            <RadioButton  Content="Email " IsChecked="{Binding IsMail,Mode=TwoWay}"></RadioButton>
+            <RadioButton  Content="Print " IsChecked="{Binding IsPrint,Mode=TwoWay}"></RadioButton>
+        </StackPanel>
+
+        <TextBox Height="{StaticResource TextBoxHeight}" Margin="0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Email, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnNotifyDataErrors=True,ValidatesOnExceptions=True}" TextWrapping="Wrap" Grid.Row="8">
+            <i:Interaction.Behaviors>
+                <Behaviors1:InputUpdateBehavior></Behaviors1:InputUpdateBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+
+        <TextBox Height="{StaticResource TextBoxHeight}" Margin="0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding EmailCC, Mode=TwoWay}" TextWrapping="Wrap" Grid.Row="9"/>
+        <ComboBox Height="{StaticResource TextBoxHeight}" Margin="0" VerticalAlignment="Center" Grid.Column="1" Grid.Row="10" ItemsSource="{Binding Path=Users, Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedUser, Mode=TwoWay}"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Customer manager" TextWrapping="Wrap" Grid.Row="10" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Contact E-mail" TextWrapping="Wrap" Grid.Row="8" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="E-mail CC" TextWrapping="Wrap" Grid.Row="9" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0" Text="Payment terms" TextWrapping="Wrap" Grid.Row="11" VerticalAlignment="Center"/>
+        
+        <StackPanel Grid.Column="1" Margin="0,2" Orientation="Horizontal" Grid.Row="11" d:LayoutOverrides="Height">
+        	<TextBox Margin="0" TextWrapping="Wrap" Height="{StaticResource TextBoxHeight}" d:LayoutOverrides="VerticalMargin" Width="50" VerticalAlignment="Center" Text="{Binding PaymentTermNumberOfDays, Mode=TwoWay,NotifyOnValidationError=True,ValidatesOnExceptions=True}"/>
+            <TextBlock Text="days" VerticalAlignment="Center" Margin="2,0,0,0"></TextBlock>
+        	<CheckBox Content="Include current month" VerticalAlignment="Center" Margin="10,0,0,0" IsChecked="{Binding PaymentTermIncludeCurrentMonth, Mode=TwoWay}"/>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="12" VerticalAlignment="Center">
+            <CheckBox Content="Active " IsChecked="{Binding IsActive,Mode=TwoWay}"/>
+            <CheckBox Content="internal " IsChecked="{Binding Internal,Mode=TwoWay}"/>
+        </StackPanel>
+        
+
+
+    </Grid>
+</controls:ChildWindow>

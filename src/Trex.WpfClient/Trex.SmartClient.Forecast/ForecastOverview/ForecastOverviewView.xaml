@@ -1,0 +1,909 @@
+﻿<UserControl x:Class="Trex.SmartClient.Forecast.ForecastOverview.ForecastOverviewView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:DesignData="clr-namespace:Trex.SmartClient.Forecast.ForecastOverview.DesignData"
+             xmlns:Sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:Tk="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:Dialog="clr-namespace:Trex.Dialog;assembly=Trex.Dialog"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             MinHeight="400"
+             Width="1260"
+             FocusManager.FocusedElement="{Binding ElementName=_projectAutoCompleteBox}"
+             FocusManager.IsFocusScope="True"
+             KeyboardNavigation.TabNavigation="Cycle"
+             d:DesignHeight="710"
+             d:DesignWidth="1250"
+             d:DataContext="{d:DesignInstance DesignData:DesignForecastOverviewViewModel, IsDesignTimeCreatable=True}"
+             Name="_windowRoot">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/ForecastStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+            <Thickness x:Key="GroupMargin">10</Thickness>
+            <GridLength x:Key="UserNameCellWidth">180</GridLength>
+            <Sys:Double x:Key="CellTemplateWidth">30</Sys:Double>
+            <Sys:Double x:Key="SearchItemMaxHeight">100</Sys:Double>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Modifiers="Control" Key="P" Command="{Binding PreviousMonthCommand}" />
+        <KeyBinding Modifiers="Control" Key="N" Command="{Binding NextMonthCommand}" />
+        <KeyBinding Modifiers="Control" Key="T" Command="{Binding CurrentMonthCommand}" />
+        <KeyBinding Modifiers="Control" Key="S" Command="{Binding SearchCommand}" />
+        <KeyBinding Modifiers="Control" Key="L" Command="{Binding ClearAllCommand}" />
+    </UserControl.InputBindings>
+
+    <Border
+        Background="White"
+        BorderThickness="1"
+        CornerRadius="10"
+        Padding="2"
+        Margin="50"
+        Focusable="False">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                        Duration="0:0:1.5"
+                                                        FillBehavior="HoldEnd"
+                                                        From="0.3"
+                                                        To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid
+            FocusManager.IsFocusScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!-- Window header -->
+            <Border 
+                Background="{StaticResource SelectionGradientBrush}"
+                Margin="3"
+                BorderThickness="0,0,0,2"
+                BorderBrush="#FFBDBDBD"
+                Height="30"
+                Grid.Row="0"
+                Focusable="False">
+                <TextBlock
+                    Margin="10,0,0,0"
+                    Text="Workplan overview"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    FontSize="20"
+                    />
+            </Border>
+            
+            <!-- TOOLBAR -->
+            <Tk:RadToolBar 
+                Width="Auto"
+                HorizontalAlignment="Left"
+                Grid.Row="1"
+                Focusable="False">
+                <Tk:RadToolBar.Items>
+                    <Tk:RadButton 
+                        Command="{Binding SearchCommand}"
+                        ToolTip="Send search request">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Resources/Icons/Find.ico" />
+                            <StackPanel Orientation="Horizontal" Margin="3,0,0,0">
+                                <TextBlock Text="S" FontWeight="Bold" />
+                                <TextBlock Text="earch" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Tk:RadButton>
+
+                    <Tk:RadButton 
+                        Command="{Binding ClearAllCommand}"
+                        ToolTip="Clears search criterias and result list">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Resources/Icons/Clearallrequests.ico" />
+                            <StackPanel Orientation="Horizontal" Margin="3,0,0,0">
+                                <TextBlock Text="C" />
+                                <TextBlock Text="l" FontWeight="Bold" />
+                                <TextBlock Text="ear" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Tk:RadButton>
+                    
+                    <Tk:RadToolBarSeparator />
+                    
+                    <Tk:RadButton
+                        Name="_btnPrint"
+                        Command="{Binding PrintCommand}"
+                        ToolTip="Print results"
+                        Click="_btnPrint_OnClick">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Resources/Icons/Print.ico" />
+                            <TextBlock Text="Print" />
+                        </StackPanel>
+                    </Tk:RadButton>
+                </Tk:RadToolBar.Items>
+            </Tk:RadToolBar>
+            
+            <!-- MAIN BODY -->
+            <Grid
+                x:Name="_rootGrid"
+                Grid.Row="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- SEARCH OPTIONS -->
+                <Grid Grid.Row="0"
+                      Grid.Column="0"
+                      Margin="{StaticResource GroupMargin}"
+                      Height="{Binding ElementName=_listOptionsTabControl, Path=Height}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Tk:RadTabControl
+                        Grid.Row="0"
+                        Name="_searchTabControl"
+                        SelectionChanged="_searchTabControl_OnSelectionChanged"
+                        SelectedIndex="{Binding SearchOptions.SelectedTabIndex, Mode=TwoWay}"
+                        Focusable="False">
+                        <Tk:RadTabControl.Items>
+
+                            <!-- BY REGISTRATION -->
+                            <Tk:RadTabItem>
+                                <Tk:RadTabItem.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label 
+                                            Content="By _registration"
+                                            FontWeight="Bold"
+                                            Target="{Binding ElementName=_projectAutoCompleteBox}"/>
+                                    </DataTemplate>
+                                </Tk:RadTabItem.HeaderTemplate>
+
+                                <Grid Margin="{StaticResource GroupMargin}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0">
+
+                                        <!-- PROJECT SEARCH OPTION -->
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="_Project:" 
+                                               Width="50"
+                                               Target="{Binding ElementName=_projectAutoCompleteBox}" />
+                                            <Tk:RadAutoCompleteBox 
+                                                Name="_projectAutoCompleteBox"
+                                                Width="200"
+                                                WatermarkContent="Project name"
+                                                TextSearchMode="Contains"
+                                                TextSearchPath="Name"
+                                                AutoCompleteMode="Suggest"
+                                                SelectionMode="Single"
+                                                SelectedItem="{Binding SearchOptions.SelectedProject, Mode=TwoWay}"
+                                                DisplayMemberPath="Name"
+                                                ItemsSource="{Binding SearchOptions.Projects}"
+                                                DropDownWidth="Auto">
+                                                <Tk:RadAutoCompleteBox.DropDownItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding Name}" />
+                                                            <TextBlock Text="  - " />
+                                                            <TextBlock Text="{Binding Company.Name}" FontStyle="Italic" FontWeight="Bold"/>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </Tk:RadAutoCompleteBox.DropDownItemTemplate>
+                                            </Tk:RadAutoCompleteBox>
+                                        </StackPanel>
+
+                                        <TextBlock 
+                                            FontStyle="Italic"
+                                            Text="or" 
+                                            Margin="17,2,0,2" />
+                                        
+                                        <!-- SEARCH BY CLIENT -->
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="_Client:" 
+                                                   Width="50"
+                                                   Target="{Binding ElementName=_clientAutoCompleteBox}" />
+                                            <Tk:RadAutoCompleteBox 
+                                                Name="_clientAutoCompleteBox"
+                                                Width="200"
+                                                MaxHeight="80"
+                                                WatermarkContent="Client name"
+                                                TextSearchMode="Contains"
+                                                TextSearchPath="Name"
+                                                AutoCompleteMode="Suggest"
+                                                SelectionMode="Single"
+                                                SelectedItem="{Binding SearchOptions.SelectedCompany, Mode=TwoWay}"
+                                                DisplayMemberPath="Name"
+                                                ItemsSource="{Binding SearchOptions.Companies}"
+                                                DropDownWidth="Auto">
+                                            </Tk:RadAutoCompleteBox>
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                    <StackPanel Grid.Column="1">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="_Status type:" 
+                                            Width="80"
+                                            Target="{Binding ElementName=_forecastTypeComboBox}" />
+                                            <Tk:RadComboBox  
+                                                Name="_forecastTypeComboBox"
+                                                Width="150"
+                                                MaxHeight="80"
+                                                SelectedItem="{Binding SearchOptions.SelectedForecastType, Mode=TwoWay}"
+                                                ItemsSource="{Binding SearchOptions.ForecastTypes}"
+                                                DropDownWidth="Auto">
+                                                <Tk:RadComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Rectangle Style="{StaticResource ForecastTypeColorRectangleStyle}"/>
+                                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="3,0,0,0" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </Tk:RadComboBox.ItemTemplate>
+                                            </Tk:RadComboBox>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+                            </Tk:RadTabItem>
+
+                            <!-- BY USER -->
+                            <Tk:RadTabItem>
+                                <Tk:RadTabItem.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label 
+                                            Content="By _user"
+                                            FontWeight="Bold"
+                                            Target="{Binding ElementName=_usrAutoCompleteBox}"/>
+                                    </DataTemplate>
+                                </Tk:RadTabItem.HeaderTemplate>
+
+                                <Grid Margin="{StaticResource GroupMargin}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                
+                                    <!-- SEARCH BY USER -->
+                                    <StackPanel 
+                                        Orientation="Horizontal" 
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Top">
+                                        <Label Content="_Users:" 
+                                            Target="{Binding ElementName=_usrAutoCompleteBox}" />
+                                        <Tk:RadAutoCompleteBox
+                                            Name="_usrAutoCompleteBox"
+                                            Width="Auto"
+                                            MaxWidth="185"
+                                            MinWidth="170"
+                                            MaxHeight="{StaticResource SearchItemMaxHeight}"
+                                            WatermarkContent="Initials/username"
+                                            TextSearchMode="Contains"
+                                            TextSearchPath="SearchString"
+                                            AutoCompleteMode="Suggest"
+                                            DisplayMemberPath="Name"
+                                            SelectionMode="Multiple"
+                                            ItemsSource="{Binding SearchOptions.Users}"
+                                            SelectedItems="{Binding SearchOptions.SelectedUsers}"
+                                            DropDownWidth="Auto"
+                                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                            ToolTip="Write users initials or username">
+                                            <Tk:RadAutoCompleteBox.Resources>
+                                                <Style TargetType="Tk:RadAutoCompleteBoxItem">
+                                                   <Setter Property="Template"> 
+                                                       <Setter.Value>
+                                                           <ControlTemplate TargetType="Tk:RadAutoCompleteBoxItem">
+                                                                <Grid>
+                                                                    <Border 
+                                                                        x:Name="Border" 
+                                                                        BorderThickness="{TemplateBinding BorderThickness}" 
+                                                                        BorderBrush="{TemplateBinding BorderBrush}" 
+                                                                        Background="{TemplateBinding Background}"
+                                                                        CornerRadius="2">
+                                                                        <StackPanel 
+                                                                            Orientation="Horizontal">
+                                                                            <ContentPresenter 
+                                                                                Width="142"
+                                                                                x:Name="contentPresenter" 
+                                                                                Margin="{TemplateBinding Padding}" 
+                                                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                                            <Dialog:CrossButton 
+                                                                                Height="13"
+                                                                                Command="{x:Static Tk:RadAutoCompleteBoxCommands.RemoveItem}"
+                                                                                CommandParameter="{Binding}"
+                                                                                Focusable="False" 
+                                                                                ToolTip="Remove"
+                                                                                Margin="0,0,2,0"/>
+                                                                        </StackPanel>
+                                                                    </Border>
+                                                                </Grid>
+                                                            </ControlTemplate>
+                                                       </Setter.Value>
+                                                   </Setter>
+                                                </Style>
+                                            </Tk:RadAutoCompleteBox.Resources>
+                                            <Tk:RadAutoCompleteBox.DropDownItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding Name}" />
+                                                        <TextBlock Text="  - " />
+                                                        <TextBlock Text="{Binding UserName}" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </Tk:RadAutoCompleteBox.DropDownItemTemplate>    
+                                        </Tk:RadAutoCompleteBox>
+                                    </StackPanel>
+
+                                    <!-- UsersListPresets buttons -->
+                                    <StackPanel
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="5,0,5,0">
+                                        
+                                        <Tk:RadButton
+                                            Command="{Binding SearchOptions.UserSearchOptions.SaveNewUserPresetListCommand}">
+                                            <StackPanel Orientation="Horizontal" ToolTip="Save user(s) list as bookmark">
+                                                <!--<TextBlock Text="Save" Margin="0,0,3,0" />-->
+                                                <Image Source="../Resources/Icons/Forwards.ico" />
+                                            </StackPanel>
+                                        </Tk:RadButton>
+
+                                        <Tk:RadButton
+                                            Command="{Binding SearchOptions.UserSearchOptions.LoadUserPresetListCommand}">
+                                            <StackPanel Orientation="Horizontal" ToolTip="Load bookmark">
+                                                <Image Source="../Resources/Icons/Backwards.ico" />
+                                                <!--<TextBlock Text="Load" Margin="3,0,0,0" />-->
+                                            </StackPanel>
+                                        </Tk:RadButton>
+                                    </StackPanel>
+                                    
+                                    <!-- UsersListPresets listbox -->
+                                    <StackPanel Grid.Column="2">
+                                        <ListBox 
+                                            Background="LightGray"
+                                            Height="{StaticResource SearchItemMaxHeight}"
+                                            MinWidth="150"
+                                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                            SelectionMode="Single"
+                                            HorizontalContentAlignment="Stretch"
+                                            Name="_usrPresetListBox"
+                                            ItemsSource="{Binding SearchOptions.UserSearchOptions.UserListPresets}"
+                                            SelectedItem="{Binding SearchOptions.UserSearchOptions.SelectedUserListPreset, Mode=TwoWay}">
+                                            <ListBox.Resources>
+                                                <DataTemplate x:Key="NonEditableUsersPresetTemplate">
+                                                    <Grid Focusable="True">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Dialog:CrossButton 
+                                                            Grid.Column="0"
+                                                            Height="13"
+                                                            Margin="2"
+                                                            VerticalAlignment="Center"
+                                                            ToolTip="Delete"
+                                                            Command="{Binding DataContext.SearchOptions.UserSearchOptions.DeletePresetListCommand, 
+                                                                              ElementName=_usrPresetListBox}"
+                                                            CommandParameter="{Binding}"/>
+                                                        <TextBlock 
+                                                            Grid.Column="1"
+                                                            VerticalAlignment="Center"
+                                                            Text="{Binding Name}"
+                                                            Width="Auto"
+                                                            ToolTip="{Binding Description}">                                                            
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </DataTemplate>
+                                                <DataTemplate x:Key="EditableUsersPresetTemplate">
+                                                    <DataTemplate.Resources>
+                                                        <Style x:Key="ListBoxSelectableTextBox" TargetType="{x:Type TextBox}">
+                                                            <Setter Property="IsHitTestVisible" Value="False" />
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}, AncestorLevel=1}}" Value="True">
+                                                                    <Setter Property="IsHitTestVisible" Value="True" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </DataTemplate.Resources>
+                                                    <StackPanel>                                                        
+                                                        <TextBox 
+                                                            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                                                            Style="{StaticResource ListBoxSelectableTextBox}"
+                                                            Loaded="FocusPresetNameTextBoxOnLoad"
+                                                            Name="_bookmarkNameTextBox">
+                                                            <TextBox.InputBindings>
+                                                                <!-- Bookmark naming done command -->
+                                                                <KeyBinding 
+                                                                    Key="Enter" 
+                                                                    Command="{Binding Path=DataContext.SearchOptions.UserSearchOptions.DisableEditUsersPresetCommand, ElementName=_windowRoot}" 
+                                                                    CommandParameter="{Binding}"/>
+                                                            </TextBox.InputBindings>
+                                                            <i:Interaction.Triggers>
+                                                                <!-- On loose focus, then change editing status -->
+                                                                <i:EventTrigger EventName="LostFocus">
+                                                                    <i:InvokeCommandAction  
+                                                                        Command="{Binding Path=DataContext.SearchOptions.UserSearchOptions.DisableEditUsersPresetCommand, ElementName=_windowRoot}" 
+                                                                        CommandParameter="{Binding}" />
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>                                                        
+                                                        </TextBox>
+                                                        <Popup
+                                                            Name="_bookmarkNamePopup"
+                                                            PopupAnimation="Fade"
+                                                            VerticalAlignment="Top"
+                                                            PlacementTarget="{Binding ElementName=_bookmarkNameTextBox}"
+                                                            Placement="Top"
+                                                            Margin="3,0,0,0"
+                                                            IsOpen="True">
+                                                            <Border 
+                                                                Background="AntiqueWhite"
+                                                                BorderThickness="1"
+                                                                BorderBrush="Black">
+                                                                <TextBlock 
+                                                                    Margin="1"
+                                                                    Foreground="Black">
+                                                                    Type bookmark name.
+                                                                    <LineBreak />
+                                                                    Hit Enter when done.
+                                                                </TextBlock>
+                                                            </Border>
+                                                        </Popup>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.Resources>
+                                            <i:Interaction.Triggers>                                                
+                                                <!-- Select bookmark command -->
+                                                <i:EventTrigger EventName="MouseDoubleClick">
+                                                    <i:InvokeCommandAction Command="{ Binding SearchOptions.UserSearchOptions.LoadUserPresetListCommand}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                                            
+                                            <!-- Rename command -->
+                                            <ListBox.InputBindings> 
+                                                <KeyBinding 
+                                                    Key="F2"
+                                                    Command="{Binding SearchOptions.UserSearchOptions.EnableEditUsersPresetCommand}" 
+                                                    CommandParameter="{Binding SearchOptions.UserSearchOptions.SelectedUserListPreset}" />                                                
+                                            </ListBox.InputBindings>
+                                            
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                  <ContentControl 
+                                                      Content="{Binding}" 
+                                                      Focusable="False">
+                                                      <ContentControl.Style>
+                                                          <Style TargetType="{x:Type ContentControl}">
+                                                              <Setter Property="ContentTemplate" Value="{StaticResource NonEditableUsersPresetTemplate}" />
+                                                              <Style.Triggers>
+                                                                  <DataTrigger Binding="{Binding IsEditMode}" Value="true">
+                                                                        <Setter Property="ContentTemplate" Value="{StaticResource EditableUsersPresetTemplate }" />
+                                                                  </DataTrigger>
+                                                              </Style.Triggers>
+                                                          </Style>
+                                                      </ContentControl.Style>
+                                                  </ContentControl>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+                                    
+                                </Grid>
+                            </Tk:RadTabItem>
+
+                        </Tk:RadTabControl.Items>
+                    </Tk:RadTabControl>
+                </Grid>
+
+                <!-- LIST OPTIONS -->
+                <Tk:RadTabControl Name="_listOptionsTabControl"
+                                  Grid.Row="0"
+                                  Grid.Column="1"
+                                  Margin="{StaticResource GroupMargin}">
+                    <Tk:RadTabControl.Items>
+                        <Tk:RadTabItem>
+                            <Tk:RadTabItem.HeaderTemplate>
+                                <DataTemplate>
+                                    <Label 
+                                        Content="_List options"
+                                        FontWeight="Bold"
+                                        Target="{Binding ElementName=_forecastTypeOptionsItemsControl}"/>
+                                </DataTemplate>
+                            </Tk:RadTabItem.HeaderTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <!-- STATUS VISIBILITY -->
+                                <StackPanel
+                                    Grid.Column="0"
+                                    Width="120">
+                                    <Label Content="Status visibility:" />
+                                    <ItemsControl
+                                        Focusable="False"
+                                        Margin="10,0,5,5"
+                                        Name="_forecastTypeOptionsItemsControl"
+                                        ItemsSource="{Binding ListOptions.ForecastTypeOptions}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <CheckBox IsChecked="{Binding IsSelected}" VerticalAlignment="Center" />
+                                                    <Rectangle Style="{StaticResource ForecastTypeColorRectangleStyle}"/>
+                                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="3,0,0,0" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Grid>
+                        </Tk:RadTabItem>
+                    </Tk:RadTabControl.Items>
+                </Tk:RadTabControl>
+
+                <!-- RESULT VIEW -->
+                <Border
+                    Name="_resultView"
+                    BorderThickness="1"
+                    BorderBrush="{Binding BorderBrush, ElementName=_searchOptionsGroupBox}"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="{StaticResource GroupMargin}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <!-- Month selector -->
+                            <RowDefinition Height="Auto" />
+                            <!-- Weeknumber row -->
+                            <RowDefinition Height="Auto" />
+                            <!-- Dates row -->
+                            <RowDefinition Height="Auto" />
+                            <!-- Userregistrations -->
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <!-- MONTHSELECTOR -->
+                        <Border Grid.Row="0"
+                            Background="{StaticResource SelectionGradientBrush}">
+                            <StackPanel
+                                Margin="3"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                                <Tk:RadButton
+                                    Name="_previousMonthButton"
+                                    Width="60"
+                                    Style="{StaticResource RadButtonStyle}"
+                                    Command="{Binding PreviousMonthCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="P" FontWeight="Bold" />
+                                        <TextBlock Text="revious" />
+                                    </StackPanel>
+                                </Tk:RadButton>
+                                <TextBlock
+                                    Width="200"
+                                    TextAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="White"
+                                    Text="{Binding SelectedMonthString, Mode=OneWay}" />
+                                <Tk:RadButton 
+                                    Name="_currentMonthButton"
+                                    Width="15"
+                                    ToolTip="Show this/currrent month"
+                                    Command="{Binding CurrentMonthCommand}">
+                                    <TextBlock 
+                                        Text="T"
+                                        FontWeight="Bold"/>
+                                </Tk:RadButton>
+                                <Tk:RadDatePicker
+                                    Name="_calendarButton"
+                                    DateSelectionMode="Month"
+                                    InputMode="DatePicker"
+                                    Width="15"
+                                    Focusable="False"
+                                    Margin="0,0,5,0"
+                                    ToolTip="Click to select a month"
+                                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}" />
+                                <Tk:RadButton
+                                    Name="_nextMonthButton"
+                                    Width="60"
+                                    Style="{StaticResource RadButtonStyle}"
+                                    Command="{Binding NextMonthCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="N" FontWeight="Bold" />
+                                        <TextBlock Text="ext" />
+                                    </StackPanel>
+                                </Tk:RadButton>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- RESULT COUNT -->
+                        <StackPanel
+                            Grid.Row="0"
+                            VerticalAlignment="Center"
+                            Margin="10 0 0 0"
+                            Opacity="0.5"
+                            Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter Property="FontStyle" Value="Italic" />
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="{Binding UserRegistrations.Count}"/>
+                            <TextBlock Text="found" Margin="5 0 0 0"/>
+                        </StackPanel>
+
+                        <!-- WEEKNUMBER -->
+                        <Grid Grid.Row="1"
+                              Background="{StaticResource AlternationBrushFirst}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{StaticResource UserNameCellWidth}" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <ItemsControl
+                                    Grid.Column="1"
+                                    Focusable="False"
+                                    VerticalAlignment="Center"
+                                    ItemsSource="{Binding Dates}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Style="{StaticResource ForecastWeekNumberTextBlockStyle}"
+                                                Width="{StaticResource CellTemplateWidth}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </Grid>
+
+                        <!--DATES HEADER-->
+                        <Grid Grid.Row="2"
+                              Background="{StaticResource AlternationBrushFirst}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="{StaticResource UserNameCellWidth}" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <ItemsControl
+                                x:Name="_dates"
+                                Grid.Column="1"
+                                Focusable="False"
+                                VerticalAlignment="Center"
+                                ItemsSource="{Binding Dates}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <StackPanel.Style>
+                                                <Style>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsWeekend}" Value="True">
+                                                            <Setter Property="StackPanel.Background"
+                                                                    Value="{StaticResource WeekendBrush}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding IsHoliday}" Value="True">
+                                                            <Setter Property="StackPanel.Background" Value="LightGreen" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </StackPanel.Style>
+                                            <TextBlock
+                                                Width="{StaticResource CellTemplateWidth}"
+                                                TextAlignment="Center"
+                                                Text="{Binding Date.Date.Day}" />
+
+                                            <TextBlock
+                                                Width="{StaticResource CellTemplateWidth}"
+                                                TextAlignment="Center"
+                                                FontSize="8"
+                                                Text="{Binding ShortDayName}" />
+                                            <StackPanel.ToolTip>
+                                                <TextBlock Text="{Binding Description}" />
+                                            </StackPanel.ToolTip>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Grid>
+
+                        <!-- USERREGISTRATIONS -->
+                        <ScrollViewer 
+                            Name="_resultViewScrollViewer"
+                            Grid.Row="3"
+                            VerticalScrollBarVisibility="Auto"
+                            Background="{StaticResource AlternationBrushFirst}">
+                            <Grid>
+                                <ItemsControl AlternationCount="2"
+                                              ItemsSource="{Binding UserRegistrations}"
+                                              Name="_userRegistrationsItemsControl"
+                                              Focusable="False">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Name="_grdUserLines"
+                                                  Focusable="False">
+                                                <Grid.Resources>
+                                                    <DataTemplate x:Key="StatusTypeTemplate">
+                                                        <Button Width="{StaticResource CellTemplateWidth}"
+                                                                ToolTip="{Binding Description}"
+                                                                Focusable="False"
+                                                                VerticalContentAlignment="Stretch"
+                                                                HorizontalContentAlignment="Stretch">
+                                                            <Grid>
+                                                                <Rectangle 
+                                                                        RadiusX="3"
+                                                                        RadiusY="3"
+                                                                        Width="{StaticResource CellTemplateWidth}"
+                                                                        HorizontalAlignment="Center"
+                                                                        VerticalAlignment="Stretch"
+                                                                        Height="Auto"
+                                                                        Fill="{Binding Color}"/>
+                                                                <TextBlock 
+                                                                        Text="{Binding DisplayHandler.DisplayValue}"
+                                                                        FontSize="9"
+                                                                        FontWeight="Bold"
+                                                                        TextAlignment="Center"
+                                                                        VerticalAlignment="Center"
+                                                                        HorizontalAlignment="Center"/>
+                                                            </Grid>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                    <DataTemplate x:Key="EmptyStatusTypeTemplate">
+                                                        <Grid Width="{StaticResource CellTemplateWidth}"
+                                                              Height="22"
+                                                              ToolTip="{Binding Date.Description}"
+                                                              Opacity="0.4">
+                                                            <Grid.Style>
+                                                                <Style>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Date.IsWeekend}" Value="True">
+                                                                            <Setter Property="Grid.Background" Value="{StaticResource WeekendBrush}" />
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Date.IsHoliday}" Value="True">
+                                                                            <Setter Property="Grid.Background" Value="LightGreen" />
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+                                                            <!-- Hint to user, that a status is hidden -->
+                                                            <Button Width="{StaticResource CellTemplateWidth}"
+                                                                    Opacity="0.4"
+                                                                    Visibility="{Binding DisplayHandler.ForceHide, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                                    ToolTip="{Binding ForecastType.Name}"/>
+
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </Grid.Resources>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="{StaticResource UserNameCellWidth}" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Dialog:CrossButton
+                                                            Grid.Column="0"
+                                                            Height="13"
+                                                            Margin="0,0,5,0"
+                                                            ToolTip="Remove"
+                                                            Command="{Binding DataContext.RemoveUserCommand, ElementName=_windowRoot}"
+                                                            CommandParameter="{Binding}" />
+                                                    <TextBlock Grid.Column="0" Text="{Binding UserName}" VerticalAlignment="Center" />
+                                                </StackPanel>
+
+                                                <ItemsControl Grid.Column="1" 
+                                                              ItemsSource="{Binding Forecasts}"
+                                                              Focusable="False">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <StackPanel Orientation="Horizontal" />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ContentControl Content="{Binding }" Focusable="False">
+                                                                <ContentControl.Style>
+                                                                    <Style TargetType="{x:Type ContentControl}">
+                                                                        <Setter Property="ContentTemplate" Value="{StaticResource StatusTypeTemplate}" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding Date.IsWorkDay}" Value="false">
+                                                                                <Setter Property="ContentTemplate" Value="{StaticResource EmptyStatusTypeTemplate}" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger Binding="{Binding DisplayHandler.ForceHide, Mode=OneWay}" Value="true">
+                                                                                <Setter Property="ContentTemplate" Value="{StaticResource EmptyStatusTypeTemplate}" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </ContentControl.Style>
+                                                            </ContentControl>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </Grid>
+                                            <DataTemplate.Triggers>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                                    <Setter Property="Background"
+                                                            TargetName="_grdUserLines" 
+                                                            Value="{StaticResource AlternationBrushFirst}"/>
+                                                </Trigger>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                    <Setter Property="Background"
+                                                            TargetName="_grdUserLines"
+                                                            Value="{StaticResource AlternationBrushSecond}"/>
+                                                </Trigger>
+                                            </DataTemplate.Triggers>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <!-- SPINNER -->
+                <Dialog:CircularProgressBar Grid.Row="2" 
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                            Height="120" 
+                                            Width="120" />
+            </Grid>
+            
+        </Grid>
+    </Border>
+</UserControl>

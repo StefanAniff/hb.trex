@@ -1,0 +1,37 @@
+﻿<controls:ChildWindow x:Class="Trex.Roles.Dialogs.DeleteRoleDialog.DeleteRoleDialog"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" xmlns:System="clr-namespace:System;assembly=mscorlib" Width="400" Height="147" 
+             xmlns:Resources="clr-namespace:Trex.Roles.Resources"
+                      Title="Delete role">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TrexSL.Shell;component/Resources/ChildWindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Resources:TextResources x:Key="Labels"/>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+    <controls:ChildWindow.Style>
+        <StaticResource ResourceKey="ChildWindowStyle"/>
+    </controls:ChildWindow.Style>
+
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="160*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="CancelButton" Content="{Binding DialogCancelButtonLabel, Source={StaticResource Labels}}"  Command="{Binding CancelCommand}" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="3" />
+        <Button x:Name="OKButton" Content="{Binding DialogOkButtonLabel, Source={StaticResource Labels}}" Command="{Binding DeleteCommand}"  Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="3" />
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Grid.Row="0" Height="23" HorizontalAlignment="Left"  Name="WarningTextBlock" Text="{Binding DeleteRoleWarningLabel, Source={StaticResource Labels}}" VerticalAlignment="Bottom" />
+            <TextBlock Grid.Row="0" Height="23" HorizontalAlignment="Left"  Name="RoleNametextBlock" Text="{Binding SelectedRoleName}"  VerticalAlignment="Bottom" Margin="2,0,0,0" FontWeight="Bold" />
+        </StackPanel>
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left"  Name="errorTextBlock" Text="{Binding ErrorMessage}" VerticalAlignment="Top" Foreground="Red"/>
+    </Grid>
+</controls:ChildWindow>

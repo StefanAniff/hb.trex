@@ -1,0 +1,123 @@
+BODY
+{
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0px;
+    min-height: 100%;
+    font-family: Arial;
+    font-size: 13px;
+}
+A
+{
+    color: #058b04;
+    text-decoration: none;
+}
+A:hover
+{
+    text-decoration: underline;
+}
+H2
+{
+    display: inline;
+    font-family: Verdana;
+    font-size: 18px;
+    font-weight: bold;
+}
+IMG
+{
+    border-bottom: 0px;
+    border-left: 0px;
+    margin: 0px;
+    border-top: 0px;
+    border-right: 0px;
+}
+#trexlogo
+{
+    margin-top: 39px;
+    float: left;
+}
+#slogan
+{
+    background-image: url(../Images/yourtimeisvaluable.png);
+    margin-top: 9px;
+    width: 138px;
+    background-repeat: no-repeat;
+    float: left;
+    height: 21px;
+}
+#canvas
+{
+    background-color: #ffffff;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#innerCanvas
+{
+}
+#topBannerBar
+{
+    background-image: url(../Images/headerbg.png);
+    background-repeat: repeat-x;
+    height: 132px;
+}
+#menuBar
+{
+    background-image: url(../Images/menubg.png);
+    background-repeat: repeat-x;
+    height: 41px;
+}
+#languageSelector
+{
+    margin-top: 20px;
+    float: right;
+    margin-right: 40px;
+}
+
+#messagebox
+{
+    border: solid 1px #CCCCCC;
+    background-color: #f9f9f9;
+    display: table;
+    padding: 10px;
+    margin: 2px 2px 2px 2px;
+}
+
+#infobox
+{
+    border: solid 1px #CCCCCC;
+    width: 290px;
+    background-color: #f9f9f9;
+    display: table;
+    padding: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+.errorbox
+{
+    border: solid 1px #F15F5F;
+    width: 300px;
+    background-color: #f9f9f9;
+    display: table;
+    padding: 5px;
+    margin: 0px 0px 2px 0px;
+}
+
+.innerContent
+{
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button
+{
+    border: 1px solid #71B16B;
+    height: 40px;
+    background: #C8ECBA;
+}
+
+.button:hover
+{
+    background: #9CF07B;
+}

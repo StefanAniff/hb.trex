@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="/Imports">
+      <xsd:import schemaLocation="http://localhost:60249/Service.svc?xsd=xsd0" />
+      <xsd:import schemaLocation="http://localhost:60249/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60249/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TrexSL.Web.DataContracts" />
+      <xsd:import schemaLocation="http://localhost:60249/Service.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITrexSlService_GetTimeEntriesByPeriodAndUser_InputMessage">
+    <wsdl:part name="parameters" element="GetTimeEntriesByPeriodAndUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetTimeEntriesByPeriodAndUser_OutputMessage">
+    <wsdl:part name="parameters" element="GetTimeEntriesByPeriodAndUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_SaveTimeEntry_InputMessage">
+    <wsdl:part name="parameters" element="SaveTimeEntry" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_SaveTimeEntry_OutputMessage">
+    <wsdl:part name="parameters" element="SaveTimeEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetTimeEntriesByPeriod_InputMessage">
+    <wsdl:part name="parameters" element="GetTimeEntriesByPeriod" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetTimeEntriesByPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="GetTimeEntriesByPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ChangeTaskActiveState_InputMessage">
+    <wsdl:part name="parameters" element="ChangeTaskActiveState" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ChangeTaskActiveState_OutputMessage">
+    <wsdl:part name="parameters" element="ChangeTaskActiveStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetAllTimeEntryTypes_InputMessage">
+    <wsdl:part name="parameters" element="GetAllTimeEntryTypes" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetAllTimeEntryTypes_OutputMessage">
+    <wsdl:part name="parameters" element="GetAllTimeEntryTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ValidateUser_InputMessage">
+    <wsdl:part name="parameters" element="ValidateUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ValidateUser_OutputMessage">
+    <wsdl:part name="parameters" element="ValidateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="GetUser" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_PingService_InputMessage">
+    <wsdl:part name="parameters" element="PingService" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_PingService_OutputMessage">
+    <wsdl:part name="parameters" element="PingServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUserStatistics_InputMessage">
+    <wsdl:part name="parameters" element="GetUserStatistics" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUserStatistics_OutputMessage">
+    <wsdl:part name="parameters" element="GetUserStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedCompanies_InputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedCompanies" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedCompaniesCompressed_InputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedCompaniesCompressed" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedCompaniesCompressed_OutputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedCompaniesCompressedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedProjects_InputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedProjects" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedProjects_OutputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedTasks_InputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedTasks_OutputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedTasksCompressed_InputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedTasksCompressed" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetUnsyncedTasksCompressed_OutputMessage">
+    <wsdl:part name="parameters" element="GetUnsyncedTasksCompressedResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UploadNewTasks_InputMessage">
+    <wsdl:part name="parameters" element="UploadNewTasks" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UploadNewTasks_OutputMessage">
+    <wsdl:part name="parameters" element="UploadNewTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UploadNewTimeEntries_InputMessage">
+    <wsdl:part name="parameters" element="UploadNewTimeEntries" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UploadNewTimeEntries_OutputMessage">
+    <wsdl:part name="parameters" element="UploadNewTimeEntriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UpdateUserRoles_InputMessage">
+    <wsdl:part name="parameters" element="UpdateUserRoles" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UpdateUserRoles_OutputMessage">
+    <wsdl:part name="parameters" element="UpdateUserRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_CreateRole_InputMessage">
+    <wsdl:part name="parameters" element="CreateRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_CreateRole_OutputMessage">
+    <wsdl:part name="parameters" element="CreateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_CreateRole_ExceptionInfoFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/TrexSL.Web.DataContracts" name="detail" element="q1:ExceptionInfo" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_DeleteRole_InputMessage">
+    <wsdl:part name="parameters" element="DeleteRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_DeleteRole_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_DeleteRole_ExceptionInfoFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/TrexSL.Web.DataContracts" name="detail" element="q2:ExceptionInfo" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ExistsRole_InputMessage">
+    <wsdl:part name="parameters" element="ExistsRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_ExistsRole_OutputMessage">
+    <wsdl:part name="parameters" element="ExistsRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetPermissionsForSingleRole_InputMessage">
+    <wsdl:part name="parameters" element="GetPermissionsForSingleRole" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetPermissionsForSingleRole_OutputMessage">
+    <wsdl:part name="parameters" element="GetPermissionsForSingleRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UpdatePermissions_InputMessage">
+    <wsdl:part name="parameters" element="UpdatePermissions" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_UpdatePermissions_OutputMessage">
+    <wsdl:part name="parameters" element="UpdatePermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetCompaniesByNameSearchString_InputMessage">
+    <wsdl:part name="parameters" element="GetCompaniesByNameSearchString" />
+  </wsdl:message>
+  <wsdl:message name="ITrexSlService_GetCompaniesByNameSearchString_OutputMessage">
+    <wsdl:part name="parameters" element="GetCompaniesByNameSearchStringResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITrexSlService">
+    <wsdl:operation name="GetTimeEntriesByPeriodAndUser">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetTimeEntriesByPeriodAndUser" message="ITrexSlService_GetTimeEntriesByPeriodAndUser_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetTimeEntriesByPeriodAndUserResponse" message="ITrexSlService_GetTimeEntriesByPeriodAndUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTimeEntry">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/SaveTimeEntry" message="ITrexSlService_SaveTimeEntry_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/SaveTimeEntryResponse" message="ITrexSlService_SaveTimeEntry_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeEntriesByPeriod">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetTimeEntriesByPeriod" message="ITrexSlService_GetTimeEntriesByPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetTimeEntriesByPeriodResponse" message="ITrexSlService_GetTimeEntriesByPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeTaskActiveState">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/ChangeTaskActiveState" message="ITrexSlService_ChangeTaskActiveState_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/ChangeTaskActiveStateResponse" message="ITrexSlService_ChangeTaskActiveState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTimeEntryTypes">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetAllTimeEntryTypes" message="ITrexSlService_GetAllTimeEntryTypes_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetAllTimeEntryTypesResponse" message="ITrexSlService_GetAllTimeEntryTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateUser">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/ValidateUser" message="ITrexSlService_ValidateUser_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/ValidateUserResponse" message="ITrexSlService_ValidateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUser" message="ITrexSlService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUserResponse" message="ITrexSlService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PingService">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/PingService" message="ITrexSlService_PingService_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/PingServiceResponse" message="ITrexSlService_PingService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatistics">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUserStatistics" message="ITrexSlService_GetUserStatistics_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUserStatisticsResponse" message="ITrexSlService_GetUserStatistics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedCompanies">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUnsyncedCompanies" message="ITrexSlService_GetUnsyncedCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUnsyncedCompaniesResponse" message="ITrexSlService_GetUnsyncedCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedCompaniesCompressed">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUnsyncedCompaniesCompressed" message="ITrexSlService_GetUnsyncedCompaniesCompressed_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUnsyncedCompaniesCompressedResponse" message="ITrexSlService_GetUnsyncedCompaniesCompressed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedProjects">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUnsyncedProjects" message="ITrexSlService_GetUnsyncedProjects_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUnsyncedProjectsResponse" message="ITrexSlService_GetUnsyncedProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedTasks">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUnsyncedTasks" message="ITrexSlService_GetUnsyncedTasks_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUnsyncedTasksResponse" message="ITrexSlService_GetUnsyncedTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnsyncedTasksCompressed">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetUnsyncedTasksCompressed" message="ITrexSlService_GetUnsyncedTasksCompressed_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetUnsyncedTasksCompressedResponse" message="ITrexSlService_GetUnsyncedTasksCompressed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadNewTasks">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/UploadNewTasks" message="ITrexSlService_UploadNewTasks_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/UploadNewTasksResponse" message="ITrexSlService_UploadNewTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadNewTimeEntries">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/UploadNewTimeEntries" message="ITrexSlService_UploadNewTimeEntries_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/UploadNewTimeEntriesResponse" message="ITrexSlService_UploadNewTimeEntries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/ChangePassword" message="ITrexSlService_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/ChangePasswordResponse" message="ITrexSlService_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetRoles" message="ITrexSlService_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetRolesResponse" message="ITrexSlService_GetRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserRoles">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/UpdateUserRoles" message="ITrexSlService_UpdateUserRoles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/UpdateUserRolesResponse" message="ITrexSlService_UpdateUserRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRole">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/CreateRole" message="ITrexSlService_CreateRole_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/CreateRoleResponse" message="ITrexSlService_CreateRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:ITrexSlService/CreateRoleExceptionInfoFault" name="ExceptionInfoFault" message="ITrexSlService_CreateRole_ExceptionInfoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/DeleteRole" message="ITrexSlService_DeleteRole_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/DeleteRoleResponse" message="ITrexSlService_DeleteRole_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:ITrexSlService/DeleteRoleExceptionInfoFault" name="ExceptionInfoFault" message="ITrexSlService_DeleteRole_ExceptionInfoFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistsRole">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/ExistsRole" message="ITrexSlService_ExistsRole_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/ExistsRoleResponse" message="ITrexSlService_ExistsRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionsForSingleRole">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetPermissionsForSingleRole" message="ITrexSlService_GetPermissionsForSingleRole_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetPermissionsForSingleRoleResponse" message="ITrexSlService_GetPermissionsForSingleRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePermissions">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/UpdatePermissions" message="ITrexSlService_UpdatePermissions_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/UpdatePermissionsResponse" message="ITrexSlService_UpdatePermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompaniesByNameSearchString">
+      <wsdl:input wsaw:Action="urn:ITrexSlService/GetCompaniesByNameSearchString" message="ITrexSlService_GetCompaniesByNameSearchString_InputMessage" />
+      <wsdl:output wsaw:Action="urn:ITrexSlService/GetCompaniesByNameSearchStringResponse" message="ITrexSlService_GetCompaniesByNameSearchString_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

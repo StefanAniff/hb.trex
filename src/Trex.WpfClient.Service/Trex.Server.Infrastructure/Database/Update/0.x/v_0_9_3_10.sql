@@ -1,0 +1,1 @@
+dbcc checkident (Invoices, reseed, 1540)

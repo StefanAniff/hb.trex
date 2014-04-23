@@ -1,0 +1,171 @@
+﻿<UserControl x:Class="Trex.SmartClient.Overview.DayOverviewScreen.DayOverviewScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerikControls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+             xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.DataVisualization"
+             xmlns:timeBar="clr-namespace:Telerik.Windows.Controls.TimeBar;assembly=Telerik.Windows.Controls.DataVisualization"
+             xmlns:controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+             xmlns:viewmodels="clr-namespace:Trex.SmartClient.Overview.DayOverviewScreen.Viewmodels"
+             xmlns:dayOverviewScreen="clr-namespace:Trex.SmartClient.Overview.DayOverviewScreen"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="700"
+             d:DataContext="{d:DesignInstance viewmodels:DesignDayOverviewViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ToolTipTemplate">
+            <Grid>
+                <Rectangle Margin="0" RadiusY="2" RadiusX="2" Fill="Wheat" Opacity="0.7" />
+                <StackPanel Orientation="Horizontal" Margin="8,8,8,12">
+                    <TextBlock FontFamily="Segoe UI" Text="{Binding ToolTip}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <Style TargetType="Rectangle" x:Key="FillColor">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding DataItem.IsBillable}" Value="False">
+                    <Setter Property="Fill" Value="Gray" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding DataItem.IsBillable}" Value="True">
+                    <Setter Property="Fill" Value="#FF8EC441" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <DataTemplate x:Key="ItemWithDurationTemplate">
+            <Border Height="10" Margin="0, 0, 0, 5">
+                <Rectangle Height="7" 
+                           VerticalAlignment="Center" Style="{StaticResource FillColor}">
+                </Rectangle>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Margin="50">
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                Duration="0:0:1.5"
+                                                FillBehavior="HoldEnd"
+                                                From="0.3"
+                                                To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+        <!--<Rectangle Fill="#FF040404" Stroke="Black" Margin="0" Opacity="0.5" />-->
+        <Border Margin="0" Background="White" BorderThickness="1" CornerRadius="10" Padding="2">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <telerik:RadTimeline x:Name="wi"
+                    Grid.Row="1"
+                    Margin="5"
+                    telerikControls:StyleManager.Theme="Windows8"
+                    MinHeight="200"
+                    ToolTipTemplate="{StaticResource ToolTipTemplate}"
+                    VisiblePeriodStart="{Binding VisiblePeriodStart, Mode=TwoWay}"
+                    VisiblePeriodEnd="{Binding VisiblePeriodEnd, Mode=TwoWay}"
+                    PeriodStart="{Binding StartDate, Mode=OneWay}"
+                    PeriodEnd="{Binding EndDate, Mode=TwoWay}"
+                    TimelineItemTemplate="{StaticResource ItemWithDurationTemplate}"
+                    PreviewMouseMove="RadTimeline1_OnPreviewMouseMove"
+                    VerticalAlignment="Top"
+                    StartPath="Date"
+                    DurationPath="Duration"
+                    MouseDoubleClick="RadTimeline1_OnMouseDoubleClick"
+                    GroupPath="GroupName"
+                    GroupExpandMode="None"
+                    ItemsSource="{Binding TimeEntries}"
+                    ScrollMode="ScrollAndZoom">
+                        <telerik:RadTimeline.Intervals>
+                            <timeBar:HourInterval>
+                                <timeBar:HourInterval.FormatterProvider>
+                                    <dayOverviewScreen:TrexHourFormatterProvider />
+                                </timeBar:HourInterval.FormatterProvider>
+                            </timeBar:HourInterval>
+                        </telerik:RadTimeline.Intervals>
+                    </telerik:RadTimeline>
+                    <StackPanel Grid.Row="3" Margin="5,5,0,0" Orientation="Horizontal">
+                        <TextBlock Text="Total spent: " FontSize="18" FontFamily="Segoe UI" />
+                        <TextBlock Text="{Binding TotalSpent, StringFormat=g}" FontSize="18" FontFamily="Segoe UI" />
+                    </StackPanel>
+                    <telerik:RadTimeline
+                    Grid.Row="4"
+                    Margin="5"
+                    GroupPath="GroupName"
+                    telerikControls:StyleManager.Theme="Windows8"
+                    ToolTipTemplate="{StaticResource ToolTipTemplate}"
+                    VisiblePeriodStart="{Binding VisiblePeriodStart, Mode=TwoWay}"
+                    VisiblePeriodEnd="{Binding VisiblePeriodEnd, Mode=TwoWay}"
+                    PeriodStart="{Binding StartDate, Mode=OneWay}"
+                    TimelineItemTemplate="{StaticResource ItemWithDurationTemplate}"
+                    PeriodEnd="{Binding EndDate, Mode=TwoWay}"
+                    VerticalAlignment="Top"
+                    StartPath="Date"
+                    DurationPath="Duration"
+                    GroupExpandMode="None"
+                    ItemsSource="{Binding TotalSumTimeEntry}"
+                    ScrollMode="ScrollAndZoom" LargeChange="1:0:0" SmallChange="0:1:0">
+                        <telerik:RadTimeline.Intervals>
+                            <timeBar:HourInterval>
+                                <timeBar:HourInterval.FormatterProvider>
+                                    <dayOverviewScreen:TrexHourFormatterProvider />
+                                </timeBar:HourInterval.FormatterProvider>
+                            </timeBar:HourInterval>
+                        </telerik:RadTimeline.Intervals>
+                    </telerik:RadTimeline>
+                    <Border Margin="0" BorderThickness="0,0,0,2" BorderBrush="#FFBDBDBD">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF5D5D5D" Offset="0.069" />
+                                <GradientStop Color="#FF4E4E4E" Offset="0.534" />
+                                <GradientStop Color="#FF393939" Offset="0.552" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                            <telerikControls:RadButton x:Name="PreviousDateButton"
+                                                   Height="18"
+                                                   Width="45"
+                                                   Command="{Binding PreviousDateCommand}">
+                                <TextBlock Text="Previous" VerticalAlignment="Center" FontSize="9" />
+                            </telerikControls:RadButton>
+                            <controls:RadDateTimePicker
+                                Name="_startDatePicker"
+                                SelectedDate="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                InputMode="DatePicker" Height="23"
+                                Margin="5,0,0,0" />
+                            <telerikControls:RadButton x:Name="TodayDateButton"
+                                                       ToolTip="Today"
+                                                       Height="23.6"
+                                                       Margin="0,0,5,0"
+                                                       Command="{Binding TodayCommand}">
+                                <TextBlock Text="T" VerticalAlignment="Center" FontSize="9" />
+                            </telerikControls:RadButton>
+                            <telerikControls:RadButton
+                            Height="18"
+                            Width="45"
+                            Command="{Binding NextDayCommand}">
+                                <TextBlock x:Name="NextDayButton" Text="Next" VerticalAlignment="Center" FontSize="9" />
+                            </telerikControls:RadButton>
+                        </StackPanel>
+                    </Border>
+                    <Button x:Name="DoubleClickTask" Visibility="Collapsed" Command="{Binding EditTaskCommand}" />
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

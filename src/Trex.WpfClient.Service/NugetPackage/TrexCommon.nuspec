@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+	<metadata>
+		<id>TRex.Common</id>
+		<version>1.3</version>
+		<title>[TRex] Servicestac request/reponses for TRex</title>
+		<authors>CTH@d60.dk</authors>
+		<owners>d60</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Read title</description>
+		<summary>Read title</summary>
+		<releaseNotes>Plant save or update</releaseNotes>
+		<language>en-US</language>
+		<tags>agatha</tags>
+		<dependencies>
+			<dependency id="ServiceStack.Text" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="..\Trex.Common\bin\Debug\Trex.Common.dll" target="lib\Trex.Common.dll" />
+	</files>
+</package>

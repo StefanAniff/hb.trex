@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<roles >
+	<role name="Administrator">
+		<permissions>
+			<permission name="ApplicationLoginPermission"></permission>
+			<permission name="UserAdministrationPermission"></permission>
+			<permission name="EditUserPermission"></permission>
+			<permission name="DeactivateUserPermission"></permission>
+			<permission name="TaskManagementPermission"></permission>
+			<permission name="TimeEntryTypesPermission"></permission>
+			<permission name="ReportPermission"></permission>
+			<permission name="InvoicePermission"></permission>
+			<permission name="CreateUserPermission"></permission>
+			<permission name="DeleteUserPermission"></permission>
+			<permission name="UserDeactivatePermission"></permission>
+			<permission name="EditUserPricesPermission"></permission>
+			<permission name="CreateCustomerPermission"></permission>
+			<permission name="CreateProjectPermission"></permission>
+			<permission name="CreateTaskPermission"></permission>
+			<permission name="CreateTimeEntryPermission"></permission>
+			<permission name="EditCustomerPermission"></permission>
+			<permission name="EditProjectPermission"></permission>
+			<permission name="EditTaskPermission"></permission>
+			<permission name="EditTimeEntryPermission"></permission>
+			<permission name="ChangeRolePermission"></permission>
+			<permission name="EditSelfPermission"></permission>
+		</permissions>
+	</role>		
+	<role name="Consultant">
+		<permissions>
+			<permission name="ApplicationLoginPermission"></permission>
+			<permission name="TaskManagementPermission"></permission>
+			<permission name="UserAdministrationPermission"></permission>
+			<permission name="EditSelfPermission"></permission>
+			<permission name="CreateCustomerPermission"></permission>
+			<permission name="CreateProjectPermission"></permission>
+			<permission name="CreateTaskPermission"></permission>
+			<permission name="CreateTimeEntryPermission"></permission>
+			<permission name="EditCustomerPermission"></permission>
+			<permission name="EditProjectPermission"></permission>
+			<permission name="EditTaskPermission"></permission>
+			<permission name="EditTimeEntryPermission"></permission>
+		</permissions>
+	</role>
+	<role name="External">
+		<permissions/>
+	</role>
+</roles>

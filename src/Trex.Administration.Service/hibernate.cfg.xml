@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns='urn:nhibernate-configuration-2.2' >
+	<session-factory>
+		<property name="connection.provider"> Trex.Server.Infrastructure.DynamicConnectionProvider,  Trex.Server.Infrastructure</property>
+		<property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+		<property name="connection.connection_string">Initial Catalog=trex.dk;user id=trexUser;Password=ch33seD1pper;</property>
+		<property name="show_sql">false</property>
+		<property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
+       		<property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
+		<mapping assembly="Trex.Server.Infrastructure" />
+	</session-factory>
+</hibernate-configuration>

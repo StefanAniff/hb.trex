@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Trex.SmartClient.TaskModule.Dialogs.TimeEntryPeriodControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:Trex.SmartClient.Infrastructure.Converters;assembly=Trex.SmartClient.Infrastructure"
+             xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+             xmlns:viewmodels="clr-namespace:Trex.SmartClient.TaskModule.Dialogs.Viewmodels"
+             mc:Ignorable="d"
+             Background="White"
+             d:DataContext="{d:DesignInstance viewmodels:SaveTaskDialogViewModel}">
+    <UserControl.Resources>
+        <GridLength x:Key="RowHeight">30</GridLength>
+        <converters:TimeSpanToHourStringConverter x:Key="TimeSpanToHoursConverter" />
+        <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="{DynamicResource RowHeight}" />
+            <RowDefinition Height="{DynamicResource RowHeight}" />
+            <RowDefinition Height="{DynamicResource RowHeight}" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Foreground="Black" TextWrapping="Wrap" Text="Start time" VerticalAlignment="Center" />
+        <telerik:RadDatePicker Margin="0" TabIndex="9"
+                               Grid.Row="0" Grid.Column="1" Height="26"
+                               Width="140"
+                               HorizontalAlignment="Left"
+                               SelectableDateStart="{Binding MinSelectedDatePlusDate, Mode=OneWay}"
+                               SelectedValue="{Binding SelectedDate, Mode=TwoWay}"
+                               DateSelectionMode="Day" InputMode="DateTimePicker" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Foreground="Black" TextWrapping="Wrap" Text="End time"
+                   VerticalAlignment="Center" />
+        <telerik:RadDatePicker Margin="0" TabIndex="9"
+                               Grid.Row="1"
+                               Grid.Column="1" Height="26"
+                               Width="140"
+                               HorizontalAlignment="Left"
+                               SelectedValue="{Binding EndTime, Mode=TwoWay}"
+                               DateSelectionMode="Day" InputMode="DateTimePicker" />
+        <TextBlock Foreground="Black" TextWrapping="Wrap" HorizontalAlignment="Left"
+                   Margin="0,0,5,0" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Text="Time spent" />
+        <TextBox Grid.Column="1" Grid.Row="2" Width="104" FontFamily="Segoe UI"
+                 Text="{Binding TimeSpent, Converter={StaticResource TimeSpanToStringConverter}, Mode=OneWay}"
+                 TextWrapping="Wrap"
+                 AllowDrop="False" IsEnabled="False" FontSize="20" FontWeight="Bold"
+                 TabIndex="10" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" />
+        <Slider Grid.Column="1" Grid.Row="3" TickPlacement="BottomRight"
+                Value="{Binding TimeSpent, Converter={StaticResource TimeSpanToHoursConverter},ConverterParameter=double, Mode=TwoWay}"
+                SmallChange="0.25" TickFrequency="0.25"
+                LargeChange="0.25" IsMoveToPointEnabled="False" IsSnapToTickEnabled="True" AutoToolTipPlacement="None"
+                TabIndex="12" Margin="0" VerticalAlignment="Center" />
+    </Grid>
+</UserControl>

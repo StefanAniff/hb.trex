@@ -1,0 +1,70 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="RegistrationWebsite.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/subpage.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/menu.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/submenu.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/contour.css" />
+    <link rel="stylesheet" type="text/css" href="~/Styles/defaultform.css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form2" runat="server">
+    <div class="main">
+        <div id="canvas">
+            <div id="topBannerBar">
+                <div class="innerContent">
+                    <div id="trexlogo">                        
+                            <img alt="logo" src="Images/trexlogo.png" />
+                    </div>                    
+                </div>
+            </div>
+            <div id="menuBar">
+                <div class="innerContent">
+                    <div id="slogan">
+                    </div>
+                    <div id="menuTabs">
+                        
+                        <div class="activeTab">
+                            <div class="activeTabLeft">
+                            </div>
+                            <div class="activeTabMiddle">
+                                <a title="Go to Buy T.Rex" href="http://trexsales.d60.dk/frontpage/buy-trex.aspx">Registration</a></div>
+                            <div class="activeTabRight">
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="contentBannerBg">
+                <div style="background-image: url(Images/banner_shop.png)" class="topBanner">
+                </div>
+                <div id="content">
+                    <div class="innerContent">
+                        
+                        <div id="innercontent">
+                            <div id="innerContentBorder">
+                            </div>
+                            <div id="contenttext">
+                                <div id="contour" class="buytrex ">
+                                    <fieldset class="contourFieldSet ">
+                                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

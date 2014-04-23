@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Trex.SmartClient.TaskModule.SettingsScreen.WlanBindingUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:wlanBinding="clr-namespace:Trex.SmartClient.TaskModule.SettingsScreen.WlanBinding"
+             xmlns:dialog="clr-namespace:Trex.Dialog;assembly=Trex.Dialog"
+             mc:Ignorable="d"
+             MinWidth="300"
+             Background="White"
+             d:DataContext="{d:DesignInstance wlanBinding:WlanBindingViewmodel, IsDesignTimeCreatable=True}">
+    <GroupBox Header="Wireless networks">
+        <Grid Margin="2,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="15" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock FontWeight="Bold" Text="Wireless network name:" />
+            <TextBlock FontWeight="Bold" Text="Bound to:" HorizontalAlignment="Right" />
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2" Grid.ColumnSpan="2">
+                <ItemsControl ItemsSource="{Binding WLansBoundToTimeEntryTypes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="15" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding WifiName}" >
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Connected}" Value="True">
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="FontStyle" Value="Italic" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <ComboBox Grid.Column="2"
+                                      ItemsSource="{Binding DataContext.TimeEntryTypes, 
+                                RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}, Mode=OneWay}"
+                                      DisplayMemberPath="Name" 
+                                      SelectedItem="{Binding SelectedTimeEntryType}"/>
+                            <dialog:CrossButton Grid.Column="3" Grid.Row="1"
+                                                Height="13"
+                                                Command="{Binding DataContext.DeleteBinding, 
+                                                RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                CommandParameter="{Binding WifiName}"
+                                                ToolTip="Remove binding"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </GroupBox>
+</UserControl>

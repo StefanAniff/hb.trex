@@ -1,0 +1,6 @@
+<connectionStrings>
+	<!--<add name="TimeRegConnString" providerName="System.Data.SqlClient" connectionString="Server=localhost;Database=trex_drift;Trusted_Connection=yes"/>-->
+  <add name="TrexConnectionString" providerName="System.Data.SqlClient" connectionString="Server=WIN-ATKDKGGKULE;Database=trex_drift2;Trusted_Connection=yes"/>
+	<add name="memberDB" providerName="System.Data.SqlClient" connectionString="Server=WIN-ATKDKGGKULE;Database=aspnetdb;Trusted_Connection=yes"/>
+	
+</connectionStrings>

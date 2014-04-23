@@ -1,0 +1,85 @@
+﻿<configuration>
+	<system.serviceModel>
+		<bindings>
+			<customBinding>
+        <binding name="CustomBinding_DomainService">
+          <binaryMessageEncoding/>
+          <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+        </binding>
+        <binding name="CustomBinding_FileService">
+          <binaryMessageEncoding/>
+          <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+        </binding>
+			</customBinding>
+		</bindings>
+		<client>      
+      
+      <!-- *****************************************************************
+           ***** A BINDING IS DEFINED BELOW PER BUILD CONFIGURATION.   *****
+           ***** WHICH TYPE TO USE PASSED TO SILVERLIGHT-APP AS PARAMS *****
+           ***** FROM DEFAULT.ASPX                                     ***** 
+           ***************************************************************** -->
+      
+      <!-- ******************** DEBUG ******************** -->
+      <endpoint
+        address="http://localhost:60248/service.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_DomainService"
+				contract="Model.ITrexService"
+        name="Debug_DomainServiceEndpoint"/>
+
+      <endpoint
+        address="http://localhost:60248/FileDownloadService.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_FileService"
+				contract="FileDownloadService.IFileDownloadService"
+        name="Debug_FileServiceEndpoint"/>
+
+      <!-- ******************** TEST ******************** -->
+      <endpoint
+        address="http://trexadminservicetest.azurewebsites.net/service.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_DomainService"
+				contract="Model.ITrexService"
+        name="Test_DomainServiceEndpoint"/>
+
+      <endpoint
+        address="http://trexadminservicetest.azurewebsites.net/FileDownloadService.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_FileService"
+				contract="FileDownloadService.IFileDownloadService"
+        name="Test_FileServiceEndpoint"/>
+
+      <!-- ******************** RELEASE ******************** -->
+      <endpoint
+        address="http://trexadminservice.azurewebsites.net/service.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_DomainService"
+				contract="Model.ITrexService"
+        name="Release_DomainServiceEndpoint"/>
+
+      <endpoint
+        address="http://trexadminservice.azurewebsites.net/FileDownloadService.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_FileService"
+				contract="FileDownloadService.IFileDownloadService"
+        name="Release_FileServiceEndpoint"/>
+
+      <!-- ******************** RELEASEEXTERNAL ******************** -->
+      <endpoint
+        address="http://trexcustomersadminservice.azurewebsites.net/service.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_DomainService"
+				contract="Model.ITrexService"
+        name="ReleaseExternal_DomainServiceEndpoint"/>
+
+      <endpoint
+        address="http://trexcustomersadminservice.azurewebsites.net/FileDownloadService.svc"
+        binding="customBinding"
+        bindingConfiguration="CustomBinding_FileService"
+				contract="FileDownloadService.IFileDownloadService"
+        name="ReleaseExternal_FileServiceEndpoint"/>
+
+    </client>
+	</system.serviceModel>
+</configuration>

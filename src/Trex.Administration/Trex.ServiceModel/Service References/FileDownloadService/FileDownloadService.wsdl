@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="/Imports">
+      <xsd:import schemaLocation="http://localhost:60248/FileDownloadService.svc?xsd=xsd0" />
+      <xsd:import schemaLocation="http://localhost:60248/FileDownloadService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60248/FileDownloadService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:60248/FileDownloadService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFileDownloadService_DownloadTemplateFile_InputMessage">
+    <wsdl:part name="parameters" element="DownloadTemplateFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_DownloadTemplateFile_OutputMessage">
+    <wsdl:part name="parameters" element="DownloadTemplateFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_DownloadPdfFile_InputMessage">
+    <wsdl:part name="parameters" element="DownloadPdfFile" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_DownloadPdfFile_OutputMessage">
+    <wsdl:part name="parameters" element="DownloadPdfFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_FinalizeInvoices_InputMessage">
+    <wsdl:part name="parameters" element="FinalizeInvoices" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_FinalizeInvoices_OutputMessage">
+    <wsdl:part name="parameters" element="FinalizeInvoicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_DeleteInvoiceFiles_InputMessage">
+    <wsdl:part name="parameters" element="DeleteInvoiceFiles" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_DeleteInvoiceFiles_OutputMessage">
+    <wsdl:part name="parameters" element="DeleteInvoiceFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_ValidateTemplate_InputMessage">
+    <wsdl:part name="parameters" element="ValidateTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IFileDownloadService_ValidateTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="ValidateTemplateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFileDownloadService">
+    <wsdl:operation name="DownloadTemplateFile">
+      <wsdl:input wsaw:Action="urn:IFileDownloadService/DownloadTemplateFile" message="IFileDownloadService_DownloadTemplateFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IFileDownloadService/DownloadTemplateFileResponse" message="IFileDownloadService_DownloadTemplateFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadPdfFile">
+      <wsdl:input wsaw:Action="urn:IFileDownloadService/DownloadPdfFile" message="IFileDownloadService_DownloadPdfFile_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IFileDownloadService/DownloadPdfFileResponse" message="IFileDownloadService_DownloadPdfFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FinalizeInvoices">
+      <wsdl:input wsaw:Action="urn:IFileDownloadService/FinalizeInvoices" message="IFileDownloadService_FinalizeInvoices_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IFileDownloadService/FinalizeInvoicesResponse" message="IFileDownloadService_FinalizeInvoices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInvoiceFiles">
+      <wsdl:input wsaw:Action="urn:IFileDownloadService/DeleteInvoiceFiles" message="IFileDownloadService_DeleteInvoiceFiles_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IFileDownloadService/DeleteInvoiceFilesResponse" message="IFileDownloadService_DeleteInvoiceFiles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateTemplate">
+      <wsdl:input wsaw:Action="urn:IFileDownloadService/ValidateTemplate" message="IFileDownloadService_ValidateTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="urn:IFileDownloadService/ValidateTemplateResponse" message="IFileDownloadService_ValidateTemplate_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

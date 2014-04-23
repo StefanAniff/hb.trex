@@ -1,0 +1,23 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             x:Class="TrexSL.Shell.App"
+             >
+    <Application.Resources>
+        
+    	<ResourceDictionary>
+    		<ResourceDictionary.MergedDictionaries>
+    			
+    		
+    			
+    			<ResourceDictionary Source="Resources/ChildWindowStyle.xaml"/>
+
+
+              
+            </ResourceDictionary.MergedDictionaries>
+        
+    		<Color x:Key="BorderGray">#FFC7C7C7</Color>
+        
+    	</ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

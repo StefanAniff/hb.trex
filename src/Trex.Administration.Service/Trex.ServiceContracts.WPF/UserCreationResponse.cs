@@ -1,0 +1,16 @@
+﻿using System.Runtime.Serialization;
+
+namespace Trex.ServiceContracts
+{
+    [DataContract]
+    public class UserCreationResponse:ServerResponse
+    {
+        public UserCreationResponse(string responseMessage, bool success, User user) : base(responseMessage, success)
+        {
+            User = user;
+        }
+
+        [DataMember]
+        public User User { get; set; }
+    }
+}

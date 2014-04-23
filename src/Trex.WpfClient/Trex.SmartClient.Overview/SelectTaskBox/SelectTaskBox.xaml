@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Trex.SmartClient.Overview.SelectTaskBox.SelectTaskBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dialog="clr-namespace:Trex.Dialog;assembly=Trex.Dialog"
+             xmlns:selectTask="clr-namespace:Trex.Dialog.SelectTask;assembly=Trex.Dialog"
+             xmlns:designData="clr-namespace:Trex.Dialog.SelectTask.Designdata;assembly=Trex.Dialog"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance designData:DesignSelectTaskViewModel, IsDesignTimeCreatable=True}">
+    <dialog:DialogPopup Title="Please select a task" Background="#FFFFFFFF" 
+                        BoxHeight="300" BoxWidth="400" >
+        <Grid>
+            <selectTask:SelectTaskView />
+            <!--<CheckBox Content="Billable" 
+                         Margin="10,0,0,0"
+                      VerticalAlignment="Bottom" Height="26"
+                          HorizontalAlignment="Left"
+                          Foreground="Black" 
+                      IsChecked="{Binding IsBillable, Mode=TwoWay}" />-->
+        </Grid>
+    </dialog:DialogPopup>
+</UserControl>

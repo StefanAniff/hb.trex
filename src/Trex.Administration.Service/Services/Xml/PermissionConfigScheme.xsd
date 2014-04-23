@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PermissionConfigScheme"
+    targetNamespace="http://tempuri.org/PermissionConfigScheme.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/PermissionConfigScheme.xsd"
+    xmlns:mstns="http://tempuri.org/PermissionConfigScheme.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+	<xs:element name="roles"  >
+		<xs:complexType>
+
+			<xs:sequence>
+				<xs:element name="role" minOccurs="1" maxOccurs="unbounded" >
+					<xs:complexType>
+						
+						<xs:sequence>
+							<xs:element name="permissions" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="permission" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="name" ></xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+						</xs:sequence>
+						<xs:attribute name="name">
+						</xs:attribute>
+					</xs:complexType>
+					
+				
+				</xs:element>
+				
+			</xs:sequence>
+		</xs:complexType>
+	
+		
+	</xs:element>
+	
+	
+</xs:schema>

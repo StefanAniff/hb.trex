@@ -1,0 +1,2 @@
+﻿CREATE USER [cah] WITHOUT LOGIN;
+

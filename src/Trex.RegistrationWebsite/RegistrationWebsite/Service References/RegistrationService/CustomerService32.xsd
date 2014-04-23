@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://127.0.0.1:60248/CustomerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="UserCreationResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServerResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserCreationResponse" nillable="true" type="tns:UserCreationResponse" />
+  <xs:complexType name="ServerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Response" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerResponse" nillable="true" type="tns:ServerResponse" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Permissions" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Projects" nillable="true" type="tns:TrackableCollectionOfProjecttqIfX_SpB" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Roles" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="UserCustomerInfo" nillable="true" type="tns:TrackableCollectionOfUserCustomerInfotqIfX_SpB" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserTimeEntryStats" nillable="true" type="tns:UserTimeEntryStat" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ObjectChangeTracker">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExtendedProperties" nillable="true" type="tns:ExtendedPropertiesDictionary" />
+      <xs:element minOccurs="0" name="ObjectsAddedToCollectionProperties" nillable="true" type="tns:ObjectsAddedToCollectionProperties" />
+      <xs:element minOccurs="0" name="ObjectsRemovedFromCollectionProperties" nillable="true" type="tns:ObjectsRemovedFromCollectionProperties" />
+      <xs:element minOccurs="0" name="OriginalValues" nillable="true" type="tns:OriginalValuesDictionary" />
+      <xs:element minOccurs="0" name="State" type="tns:ObjectState" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="ObjectChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+  <xs:complexType name="ExtendedPropertiesDictionary">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExtendedProperties">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Name" nillable="true" type="xs:string" />
+            <xs:element name="ExtendedProperty" nillable="true" type="xs:anyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExtendedPropertiesDictionary" nillable="true" type="tns:ExtendedPropertiesDictionary" />
+  <xs:complexType name="ObjectsAddedToCollectionProperties">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddedObjectsForProperty">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CollectionPropertyName" nillable="true" type="xs:string" />
+            <xs:element name="AddedObjects" nillable="true" type="tns:ObjectList" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectsAddedToCollectionProperties" nillable="true" type="tns:ObjectsAddedToCollectionProperties" />
+  <xs:complexType name="ObjectList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ObjectValue" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectList" nillable="true" type="tns:ObjectList" />
+  <xs:complexType name="ObjectsRemovedFromCollectionProperties">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeletedObjectsForProperty">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CollectionPropertyName" nillable="true" type="xs:string" />
+            <xs:element name="DeletedObjects" nillable="true" type="tns:ObjectList" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ObjectsRemovedFromCollectionProperties" nillable="true" type="tns:ObjectsRemovedFromCollectionProperties" />
+  <xs:complexType name="OriginalValuesDictionary">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OriginalValues">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Name" nillable="true" type="xs:string" />
+            <xs:element name="OriginalValue" nillable="true" type="xs:anyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OriginalValuesDictionary" nillable="true" type="tns:OriginalValuesDictionary" />
+  <xs:simpleType name="ObjectState">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Unchanged" />
+          <xs:enumeration value="Added" />
+          <xs:enumeration value="Modified" />
+          <xs:enumeration value="Deleted" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="ObjectState" nillable="true" type="tns:ObjectState" />
+  <xs:complexType name="TrackableCollectionOfProjecttqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Project" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfProjecttqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfProjecttqIfX_SpB" />
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="ChangedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      <xs:element minOccurs="0" name="FixedPrice" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="FixedPriceProject" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEstimatesEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PONumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="ProjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tasks" nillable="true" type="tns:TrackableCollectionOfTasktqIfX_SpB" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:TrackableCollectionOfUsertqIfX_SpB" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Project" nillable="true" type="tns:Project" />
+  <xs:complexType name="Customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="ChangedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ChangedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InheritsTimeEntryTypes" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PaymentTermsIncludeCurrentMonth" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PaymentTermsNumberOfDays" type="xs:int" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Projects" nillable="true" type="tns:TrackableCollectionOfProjecttqIfX_SpB" />
+      <xs:element minOccurs="0" name="StreetAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tags" nillable="true" type="tns:TrackableCollectionOfTagtqIfX_SpB" />
+      <xs:element minOccurs="0" name="TimeEntryTypes" nillable="true" type="tns:TrackableCollectionOfTimeEntryTypetqIfX_SpB" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Customer" nillable="true" type="tns:Customer" />
+  <xs:complexType name="TrackableCollectionOfTagtqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Tag" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tag" nillable="true" type="tns:Tag" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfTagtqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfTagtqIfX_SpB" />
+  <xs:complexType name="Tag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagID" type="xs:int" />
+      <xs:element minOccurs="0" name="TagText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tasks" nillable="true" type="tns:TrackableCollectionOfTasktqIfX_SpB" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:complexType name="TrackableCollectionOfTasktqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Task" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Task" nillable="true" type="tns:Task" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfTasktqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfTasktqIfX_SpB" />
+  <xs:complexType name="Task">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BestCaseEstimate" type="xs:double" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="ChangedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ChangedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModifyDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ParentID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="tns:Project" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="RealisticEstimate" type="xs:double" />
+      <xs:element minOccurs="0" name="Tag" nillable="true" type="tns:Tag" />
+      <xs:element minOccurs="0" name="TagID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TaskID" type="xs:int" />
+      <xs:element minOccurs="0" name="TaskName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeEntries" nillable="true" type="tns:TrackableCollectionOfTimeEntrytqIfX_SpB" />
+      <xs:element minOccurs="0" name="TimeEstimated" type="xs:double" />
+      <xs:element minOccurs="0" name="TimeLeft" type="xs:double" />
+      <xs:element minOccurs="0" name="WorstCaseEstimate" type="xs:double" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Task" nillable="true" type="tns:Task" />
+  <xs:complexType name="TrackableCollectionOfTimeEntrytqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TimeEntry" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeEntry" nillable="true" type="tns:TimeEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfTimeEntrytqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfTimeEntrytqIfX_SpB" />
+  <xs:complexType name="TimeEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Billable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BillableTime" type="xs:double" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="ChangedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ClientSourceId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByUser" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Invoice" nillable="true" type="tns:Invoice" />
+      <xs:element minOccurs="0" name="InvoiceId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PauseTime" type="xs:double" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Task" nillable="true" type="tns:Task" />
+      <xs:element minOccurs="0" name="TaskID" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeEntryID" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeEntryType" nillable="true" type="tns:TimeEntryType" />
+      <xs:element minOccurs="0" name="TimeEntryTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeSpent" type="xs:double" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="TimeEntry" nillable="true" type="tns:TimeEntry" />
+  <xs:complexType name="Invoice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Attention" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Closed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" type="xs:int" />
+      <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+      <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DueDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FooterText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="InvoiceDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InvoiceLines" nillable="true" type="tns:TrackableCollectionOfInvoiceLinetqIfX_SpB" />
+      <xs:element minOccurs="0" name="Regarding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StreetAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeEntries" nillable="true" type="tns:TrackableCollectionOfTimeEntrytqIfX_SpB" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="VAT" type="xs:double" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Invoice" nillable="true" type="tns:Invoice" />
+  <xs:complexType name="TrackableCollectionOfInvoiceLinetqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="InvoiceLine" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InvoiceLine" nillable="true" type="tns:InvoiceLine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfInvoiceLinetqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfInvoiceLinetqIfX_SpB" />
+  <xs:complexType name="InvoiceLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Invoice" nillable="true" type="tns:Invoice" />
+      <xs:element minOccurs="0" name="InvoiceID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsExpense" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PricePrUnit" type="xs:double" />
+      <xs:element minOccurs="0" name="SortIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitType" type="xs:int" />
+      <xs:element minOccurs="0" name="Units" type="xs:double" />
+      <xs:element minOccurs="0" name="VatPercentage" type="xs:double" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="InvoiceLine" nillable="true" type="tns:InvoiceLine" />
+  <xs:complexType name="UserCustomerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="UserCustomerInfo" nillable="true" type="tns:UserCustomerInfo" />
+  <xs:complexType name="UserTimeEntryStat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="NumOfTimeEntries" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalBillable" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalTimeSpent" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="UserTimeEntryStat" nillable="true" type="tns:UserTimeEntryStat" />
+  <xs:complexType name="TimeEntryType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeTracker" nillable="true" type="tns:ObjectChangeTracker" />
+      <xs:element minOccurs="0" name="Customer" nillable="true" type="tns:Customer" />
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsBillableByDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeEntries" nillable="true" type="tns:TrackableCollectionOfTimeEntrytqIfX_SpB" />
+      <xs:element minOccurs="0" name="TimeEntryTypeId" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="TimeEntryType" nillable="true" type="tns:TimeEntryType" />
+  <xs:complexType name="TrackableCollectionOfTimeEntryTypetqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TimeEntryType" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeEntryType" nillable="true" type="tns:TimeEntryType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfTimeEntryTypetqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfTimeEntryTypetqIfX_SpB" />
+  <xs:complexType name="TrackableCollectionOfUsertqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="User" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfUsertqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfUsertqIfX_SpB" />
+  <xs:complexType name="TrackableCollectionOfUserCustomerInfotqIfX_SpB">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="TrackableCollectionOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UserCustomerInfo" Namespace="http://schemas.datacontract.org/2004/07/Trex.ServiceContracts" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserCustomerInfo" nillable="true" type="tns:UserCustomerInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrackableCollectionOfUserCustomerInfotqIfX_SpB" nillable="true" type="tns:TrackableCollectionOfUserCustomerInfotqIfX_SpB" />
+</xs:schema>

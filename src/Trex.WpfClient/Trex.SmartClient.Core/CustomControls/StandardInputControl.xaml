@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Trex.SmartClient.Core.CustomControls.StandardInputControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="clr-namespace:Trex.SmartClient.Core.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300">
+    <Grid>
+        <!--<Grid.ColumnDefinitions >
+            <ColumnDefinition x:Name="Column1" SharedSizeGroup="FirstColumn" Style="{StaticResource USC_StandardUserControlColumn1}" />
+            <ColumnDefinition x:Name="Column2" SharedSizeGroup="SecondColumn" Style="{StaticResource USC_StandardUserControlColumn2}" />
+            <ColumnDefinition x:Name="Column3" SharedSizeGroup="ThirdColumn" Style="{StaticResource USC_StandardUserControlColumn3}" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  x:Name="Row1" SharedSizeGroup="FirstRow" Height="Auto"  />
+        </Grid.RowDefinitions>
+
+        <DockPanel x:Name="DisplayFieldStackPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Label x:Name="DisplayField" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </DockPanel>
+        <Grid Grid.Column="1" x:Name="EditFieldStackPanel" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition x:Name="LocalColumnContent" Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <c:InfoTextBox x:Name="EditField" MaxLength="255" />
+            <ContentControl Grid.Column="1" x:Name="LocalContentField" IsTabStop="False" VerticalAlignment="Center"/>
+
+        </Grid>
+        <Image Margin="2,0,0,0" ToolTip="Klik på dette ikon for at få hjælp til datafeltet. Anvend også &lt;F1&gt; eller &lt;F2&gt; for hjælp" x:Name="HelpIcon"  
+			   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Source="pack://siteoforigin:,,,/Resources/images/question.ico" Width="15" Height="15" />-->
+    </Grid>
+</UserControl>

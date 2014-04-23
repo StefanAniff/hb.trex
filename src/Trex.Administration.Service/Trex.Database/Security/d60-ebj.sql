@@ -1,0 +1,2 @@
+﻿CREATE USER [d60-ebj] WITHOUT LOGIN;
+

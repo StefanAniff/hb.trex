@@ -1,0 +1,2 @@
+﻿CREATE USER [trex] WITHOUT LOGIN;
+

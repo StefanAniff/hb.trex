@@ -1,0 +1,42 @@
+﻿
+#boxDiv
+{
+clear:both;
+   
+}
+
+#taskBox
+{
+    border: solid 1px #b5c7de;
+    width: 400px;
+    
+    padding: 10px 10px 10px 10px;
+    float:left;
+    margin-right: 20px;
+}
+
+#ProjectBox
+{
+    float: left;
+    border: solid 1px #b5c7de;
+    width: 200px;
+    
+    padding: 10px 10px 10px 10px;
+    margin-right: 20px;
+}
+
+#rightBox
+{
+    float: left;
+    border: solid 1px #b5c7de;
+    width: 450px;
+    
+    padding: 10px 10px 10px 10px;
+    
+}
+
+#filterTreeDiv
+{
+    height:150px;
+    overflow:auto;
+}

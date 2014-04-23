@@ -1,0 +1,41 @@
+﻿#invoiceGridDiv
+{
+    float: left;
+    width: 50%;
+}
+#createInvoiceDiv
+{
+    float: left;
+    margin-left: 100px;
+}
+#multiPage
+{
+    margin-top: 20px;
+}
+
+/*#createNewInvoicePanel
+{
+    float:left;
+    width:50%;
+}*/
+
+#timeEntryGrid
+{
+    height:400px;
+    overflow:auto;
+}
+
+#timeEntryGrid a
+{
+    color:White;
+}
+
+#nextPanel
+{
+    clear: both;
+}
+
+#chooseCustomerDropDown
+{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,51 @@
+UC 1 - Ændring af duedate
+Lav et vindue i Edit-vinduet, hvor ny duedate kan indtastes.
+
+UC 2 - Datofilter
+Lav et filter, hvor firmaer der skal faktureres i tidsperioden bliver tilbage
+
+UC 3 - Kladde
+Åbner et nyt vindue til approvel, edit og deny af valgte firmaer
+
+UC 3.1 - Multi Select
+Der skal kunne vælges flere firmaer til fakturering
+
+UC 3.2 - Approve
+Gemmer fakturaer i database efter en firmasyntax el.
+Valgmulighed om digital (email), papir eller begge dele
+- Digital: Valgmulighed for flere attentions - sender email(s)
+- Papir: Valgmulighed for flere attentions - print ud
+- Begge: Kombinerering af de to overstående
+... Skal lige tænkes igennem
+
+UC 3.3 - Edit
+Giver mulighed for at ændre i faktura
+- Ændre timeløn
+- Ændre timer
+- Tilføje nye timer (note skal påføres her)
+- Gem / update knap
+- Tilføje attentions
+
+UC 3.3.1 - Noter
+Mulighed for at tilføje noter til enkelte fakturaer
+- Tilføj note
+- Fjern note
+- Vis note
+- Tilføj til faktura
+
+
+UC 3.4 - Cancel
+Retur til menu
+
+UC 4 - Attention nummer
+Hvert projekt d60 laver får tildelt en unik kode
+
+UC 5 - Tilføj konkter på firmaer
+Mulighed for at tilføje ekstra attentants til projekt ved liste over hver kundes kontakter
+
+UC 6 - Design af template
+Sæt bookmarks ind i template
+
+UC 7 - Tilføj egen template
+Mulighed for at tilføje egen template, som kræver brugermanual.
+

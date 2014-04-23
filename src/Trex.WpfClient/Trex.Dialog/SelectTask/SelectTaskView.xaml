@@ -1,0 +1,127 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:selectTask="clr-namespace:Trex.Dialog.SelectTask"
+    xmlns:designData="clr-namespace:Trex.Dialog.SelectTask.Designdata"
+    xmlns:dialog="clr-namespace:Trex.Dialog"
+    xmlns:selectors="clr-namespace:Trex.Dialog.SelectTask.Selectors"
+    xmlns:converters="clr-namespace:Trex.SmartClient.Infrastructure.Converters;assembly=Trex.SmartClient.Infrastructure"
+    x:Class="Trex.Dialog.SelectTask.SelectTaskView"
+    d:DataContext="{d:DesignInstance designData:DesignSelectTaskViewModel, IsDesignTimeCreatable=True}"
+    mc:Ignorable="d" d:DesignWidth="383.553" d:DesignHeight="309">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Trex.Dialog;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:BooleanToVisibiltyConverter x:Key="InvertedBoolToVisibilityConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.144*" />
+            <RowDefinition Height="0.856*" />
+        </Grid.RowDefinitions>
+        <selectTask:CreateNewTaskControl Grid.ColumnSpan="2" Grid.Row="1" Margin="10"
+                                         Visibility="{Binding IsInNewTaskMode, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <ToggleButton Height="20" IsChecked="{Binding ShowFavorites}"
+                          Width="20"
+                          Margin="5,0,0,0"
+                          HorizontalAlignment="Center"
+                          KeyboardNavigation.IsTabStop="False"
+                          VerticalAlignment="Center">
+                <ToggleButton.Template>
+                    <ControlTemplate>
+                        <Border
+                            BorderBrush="#FF4ED10F">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FF8FE267" Offset="0"/>
+                                    <GradientStop Color="#FF71DA3E" Offset="0.5"/>
+                                    <GradientStop Color="#FF4ED10F" Offset="0.5"/>
+                                    <GradientStop Color="#FF4ED10F" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Path HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  KeyboardNavigation.IsTabStop="False"
+                                  Data="M 9,0 L 7,6 L 0,6 L 6,11 L 4,17 L 9,12 L 14,17 L 12,11 L 18,6 L 11,6 L 9,0">
+                                <Path.LayoutTransform>
+                                    <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                                </Path.LayoutTransform>
+                            </Path>
+                        </Border>
+                    </ControlTemplate>
+                </ToggleButton.Template>
+                <ToggleButton.Resources>
+                    <Style TargetType="Path">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ShowFavorites}" Value="True">
+                                <Setter Property="Fill" Value="Yellow" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ShowFavorites}" Value="False">
+                                <Setter Property="Fill" Value="White" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Resources>
+            </ToggleButton>
+            <TextBox x:Name="TxtSearchBox" Text="{Binding SearchString, UpdateSourceTrigger=Explicit, Mode=TwoWay}"
+                     TextWrapping="Wrap" Margin="5,0" Height="30" VerticalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     FontSize="16" FontFamily="Arial" FontWeight="Bold" TabIndex="1" Grid.Column="1" />
+            <Button Grid.Column="2" HorizontalAlignment="Left" Margin="0,0,20,0"
+                    Height="26" Padding="5"
+                    Content="{Binding ModeSwitchText,Mode=OneWay}"
+                    TabIndex="4" Command="{Binding SwitchModeCommand}"
+                    Visibility="{Binding CanCreateTask, Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}" />
+        </Grid>
+        <Grid Grid.ColumnSpan="2" Grid.Row="1"
+              Margin="0,0,0,4.55" x:Name="ExistingTaskGrid"
+              Visibility="{Binding IsInExistingTaskMode, Converter={StaticResource BoolToVisibilityConverter}}"
+              Background="#FFD8D8D8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.869*" />
+                <RowDefinition Height="0.131*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.787*" />
+                <ColumnDefinition Width="0.213*" />
+            </Grid.ColumnDefinitions>
+            <selectors:TreeSelector Grid.ColumnSpan="2" x:Name="TreeSelector"
+                                    Visibility="{Binding ShowTreeviewSelector, Converter={StaticResource BoolToVisibilityConverter}}" />
+            <selectors:ListBoxSelector Grid.ColumnSpan="2" x:Name="ListSelector"
+                                       Visibility="{Binding ShowTreeviewSelector, Converter={StaticResource InvertedBoolToVisibilityConverter}, ConverterParameter=1}" />
+
+            <dialog:CircularProgressBar IsHitTestVisible="False" Grid.ColumnSpan="2"
+                                        Height="40"
+                                        Width="40"
+                                        Visibility="{Binding IsSearching,Converter={StaticResource BoolToVisibilityConverter} }" />
+            <StackPanel
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+
+                <Button Grid.Row="1" Margin="0" Content="Cancel" Height="26" TabIndex="5"
+                        Visibility="{Binding CanCancel, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl },Converter={StaticResource BoolToVisibilityConverter}}"
+                        Width="75" Command="{Binding CancelCommand}" />
+                <Button x:Name="SelectButton" Grid.Column="0"
+                        Margin="10,0,5,0"
+                        Width="75"
+                        Content="Select"
+                        Height="26" Command="{Binding SelectCommand}"
+                        CommandParameter="{Binding}" TabIndex="3" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

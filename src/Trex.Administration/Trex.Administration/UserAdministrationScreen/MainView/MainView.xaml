@@ -1,0 +1,70 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"  xmlns:Controls="clr-namespace:Trex.Infrastructure.Controls;assembly=Trex.Infrastructure" xmlns:Converters="clr-namespace:Trex.Infrastructure.Converters;assembly=Trex.Infrastructure"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    x:Class="Trex.Administration.UserAdministrationScreen.MainView.MainView"
+    mc:Ignorable="d" d:DesignWidth="628" d:DesignHeight="399">
+
+
+    <UserControl.Resources>
+        <Converters:BooleanToVisibiltyConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="btnCreate" Margin="0,0,10,0" Command="{Binding CreateCommand}" Content="Create new user" Width="120" Controls:PermissionControl.RequiredVisibilityPermission="CreateUserPermission"/>
+            <Button Content="Edit user" Width="120"  Margin="0,0,10,0" Command="{Binding EditCommand}"></Button>
+            <Button Content="Edit rates" Width="120"  Margin="0,0,10,0" Command="{Binding EditPricesCommand}" Controls:PermissionControl.RequiredVisibilityPermission="EditUserPricesPermission"></Button>
+            <Button Content="Delete user" Width="120"  Margin="0,0,10,0" Command="{Binding DeleteUserCommand}" Controls:PermissionControl.RequiredVisibilityPermission="DeleteUserPermission"></Button>
+            
+        </StackPanel>
+
+        <telerik:RadGridView ItemsSource="{Binding Users,Mode=OneWay}" AutoGenerateColumns="False" Grid.Row="1" SelectedItem="{Binding SelectedUser,Mode=TwoWay}" ShowGroupPanel="False" x:Name="grdUsers" Margin="0" ColumnWidth="Auto" >
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Header="Name" DataMemberBinding="{Binding Name,Mode=TwoWay}"  ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="UserName" DataMemberBinding="{Binding UserName}" IsReadOnly="True"></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Email" DataMemberBinding="{Binding Email,Mode=TwoWay}" ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Default rate" DataMemberBinding="{Binding Price,Mode=TwoWay}" ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Roles" DataMemberBinding="{Binding Roles,Mode=TwoWay}" ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Department" DataMemberBinding="{Binding Department,Mode=TwoWay}" ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Location" DataMemberBinding="{Binding Location,Mode=TwoWay}" ></telerik:GridViewDataColumn >
+                
+
+                <telerik:GridViewDataColumn  Header="TimeEntries" DataMemberBinding="{Binding TimeEntries,Mode=OneWay}" IsReadOnly="True"  ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Total time" DataMemberBinding="{Binding TotalTime,Mode=OneWay}" IsReadOnly="True" DataFormatString="N2" ></telerik:GridViewDataColumn >
+                <telerik:GridViewDataColumn  Header="Total billable time" DataMemberBinding="{Binding TotalBillableTime,Mode=OneWay}" IsReadOnly="True" DataFormatString="N2"></telerik:GridViewDataColumn >
+
+                <!--<data:DataGridTemplateColumn Header="Edit prices">
+                    <data:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit prices" Commands:Click.Command="{Binding EditPricesCommand}" Controls:PermissionControl.RequiredVisibilityPermission="EditUserPricesPermission"></Button>
+                        </DataTemplate>
+                    </data:DataGridTemplateColumn.CellTemplate>
+
+                </data:DataGridTemplateColumn>
+                <data:DataGridTemplateColumn >
+                    <data:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Edit" Commands:Click.Command="{Binding EditCommand}" Controls:PermissionControl.RequiredVisibilityPermission="EditUserPermission" Visibility="{Binding CanEdit,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}" ></Button>
+                                <Button Content="Delete" Commands:Click.Command="{Binding DeleteCommand}" Margin="5,0,0,0" Controls:PermissionControl.RequiredVisibilityPermission="DeleteUserPermission" ></Button>
+                                <Button Content="{Binding ActivationButtonText,Mode=OneWay}" Commands:Click.Command="{Binding ToggleActivationCommand}" Margin="5,0,0,0" Controls:PermissionControl.RequiredVisibilityPermission="UserDeactivatePermission"></Button>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </data:DataGridTemplateColumn.CellTemplate>
+
+                </data:DataGridTemplateColumn>-->
+            </telerik:RadGridView.Columns>
+
+        </telerik:RadGridView>
+        <CheckBox Grid.Row="2" Content="Show inactive users" IsChecked="{Binding ShowInactive,Mode=TwoWay}" ></CheckBox>
+
+    </Grid>
+</UserControl>

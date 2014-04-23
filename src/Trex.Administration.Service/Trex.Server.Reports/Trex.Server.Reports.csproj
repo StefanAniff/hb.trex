@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79D79866-E820-4217-8B79-0D6F030772EE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.Server.Reports</RootNamespace>
+    <AssemblyName>Trex.Server.Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NHibernate">
+      <HintPath>..\Assemblies\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\Assemblies\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=4.0.10.423, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+      <HintPath>C:\Program Files (x86)\Telerik\Reporting Q1 2010\bin\Telerik.Reporting.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BooleanSourceObject.cs" />
+    <Compile Include="CustomersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerStatus.Designer.cs">
+      <DependentUpon>CustomerStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralSpecificationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralSpecificationDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="StatusReportWithEstimates.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StatusReportWithEstimates.Designer.cs">
+      <DependentUpon>StatusReportWithEstimates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskSpecification.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TaskSpecification.Designer.cs">
+      <DependentUpon>TaskSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerStatusDataSet.cs">
+      <DependentUpon>CustomerStatusDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerStatusDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerStatusDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceSpecDataSet.cs">
+      <DependentUpon>InvoiceSpecDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InvoiceSpecDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvoiceSpecDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceSpecification.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InvoiceSpecification.Designer.cs">
+      <DependentUpon>InvoiceSpecification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trex.Server.Core\Trex.Server.Core.csproj">
+      <Project>{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}</Project>
+      <Name>Trex.Server.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.Server.Infrastructure\Trex.Server.Infrastructure.csproj">
+      <Project>{9E973655-6628-4A5D-AC11-555C0BE21402}</Project>
+      <Name>Trex.Server.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CustomersDataSet.xsc">
+      <DependentUpon>CustomersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CustomersDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CustomersDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CustomersDataSet.xss">
+      <DependentUpon>CustomersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerStatusDataSet.xsc">
+      <DependentUpon>CustomerStatusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CustomerStatusDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CustomerStatusDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CustomerStatusDataSet.xss">
+      <DependentUpon>CustomerStatusDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="InvoiceSpecDataSet.xsc">
+      <DependentUpon>InvoiceSpecDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="InvoiceSpecDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InvoiceSpecDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="InvoiceSpecDataSet.xss">
+      <DependentUpon>InvoiceSpecDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GeneralSpecificationDataSet.xsc">
+      <DependentUpon>GeneralSpecificationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GeneralSpecificationDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GeneralSpecificationDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GeneralSpecificationDataSet.xss">
+      <DependentUpon>GeneralSpecificationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomerStatus.resx">
+      <DependentUpon>CustomerStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusReportWithEstimates.resx">
+      <DependentUpon>StatusReportWithEstimates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskSpecification.resx">
+      <DependentUpon>TaskSpecification.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceSpecification.resx">
+      <DependentUpon>InvoiceSpecification.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

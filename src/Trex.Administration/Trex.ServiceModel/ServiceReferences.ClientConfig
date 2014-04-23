@@ -1,0 +1,32 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="IncreasedTimeout" sendTimeout="02:00:00" />
+            </basicHttpBinding>
+            <customBinding>
+                <binding name="CustomBinding_ITrexService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_IFileDownloadService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+                <binding name="CustomBinding_ITrexService1">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="address" binding="customBinding" bindingConfiguration="CustomBinding_IFileDownloadService"
+                contract="FileDownloadService.IFileDownloadService" name="CustomBinding_IFileDownloadService" />
+            <endpoint address="address" binding="customBinding" bindingConfiguration="CustomBinding_ITrexService"
+                contract="Model.ITrexService" name="CustomBinding_ITrexService" />
+            <endpoint address="http://localhost:60248/Service.svc" binding="customBinding"
+                bindingConfiguration="CustomBinding_ITrexService1" contract="Model.ITrexService"
+                name="CustomBinding_ITrexService1" />
+        </client>
+    </system.serviceModel>
+</configuration>

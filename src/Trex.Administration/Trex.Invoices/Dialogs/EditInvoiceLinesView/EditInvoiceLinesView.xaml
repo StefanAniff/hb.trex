@@ -1,0 +1,121 @@
+﻿<controls:ChildWindow xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                      x:Class="Trex.Invoices.Dialogs.EditInvoiceLinesView.EditInvoiceLinesView"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           Width="1050" Height="710" 
+           Title="Invoice lines" 
+           xmlns:cal="clr-namespace:Microsoft.Practices.Composite.Presentation.Commands;assembly=Microsoft.Practices.Composite.Presentation">
+
+    <controls:ChildWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TrexSL.Shell;component/Resources/ChildWindowStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:ChildWindow.Resources>
+
+    <controls:ChildWindow.Style>
+        <StaticResource ResourceKey="ChildWindowStyle"/>
+    </controls:ChildWindow.Style>
+
+
+    <Grid x:Name="LayoutRoot" Margin="2">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <Button Content="Apply"  Height="23" Name="button1" Command="{Binding Path=ApplyChangesCommand}" Width="115" Margin="0,0,10,0" />
+            <Button x:Name="OKButton" Content="Save &amp; Close" Command="{Binding Path=SaveAndCloseCommand}"  Height="23" HorizontalAlignment="Right"  Width="115" Grid.Row="1" Margin="0,0,10,0"/>
+            <Button Content="Cancel"  Height="23"  Command="{Binding Path=CancelChangesCommand}" Width="115" Margin="0,0,10,0"/>
+        </StackPanel>
+       
+        <controls:TabControl Name="tabControl1">
+            <controls:TabItem Header="Invoice lines" Name="tabItem1">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                            <Button Content="Add new" Margin="5" Height="23" Command="{Binding Path=CreateNewInvoiceLine}" Name="button3" Width="70" />
+                            <Button Content="Delete" Margin="5,5,0,5" Height="23" Command="{Binding Path=DeleteInvoiceLine}" Name="button2" Width="70" />
+                        </StackPanel>
+
+                   
+
+                        <telerik:RadGridView 
+                            x:Name="InvoiceLinesGrid"
+                            ShowGroupPanel="False"
+                            ItemsSource="{Binding InvoiceLines}"
+                            SelectedItem="{Binding SelectedInvoiceLine, Mode=TwoWay}"
+                            RowIndicatorVisibility="Collapsed"
+                            AutoGenerateColumns="False"
+                            DataLoadMode="Asynchronous" IsReadOnly="False" ShowColumnFooters="True"  >
+
+                            <telerik:RadGridView.Columns>
+
+                                <telerik:GridViewDataColumn Header="Units" DataMemberBinding="{Binding Units}" Width="*" />
+                                <telerik:GridViewDataColumn Header="Unit" DataMemberBinding="{Binding Unit}" Width="*" />
+                                <telerik:GridViewDataColumn Header="Price" DataMemberBinding="{Binding Price}" Width="*" />
+                                <telerik:GridViewDataColumn Header="VAT" DataMemberBinding="{Binding VatAmount}" Width="*" />
+                                <telerik:GridViewDataColumn Header="Is Expense" DataMemberBinding="{Binding IsExpense,Mode=TwoWay}" Width="*" />
+                                <telerik:GridViewDataColumn Header="Description" DataMemberBinding="{Binding Description,Mode=TwoWay}" Width="*" />
+                                <telerik:GridViewDataColumn Header="Total" DataMemberBinding="{Binding Total}" IsReadOnly="True" Width="*" >
+
+                                    <telerik:GridViewDataColumn.AggregateFunctions>
+                                        <telerik:SumFunction />
+                                    </telerik:GridViewDataColumn.AggregateFunctions>
+
+                                </telerik:GridViewDataColumn>
+
+                            </telerik:RadGridView.Columns>
+
+                        </telerik:RadGridView>
+
+                    </StackPanel>
+                </Grid>
+
+
+            </controls:TabItem>
+
+
+            <controls:TabItem Header="Time entries" Name="tabItem2">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                           
+                            <CheckBox Content="Select/Deselect all" Margin="5" Height="23" IsChecked="{Binding SelectAll,Mode=TwoWay}"  />
+                        </StackPanel>
+
+                        <telerik:RadGridView 
+                            x:Name="TimeEntriesGrid"
+                            ShowGroupPanel="False"
+                            ItemsSource="{Binding TimeEntries, Mode=TwoWay}"
+                            RowIndicatorVisibility="Collapsed"
+                            AutoGenerateColumns="False"
+                            DataLoadMode="Asynchronous">
+
+                            <telerik:RadGridView.Columns>
+
+                                <telerik:GridViewDataColumn Header="StartTime" DataMemberBinding="{Binding StartTime}" DataFormatString="d" Width="*" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn Header="Project" DataMemberBinding="{Binding ProjectName}" Width="*" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn Header="Task" DataMemberBinding="{Binding TaskName}" Width="*" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn Header="Description" DataMemberBinding="{Binding Description}" Width="*" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn Header="Billable time" DataMemberBinding="{Binding BillableTime}" DataFormatString="N2" Width="*" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn Header="Price per hour" DataMemberBinding="{Binding Price,Mode=TwoWay}" DataFormatString="N0" Width="*" IsReadOnly="False" />
+                                <telerik:GridViewDataColumn Header="Registered by" DataMemberBinding="{Binding User}" Width="*" IsReadOnly="True" />
+                                <telerik:GridViewDataColumn Header="Billable" DataMemberBinding="{Binding Billable, Mode=TwoWay}" Width="*" IsReadOnly="False" />
+                                <telerik:GridViewDataColumn Header="Approved" DataMemberBinding="{Binding Approved, Mode=TwoWay}" Width="*" IsReadOnly="False" />
+
+                            </telerik:RadGridView.Columns>
+
+                        </telerik:RadGridView>
+
+                    </StackPanel>
+                </Grid>
+
+
+            </controls:TabItem>
+        </controls:TabControl>
+    </Grid>
+</controls:ChildWindow>

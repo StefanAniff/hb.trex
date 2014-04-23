@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="Trex.Dialog.SelectTask.Selectors.ListBoxSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
+             xmlns:designData="clr-namespace:Trex.Dialog.SelectTask.Designdata"
+             xmlns:dialogs="clr-namespace:Trex.Dialog.Implemented"
+             xmlns:controls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance designData:DesignSelectTaskViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Trex.Dialog;Component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="SearchOnServerTemplate">
+                <TextBlock>
+                    <Hyperlink
+                        Command="{Binding DataContext.SearchServerCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}">
+                        <TextBlock Text="{Binding Path=TaskName}"
+                                   Style="{StaticResource LinkStyle}" />
+                    </Hyperlink>
+                </TextBlock>
+            </DataTemplate>
+            <DataTemplate x:Key="TaskItemTemplate">
+                <Grid Height="50">
+                    <Grid.ToolTip>
+                        <telerik:RadTreeView controls:StyleManager.Theme="Windows8" IsLineEnabled="True">
+                            <telerik:RadTreeViewItem Header="{Binding CustomerName}" IsExpanded="True">
+                                <telerik:RadTreeViewItem Header="{Binding ProjectName}" IsExpanded="True">
+                                    <telerik:RadTreeViewItem Header="{Binding TaskName}" />
+                                </telerik:RadTreeViewItem>
+                            </telerik:RadTreeViewItem>
+                        </telerik:RadTreeView>
+                    </Grid.ToolTip>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="25" />
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Left" Margin="0" Grid.RowSpan="2"
+                               Text="{Binding TaskName, Mode=OneWay}" TextWrapping="Wrap" />
+                    <StackPanel HorizontalAlignment="Stretch" Width="Auto" Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Stretch" Margin="0,0,0,0" Text="{Binding ProjectName}"
+                                   VerticalAlignment="Center"
+                                   TextWrapping="Wrap" Foreground="#FFBEBEBE" />
+                        <TextBlock HorizontalAlignment="Right" Height="Auto" Margin="10,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding CustomerName}" TextWrapping="Wrap" Foreground="#FFBEBEBE"
+                                   FontFamily="Arial" FontWeight="Bold" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+            <dialogs:TaskListTemplateSelector x:Key="TaskItemTemplateSelector"
+                                              TaskItemViewmodel="{StaticResource TaskItemTemplate}"
+                                              SearchOnServerTemplate="{StaticResource SearchOnServerTemplate}" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ListBox Grid.ColumnSpan="2" x:Name="taskListBox" TabIndex="2"
+             Background="White" ItemsSource="{Binding FoundTasks, Mode=OneWay}"
+             SelectedItem="{Binding SelectedTask, Mode=TwoWay}" Margin="0"
+             ItemTemplateSelector="{StaticResource TaskItemTemplateSelector}" />
+</UserControl>

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Trex.TaskAdministration.TaskManagementScreen.ButtonPanelView.TaskActionsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="clr-namespace:Trex.Infrastructure.Controls;assembly=Trex.Infrastructure"
+             xmlns:Commands="clr-namespace:Microsoft.Practices.Prism.Commands;assembly=Microsoft.Practices.Prism">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="PanelButtonStyles.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+    <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
+        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit task" Commands:Click.Command="{Binding Path=EditTask}" Height="{StaticResource ButtonHeight}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"  />
+        <Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=DeleteTask}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"/>
+        <Button HorizontalAlignment="Left" Content="Add Timeentry" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=AddTimeEntry}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateTimeEntryPermission"/>
+    </StackPanel>
+
+</UserControl>

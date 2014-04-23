@@ -1,0 +1,66 @@
+#menuTabs
+{
+    line-height: 44px;
+    float: right;
+    height: 44px;
+    margin-right: 20px;
+}
+.activeTab
+{
+}
+.inactiveTab
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.activeTab
+{
+    line-height: 44px;
+    float: left;
+    height: 44px;
+}
+.inactiveTab
+{
+    line-height: 44px;
+    float: left;
+    height: 44px;
+}
+.activeTab A
+{
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.inactiveTab A
+{
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.activeTabLeft
+{
+    background-image: url(../Images/menutableft.png);
+    width: 2px;
+    background-repeat: no-repeat;
+    float: left;
+    height: 44px;
+}
+.activeTabMiddle
+{
+    background-image: url(../Images/menutabmiddle.png);
+    padding-left: 10px;
+    padding-right: 10px;
+    background-repeat: repeat-x;
+    float: left;
+    height: 44px;
+}
+.activeTabRight
+{
+    background-image: url(../Images/menutabright.png);
+    width: 2px;
+    background-repeat: no-repeat;
+    float: left;
+    height: 44px;
+}

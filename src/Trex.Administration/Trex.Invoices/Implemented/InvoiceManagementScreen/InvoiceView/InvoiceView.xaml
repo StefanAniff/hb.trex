@@ -1,0 +1,506 @@
+﻿<UserControl 
+    x:Class="Trex.Invoices.InvoiceManagementScreen.InvoiceView.InvoiceView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.GridView" 
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:GridView="clr-namespace:Telerik.Windows.Controls.GridView;assembly=Telerik.Windows.Controls.GridView"
+    xmlns:Controls="clr-namespace:Trex.Infrastructure.Controls;assembly=Trex.Infrastructure" mc:Ignorable="d"
+    d:DesignHeight="1050" 
+    d:DesignWidth="1680"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    HorizontalContentAlignment="Stretch" 
+    VerticalContentAlignment="Stretch">
+
+    <UserControl.Resources>
+
+        <Style TargetType="telerik:RadGridView">
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserFreezeColumns" Value="False"/>
+            <Setter Property="RowIndicatorVisibility" Value="Collapsed"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="DataLoadMode" Value="Asynchronous"/>
+            <Setter Property="ShowGroupPanel" Value="False"/>
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style TargetType="telerik:GridViewDataColumn">
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+
+        <Style x:Key="cellStyle" TargetType="GridView:GridViewCell">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="DeliveredButton" TargetType="ToggleButton">
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Width="Auto"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="AwesomeButton" TargetType="Button">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Opacity" Value="{Binding ButtonOpacity}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel Orientation="Horizontal">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Width="Auto"/>
+
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="sdk:GridSplitter">
+            <Setter Property="Background" Value="LightGray" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid 
+        x:Name="LayoutRoot"
+        Margin="5" 
+        Background="{x:Null}" 
+        HorizontalAlignment="Stretch" 
+        VerticalAlignment="Stretch">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <sdk:GridSplitter 
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Height="5"
+            Cursor="SizeWE"
+            Background="White"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Stretch"
+            Margin="5, 0, 5, 0" />
+
+        <TextBlock 
+            Text="Invoices" 
+            Margin="5 10 10 0"
+            TextWrapping="Wrap" 
+            FontFamily="Arial" 
+            FontSize="18" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Bottom"/>
+
+        <telerik:RadGridView
+            HorizontalContentAlignment="Stretch" 
+            VerticalContentAlignment="Stretch"
+            ScrollMode="RealTime"
+            x:Name="InvoicesGrid"
+            Grid.Row="1"
+            ItemsSource="{Binding Path=Invoices, Mode=TwoWay}"
+            SelectedItem="{Binding SelectedInvoice, Mode=TwoWay}"
+            SelectionChanged="InvoicesGridSelectionChanged"
+            DataLoadMode="Asynchronous"
+            SelectionMode="Single"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch">
+            <telerik:RadGridView.Resources>
+                <Style TargetType="TextBlock"/>
+            </telerik:RadGridView.Resources>
+            <telerik:RadGridView.Columns>
+
+                <telerik:GridViewDataColumn IsReadOnly="True" Width="30">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Button 
+                                    Style="{StaticResource AwesomeButton}" 
+                                    Command="{Binding DeleteInvoice}"
+                                    Controls:PermissionControl.RequiredVisibilityPermission="GenerateDeleteDraftPermission">
+
+                                    <Image Source="Minus.png"/>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn 
+                    Header="InvoiceID" 
+                    DataMemberBinding="{Binding InvoiceID}"
+                    TextAlignment="Right"/>
+
+                <telerik:GridViewDataColumn 
+                    Header="Name"
+                    DataMemberBinding="{Binding CustomerName}"/>
+
+                <telerik:GridViewDataColumn 
+                    Header="Invoice Date" 
+                    DataMemberBinding="{Binding InvoiceDate, Mode=TwoWay}" 
+                    IsReadOnlyBinding="{Binding CanEdit}"
+                    DataFormatString="d"/>
+
+                <telerik:GridViewDataColumn 
+                    Header="Start Date" 
+                    DataMemberBinding="{Binding StartDate, Mode=TwoWay}" 
+                    IsReadOnlyBinding="{Binding CanEdit}"
+                    DataFormatString="d"/>
+
+                <telerik:GridViewDataColumn 
+                    Header="End Date" 
+                    DataMemberBinding="{Binding EndDate, Mode=TwoWay}" 
+                    IsReadOnlyBinding="{Binding CanEdit}"
+                    DataFormatString="d"/>
+
+                <!--DataMemberBinding="{Binding ExclVAT}"-->
+                <telerik:GridViewDataColumn
+                    Header="Ex VAT" HeaderTextAlignment="Right"
+                    IsReadOnly="True">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ExclVAT, StringFormat=0.00}" Foreground="{Binding Color}" TextAlignment="Right"/>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn 
+                    Header="CIG"
+                    Width="150"
+                    DataMemberBinding="{Binding Label}"/>
+
+                <telerik:GridViewDataColumn
+                    Header="Attention"
+                    DataMemberBinding="{Binding Attention}"/>
+
+                <telerik:GridViewDataColumn
+                    Header="Customer Manager"
+                    DataMemberBinding="{Binding CustomerManager}"/>
+
+                <telerik:GridViewDataColumn 
+                    Header="Regarding"
+                    Width="170"
+                    DataMemberBinding="{Binding Regarding}"
+                    IsReadOnlyBinding="{Binding CanEdit}"/>
+                
+                <telerik:GridViewDataColumn 
+                    Header="Due Date"
+                    x:Name="DatePickerDueDate"
+                    DataFormatString="d"
+                    
+                    DataMemberBinding="{Binding DueDate}"
+                    IsReadOnlyBinding="{Binding CanEdit}"
+                    >
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn
+                    IsReadOnly="True"
+                    Header="Delivered">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <ToggleButton 
+                                    Style="{StaticResource DeliveredButton}"
+                                    Command="{Binding ToggleDelivered}"
+                                     Controls:PermissionControl.RequiredEnabledPermission="FinalizeDraftPermission">
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <Image Source="{Binding DeliveredField, Mode=TwoWay}" />
+                                    </StackPanel>
+
+                                </ToggleButton>
+                                <TextBlock Text="{Binding Path=DeliveredDate}" Margin="2 0 0 0" Padding="0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn
+                    CellStyle="{StaticResource cellStyle}"
+                    IsReadOnly="True"
+                    Header="Paid">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel MaxWidth="60" MinWidth="60" HorizontalAlignment="Center">
+                                <CheckBox
+                                    MaxWidth="60" HorizontalAlignment="Center"
+                                    IsEnabled="{Binding CanCheckPaid, Mode=TwoWay}"
+                                    IsChecked="{Binding IsClosed, Mode=TwoWay}"
+                                    Controls:PermissionControl.RequiredEnabledPermission="FinalizeDraftPermission"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn
+                    CellStyle="{StaticResource cellStyle}"
+                    IsReadOnly="True"
+                    Header="Amount paid">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel MaxWidth="80" MinWidth="80" HorizontalAlignment="Center">
+                                <TextBox
+                                    Width="80" HorizontalAlignment="Center"
+                                    IsEnabled="{Binding CanCheckPaid, Mode=TwoWay}"
+                                    Text="{Binding AmountPaid, Mode=TwoWay}"
+                                    Controls:PermissionControl.RequiredEnabledPermission="FinalizeDraftPermission"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+
+                
+                <telerik:GridViewDataColumn
+                    Header="Comments" DataMemberBinding="{Binding InvoiceComment}" IsReadOnly="True">
+                </telerik:GridViewDataColumn>
+                
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+        <!--TextAlignment="Center" 
+                    MaxWidth="60" 
+                    IsReadOnlyBinding="{Binding CanCheckPaid}"
+                    DataMemberBinding="{Binding Closed, Mode=TwoWay}"/>-->
+
+
+
+        <Grid Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock         
+                Text="Invoice lines" Margin="5, 10, 10, 0"
+                TextWrapping="Wrap" 
+                FontFamily="Arial" 
+                FontSize="18" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom"/>
+
+            <TextBlock 
+                Text="Time entries" 
+                Grid.Column="1" 
+                Margin="5, 10, 10, 0"
+                TextWrapping="Wrap" 
+                FontFamily="Arial" 
+                FontSize="18" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom"/>
+
+            <telerik:RadGridView
+                Grid.Column="0" Grid.Row="1"
+                ItemsSource="{Binding Path=InvoiceLines}"
+                SelectedItem="{Binding Path=SelectedInvoiceLine, Mode=TwoWay}"
+                IsReadOnly="False" 
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch" 
+                ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                DataLoadMode="Asynchronous"
+                HorizontalContentAlignment="Stretch" 
+                VerticalContentAlignment="Stretch">
+
+                <telerik:RadGridView.Columns>
+
+                    <telerik:GridViewDataColumn IsReadOnly="True">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button 
+                                        Style="{StaticResource AwesomeButton}" 
+                                        Command="{Binding DeleteInvoiceLine}">
+
+                                        <Image Source="Minus.png"/>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Units" 
+                        HeaderTextAlignment="Right"
+                        IsReadOnlyBinding="{Binding CanEdit}"
+                        DataMemberBinding="{Binding Units, Mode=TwoWay}"
+                        TextAlignment="Right"
+                        DataFormatString="N"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Unit"
+                        IsReadOnlyBinding="{Binding CanEdit}"
+                        DataMemberBinding="{Binding Unit, Mode=TwoWay}"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Price" 
+                        HeaderTextAlignment="Right"
+                        IsReadOnlyBinding="{Binding CanEdit}"
+                        DataMemberBinding="{Binding Price, Mode=TwoWay}"
+                        DataFormatString="0.00"
+                        TextAlignment="Right"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="VAT" 
+                        HeaderTextAlignment="Right"
+                        IsReadOnlyBinding="{Binding CanEdit}"
+                        DataMemberBinding="{Binding VatAmount, Mode=TwoWay}"
+                        DataFormatString="0.00"
+                        TextAlignment="Right"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Exp." 
+                        CellStyle="{StaticResource cellStyle}"
+                        IsReadOnly="True">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel MaxWidth="60" MinWidth="60" HorizontalAlignment="Center">
+                                    <CheckBox
+                                    MaxWidth="60" HorizontalAlignment="Center"
+                                    IsEnabled="{Binding CanEditExp, Mode=TwoWay}"
+                                    IsChecked="{Binding IsExpense, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Description"
+                        Width="*"
+                        IsReadOnlyBinding="{Binding CanEditDescription}"
+                        DataMemberBinding="{Binding Description, Mode=TwoWay}"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Total" 
+                        HeaderTextAlignment="Right"
+                        Width="110"
+                        DataMemberBinding="{Binding Total}"
+                        TextAlignment="Right"
+                        IsReadOnly="True"/>
+
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+
+            <telerik:RadGridView
+                Grid.Column="1"
+                
+                Grid.Row="1"
+                ItemsSource="{Binding Path=TimeEntries}"
+                DataLoadMode="Asynchronous"
+                VerticalAlignment="Stretch" 
+                HorizontalAlignment="Stretch"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"  
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch" 
+                MaxHeight="1000">
+
+
+                <telerik:RadGridView.Columns>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Date"
+                        DataMemberBinding="{Binding StartTime}"
+                        DataFormatString="{} {0:dd/MM/yyyy}"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Description"
+                        Width="*"
+                        DataMemberBinding="{Binding Description}"
+                        IsReadOnly="{Binding IsReadOnly}"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="D.H." 
+                        HeaderTextAlignment="Right"
+                        Width="50"
+                        DataMemberBinding="{Binding BillableTime}"
+                        TextAlignment="Right" />
+
+                    <telerik:GridViewDataColumn 
+                        Header="P/H"
+                        HeaderTextAlignment="Right"
+                        Width="50"
+                        DataMemberBinding="{Binding Price}" 
+                        IsReadOnly="{Binding IsReadOnly}"
+                        TextAlignment="Right"
+                        DataFormatString="0.00"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Emp." 
+                        Width="*"
+                        DataMemberBinding="{Binding User}"
+                        IsReadOnly="True"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Project." 
+                        Width="*"
+                        DataMemberBinding="{Binding ProjectName}"/>
+
+                    <telerik:GridViewDataColumn 
+                        Header="Task." 
+                        Width="*"
+                        DataMemberBinding="{Binding TaskName}"/>
+
+                    <telerik:GridViewDataColumn  
+                        Header="Bill." 
+                        CellStyle="{StaticResource cellStyle}"
+                        IsReadOnly="True"
+                        Width="50">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel MaxWidth="60" MinWidth="60" HorizontalAlignment="Center">
+                                    <CheckBox
+                                    MaxWidth="60" HorizontalAlignment="Center"
+                                    IsEnabled="{Binding IsReadOnly, Mode=TwoWay}"
+                                    IsChecked="{Binding Billable, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+
+
+
+                    <telerik:GridViewDataColumn  
+                        Header="Exclude" 
+                        CellStyle="{StaticResource cellStyle}"
+                        IsReadOnly="True"
+                        Width="50">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource AwesomeButton}" Command="{Binding ExcludeTimeEntryCommand,Mode=OneWay}" Height="15" Width="25">
+                                    <Image Source="Minus.png"/>
+                                </Button>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+
+                    <!--<telerik:GridViewHyperlinkColumn
+                        Header="Exclude" 
+                        Width="*"
+                        
+                        DataMemberBinding="{Binding TaskName}"/>-->
+
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </Grid>
+    </Grid>
+</UserControl>

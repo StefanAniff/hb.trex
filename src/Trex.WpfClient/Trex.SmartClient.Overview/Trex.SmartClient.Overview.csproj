@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CF56D81-82E7-4C91-9353-B0CB6993849D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.SmartClient.Overview</RootNamespace>
+    <AssemblyName>Trex.SmartClient.Overview</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>d60codesigning.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
+    <OutputPath>bin\Releaseexternal\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="d60.Extensions.PresentationCore">
+      <HintPath>..\packages\d60.Extensions.PresentationCore.0.0.68\lib\net40\d60.Extensions.PresentationCore.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-client\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Pivot.Core">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Pivot.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Adomd">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Pivot.DataProviders.Adomd.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Pivot.DataProviders.Xmla">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Pivot.DataProviders.Xmla.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Chart.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataServices">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.DataServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Diagrams.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.EntityFramework">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Expressions">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Expressions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FixedDocumentViewers">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.FixedDocumentViewers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GanttView">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.GanttView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ImageEditor">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.ImageEditor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Input.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Navigation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Pivot">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Pivot.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.PivotFieldList">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.PivotFieldList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RibbonView">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.RichTextBoxUI">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.RichTextBoxUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.ScheduleView">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.ScheduleView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Spreadsheet">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Controls.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Diagrams.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Html">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.FormatProviders.Html.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.OpenXml">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Pdf">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.FormatProviders.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Rtf">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.FormatProviders.Rtf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.FormatProviders.Xaml">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.FormatProviders.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Proofing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.DataGrid">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Proofing.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.Dictionaries.En-US">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Proofing.Dictionaries.En-US.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Proofing.RadGridView">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Proofing.RadGridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Maths">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Maths.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.PersistenceFramework">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.PersistenceFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Scheduling.Core">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Scheduling.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>..\packages\RadControls.for.Wpf.40.2013.2.0612\lib\net40\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DayOverviewScreen\DayOverviewScreen.xaml.cs">
+      <DependentUpon>DayOverviewScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DayOverviewScreen\Viewmodels\DataOverviewItemViewModel.cs" />
+    <Compile Include="DayOverviewScreen\Viewmodels\DayOverviewViewModel.cs" />
+    <Compile Include="DayOverviewScreen\Viewmodels\DesignOverviewmodel.cs" />
+    <Compile Include="Implemented\DialogService.cs" />
+    <Compile Include="Implemented\TaskItemViewmodelFactory.cs" />
+    <Compile Include="Interfaces\IDialogService.cs" />
+    <Compile Include="Interfaces\IOverviewSwitcherService.cs" />
+    <Compile Include="Interfaces\ITaskItemViewmodelFactory.cs" />
+    <Compile Include="OverviewModule.cs" />
+    <Compile Include="OverviewScreen\OverviewScreen.cs" />
+    <Compile Include="OverviewScreen\OverviewScreenFactory.cs" />
+    <Compile Include="OverviewScreen\OverviewScreenMasterview.xaml.cs">
+      <DependentUpon>OverviewScreenMasterview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OverviewScreen\OverviewScreenMasterviewModel.cs" />
+    <Compile Include="OverviewScreen\TrexHourInterval.cs" />
+    <Compile Include="OverviewSwitcherService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectTaskBox\SelectTaskBox.xaml.cs">
+      <DependentUpon>SelectTaskBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyOverviewScreen\Designdata\DesignWeeklyOverviewViewmodel.cs" />
+    <Compile Include="WeeklyOverviewScreen\Viewmodels\Itemviewmodel\DayItemHeaderViewmodel.cs" />
+    <Compile Include="WeeklyOverviewScreen\Viewmodels\Itemviewmodel\DayItemViewmodel.cs" />
+    <Compile Include="WeeklyOverviewScreen\Viewmodels\Itemviewmodel\TaskItemViewmodel.cs" />
+    <Compile Include="WeeklyOverviewScreen\WeeklyOverviewScreen.xaml.cs">
+      <DependentUpon>WeeklyOverviewScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyOverviewScreen\Viewmodels\WeeklyOverviewViewmodel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="d60codesigning.pfx" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Trex.Dialog\Trex.Dialog.csproj">
+      <Project>{72ad292d-e0bc-489a-9d6d-4a8d3540ae1f}</Project>
+      <Name>Trex.Dialog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Core\Trex.SmartClient.Core.csproj">
+      <Project>{b97e0761-2167-49fd-84c9-0bd68705c58b}</Project>
+      <Name>Trex.SmartClient.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Infrastructure\Trex.SmartClient.Infrastructure.csproj">
+      <Project>{F2F238BF-8C25-4619-B46C-12577EDFFFF4}</Project>
+      <Name>Trex.SmartClient.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DayOverviewScreen\DayOverviewScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OverviewScreen\OverviewScreenMasterview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectTaskBox\SelectTaskBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeeklyOverviewScreen\WeeklyOverviewScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WeeklyOverviewScreen\WeeklyOverviewStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

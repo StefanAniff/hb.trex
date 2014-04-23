@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="17389991-bbf4-4958-99cf-0ff712be995d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:60248/FileDownloadService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FileDownloadService2.xsd" MetadataType="Schema" ID="49d7009a-2358-4aa4-a065-d440bb435d6e" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FileDownloadService.xsd" MetadataType="Schema" ID="9f1203d1-13ed-455e-8e75-688eac564c76" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FileDownloadService.disco" MetadataType="Disco" ID="55adbe22-b109-4fce-8610-2d03b206e61a" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?disco" />
+    <MetadataFile FileName="FileDownloadService1.xsd" MetadataType="Schema" ID="4bfb433b-c591-438e-aff7-9f6b64c0314b" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?xsd=xsd3" />
+    <MetadataFile FileName="FileDownloadService.wsdl" MetadataType="Wsdl" ID="6506bfc1-6001-4c31-8b34-f5db97527bea" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="FileDownloadService4.xsd" MetadataType="Schema" ID="f321b530-e71a-4bac-a4ac-341859d3c731" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FileDownloadService1.wsdl" MetadataType="Wsdl" ID="d3522f52-e6b6-40b2-b4a4-19a7e90acae9" SourceId="1" SourceUrl="http://localhost:60248/FileDownloadService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

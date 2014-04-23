@@ -1,0 +1,199 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{580B033D-9A77-47F8-9A98-BA7F6BCBFD31}"
+	ProjectSection(SolutionItems) = preProject
+		clientaccesspolicy.xml = clientaccesspolicy.xml
+		crossdomain.xml = crossdomain.xml
+		entlib.config = entlib.config
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		TrexSL.vsmdi = TrexSL.vsmdi
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{0BCBBF99-1984-4F32-A379-D891A25484D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseDatabase", "BaseDatabase", "{0E044652-A288-480E-82AB-29641764992B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TrexDatabase", "TrexDatabase", "{232ECD5F-E632-43CE-B8FC-8D6D8C8E7C97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Updates", "Updates", "{CCA64E68-A26F-47AA-B5A0-7A744EAC826E}"
+	ProjectSection(SolutionItems) = preProject
+		Sql\BaseUpdates\1.0.1.sql = Sql\BaseUpdates\1.0.1.sql
+		2.4.10.1.sql = 2.4.10.1.sql
+		2.4.10.10.sql = 2.4.10.10.sql
+		2.4.10.2.sql = 2.4.10.2.sql
+		2.4.10.3.sql = 2.4.10.3.sql
+		2.4.10.4.sql = 2.4.10.4.sql
+		2.4.7.1.sql = 2.4.7.1.sql
+		2.4.7.2.sql = 2.4.7.2.sql
+		2.4.7.3.sql = 2.4.7.3.sql
+		2.4.8.1.sql = 2.4.8.1.sql
+		2.4.8.10.sql = 2.4.8.10.sql
+		2.4.8.2.sql = 2.4.8.2.sql
+		2.4.8.3.sql = 2.4.8.3.sql
+		2.4.8.4.sql = 2.4.8.4.sql
+		2.4.8.5.sql = 2.4.8.5.sql
+		2.4.8.6.sql = 2.4.8.6.sql
+		2.4.8.7.sql = 2.4.8.7.sql
+		2.4.8.8.sql = 2.4.8.8.sql
+		2.4.8.9.sql = 2.4.8.9.sql
+		2.4.9.1.sql = 2.4.9.1.sql
+		2.4.9.2.sql = 2.4.9.2.sql
+		2.5.0.1.sql = 2.5.0.1.sql
+		2.5.0.10.sql = 2.5.0.10.sql
+		2.5.0.11.sql = 2.5.0.11.sql
+		2.5.0.12.sql = 2.5.0.12.sql
+		2.5.0.15.sql = 2.5.0.15.sql
+		2.5.0.2.sql = 2.5.0.2.sql
+		2.5.0.3.sql = 2.5.0.3.sql
+		2.5.0.4.sql = 2.5.0.4.sql
+		2.5.0.5.sql = 2.5.0.5.sql
+		2.5.0.6.sql = 2.5.0.6.sql
+		2.5.0.7.sql = 2.5.0.7.sql
+		2.5.0.8.sql = 2.5.0.8.sql
+		2.5.0.9.sql = 2.5.0.9.sql
+		2.6.0.1.sql = 2.6.0.1.sql
+		2.6.0.2.sql = 2.6.0.2.sql
+		2.6.0.3.sql = 2.6.0.3.sql
+		2.6.0.4.sql = 2.6.0.4.sql
+		2.6.0.5.sql = 2.6.0.5.sql
+		2.6.0.6.sql = 2.6.0.6.sql
+		2.6.0.7.sql = 2.6.0.7.sql
+		2.6.0.publish.sql = 2.6.0.publish.sql
+		Changescript 1.sql = Changescript 1.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1234BBB4-F163-4BED-A6BC-12A2F5B1FC85}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchemeCompare", "SchemeCompare", "{7B69FC37-BA4E-4CBD-B1B2-78719D393B06}"
+	ProjectSection(SolutionItems) = preProject
+		LocalCompare.scmp = LocalCompare.scmp
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trex.Server.Core", "Trex.Server.Core\Trex.Server.Core.csproj", "{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trex.Server.Infrastructure", "Trex.Server.Infrastructure\Trex.Server.Infrastructure.csproj", "{9E973655-6628-4A5D-AC11-555C0BE21402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trex.Services", "Trex.Services\Trex.Services.csproj", "{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudServices", "CloudServices\CloudServices.ccproj", "{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trex.Server.DataAccess", "Trex.Server.DataAccess\Trex.Server.DataAccess.csproj", "{172A1DAC-D3A0-449B-A84A-A56662172790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trex.ServiceContracts", "Trex.ServiceContracts.WPF\Trex.ServiceContracts.csproj", "{D53269D0-5B6A-4271-8C59-45DFF354A7F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trex.ServiceContracts.SL", "Trex.ServiceContracts.SL\Trex.ServiceContracts.SL.csproj", "{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Trex.Database", "Trex.Database\Trex.Database.sqlproj", "{1732FBF0-06ED-424B-829F-A26023B62F31}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TrexSL.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Releaseexternal|Any CPU = Releaseexternal|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{F8E41C7C-CCDD-42BE-A2AB-0068291DC88D}.Test|Any CPU.Build.0 = Test|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{9E973655-6628-4A5D-AC11-555C0BE21402}.Test|Any CPU.Build.0 = Test|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{9BB63CAD-4E5D-4D68-A6A2-8D4C57416DF9}.Test|Any CPU.Build.0 = Test|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Test|Any CPU.Build.0 = Test|Any CPU
+		{D3925903-3538-4EB6-9F4F-F6E7BE0368B3}.Test|Any CPU.Deploy.0 = Test|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{172A1DAC-D3A0-449B-A84A-A56662172790}.Test|Any CPU.Build.0 = Test|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{D53269D0-5B6A-4271-8C59-45DFF354A7F8}.Test|Any CPU.Build.0 = Test|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}.Test|Any CPU.Build.0 = Test|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{C7D3DBD9-CF7A-4EAB-AA6D-8FE97834F8E9}.Test|Any CPU.Build.0 = Test|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Releaseexternal|Any CPU.ActiveCfg = Releaseexternal|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Releaseexternal|Any CPU.Build.0 = Releaseexternal|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Releaseexternal|Any CPU.Deploy.0 = Releaseexternal|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{1732FBF0-06ED-424B-829F-A26023B62F31}.Test|Any CPU.Deploy.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E044652-A288-480E-82AB-29641764992B} = {0BCBBF99-1984-4F32-A379-D891A25484D0}
+		{232ECD5F-E632-43CE-B8FC-8D6D8C8E7C97} = {0BCBBF99-1984-4F32-A379-D891A25484D0}
+		{7B69FC37-BA4E-4CBD-B1B2-78719D393B06} = {0BCBBF99-1984-4F32-A379-D891A25484D0}
+		{CCA64E68-A26F-47AA-B5A0-7A744EAC826E} = {0E044652-A288-480E-82AB-29641764992B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.1\lib\NET35;packages\Unity.2.1.505.2\lib\NET35;packages\Unity.Interception.2.1.505.2\lib\NET35
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

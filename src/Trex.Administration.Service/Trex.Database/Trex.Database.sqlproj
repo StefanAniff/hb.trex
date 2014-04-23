@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Trex.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1732fbf0-06ed-424b-829f-a26023b62f31}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Trex.Database</RootNamespace>
+    <AssemblyName>Trex.Database</AssemblyName>
+    <ModelCollation>1030,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Danish_Norwegian_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\TimeEntryTypes.sql" />
+    <Build Include="dbo\Tables\InvoiceFiles.sql" />
+    <Build Include="dbo\Tables\InvoiceTemplateFiles.sql" />
+    <Build Include="dbo\Tables\UsersProjects.sql" />
+    <Build Include="dbo\Tables\Tasks.sql" />
+    <Build Include="dbo\Tables\TimeEntries.sql" />
+    <Build Include="dbo\Tables\BugtrackerIntegrationProject.sql" />
+    <Build Include="dbo\Tables\BugtrackerIntegrationUser.sql" />
+    <Build Include="dbo\Tables\UsersCustomers.sql" />
+    <Build Include="dbo\Tables\BugtrackerIntegrationTask.sql" />
+    <Build Include="dbo\Tables\Tags.sql" />
+    <Build Include="dbo\Tables\BugtrackerTimeEntryExport.sql" />
+    <Build Include="dbo\Tables\TaskTree.sql" />
+    <Build Include="dbo\Tables\BugtrackerTaskImport.sql" />
+    <Build Include="dbo\Tables\DocumentType.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\PermissionsInRoles.sql" />
+    <Build Include="dbo\Tables\CreditNote.sql" />
+    <Build Include="dbo\Tables\Version.sql" />
+    <Build Include="dbo\Tables\InvoiceLines.sql" />
+    <Build Include="dbo\Tables\Projects.sql" />
+    <Build Include="dbo\Tables\Invoices.sql" />
+    <Build Include="dbo\Tables\InvoiceComments.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\Customers.sql" />
+    <Build Include="dbo\Tables\InvoiceTemplates.sql" />
+    <Build Include="dbo\Tables\CustomerInvoiceGroup.sql" />
+    <Build Include="dbo\Views\RoundedTimeSpentPrDayPrUser.sql" />
+    <Build Include="dbo\Views\RoundedTimeSpentPrTaskPrDay.sql" />
+    <Build Include="dbo\Views\RoundedTimeSpentPrDayPrUserEx.sql" />
+    <Build Include="dbo\Views\RoundedTimeSpentPrDayPrUserHalfHour.sql" />
+    <Build Include="dbo\Views\TimeEntryView.sql" />
+    <Build Include="dbo\Views\UserTimeEntryStats.sql" />
+    <Build Include="dbo\Views\ViewInventoryValue.sql" />
+    <Build Include="dbo\Functions\FindVAT.sql" />
+    <Build Include="dbo\Functions\RoundUpToNextHalfHour.sql" />
+    <Build Include="dbo\Functions\ConvertToSmallDate.sql" />
+    <Build Include="dbo\Functions\RoundUpToNextQuarter.sql" />
+    <Build Include="dbo\Functions\Split.sql" />
+    <Build Include="dbo\Functions\AggregatedTimeEntriesPrTaskPrDayPrInvoice.sql" />
+    <Build Include="dbo\Functions\AggregatedTimeEntriesPrTaskPrDay.sql" />
+    <Build Include="dbo\Functions\AggregatedCreditNotesPrTaskPrDayPrInvoice.sql" />
+    <Build Include="dbo\Functions\GetDebitPrice.sql" />
+    <Build Include="dbo\Functions\FindBillableTimeEntries.sql" />
+    <Build Include="dbo\Functions\FindAllTimeEntries.sql" />
+    <Build Include="dbo\Stored Procedures\spGetInvoices.sql" />
+    <Build Include="dbo\Stored Procedures\spGetCustomersInvoiceView.sql" />
+    <Build Include="dbo\Stored Procedures\spRoundedTimeSpentPrTaskPrDayPrUser.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTimeEntriesInvoiceIdToNull.sql" />
+    <Build Include="dbo\Stored Procedures\InsertGeminiTask.sql" />
+    <Build Include="dbo\Stored Procedures\spRemovePermission.sql" />
+    <Build Include="dbo\Stored Procedures\spAddPermission.sql" />
+    <Build Include="dbo\Stored Procedures\spGetPermissionsForRoles.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteRole.sql" />
+    <Build Include="dbo\Stored Procedures\spCreateRole.sql" />
+    <Build Include="dbo\Stored Procedures\spGenerateCreditNoteLines.sql" />
+    <Build Include="dbo\Stored Procedures\spCopyTimeEntriesToCreditNote.sql" />
+    <Build Include="dbo\Stored Procedures\spSetDocumentType.sql" />
+    <Build Include="dbo\Stored Procedures\spRoundedTimeSpentPrTaskPrDayPrUserPrPrice.sql" />
+    <Build Include="dbo\Stored Procedures\spDeleteInvoice.sql" />
+    <Build Include="dbo\Stored Procedures\spSaveProject.sql" />
+    <Build Include="dbo\Stored Procedures\spReplicateCreditNoteLines.sql" />
+    <Build Include="dbo\Stored Procedures\spUpdateTimeEntriesHourPrice.sql" />
+    <Build Include="dbo\Stored Procedures\spAggregatedTimeEntriesPrTaskPrDay.sql" />
+    <Build Include="dbo\Stored Procedures\spGetGeneratedInvoiceLines.sql" />
+    <Build Include="dbo\Stored Procedures\spAggregatedTimeEntriesPrTaskPrDayPrInvoice.sql" />
+    <Build Include="dbo\Stored Procedures\spGetCustomerInvoiceView.sql" />
+    <Build Include="dbo\Stored Procedures\InsertMissingUserMappings.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTimeEntriesInvoiceId.sql" />
+    <Build Include="dbo\Stored Procedures\spGenerateNewInvoiceDraft.sql" />
+    <Build Include="dbo\Stored Procedures\spGenerateInvoiceLines.sql" />
+    <Build Include="dbo\Stored Procedures\spResetBookedTimeEntries.sql" />
+    <Build Include="dbo\Stored Procedures\spShowInvoiceLines.sql" />
+    <Build Include="dbo\Stored Procedures\spBookTimeEntries.sql" />
+    <Build Include="dbo\Stored Procedures\spFindTimeEntiresForInvoice.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSpecificationData_Project.sql" />
+    <Build Include="dbo\Stored Procedures\spGetSpecificationData_Task.sql" />
+    <Build Include="dbo\Tables\Holidays.sql" />
+    <Build Include="dbo\Tables\ForecastTypes.sql" />
+    <Build Include="dbo\Tables\Forecasts.sql" />
+    <Build Include="dbo\Tables\ForecastProjectHours.sql" />
+    <Build Include="dbo\Tables\tmp_calendar.sql" />
+    <Build Include="dbo\Tables\Permissions.sql" />
+    <Build Include="dbo\Tables\ForecastMonths.sql" />
+    <Build Include="dbo\Tables\DomainSettings.sql" />
+    <Build Include="dbo\Views\v_timereg_component.sql" />
+    <Build Include="dbo\Views\v_timereg.sql" />
+    <Build Include="dbo\Views\ContolHours.sql" />
+    <Build Include="Security\trexuser.sql" />
+    <Build Include="Security\trexreader.sql" />
+    <Build Include="Security\trex.sql" />
+    <Build Include="Security\tga.sql" />
+    <Build Include="Security\NT AUTHORITY_NETWORK SERVICE.sql" />
+    <Build Include="Security\mqs.sql" />
+    <Build Include="Security\mhs.sql" />
+    <Build Include="Security\jis.sql" />
+    <Build Include="Security\InternalBI.sql" />
+    <Build Include="Security\GeminiUser.sql" />
+    <Build Include="Security\ForecastReader.sql" />
+    <Build Include="Security\dw_reader.sql" />
+    <Build Include="Security\dw.sql" />
+    <Build Include="Security\dsd.sql" />
+    <Build Include="Security\dittesd.sql" />
+    <Build Include="Security\D60VIRT02_KTT.sql" />
+    <Build Include="Security\D60VIRT02_jbc.sql" />
+    <Build Include="Security\D60VIRT02_ebj.sql" />
+    <Build Include="Security\D60VIRT02_cth.sql" />
+    <Build Include="Security\D60VIRT02_chn.sql" />
+    <Build Include="Security\d60internal.sql" />
+    <Build Include="Security\d60-ebj.sql" />
+    <Build Include="Security\d60-cro.sql" />
+    <Build Include="Security\cah.sql" />
+    <Build Include="Security\BiReader.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\spUpdateForecastPeriod.sql" />
+    <Build Include="dbo\Stored Procedures\spUpdateForecastMonthUnlocked.sql" />
+  </ItemGroup>
+</Project>

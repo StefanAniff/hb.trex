@@ -1,0 +1,171 @@
+﻿<UserControl
+    xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable = "d"
+    xmlns:Trex_TaskAdministration_Resources = "clr-namespace:Trex.TaskAdministration.Resources"
+    xmlns:dragDrop = "clr-namespace:Telerik.Windows.Controls.DragDrop;assembly=Telerik.Windows.Controls"
+    xmlns:Controls = "clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+    xmlns:Custom = "clr-namespace:Trex.TaskAdministration.Controls"
+    xmlns:Expander = "clr-namespace:Trex.Expander;assembly=Trex.Expander"
+    xmlns:telerik = "http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:TreeListView = "clr-namespace:Telerik.Windows.Controls.TreeListView;assembly=Telerik.Windows.Controls.GridView"
+    x:Class = "Trex.TaskAdministration.TaskManagementScreen.RightPanelView.MainListView"
+    d:DesignWidth = "1200"
+    d:DesignHeight = "891.5"
+    HorizontalContentAlignment = "Stretch"
+    VerticalContentAlignment = "Stretch">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source = "ListBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Trex_TaskAdministration_Resources:TextResources x:Key = "Lables" />
+            
+            <DataTemplate x:Key = "DragCueTemplate">
+                <StackPanel Orientation = "Horizontal">
+                    <TextBlock
+                        Text = "{Binding DisplayName}"
+                        Margin = "5" />
+                </StackPanel>
+            </DataTemplate>
+            <telerik:ContainerBindingCollection x:Name = "BindingsCollection">
+                
+                <telerik:ContainerBinding
+                    PropertyName = "IsExpanded"
+                    Binding = "{Binding IsExpanded, Mode=TwoWay}" />
+                
+                <telerik:ContainerBinding
+                    PropertyName = "IsSelected"
+                    Binding = "{Binding IsSelected, Mode=TwoWay}" />
+                
+            </telerik:ContainerBindingCollection>
+            
+            <Style TargetType="telerik:GridViewDataColumn">
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="Width" Value="Auto" />
+            </Style>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+
+        <Border
+            x:Name = "LayoutRoot1"
+            Background = "#FFFAFAFA"
+            d:LayoutOverrides = "Width, Height"
+            BorderBrush = "#FFF2F2F2"
+            BorderThickness = "0,2,0,0"
+            Padding = "0"
+            Margin = "0">
+ 
+            <telerik:RadTreeListView
+                SelectionMode="Extended"
+                AutoGenerateColumns = "False"                
+                ItemsSource = "{Binding Customers, Mode=TwoWay}"
+                BorderThickness = "0"
+                Name = "ListView"
+                EnableRowVirtualization = "True"
+                DataLoadMode = "Synchronous"
+                IsDragDropEnabled = "True"
+                IsDragPreviewEnabled = "True"
+                IsDragTooltipEnabled = "True"
+                DragCueItemTemplate = "{StaticResource DragCueTemplate}"
+                ShowInsertRow = "False"
+                ShowGroupPanel = "False"
+                RowIndicatorVisibility = "Collapsed"
+                SelectedItem = "{Binding SelectedItem,Mode=TwoWay}">
+
+                <telerik:RadTreeListView.ChildTableDefinitions>
+                    <telerik:TreeListViewTableDefinition
+                        ItemsSource = "{Binding VisibleChildren, Mode=TwoWay}"
+                        telerik:ContainerBinding.ContainerBindings = "{StaticResource BindingsCollection}" />
+                </telerik:RadTreeListView.ChildTableDefinitions>
+
+                <telerik:RadTreeListView.Columns>
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding DisplayName}"
+                        Header = "Description"
+                        Width = "250" />
+
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding CreateDate}"
+                        Header = "Created"
+                        DataFormatString = "g" />
+
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding UserName}"
+                        Header = "Created by"
+                        DataFormatString = "N2"/>
+
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding Label}"
+                        Header = "Customer invoice group"
+                        DataFormatString = "N2"/>
+
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding TotalEstimate}"
+                        Header = "Estimate" />
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding TotalTimeLeft}"
+                        Header = "Time left" />
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding TotalProgress}"
+                        Header = "Progress %"
+                        DataFormatString = "N0"/>
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding TotalRealisticProgress}"
+                        DataFormatString = "N0"
+                        Header = "Realistic %" />
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding TotalBillableTime}"
+                        Header = "Billable"
+                        DataFormatString = "N2"/>
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding TotalTimeSpent}"
+                        Header = "Time spent"
+                        DataFormatString = "N2" />
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding ClientSource}"
+                        Header = "Created on" />
+                    
+                    <telerik:GridViewDataColumn
+                        DataMemberBinding = "{Binding StartDate}"
+                        Header = "Start date"
+                        IsSortable = "True"
+                        DataFormatString = "g" />
+                    
+                </telerik:RadTreeListView.Columns>
+
+            </telerik:RadTreeListView>
+        </Border>
+        <!--<Grid Height="65" Margin="0" VerticalAlignment="Bottom" Background="#FFECECEC" Grid.Row="1">
+            <Grid HorizontalAlignment="Right" Margin="0,10,20,23">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.531*"/>
+                    <RowDefinition Height="0.469*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.498*"/>
+                    <ColumnDefinition Width="0.502*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="0" Padding="0,0,20,0" Text="{Binding TotalTimeBillableLabel, Source={StaticResource Lables}}" TextWrapping="Wrap" Grid.Column="0" FontWeight="Bold" FontFamily="Arial" d:LayoutOverrides="Height"/>
+                <TextBlock x:Name="txtTotaltime" Margin="0" VerticalAlignment="Center" Grid.Column="1" Text="{Binding TotalTimeBillable}" TextWrapping="Wrap" FontFamily="Arial" FontWeight="Bold" HorizontalAlignment="Right"/>
+                <TextBlock Margin="0" Text="{Binding TotalTimeSpentLabel, Source={StaticResource Lables}}" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.Row="1" FontFamily="Arial" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Right" Margin="0,0,0,1" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.Row="1" Grid.Column="1" Text="{Binding TotalTimeSpent, Mode=OneWay}" FontFamily="Arial" FontWeight="Bold"/>
+
+            </Grid>
+        </Grid>-->
+    </Grid>
+</UserControl>

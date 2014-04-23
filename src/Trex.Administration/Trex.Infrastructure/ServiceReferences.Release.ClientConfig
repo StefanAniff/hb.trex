@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<system.serviceModel>
+		<bindings>
+			<customBinding>
+				<binding name="binaryBinding">
+					<binaryMessageEncoding />
+					<httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+				</binding>
+				<binding name="CustomBinding_AuthenticationService">
+					<binaryMessageEncoding />
+					<httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+				</binding>
+				<binding name="CustomBinding_IFileDownloadService">
+					<binaryMessageEncoding />
+					<httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+				</binding>
+			</customBinding>
+		</bindings>
+		<client>
+			<endpoint address="http://trex.d60.dk/ServiceEF/Service.svc"
+				binding="customBinding" bindingConfiguration="CustomBinding_AuthenticationService"
+				contract="Model.ITrexService" name="CustomBinding_AuthenticationService"
+				xdt:Transform="Replace" xdt:Locator="Match(name)"/>
+
+			<endpoint address="http://trex.d60.dk/ServiceEF/FileDownloadService.svc"
+				binding="customBinding" bindingConfiguration="CustomBinding_IFileDownloadService"
+				contract="FileDownloadService.IFileDownloadService" name="CustomBinding_IFileDownloadService"
+				xdt:Transform="Replace" xdt:Locator="Match(name)"/>
+		</client>
+	</system.serviceModel>
+</configuration>

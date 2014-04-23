@@ -1,0 +1,3 @@
+<Modularity:ModuleCatalog xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Modularity="clr-namespace:Microsoft.Practices.Composite.Modularity;assembly=Microsoft.Practices.Composite">
+    <Modularity:ModuleInfo Ref="Trex.SmartClient.TaskModule.dll" ModuleName="TaskModule" ModuleType="Trex.SmartClient.TaskModule, Version=2.1.1.0, Culture=neutral, PublicKeyToken=75a7e45ff958a733" InitializationMode="OnDemand" />
+</Modularity:ModuleCatalog>

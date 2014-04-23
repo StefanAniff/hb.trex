@@ -1,0 +1,82 @@
+﻿<controls:ChildWindow
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls" xmlns:labels="clr-namespace:Trex.TaskAdministration.Resources" xmlns:Resources="clr-namespace:Trex.TaskAdministration.Resources"
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           x:Class="Trex.TaskAdministration.Dialogs.EditTimeEntryView.EditTimeEntryViewWindow"
+           Width="330" Height="380" 
+           Title="{Binding DisplayTitle}" KeyUp="ChildWindowKeyUp" >
+    <controls:ChildWindow.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TrexSL.Shell;component/Resources/ChildWindowStyle.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+            <GridLength x:Key="RowHeight">30</GridLength>
+            <System:Double x:Key="TextBoxHeight">26</System:Double>
+            <Resources:TimeEntryEditResources x:Key="Labels" />
+            <DataTemplate x:Key="TimeEntryTypeTemplate">
+                <Grid>
+                    <TextBlock Text="{Binding Name, Mode=OneWay}" TextWrapping="NoWrap" d:LayoutOverrides="Width, Height"/>
+                </Grid>
+            </DataTemplate>
+
+        </ResourceDictionary>
+
+
+    </controls:ChildWindow.Resources>
+    <controls:ChildWindow.Style>
+        <StaticResource ResourceKey="ChildWindowStyle"/>
+    </controls:ChildWindow.Style>
+    <toolkit:BusyIndicator IsBusy="{Binding IsBusy}">
+
+
+        <Grid x:Name="LayoutRoot" Margin="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="CancelButton" Content="{Binding Cancel, Source={StaticResource Labels}}" Command="{Binding CancelCommand}" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+            <Button x:Name="OKButton" Content="{Binding Save, Source={StaticResource Labels}}" Width="75" Height="23" Command="{Binding SaveCommand}" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                    <RowDefinition Height="Auto" MinHeight="56"/>
+                    <RowDefinition Height="{StaticResource RowHeight}" MinHeight="17"/>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                    <RowDefinition Height="{StaticResource RowHeight}"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <telerik:RadSlider Margin="0" VerticalAlignment="Top" Grid.Row="3" d:LayoutOverrides="Width, GridBox" Grid.Column="1" IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" Maximum="20" LargeChange="0.25" SmallChange="0.25" Value="{Binding TimeSpentNumeric,Mode=TwoWay}"  TickFrequency="0.25"/>
+                <CheckBox Margin="0" Content="{Binding Billable, Source={StaticResource Labels}}" d:LayoutOverrides="Width" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" IsChecked="{Binding IsBillable,Mode=TwoWay}"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" Text="{Binding Date, Source={StaticResource Labels}}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <controls:DatePicker Margin="0,0,0,4" Name="txtDate" Grid.Column="1" SelectedDate="{Binding StartDate, Mode=TwoWay}" Height="26"/>
+                <TextBlock Margin="0" Text="{Binding TimeSpent, Source={StaticResource Labels}}" TextWrapping="Wrap" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBox Margin="0" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" Text="{Binding TimeSpentFormatted, Mode=TwoWay}" IsEnabled="False" Height="{StaticResource TextBoxHeight}" VerticalAlignment="Center"/>
+                <TextBox Margin="0"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Text="{Binding TimeSpent, Mode=TwoWay}" Height="{StaticResource TextBoxHeight}" VerticalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center" />
+                <TextBlock HorizontalAlignment="Left" Margin="0" Text="{Binding BillableTime, Source={StaticResource Labels}}" TextWrapping="Wrap" Grid.Row="4" VerticalAlignment="Center"/>
+                <TextBox Margin="0" TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" Text="{Binding BillableTime, Mode=TwoWay}" Height="{StaticResource TextBoxHeight}" VerticalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" Text="{Binding Description, Source={StaticResource Labels}}" TextWrapping="Wrap" Grid.Row="5" VerticalAlignment="Top"/>
+                <TextBox Margin="0,0,0,6" Text="{Binding Description, Mode=TwoWay}" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" Height="50"/>
+                <TextBox Margin="0" Text="{Binding PricePrHour, Mode=TwoWay}" TextWrapping="Wrap" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Height="{StaticResource TextBoxHeight}"/>
+                <TextBlock HorizontalAlignment="Left" Margin="0" Text="{Binding PricePrHour, Source={StaticResource Labels}}" TextWrapping="Wrap" Grid.Row="8" VerticalAlignment="Center"/>
+                <TextBlock Margin="0" Text="{Binding DecimalHours, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width" Grid.Row="2" VerticalAlignment="Center"/>
+                <ComboBox Margin="0" Grid.Row="6" Grid.Column="1" ItemTemplate="{StaticResource TimeEntryTypeTemplate}" ItemsSource="{Binding TimeEntryTypes}" SelectedItem="{Binding SelectedTimeEntryType,Mode=TwoWay}"  Height="{StaticResource TextBoxHeight}"/>
+                <TextBlock Margin="0" Text="{Binding Type, Source={StaticResource Labels}}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="6" VerticalAlignment="Center"/>
+
+            </Grid>
+        </Grid>
+    </toolkit:BusyIndicator>
+</controls:ChildWindow>

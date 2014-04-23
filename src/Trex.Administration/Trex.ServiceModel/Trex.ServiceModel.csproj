@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD1287AF-62C7-4879-899F-625DCF2259C5}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.ServiceModel</RootNamespace>
+    <AssemblyName>Trex.ServiceModel</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SlowCheetahTargets Condition=" '$(SlowCheetahTargets)'=='' ">$(LOCALAPPDATA)\Microsoft\MSBuild\SlowCheetah\v1\SlowCheetah.Transforms.targets</SlowCheetahTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
+    <OutputPath>bin\Releaseexternal\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\FileDownloadService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Model\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\Trex.ServiceContracts.CreditNote.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.Customer.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.CustomerInvoiceGroup.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.CustomerInvoiceView.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.CustomersInvoiceView.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.CustomerStats.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.Invoice.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.InvoiceComment.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.InvoiceLine.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.InvoiceListItemView.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.InvoiceTemplate.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.PermissionItem.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.Project.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.Role.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.ServerResponse.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.Task.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.TimeEntry.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.TimeEntryType.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.TimeEntryView.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.User.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.UserCreationResponse.datasource" />
+    <None Include="Properties\DataSources\Trex.ServiceContracts.UserPermission.datasource" />
+    <None Include="Service References\FileDownloadService\FileDownloadService.wsdl" />
+    <None Include="Service References\FileDownloadService\FileDownloadService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileDownloadService\FileDownloadService1.wsdl" />
+    <None Include="Service References\FileDownloadService\FileDownloadService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileDownloadService\FileDownloadService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\FileDownloadService\FileDownloadService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Model\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Model\configuration.svcinfo" />
+    <None Include="Service References\Model\configuration91.svcinfo" />
+    <None Include="Service References\Model\Service.disco" />
+    <None Include="Service References\FileDownloadService\FileDownloadService.disco" />
+    <None Include="Service References\FileDownloadService\configuration91.svcinfo" />
+    <None Include="Service References\FileDownloadService\configuration.svcinfo" />
+    <None Include="Service References\FileDownloadService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Service References\Model\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Model\Service3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Model\Service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Model\Trex.ServiceModel.Model.ReCalculateInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Model\TrexSLService.wsdl" />
+    <None Include="ServiceReferences.Debug.ClientConfig">
+      <DependentUpon>ServiceReferences.ClientConfig</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ServiceReferences.Release.ClientConfig">
+      <DependentUpon>ServiceReferences.ClientConfig</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="ServiceReferences.Test.ClientConfig">
+      <DependentUpon>ServiceReferences.ClientConfig</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\FileDownloadService\" />
+    <WCFMetadataStorage Include="Service References\Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Model\Service.wsdl" />
+    <None Include="Service References\Model\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Model\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Trex.Administration.Service\Trex.ServiceContracts.SL\Trex.ServiceContracts.SL.csproj">
+      <Project>{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}</Project>
+      <Name>Trex.ServiceContracts.SL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.Core\Trex.Core.csproj">
+      <Project>{EAC70CA6-8844-4721-A57D-7A92DABCF8B6}</Project>
+      <Name>Trex.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" />
+</Project>

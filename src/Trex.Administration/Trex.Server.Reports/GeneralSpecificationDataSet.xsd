@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GeneralSpecificationDataSet" targetNamespace="http://tempuri.org/GeneralSpecificationDataSet.xsd" xmlns:mstns="http://tempuri.org/GeneralSpecificationDataSet.xsd" xmlns="http://tempuri.org/GeneralSpecificationDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GeneralSpecificationDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="GeneralSpecificationDataSet" msprop:Generator_UserDSName="GeneralSpecificationDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SpecificationData" msprop:Generator_TableClassName="SpecificationDataDataTable" msprop:Generator_TableVarName="tableSpecificationData" msprop:Generator_TablePropName="SpecificationData" msprop:Generator_RowDeletingName="SpecificationDataRowDeleting" msprop:Generator_UserTableName="SpecificationData" msprop:Generator_RowChangingName="SpecificationDataRowChanging" msprop:Generator_RowEvHandlerName="SpecificationDataRowChangeEventHandler" msprop:Generator_RowDeletedName="SpecificationDataRowDeleted" msprop:Generator_RowEvArgName="SpecificationDataRowChangeEvent" msprop:Generator_RowChangedName="SpecificationDataRowChanged" msprop:Generator_RowClassName="SpecificationDataRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Project" msprop:Generator_ColumnVarNameInTable="columnProject" msprop:Generator_ColumnPropNameInRow="Project" msprop:Generator_ColumnPropNameInTable="ProjectColumn" msprop:Generator_UserColumnName="Project" type="xs:string" minOccurs="0" />
+              <xs:element name="Task" msprop:Generator_ColumnVarNameInTable="columnTask" msprop:Generator_ColumnPropNameInRow="Task" msprop:Generator_ColumnPropNameInTable="TaskColumn" msprop:Generator_UserColumnName="Task" type="xs:string" minOccurs="0" />
+              <xs:element name="TimeSpent" msprop:Generator_ColumnVarNameInTable="columnTimeSpent" msprop:Generator_ColumnPropNameInRow="TimeSpent" msprop:Generator_ColumnPropNameInTable="TimeSpentColumn" msprop:Generator_UserColumnName="TimeSpent" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomerNumber" msprop:Generator_ColumnVarNameInTable="columnCustomerNumber" msprop:Generator_ColumnPropNameInRow="CustomerNumber" msprop:Generator_ColumnPropNameInTable="CustomerNumberColumn" msprop:Generator_UserColumnName="CustomerNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="Customer" msprop:Generator_ColumnVarNameInTable="columnCustomer" msprop:Generator_ColumnPropNameInRow="Customer" msprop:Generator_ColumnPropNameInTable="CustomerColumn" msprop:Generator_UserColumnName="Customer" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

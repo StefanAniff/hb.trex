@@ -1,0 +1,43 @@
+﻿
+CREATE FUNCTION [dbo].[FindAllTimeEntries]
+(	
+	@invoiceId INT,
+	@customerInvoiceGroupId INT, 
+	@startdate DATETIME, 
+	@enddate DATETIME
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+   SELECT   
+		dbo.RoundUpToNextQuarter(te.BillableTime) AS TimeSpent, 
+		dbo.ConvertToSmallDate(te.StartTime) AS StartDate, 
+		dbo.ConvertToSmallDate(te.EndTime) AS EndDate,
+		p.ProjectName AS Project, 
+		p.ProjectID AS [Project ID],
+		t.TaskName AS Task, 
+		t.TaskID AS [Task ID],
+		te.Price AS [Price pr Hour],
+		te.InvoiceId AS InvoiceID,
+		p.CustomerInvoiceGroupID AS [CIG ID],
+		p.CustomerID AS [Customer ID],
+		cig.Label AS GroupName,
+		te.TimeEntryID AS [TimeEntry ID]
+                    
+   FROM 
+		dbo.TimeEntries AS te 
+        INNER JOIN dbo.Tasks AS t 
+			ON t.TaskID = te.TaskID 
+        INNER JOIN dbo.Projects AS p 
+			ON p.ProjectID = t.ProjectID 
+        INNER JOIN dbo.CustomerInvoiceGroup AS cig 
+			ON cig.CustomerInvoiceGroupID = p.CustomerInvoiceGroupID 
+        INNER JOIN dbo.Users AS u 
+			ON u.UserID = te.UserID 
+   WHERE 
+		te.StartTime >= @startdate 
+		AND te.endtime <= DATEADD(S, -1, DATEADD(D, 1, @enddate)) 
+		AND	cig.CustomerInvoiceGroupID = @customerInvoiceGroupId
+		AND (te.DocumentType = 1 OR te.DocumentType = 3)
+)

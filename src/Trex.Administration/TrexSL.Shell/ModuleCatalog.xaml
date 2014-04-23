@@ -1,0 +1,31 @@
+﻿<Modularity1:ModuleCatalog xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:Modularity1="clr-namespace:Microsoft.Practices.Prism.Modularity;assembly=Microsoft.Practices.Prism">
+    
+    <Modularity1:ModuleInfo Ref="Trex.TaskAdministration.xap" 
+                           ModuleName="TaskAdministrationModule" 
+                           ModuleType="Trex.TaskAdministration.TaskAdministrationModule, Trex.TaskAdministration, Version=2.0.0.0" 
+                           InitializationMode="WhenAvailable" />
+    
+    <Modularity1:ModuleInfo Ref="Trex.Administration.xap" 
+                           ModuleName="AdministrationModule" 
+                           ModuleType="Trex.Administration.AdministrationModule, Trex.Administration, Version=2.0.0.0" 
+                           InitializationMode="WhenAvailable" />
+    
+    <Modularity1:ModuleInfo Ref="Trex.Invoices.xap" 
+                           ModuleName="InvoiceModule" 
+                           ModuleType="Trex.Invoices.InvoiceModule, Trex.Invoices, Version=1.0.0.0" 
+                           InitializationMode="WhenAvailable" />
+    
+    <Modularity1:ModuleInfo Ref="Trex.Reports.xap" 
+                           ModuleName="ReportModule" 
+                           ModuleType="Trex.Reports.ReportModule, Trex.Reports, Version=2.0.0.0" 
+                           InitializationMode="WhenAvailable" />
+    
+    <Modularity1:ModuleInfo Ref="Trex.Roles.xap" 
+                           ModuleName="RoleModule" 
+                           ModuleType="Trex.Roles.RoleModule, Trex.Roles, Version=2.0.0.0" 
+                           InitializationMode="WhenAvailable" />
+
+</Modularity1:ModuleCatalog>
+

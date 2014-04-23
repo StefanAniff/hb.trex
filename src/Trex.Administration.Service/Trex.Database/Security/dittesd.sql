@@ -1,0 +1,2 @@
+﻿CREATE USER [dittesd] WITHOUT LOGIN;
+

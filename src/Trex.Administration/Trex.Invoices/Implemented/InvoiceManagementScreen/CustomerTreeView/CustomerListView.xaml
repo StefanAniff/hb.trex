@@ -1,0 +1,162 @@
+﻿<UserControl 
+    x:Class="Trex.Invoices.InvoiceManagementScreen.CustomerTreeView.CustomerListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Resources="clr-namespace:Trex.Invoices.Resources"
+    xmlns:Local="clr-namespace:Trex.Invoices.Implemented.InvoiceManagementScreen.CustomerTreeView"
+    mc:Ignorable="d"
+    d:DesignWidth="282" 
+    d:DesignHeight="619" 
+    HorizontalContentAlignment="Stretch" 
+    VerticalContentAlignment="Stretch">
+
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="TreeViewResource.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Resources:TextResources x:Name="Labels"/>
+        </ResourceDictionary>
+
+
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="9" />
+            <Setter Property="Foreground" Value="#FF6F6F6F" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <DataTemplate x:Key="CustomerData">
+                <StackPanel Orientation="Vertical" Margin="0,5">
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold"/>
+
+                    <StackPanel Margin="20,0,0,0">
+                        <!--Inventory Value-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Inventory value: "/>
+                            <TextBlock Text="DKK"/>
+                            <TextBlock Text="{Binding InventoryValue}"  
+                                       Margin="10,0,3,0" />
+
+                        </StackPanel>
+
+                        <!--Distinct prices-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="distinct prices:  " />
+                            <TextBlock Text="{Binding DistinctPrices}"
+                                       Margin="10,0"  />
+                        </StackPanel>
+
+                        <!--First Time entry-->
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding TimeEntryVisibility, Mode=TwoWay}">
+                            <TextBlock Text="first time entry: "/>
+                            <TextBlock Text="{Binding FirstTimeEntryDate, StringFormat='{}{0:dd-MM-yyyy}'}"
+                                       Margin="10,0"  />
+                        </StackPanel>
+                        <!--Hours of non-billable time-->
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding NonBillableVisibility, Mode=TwoWay}" >
+                            <TextBlock Text="Non-billable time: "/>
+                            <TextBlock Text="{Binding NonBillableTIme}" 
+                                       Margin="10,0"  />
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="CustomerData1">
+                <Grid Width="260">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" Grid.ColumnSpan="2"/>
+
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" Grid.Row="1" Margin="20,0,0,0">
+                        <TextBlock Text="Inventory value in DKK: " />
+                        <TextBlock Text="Overdue price:  " Visibility="{Binding OverduepriceVisibility, Mode=TwoWay}"/>
+                        <TextBlock Text="first time entry: " Visibility="{Binding TimeEntryVisibility, Mode=TwoWay}"/>
+                        <TextBlock Text="Non-billable time: "  Visibility="{Binding NonBillableVisibility, Mode=TwoWay}"/>
+                        <!--<TextBlock Text="Drafts: "  Visibility="{Binding DraftVisibility, Mode=TwoWay}"/>-->
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1"  Grid.Row="1"   >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="{Binding InventoryValue}"/>
+                            <TextBlock Text="/"/>
+                            <TextBlock Text="{Binding HasDraft}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Overdueprice}" Visibility="{Binding OverduepriceVisibility, Mode=TwoWay}" Foreground="Red" HorizontalAlignment="Right"/>
+                        <TextBlock Text="{Binding FirstTimeEntryDate, StringFormat='{}{0:dd-MM-yyyy}'}" Visibility="{Binding TimeEntryVisibility, Mode=TwoWay}" HorizontalAlignment="Right"/>
+                        <TextBlock Text="{Binding NonBillableTIme}" Visibility="{Binding NonBillableVisibility, Mode=TwoWay}" HorizontalAlignment="Right"/>
+                        <!--<TextBlock Text="{Binding HasDraft}" Visibility="{Binding DraftVisibility, Mode=TwoWay}" HorizontalAlignment="Right"/>-->
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+
+
+
+        <ListBox 
+            Name="CustomerList" 
+            ItemsSource="{Binding Customers}" 
+            Grid.Row="1"
+            ItemTemplate="{StaticResource CustomerData1}" 
+            SelectedItem="{Binding SelectedCustomerListItem, Mode=TwoWay}"
+            SelectionChanged="SelectionChanged"
+            SelectionMode="Extended" 
+            Local:CustomListViewBox.SelectedItems="{Binding SelectedCustomerListItems, Mode=TwoWay}">
+
+        </ListBox>
+
+        <StackPanel Orientation="Vertical" 
+                    Background="#FFCBCBCB" 
+                    Margin="0"
+                    VerticalAlignment="Bottom" 
+                    Grid.Row="0">
+
+            <TextBlock Text="Total Inventory value:"
+                       Margin="5,0,0,0"
+                       FontFamily="Arial" 
+                       TextWrapping="Wrap"
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding TotalInventoryValue}"
+                       Margin="10,0,3,0"
+                       FontFamily="Arial" 
+                       MouseLeftButtonUp="TextBlockMouseLeftButtonUp"
+                       TextWrapping="Wrap" HorizontalAlignment="Center"  VerticalAlignment="Center"
+                       FontSize="18"/>
+
+                <TextBlock Text="DKK"
+                       TextWrapping="Wrap"
+                       FontFamily="Arial" 
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

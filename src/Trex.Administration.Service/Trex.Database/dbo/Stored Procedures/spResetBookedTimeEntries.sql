@@ -1,0 +1,23 @@
+﻿
+CREATE PROCEDURE [dbo].[spResetBookedTimeEntries] @invoiceId INT
+AS
+
+BEGIN TRANSACTION
+
+BEGIN TRY
+	UPDATE TimeEntries
+	SET InvoiceID = NULL
+	WHERE InvoiceID = @invoiceId
+
+	DELETE FROM InvoiceLines WHERE InvoiceID= @invoiceId AND UnitType = 0
+	
+	IF @@TRANCOUNT > 0
+		COMMIT TRANSACTION;
+
+END TRY
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+        ROLLBACK TRANSACTION;
+
+END CATCH
+

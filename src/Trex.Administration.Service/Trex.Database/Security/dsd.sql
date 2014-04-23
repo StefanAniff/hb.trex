@@ -1,0 +1,2 @@
+﻿CREATE USER [dsd] WITHOUT LOGIN;
+

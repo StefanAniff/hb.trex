@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TimeTrackerDataSet" targetNamespace="http://tempuri.org/TimeTrackerDataSet.xsd" xmlns:mstns="http://tempuri.org/TimeTrackerDataSet.xsd" xmlns="http://tempuri.org/TimeTrackerDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TimeTrackerDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TimeTrackerDataSet" msprop:Generator_UserDSName="TimeTrackerDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Customers" msprop:Generator_UserTableName="Customers" msprop:Generator_RowEvArgName="CustomersRowChangeEvent" msprop:Generator_TableVarName="tableCustomers" msprop:Generator_TablePropName="Customers" msprop:Generator_RowDeletingName="CustomersRowDeleting" msprop:Generator_RowChangingName="CustomersRowChanging" msprop:Generator_RowDeletedName="CustomersRowDeleted" msprop:Generator_RowEvHandlerName="CustomersRowChangeEventHandler" msprop:Generator_TableClassName="CustomersDataTable" msprop:Generator_RowChangedName="CustomersRowChanged" msprop:Generator_RowClassName="CustomersRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="InheritsTimeEntryTypes" msprop:Generator_ColumnVarNameInTable="columnInheritsTimeEntryTypes" msprop:Generator_ColumnPropNameInRow="InheritsTimeEntryTypes" msprop:Generator_ColumnPropNameInTable="InheritsTimeEntryTypesColumn" msprop:Generator_UserColumnName="InheritsTimeEntryTypes" type="xs:boolean" default="true" />
+              <xs:element name="Inactive" msprop:Generator_ColumnVarNameInTable="columnInactive" msprop:Generator_ColumnPropNameInRow="Inactive" msprop:Generator_ColumnPropNameInTable="InactiveColumn" msprop:Generator_UserColumnName="Inactive" type="xs:boolean" default="false" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Projects" msprop:Generator_UserTableName="Projects" msprop:Generator_RowEvArgName="ProjectsRowChangeEvent" msprop:Generator_TableVarName="tableProjects" msprop:Generator_TablePropName="Projects" msprop:Generator_RowDeletingName="ProjectsRowDeleting" msprop:Generator_RowChangingName="ProjectsRowChanging" msprop:Generator_RowDeletedName="ProjectsRowDeleted" msprop:Generator_RowEvHandlerName="ProjectsRowChangeEventHandler" msprop:Generator_TableClassName="ProjectsDataTable" msprop:Generator_RowChangedName="ProjectsRowChanged" msprop:Generator_RowClassName="ProjectsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomerId" msprop:Generator_ColumnVarNameInTable="columnCustomerId" msprop:Generator_ColumnPropNameInRow="CustomerId" msprop:Generator_ColumnPropNameInTable="CustomerIdColumn" msprop:Generator_UserColumnName="CustomerId" type="xs:int" minOccurs="0" />
+              <xs:element name="Inactive" msprop:Generator_ColumnVarNameInTable="columnInactive" msprop:Generator_ColumnPropNameInRow="Inactive" msprop:Generator_ColumnPropNameInTable="InactiveColumn" msprop:Generator_UserColumnName="Inactive" type="xs:boolean" default="false" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tasks" msprop:Generator_UserTableName="Tasks" msprop:Generator_RowEvArgName="TasksRowChangeEvent" msprop:Generator_TableVarName="tableTasks" msprop:Generator_TablePropName="Tasks" msprop:Generator_RowDeletingName="TasksRowDeleting" msprop:Generator_RowChangingName="TasksRowChanging" msprop:Generator_RowDeletedName="TasksRowDeleted" msprop:Generator_RowEvHandlerName="TasksRowChangeEventHandler" msprop:Generator_TableClassName="TasksDataTable" msprop:Generator_RowChangedName="TasksRowChanged" msprop:Generator_RowClassName="TasksRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:nullValue="0" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" default="0" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="ProjectId" msprop:Generator_ColumnVarNameInTable="columnProjectId" msprop:Generator_ColumnPropNameInRow="ProjectId" msprop:Generator_ColumnPropNameInTable="ProjectIdColumn" msprop:Generator_UserColumnName="ProjectId" type="xs:int" />
+              <xs:element name="Description" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Guid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnGuid" msprop:Generator_ColumnPropNameInRow="Guid" msprop:Generator_ColumnPropNameInTable="GuidColumn" msprop:Generator_UserColumnName="Guid" type="xs:string" />
+              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" />
+              <xs:element name="Synced" msprop:Generator_ColumnVarNameInTable="columnSynced" msprop:Generator_ColumnPropNameInRow="Synced" msprop:Generator_ColumnPropNameInTable="SyncedColumn" msprop:Generator_UserColumnName="Synced" type="xs:boolean" default="false" />
+              <xs:element name="SyncInfo" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="SyncInfo" msprop:Generator_ColumnVarNameInTable="columnSyncInfo" msprop:Generator_ColumnPropNameInTable="SyncInfoColumn" msprop:Generator_UserColumnName="SyncInfo" type="xs:string" minOccurs="0" />
+              <xs:element name="Inactive" msprop:Generator_ColumnVarNameInTable="columnInactive" msprop:Generator_ColumnPropNameInRow="Inactive" msprop:Generator_ColumnPropNameInTable="InactiveColumn" msprop:Generator_UserColumnName="Inactive" type="xs:boolean" default="false" />
+              <xs:element name="TimeRegistionTypeId" msprop:Generator_ColumnVarNameInTable="columnTimeRegistionTypeId" msprop:Generator_ColumnPropNameInRow="TimeRegistionTypeId" msprop:Generator_ColumnPropNameInTable="TimeRegistionTypeIdColumn" msprop:Generator_UserColumnName="TimeRegistionTypeId" type="xs:int" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TimeEntries" msprop:Generator_UserTableName="TimeEntries" msprop:Generator_RowEvArgName="TimeEntriesRowChangeEvent" msprop:Generator_TableVarName="tableTimeEntries" msprop:Generator_TablePropName="TimeEntries" msprop:Generator_RowDeletingName="TimeEntriesRowDeleting" msprop:Generator_RowChangingName="TimeEntriesRowChanging" msprop:Generator_RowDeletedName="TimeEntriesRowDeleted" msprop:Generator_RowEvHandlerName="TimeEntriesRowChangeEventHandler" msprop:Generator_TableClassName="TimeEntriesDataTable" msprop:Generator_RowChangedName="TimeEntriesRowChanged" msprop:Generator_RowClassName="TimeEntriesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TimeSpent" msprop:Generator_ColumnVarNameInTable="columnTimeSpent" msprop:Generator_ColumnPropNameInRow="TimeSpent" msprop:Generator_ColumnPropNameInTable="TimeSpentColumn" msprop:Generator_UserColumnName="TimeSpent" type="xs:duration" />
+              <xs:element name="Description" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="TaskId" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnTaskId" msprop:Generator_ColumnPropNameInRow="TaskId" msprop:Generator_ColumnPropNameInTable="TaskIdColumn" msprop:Generator_UserColumnName="TaskId" type="xs:string" />
+              <xs:element name="Guid" msdata:DataType="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columnGuid" msprop:Generator_ColumnPropNameInRow="Guid" msprop:Generator_ColumnPropNameInTable="GuidColumn" msprop:Generator_UserColumnName="Guid" type="xs:string" />
+              <xs:element name="BillableTime" msprop:Generator_ColumnVarNameInTable="columnBillableTime" msprop:Generator_ColumnPropNameInRow="BillableTime" msprop:Generator_ColumnPropNameInTable="BillableTimeColumn" msprop:Generator_UserColumnName="BillableTime" type="xs:duration" />
+              <xs:element name="PricePrHour" msprop:nullValue="0" msprop:Generator_ColumnPropNameInRow="PricePrHour" msprop:Generator_ColumnVarNameInTable="columnPricePrHour" msprop:Generator_ColumnPropNameInTable="PricePrHourColumn" msprop:Generator_UserColumnName="PricePrHour" type="xs:double" minOccurs="0" />
+              <xs:element name="SyncInfo" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="SyncInfo" msprop:Generator_ColumnVarNameInTable="columnSyncInfo" msprop:Generator_ColumnPropNameInTable="SyncInfoColumn" msprop:Generator_UserColumnName="SyncInfo" type="xs:string" minOccurs="0" />
+              <xs:element name="Synced" msprop:Generator_ColumnVarNameInTable="columnSynced" msprop:Generator_ColumnPropNameInRow="Synced" msprop:Generator_ColumnPropNameInTable="SyncedColumn" msprop:Generator_UserColumnName="Synced" type="xs:boolean" default="false" />
+              <xs:element name="Billable" msprop:Generator_ColumnVarNameInTable="columnBillable" msprop:Generator_ColumnPropNameInRow="Billable" msprop:Generator_ColumnPropNameInTable="BillableColumn" msprop:Generator_UserColumnName="Billable" type="xs:boolean" default="true" />
+              <xs:element name="EntryStartDate" msprop:Generator_ColumnVarNameInTable="columnEntryStartDate" msprop:Generator_ColumnPropNameInRow="EntryStartDate" msprop:Generator_ColumnPropNameInTable="EntryStartDateColumn" msprop:Generator_UserColumnName="EntryStartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TimeEntryTypeId" msprop:Generator_ColumnVarNameInTable="columnTimeEntryTypeId" msprop:Generator_ColumnPropNameInRow="TimeEntryTypeId" msprop:Generator_ColumnPropNameInTable="TimeEntryTypeIdColumn" msprop:Generator_UserColumnName="TimeEntryTypeId" type="xs:int" default="1" />
+              <xs:element name="CreateDate" msprop:Generator_ColumnVarNameInTable="columnCreateDate" msprop:Generator_ColumnPropNameInRow="CreateDate" msprop:Generator_ColumnPropNameInTable="CreateDateColumn" msprop:Generator_UserColumnName="CreateDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ClientSourceId" msprop:Generator_ColumnVarNameInTable="columnClientSourceId" msprop:Generator_ColumnPropNameInRow="ClientSourceId" msprop:Generator_ColumnPropNameInTable="ClientSourceIdColumn" msprop:Generator_UserColumnName="ClientSourceId" type="xs:int" default="0" />
+              <xs:element name="Invoiced" msprop:Generator_ColumnVarNameInTable="columnInvoiced" msprop:Generator_ColumnPropNameInRow="Invoiced" msprop:Generator_ColumnPropNameInTable="InvoicedColumn" msprop:Generator_UserColumnName="Invoiced" type="xs:boolean" default="false" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TimeEntryTypes" msprop:Generator_UserTableName="TimeEntryTypes" msprop:Generator_RowEvArgName="TimeEntryTypesRowChangeEvent" msprop:Generator_TableVarName="tableTimeEntryTypes" msprop:Generator_TablePropName="TimeEntryTypes" msprop:Generator_RowDeletingName="TimeEntryTypesRowDeleting" msprop:Generator_RowChangingName="TimeEntryTypesRowChanging" msprop:Generator_RowDeletedName="TimeEntryTypesRowDeleted" msprop:Generator_RowEvHandlerName="TimeEntryTypesRowChangeEventHandler" msprop:Generator_TableClassName="TimeEntryTypesDataTable" msprop:Generator_RowChangedName="TimeEntryTypesRowChanged" msprop:Generator_RowClassName="TimeEntryTypesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+              <xs:element name="IsDefault" msprop:Generator_ColumnVarNameInTable="columnIsDefault" msprop:Generator_ColumnPropNameInRow="IsDefault" msprop:Generator_ColumnPropNameInTable="IsDefaultColumn" msprop:Generator_UserColumnName="IsDefault" type="xs:boolean" minOccurs="0" />
+              <xs:element name="IsBillableByDefault" msprop:Generator_ColumnVarNameInTable="columnIsBillableByDefault" msprop:Generator_ColumnPropNameInRow="IsBillableByDefault" msprop:Generator_ColumnPropNameInTable="IsBillableByDefaultColumn" msprop:Generator_UserColumnName="IsBillableByDefault" type="xs:boolean" minOccurs="0" />
+              <xs:element name="CustomerId" msprop:nullValue="0" msprop:Generator_ColumnPropNameInRow="CustomerId" msprop:Generator_ColumnVarNameInTable="columnCustomerId" msprop:Generator_ColumnPropNameInTable="CustomerIdColumn" msprop:Generator_UserColumnName="CustomerId" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="CustomersKey1">
+      <xs:selector xpath=".//mstns:Customers" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="ProjectsKey1">
+      <xs:selector xpath=".//mstns:Projects" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Tasks" />
+      <xs:field xpath="mstns:Guid" />
+    </xs:unique>
+    <xs:unique name="TimeEntries_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TimeEntries" />
+      <xs:field xpath="mstns:Guid" />
+    </xs:unique>
+    <xs:unique name="TimeEntryTypes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TimeEntryTypes" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="Customers_Projects" msdata:parent="Customers" msdata:child="Projects" msdata:parentkey="Id" msdata:childkey="CustomerId" msprop:Generator_UserChildTable="Projects" msprop:Generator_ChildPropName="GetProjectsRows" msprop:Generator_UserRelationName="Customers_Projects" msprop:Generator_RelationVarName="relationCustomers_Projects" msprop:Generator_UserParentTable="Customers" msprop:Generator_ParentPropName="CustomersRow" />
+      <msdata:Relationship name="Projects_Tasks" msdata:parent="Projects" msdata:child="Tasks" msdata:parentkey="Id" msdata:childkey="ProjectId" msprop:Generator_UserChildTable="Tasks" msprop:Generator_ChildPropName="GetTasksRows" msprop:Generator_UserRelationName="Projects_Tasks" msprop:Generator_RelationVarName="relationProjects_Tasks" msprop:Generator_UserParentTable="Projects" msprop:Generator_ParentPropName="ProjectsRow" />
+      <msdata:Relationship name="Tasks_TimeEntries" msdata:parent="Tasks" msdata:child="TimeEntries" msdata:parentkey="Guid" msdata:childkey="Guid" msprop:Generator_UserChildTable="TimeEntries" msprop:Generator_ChildPropName="GetTimeEntriesRows" msprop:Generator_UserRelationName="Tasks_TimeEntries" msprop:Generator_RelationVarName="relationTasks_TimeEntries" msprop:Generator_UserParentTable="Tasks" msprop:Generator_ParentPropName="TasksRow" />
+      <msdata:Relationship name="TimeEntryTypes_Customers" msdata:parent="TimeEntryTypes" msdata:child="Customers" msdata:parentkey="CustomerId" msdata:childkey="Id" msprop:Generator_UserChildTable="Customers" msprop:Generator_ChildPropName="GetCustomersRows" msprop:Generator_UserRelationName="TimeEntryTypes_Customers" msprop:Generator_RelationVarName="relationTimeEntryTypes_Customers" msprop:Generator_UserParentTable="TimeEntryTypes" msprop:Generator_ParentPropName="TimeEntryTypesRow" />
+      <msdata:Relationship name="TimeEntryTypes_TimeEntries" msdata:parent="TimeEntryTypes" msdata:child="TimeEntries" msdata:parentkey="Id" msdata:childkey="TimeEntryTypeId" msprop:Generator_UserChildTable="TimeEntries" msprop:Generator_ChildPropName="GetTimeEntriesRows" msprop:Generator_UserRelationName="TimeEntryTypes_TimeEntries" msprop:Generator_RelationVarName="relationTimeEntryTypes_TimeEntries" msprop:Generator_UserParentTable="TimeEntryTypes" msprop:Generator_ParentPropName="TimeEntryTypesRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

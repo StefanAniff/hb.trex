@@ -1,0 +1,2 @@
+﻿CREATE USER [jis] WITHOUT LOGIN;
+

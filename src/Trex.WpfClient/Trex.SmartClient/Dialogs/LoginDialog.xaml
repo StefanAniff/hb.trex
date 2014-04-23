@@ -1,0 +1,19 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dialogs="clr-namespace:Trex.SmartClient.Dialogs" x:Class="Trex.SmartClient.Dialogs.LoginDialog"
+    Title="Login" 
+    SizeToContent="Height"
+    Width="500" 
+    mc:Ignorable="d" ShowInTaskbar="False" 
+    WindowStartupLocation="CenterOwner" WindowStyle="None" AllowsTransparency="True"  
+    Background="{x:Null}" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border  Background="White" CornerRadius="10" Padding="10" >
+            <dialogs:LoginView />
+        </Border>
+    </Grid>
+</Window>

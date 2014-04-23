@@ -1,0 +1,206 @@
+BODY
+{
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0px;
+    min-height: 100%;
+    font-family: Arial;
+    font-size: 13px;
+}
+A
+{
+    color: #058b04;
+    text-decoration: none;
+}
+A:hover
+{
+    text-decoration: underline;
+}
+H2
+{
+    display: inline;
+    font-family: Verdana;
+    font-size: 18px;
+    font-weight: bold;
+}
+IMG
+{
+    border-bottom: 0px;
+    border-left: 0px;
+    margin: 0px;
+    border-top: 0px;
+    border-right: 0px;
+}
+#trexlogo
+{
+    margin-top: 39px;
+    float: left;
+}
+#slogan
+{
+    background-image: url(../Images/yourtimeisvaluable.png);
+    margin-top: 9px;
+    width: 138px;
+    background-repeat: no-repeat;
+    float: left;
+    height: 21px;
+}
+#canvas
+{
+    background-color: #ffffff;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#innerCanvas
+{
+}
+#topBannerBar
+{
+    background-image: url(../Images/headerbg.png);
+    background-repeat: repeat-x;
+    height: 132px;
+}
+#menuBar
+{
+    background-image: url(../Images/menubg.png);
+    background-repeat: repeat-x;
+    height: 41px;
+}
+#languageSelector
+{
+    margin-top: 20px;
+    float: right;
+    margin-right: 40px;
+}
+
+#messagebox
+{
+    border: solid 1px #CCCCCC;
+    background-color: #f9f9f9;
+    display: table;
+    padding: 10px;
+    margin: 2px 2px 2px 2px;
+}
+
+.infobox
+{
+    border: solid 1px #CCCCCC;
+    width: 290px;
+    background-color: #f9f9f9;
+    display: table;
+    padding: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+.errorbox
+{
+    border: solid 3px #F15F5F;
+    width: 300px;
+    background-color: #f9f9f9;
+    display: table;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.invalidfield
+{
+    background-color: #FDFFDD;
+}
+
+.innerContent
+{
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button
+{
+    border: 1px solid #71B16B;
+    height: 40px;
+    background: #C8ECBA;
+}
+
+
+.button:hover
+{
+    background: #9CF07B;
+}
+
+
+.wrapper
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wait
+{
+    background-color: Black;
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=40);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
+.wrapper2
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.catch
+{
+    margin-top: 10px;
+    margin-bottom: 1px;
+}
+
+.waitlabel
+{
+    position: relative;
+    margin: auto;
+    top: 50%;
+    margin-top: -10px;
+    width: 200px;
+    height: auto;
+    padding: 5px;
+    border: solid 2px #4A4A4A;
+    background-color: #f9f9f9;
+    display: block;
+    color: Gray;
+}
+
+.refreshbutton
+{
+    margin-top: 1px;
+    border: 1px solid #71B16B;
+    height: 18px;
+    font-size: 10px;
+    background: #C8ECBA;
+}
+
+.refreshbutton:hover
+{
+    background: #9CF07B;
+}
+
+.fieldLabel
+{
+   
+    font-weight: bold;
+}
+
+.mandatoryLabel {
+
+    color: red;
+}

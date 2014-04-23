@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[CreditNote] (
+    [ID]              INT              IDENTITY (1, 1) NOT NULL,
+    [InvoiceID]       INT              NULL,
+    [TimeEntryID]     INT              NULL,
+    [TaskID]          INT              NULL,
+    [UserID]          INT              NULL,
+    [StartTime]       DATETIME         NULL,
+    [EndTime]         DATETIME         NULL,
+    [Description]     NVARCHAR (1000)  NULL,
+    [PauseTime]       FLOAT (53)       NULL,
+    [BillableTime]    FLOAT (53)       NULL,
+    [Billable]        BIT              NULL,
+    [Price]           FLOAT (53)       NULL,
+    [TimeSpent]       FLOAT (53)       NULL,
+    [Guid]            UNIQUEIDENTIFIER NULL,
+    [TimeEntryTypeId] INT              NULL,
+    [ChangeDate]      DATETIME         NULL,
+    [ChangedBy]       INT              NULL,
+    [CreateDate]      DATETIME         NULL,
+    [ClientSourceId]  INT              NULL,
+    [DocumentDate]    DATETIME         NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    FOREIGN KEY ([InvoiceID]) REFERENCES [dbo].[Invoices] ([ID]),
+    FOREIGN KEY ([TimeEntryID]) REFERENCES [dbo].[TimeEntries] ([TimeEntryID])
+);
+

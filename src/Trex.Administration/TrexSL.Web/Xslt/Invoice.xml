@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Invoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <ID>34</ID>
+    <CreateDate>2008-09-18T14:20:17</CreateDate>
+    <StartDate>2008-07-27T00:00:00</StartDate>
+    <EndDate>2008-09-18T00:00:00</EndDate>
+    <CustomerName>d60</CustomerName>
+    <Attention>Brian Østberg</Attention>
+    <StreetAddress>Vestre Hougvej 3</StreetAddress>
+    <ZipCode>5400</ZipCode>
+    <City>Middelfart</City>
+    <Country>Danmark</Country>
+    <DeadLine>2008-09-18T14:20:17</DeadLine>
+    <VATPercentage>0.25</VATPercentage>
+    <Closed>false</Closed>
+    
+    <ArrayOfInvoiceLine>
+        <InvoiceLine>
+            <ID>56</ID>
+            <Text />
+            <PricePrUnit>0</PricePrUnit>
+            <Units>71.75</Units>
+            <Unit />
+            <UnitType>Hours</UnitType>
+            <SortIndex>0</SortIndex>
+        </InvoiceLine>
+        <InvoiceLine>
+            <ID>57</ID>
+            <Text />
+            <PricePrUnit>1</PricePrUnit>
+            <Units>16</Units>
+            <Unit />
+            <UnitType>Hours</UnitType>
+            <SortIndex>0</SortIndex>
+        </InvoiceLine>
+    </ArrayOfInvoiceLine>
+
+</Invoice>

@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE48906C-9C0A-4675-BD23-19E107962CD0}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trex.Invoices</RootNamespace>
+    <AssemblyName>Trex.Invoices</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Trex.Invoices.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Trex.Invoices.App</SilverlightAppEntry>
+    <TestPageFileName>Trex.InvoicesTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>true</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>GlobalizationRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
+    <OutputPath>bin\Releaseexternal\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <NoConfig>true</NoConfig>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Liquid">
+      <HintPath>..\Assemblies\Liquid.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid.Components">
+      <HintPath>..\Assemblies\Liquid.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid.Menu">
+      <HintPath>..\Assemblies\Liquid.Menu.dll</HintPath>
+    </Reference>
+    <Reference Include="Liquid.Popup">
+      <HintPath>..\Assemblies\Liquid.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\SL4\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\SL4\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\SL4\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\SL30\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Silverlight">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\SL30\Microsoft.Practices.Unity.Silverlight.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=2.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217" />
+    <Reference Include="System.Data.Services.Client, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Reactive">
+      <HintPath>..\packages\Rx-Main.1.0.10621\lib\SL4\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Data.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Input, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.Navigation, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.4.1.0.0\lib\SL4\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="Telerik.Windows.Controls, Version=2011.3.1116.1040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Chart">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.Chart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\Assemblies\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data">
+      <HintPath>..\Assemblies\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\InternalCommands.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Dialogs\AutoInvoiceView\AutoInvoiceView.xaml.cs">
+      <DependentUpon>AutoInvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditInvoiceLinesView\EditInvoiceLinesView.xaml.cs">
+      <DependentUpon>EditInvoiceLinesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditInvoiceLinesView\EditInvoiceLinesViewModel.cs" />
+    <Compile Include="Dialogs\EditInvoiceLinesView\InvoiceLineListItemViewModel.cs" />
+    <Compile Include="Dialogs\EditInvoiceLinesView\TimeEntryListItemViewModel.cs" />
+    <Compile Include="Dialogs\EditInvoiceLineView\EditInvoiceLineView.xaml.cs">
+      <DependentUpon>EditInvoiceLineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditInvoiceLineView\EditInvoiceLineViewModel.cs" />
+    <Compile Include="Dialogs\EditInvoiceTemplateView\EditInvoiceTemplateView.xaml.cs">
+      <DependentUpon>EditInvoiceTemplateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditInvoiceView\EditInvoiceView.xaml.cs">
+      <DependentUpon>EditInvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EditInvoiceView\EditInvoiceViewModel.cs" />
+    <Compile Include="Dialogs\InvoiceComments\InvoiceComments.xaml.cs">
+      <DependentUpon>InvoiceComments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\InvoiceComments\InvoiceCommentViewModel.cs" />
+    <Compile Include="Implemented\Filter.cs" />
+    <Compile Include="Implemented\DialogService.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\CustomerTreeView\CustomListViewBox.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceView\InvoiceLineListItemViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceView\TimeEntryListItemViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\PreviewInvoiceView\PreviewInvoiceView.xaml.cs">
+      <DependentUpon>PreviewInvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceService.cs" />
+    <Compile Include="Interfaces\IActionPanelViewFactory.cs" />
+    <Compile Include="Interfaces\IButtonPanelViewModel.cs" />
+    <Compile Include="Interfaces\IDialogService.cs" />
+    <Compile Include="Interfaces\ICustomerListViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\ButtonPanelView.xaml.cs">
+      <DependentUpon>ButtonPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\ButtonPanelViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\CustomerActionsView.xaml.cs">
+      <DependentUpon>CustomerActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\CustomerActionsViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\InvoiceActionPanelViewFactory.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\InvoiceActionsView.xaml.cs">
+      <DependentUpon>InvoiceActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\ButtonPanelView\InvoiceActionsViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\CustomerTreeView\CustomerListView.xaml.cs">
+      <DependentUpon>CustomerListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\CustomerTreeView\CustomerListViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\CustomerTreeView\CustomerListItemViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\CustomerTreeView\TreeViewItemViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\FilterView\FilterView.xaml.cs">
+      <DependentUpon>FilterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\FilterView\FilterViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\ICustomerViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\IFilterView.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\IFilterViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\IInvoiceView.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\IInvoiceViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\ICustomerListView.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\Interfaces\ITaskTreeViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceAdministrationMasterView\IInvoiceAdministrationMasterViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceView\InvoiceListItemViewModel.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceView\InvoiceViewModel.cs" />
+    <Compile Include="Interfaces\IInvoiceService.cs" />
+    <Compile Include="InvoiceModule.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceManagementScreen.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceScreenFactory.cs" />
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceView\InvoiceView.xaml.cs">
+      <DependentUpon>InvoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceAdministrationMasterView\InvoiceAdministrationMasterView.xaml.cs">
+      <DependentUpon>InvoiceAdministrationMasterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Implemented\InvoiceManagementScreen\InvoiceAdministrationMasterView\InvoiceAdministrationMasterViewModel.cs" />
+    <Compile Include="InvoiceTemplatesScreen\InvoiceTemplatesListView\InvoiceTemplatesListView.xaml.cs">
+      <DependentUpon>InvoiceTemplatesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceTemplatesScreen\InvoiceTemplatesListView\InvoiceTemplatesListViewModel.cs" />
+    <Compile Include="InvoiceTemplatesScreen\InvoiceTemplatesScreen.cs" />
+    <Compile Include="InvoiceTemplatesScreen\InvoiceTemplatesScreenFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\TextResources.Designer.cs">
+      <DependentUpon>TextResources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Trex.Administration.Service\Trex.ServiceContracts.SL\Trex.ServiceContracts.SL.csproj">
+      <Project>{F271FA5A-95C5-47A4-9FA9-8F2CE4DC3A39}</Project>
+      <Name>Trex.ServiceContracts.SL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.Core\Trex.Core.csproj">
+      <Project>{EAC70CA6-8844-4721-A57D-7A92DABCF8B6}</Project>
+      <Name>Trex.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.Infrastructure\Trex.Infrastructure.csproj">
+      <Project>{463B4605-ADF8-4B19-A11C-A9D60E0E9047}</Project>
+      <Name>Trex.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Dialogs\AutoInvoiceView\AutoInvoiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditInvoiceLinesView\EditInvoiceLinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditInvoiceLineView\EditInvoiceLineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditInvoiceTemplateView\EditInvoiceTemplateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EditInvoiceView\EditInvoiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\InvoiceComments\InvoiceComments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\ButtonPanelView\ButtonPanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\ButtonPanelView\CustomerActionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\ButtonPanelView\PanelButtonStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\ButtonPanelView\InvoiceActionsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\CustomerTreeView\CustomerListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\CustomerTreeView\TreeStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\CustomerTreeView\TreeViewResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\FilterView\FilterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\InvoiceView\InvoiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\InvoiceAdministrationMasterView\InvoiceAdministrationMasterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Implemented\InvoiceManagementScreen\PreviewInvoiceView\PreviewInvoiceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InvoiceTemplatesScreen\InvoiceTemplatesListView\InvoiceTemplatesListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\OutOfBrowserSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\TextResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Implemented\InvoiceManagementScreen\InvoiceView\Minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Implemented\InvoiceManagementScreen\InvoiceView\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Implemented\InvoiceManagementScreen\InvoiceView\mail-open.png" />
+    <Resource Include="Implemented\InvoiceManagementScreen\InvoiceView\mail-sent.png" />
+    <Resource Include="Implemented\InvoiceManagementScreen\InvoiceView\script-text.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+</Project>

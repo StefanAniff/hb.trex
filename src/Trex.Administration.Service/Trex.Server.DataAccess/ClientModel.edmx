@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Trex_BaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="Trex_BaseModelStoreContainer">
+          <EntitySet Name="ClientApplications" EntityType="Trex_BaseModel.Store.ClientApplications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customers" EntityType="Trex_BaseModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Invitations" EntityType="Trex_BaseModel.Store.Invitations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permissions" EntityType="Trex_BaseModel.Store.Permissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Version" EntityType="Trex_BaseModel.Store.Version" store:Type="Tables" store:Schema="dbo" store:Name="Version">
+            <DefiningQuery>SELECT 
+      [Version].[Version] AS [Version], 
+      [Version].[Date] AS [Date], 
+      [Version].[Creator] AS [Creator], 
+      [Version].[Description] AS [Description]
+      FROM [dbo].[Version] AS [Version]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="ClientApplications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClientApplicationType" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="VatNumber" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Country" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address3" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address4" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address5" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatorUserName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatorFullName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CreatorPhone" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreatorEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomerId" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ConnectionString" Type="nvarchar" MaxLength="300" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="InactiveDate" Type="datetime" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="LockedOutDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActivated" Type="bit" Nullable="false" />
+          <Property Name="ActivationId" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActivationEmailSent" Type="bit" />
+          <Property Name="City" Type="nvarchar" MaxLength="200" />
+          <Property Name="Zipcode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Invitations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InviteeEmail" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CustomerID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="InvitationID" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="InvitationDate" Type="datetime" Nullable="false" />
+          <Property Name="IsUsed" Type="bit" Nullable="false" />
+          <Property Name="UsedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Permission" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ClientApplicationID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'trex_base.dbo.Version' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Version">
+          <Key>
+            <PropertyRef Name="Version" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Creator" />
+          </Key>
+          <Property Name="Version" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Creator" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Function Name="spGetAllPermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClientApplicationID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetConnection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="varchar" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrexBaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TrexBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientApplications" EntityType="TrexBaseModel.ClientApplication" />
+          <EntitySet Name="TrexCustomers" EntityType="TrexBaseModel.TrexCustomer" />
+          <EntitySet Name="Invitations" EntityType="TrexBaseModel.Invitation" />
+          <EntitySet Name="Permissions" EntityType="TrexBaseModel.Permission" />
+          <EntitySet Name="Versions" EntityType="TrexBaseModel.Version" />
+        </EntityContainer>
+        <EntityType Name="ClientApplication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientApplicationType" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TrexCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="VatNumber" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address3" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address4" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address5" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorUserName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorFullName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorPhone" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CreatorEmail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ConnectionString" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="InactiveDate" Type="DateTime" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="LockedOutDate" Type="DateTime" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="IsActivated" Type="Boolean" Nullable="false" />
+          <Property Name="ActivationId" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IsActivationEmailSent" Type="Boolean" />
+          <Property Type="String" Name="City" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Zipcode" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Invitation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InviteeEmail" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="InvitationID" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="InvitationDate" Type="DateTime" Nullable="false" />
+          <Property Name="IsUsed" Type="Boolean" Nullable="false" />
+          <Property Name="UsedDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Permission1" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ClientApplicationID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Version">
+          <Key>
+            <PropertyRef Name="Versions_number" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Creator" />
+          </Key>
+          <Property Name="Versions_number" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Creator" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Trex_BaseModelStoreContainer" CdmEntityContainer="TrexBaseEntities">
+          <EntitySetMapping Name="ClientApplications"><EntityTypeMapping TypeName="TrexBaseModel.ClientApplication"><MappingFragment StoreEntitySet="ClientApplications">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="ClientApplicationType" ColumnName="ClientApplicationType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TrexCustomers"><EntityTypeMapping TypeName="TrexBaseModel.TrexCustomer"><MappingFragment StoreEntitySet="Customers">
+            <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+            <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="Address1" ColumnName="Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address2" />
+            <ScalarProperty Name="Address3" ColumnName="Address3" />
+            <ScalarProperty Name="Address4" ColumnName="Address4" />
+            <ScalarProperty Name="Address5" ColumnName="Address5" />
+            <ScalarProperty Name="CreatorUserName" ColumnName="CreatorUserName" />
+            <ScalarProperty Name="CreatorFullName" ColumnName="CreatorFullName" />
+            <ScalarProperty Name="CreatorPhone" ColumnName="CreatorPhone" />
+            <ScalarProperty Name="CreatorEmail" ColumnName="CreatorEmail" />
+            <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+            <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+            <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+            <ScalarProperty Name="InactiveDate" ColumnName="InactiveDate" />
+            <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+            <ScalarProperty Name="LockedOutDate" ColumnName="LockedOutDate" />
+            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+            <ScalarProperty Name="IsActivated" ColumnName="IsActivated" />
+            <ScalarProperty Name="ActivationId" ColumnName="ActivationId" />
+            <ScalarProperty Name="IsActivationEmailSent" ColumnName="IsActivationEmailSent" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Invitations"><EntityTypeMapping TypeName="TrexBaseModel.Invitation"><MappingFragment StoreEntitySet="Invitations">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="InviteeEmail" ColumnName="InviteeEmail" />
+            <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+            <ScalarProperty Name="InvitationID" ColumnName="InvitationID" />
+            <ScalarProperty Name="InvitationDate" ColumnName="InvitationDate" />
+            <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+            <ScalarProperty Name="UsedDate" ColumnName="UsedDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Permissions"><EntityTypeMapping TypeName="TrexBaseModel.Permission"><MappingFragment StoreEntitySet="Permissions">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Permission1" ColumnName="Permission" />
+            <ScalarProperty Name="ClientApplicationID" ColumnName="ClientApplicationID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Versions"><EntityTypeMapping TypeName="TrexBaseModel.Version"><MappingFragment StoreEntitySet="Version">
+            <ScalarProperty Name="Versions_number" ColumnName="Version" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Creator" ColumnName="Creator" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ClientModel">
+        <EntityTypeShape EntityType="TrexBaseModel.ClientApplication" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583331" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrexBaseModel.TrexCustomer" Width="1.5" PointX="2.75" PointY="0.75" Height="5.4417122395833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrexBaseModel.Invitation" Width="1.5" PointX="4.75" PointY="0.75" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrexBaseModel.Permission" Width="1.5" PointX="4.75" PointY="4.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="TrexBaseModel.Version" Width="1.5" PointX="6.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

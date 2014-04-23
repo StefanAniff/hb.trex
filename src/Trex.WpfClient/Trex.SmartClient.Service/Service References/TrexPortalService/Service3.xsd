@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/TrexSL.Web.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TrexSL.Web.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:60249/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:60249/Service.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfTimeEntryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeEntryDto" nillable="true" type="tns:TimeEntryDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimeEntryDto" nillable="true" type="tns:ArrayOfTimeEntryDto" />
+  <xs:complexType name="TimeEntryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Billable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BillableTime" type="xs:double" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClientSourceId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PricePrHour" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ProjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TaskGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="TaskId" type="xs:int" />
+      <xs:element minOccurs="0" name="TaskName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeEntryTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeSpent" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeEntryDto" nillable="true" type="tns:TimeEntryDto" />
+  <xs:complexType name="ArrayOfGeneralTimeEntryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GeneralTimeEntryDto" nillable="true" type="tns:GeneralTimeEntryDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGeneralTimeEntryDto" nillable="true" type="tns:ArrayOfGeneralTimeEntryDto" />
+  <xs:complexType name="GeneralTimeEntryDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Billable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BillableTime" type="xs:double" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClientSourceId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PricePrHour" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ProjectId" type="xs:int" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TaskGuid" type="ser:guid" />
+      <xs:element minOccurs="0" name="TaskId" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeEntryTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="TimeSpent" type="xs:double" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeneralTimeEntryDto" nillable="true" type="tns:GeneralTimeEntryDto" />
+  <xs:complexType name="ArrayOfTimeEntryTypeDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeEntryTypeDto" nillable="true" type="tns:TimeEntryTypeDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimeEntryTypeDto" nillable="true" type="tns:ArrayOfTimeEntryTypeDto" />
+  <xs:complexType name="TimeEntryTypeDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsBillableByDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeEntryTypeDto" nillable="true" type="tns:TimeEntryTypeDto" />
+  <xs:complexType name="UserDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NumOfTimeEntries" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Permissions" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Roles" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="TotalBillableTime" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalTime" type="xs:double" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDto" nillable="true" type="tns:UserDto" />
+  <xs:complexType name="UserStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillableHoursThisMonth" type="xs:double" />
+      <xs:element minOccurs="0" name="BillableHoursThisWeek" type="xs:double" />
+      <xs:element minOccurs="0" name="BillableHoursToday" type="xs:double" />
+      <xs:element minOccurs="0" name="EarningsThisMonth" type="xs:double" />
+      <xs:element minOccurs="0" name="EarningsThisWeek" type="xs:double" />
+      <xs:element minOccurs="0" name="EarningsToday" type="xs:double" />
+      <xs:element minOccurs="0" name="RegisteredHoursThisMonth" type="xs:double" />
+      <xs:element minOccurs="0" name="RegisteredHoursThisWeek" type="xs:double" />
+      <xs:element minOccurs="0" name="RegisteredHoursToday" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserStatistics" nillable="true" type="tns:UserStatistics" />
+  <xs:complexType name="ArrayOfCompanyDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompanyDto" nillable="true" type="tns:CompanyDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompanyDto" nillable="true" type="tns:ArrayOfCompanyDto" />
+  <xs:complexType name="CompanyDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CellPhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="InheritsTimeEntryTypes" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentTermIncludeCurrentMonth" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PaymentTermNumberOfDays" type="xs:int" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompanyDto" nillable="true" type="tns:CompanyDto" />
+  <xs:complexType name="CompressedObject">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ResponseHeaders" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="SerializedResponse" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompressedObject" nillable="true" type="tns:CompressedObject" />
+  <xs:complexType name="ArrayOfProjectDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectDto" nillable="true" type="tns:ProjectDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjectDto" nillable="true" type="tns:ArrayOfProjectDto" />
+  <xs:complexType name="ProjectDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyId" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsEstimatesEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectDto" nillable="true" type="tns:ProjectDto" />
+  <xs:complexType name="ArrayOfTaskDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaskDto" nillable="true" type="tns:TaskDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaskDto" nillable="true" type="tns:ArrayOfTaskDto" />
+  <xs:complexType name="TaskDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BestCaseEstimate" type="xs:double" />
+      <xs:element minOccurs="0" name="ChangeDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedByName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentTaskId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProjectId" type="xs:int" />
+      <xs:element minOccurs="0" name="RealisticEstimate" type="xs:double" />
+      <xs:element minOccurs="0" name="RegisteredTime" type="xs:double" />
+      <xs:element minOccurs="0" name="TimeEstimated" type="xs:double" />
+      <xs:element minOccurs="0" name="TimeLeft" type="xs:double" />
+      <xs:element minOccurs="0" name="WorstCaseEstimate" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskDto" nillable="true" type="tns:TaskDto" />
+  <xs:complexType name="ExceptionInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExceptionDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExceptionInfo" nillable="true" type="tns:ExceptionInfo" />
+  <xs:complexType name="ArrayOfPermissionItemDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PermissionItemDto" nillable="true" type="tns:PermissionItemDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPermissionItemDto" nillable="true" type="tns:ArrayOfPermissionItemDto" />
+  <xs:complexType name="PermissionItemDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PermissionName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PermissionItemDto" nillable="true" type="tns:PermissionItemDto" />
+</xs:schema>
