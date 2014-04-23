@@ -59,21 +59,7 @@
                                         SelectedItem="{Binding ElementName=_cbi}" HorizontalContentAlignment="Center">
                                     <ComboBoxItem Name="_cbi">A project</ComboBoxItem>
                                 </Telerik:RadComboBox>
-                            </StackPanel>
-                            
-                            <!-- Sub project selection -->
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                                    <Label Content="Subproject:" VerticalAlignment="Center" />
-                                    <Telerik:RadComboBox 
-                                        Telerik:StyleManager.Theme="Windows8"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        Width="100"
-                                        Height="25"
-                                        SelectedItem="{Binding ElementName=_cbi1}" HorizontalContentAlignment="Center">
-                                            <ComboBoxItem Name="_cbi1">A subproject</ComboBoxItem>
-                                    </Telerik:RadComboBox>
-                            </StackPanel>
+                            </StackPanel>                            
                         </StackPanel>
 
                         <!-- Period selection buttons -->
