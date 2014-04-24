@@ -410,12 +410,12 @@
                         
                         <!-- Horizontal totals -->
                         <TextBlock Grid.Row="7" Grid.Column="0" Text="Estimated total" Style="{StaticResource TotalTextBlockStyle}" />
-                        <TextBlock Grid.Row="7" Grid.Column="1" Text="520800 kr" Style="{StaticResource TotalTextBlockStyle}" />
-                        <TextBlock Grid.Row="7" Grid.Column="2" Text="523600 kr" Style="{StaticResource TotalTextBlockStyle}" />
-                        <TextBlock Grid.Row="7" Grid.Column="3" Text="536700 kr" Style="{StaticResource TotalTextBlockStyle}" />
-                        <TextBlock Grid.Row="7" Grid.Column="4" Text="548100 kr" Style="{StaticResource TotalTextBlockStyle}" />
-                        <TextBlock Grid.Row="7" Grid.Column="5" Text="542800 kr" Style="{StaticResource TotalTextBlockStyle}" />
-                        <TextBlock Grid.Row="7" Grid.Column="6" Text="543600 kr" Style="{StaticResource TotalTextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Grid.Column="1" Text="520.800 kr" Style="{StaticResource TotalTextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Grid.Column="2" Text="523.600 kr" Style="{StaticResource TotalTextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Grid.Column="3" Text="536.700 kr" Style="{StaticResource TotalTextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Grid.Column="4" Text="548.100 kr" Style="{StaticResource TotalTextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Grid.Column="5" Text="542.800 kr" Style="{StaticResource TotalTextBlockStyle}" />
+                        <TextBlock Grid.Row="7" Grid.Column="6" Text="543.600 kr" Style="{StaticResource TotalTextBlockStyle}" />
                     </Grid>
                     
                     <!-- Project economy -->
