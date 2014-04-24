@@ -11,12 +11,11 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
-        
+    <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">        
         <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit Customer" Commands:Click.Command="{Binding Path=EditCustomer}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditCustomerPermission"/>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Add Project" Commands:Click.Command="{Binding Path=AddProject}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateProjectPermission"/>
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Add Project" Commands:Click.Command="{Binding Path=AddProject}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateProjectPermission" />-->
         <!--<Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=DeleteCustomer}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditCustomerPermission"/>-->
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit Time entry types" Commands:Click.Command="{Binding Path=EditTimeEntryTypes}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="TimeEntryTypesPermission"/>
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit Time entry types" Commands:Click.Command="{Binding Path=EditTimeEntryTypes}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="TimeEntryTypesPermission" />-->
         <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Add Customer invoice group" Commands:Click.Command="{Binding Path=AddCIG}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="TimeEntryTypesPermission"/>
     </StackPanel>
 </UserControl>

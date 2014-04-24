@@ -15,7 +15,7 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit timeentry" Commands:Click.Command="{Binding EditTimeEntry}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTimeEntryPermission"/>
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit timeentry" Commands:Click.Command="{Binding EditTimeEntry}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTimeEntryPermission" />-->
         <Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding DeleteTimeEntry}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTimeEntryPermission"/>
 	</StackPanel>
 </UserControl>

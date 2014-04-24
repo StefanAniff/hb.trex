@@ -12,9 +12,9 @@
 	</UserControl.Resources>
 
     <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit task" Commands:Click.Command="{Binding Path=EditTask}" Height="{StaticResource ButtonHeight}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"  />
-        <Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=DeleteTask}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"/>
-        <Button HorizontalAlignment="Left" Content="Add Timeentry" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=AddTimeEntry}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateTimeEntryPermission"/>
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit task" Commands:Click.Command="{Binding Path=EditTask}" Height="{StaticResource ButtonHeight}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission" />-->
+        <!--<Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=DeleteTask}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"/>-->
+        <!--<Button HorizontalAlignment="Left" Content="Add Timeentry" Height="{StaticResource ButtonHeight}" Commands:Click.Command="{Binding Path=AddTimeEntry}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateTimeEntryPermission" />-->
     </StackPanel>
 
 </UserControl>

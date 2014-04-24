@@ -12,8 +12,8 @@
     </UserControl.Resources>
 
     <StackPanel x:Name="LayoutRoot" Orientation="Horizontal">
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit project" Commands:Click.Command="{Binding Path=EditProject}" Height="{StaticResource ButtonHeight}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditProjectPermission"/>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Add task" Commands:Click.Command="{Binding Path=AddTask}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateTaskPermission"/>
-        <Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}"  Commands:Click.Command="{Binding Path=DeleteProject}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"/>
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Edit project" Commands:Click.Command="{Binding Path=EditProject}" Height="{StaticResource ButtonHeight}" Margin="15,0,0,0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditProjectPermission" />-->
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Center" Content="Add task" Commands:Click.Command="{Binding Path=AddTask}" Height="{StaticResource ButtonHeight}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="CreateTaskPermission" />-->
+        <!--<Button HorizontalAlignment="Left" Content="Delete" Height="{StaticResource ButtonHeight}"  Commands:Click.Command="{Binding Path=DeleteProject}" Margin="0" Style="{StaticResource ButtonStyle}" Controls:PermissionControl.RequiredVisibilityPermission="EditTaskPermission"/>-->
     </StackPanel>
 </UserControl>
