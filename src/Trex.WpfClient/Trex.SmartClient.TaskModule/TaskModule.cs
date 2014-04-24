@@ -37,27 +37,24 @@ namespace Trex.SmartClient.TaskModule
         public void Initialize()
         {
             RegisterViewModels();
-            var taskAdminScreenInfo = MenuInfo.Create(0, "Registration", true, _appSettings.StartScreenIsRegistration, false, true);
-
-            _screenFactoryRegistry.RegisterFactory(taskAdminScreenInfo.ScreenGuid, new TaskScreenFactory(_unityContainer, _userSession));
-            _menuRegistry.RegisterMenuInfo(taskAdminScreenInfo);
+            //var taskAdminScreenInfo = MenuInfo.Create(0, "Registration", true, _appSettings.StartScreenIsRegistration, false, true);
+            //_screenFactoryRegistry.RegisterFactory(taskAdminScreenInfo.ScreenGuid, new TaskScreenFactory(_unityContainer, _userSession));
+            //_menuRegistry.RegisterMenuInfo(taskAdminScreenInfo);
+            //_unityContainer.Resolve<IDialogService>();
 
             var settingsScreenInfo = MenuInfo.Create(2, "Settings", true, false, true, true);
             _screenFactoryRegistry.RegisterFactory(settingsScreenInfo.ScreenGuid, new SettingsScreen.SettingsScreenFactory(_unityContainer));
             _menuRegistry.RegisterMenuInfo(settingsScreenInfo);
-
-
-            _unityContainer.Resolve<IDialogService>();
-
         }
 
 
 
         private void RegisterViewModels()
         {
-            _unityContainer.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
-            _unityContainer.RegisterType<IHistoryFeedViewModel, HistoryFeedViewModel>(new ContainerControlledLifetimeManager());
-            _unityContainer.RegisterType<ITaskScreenMasterViewModel, TaskScreenMasterViewModel>();
+            //_unityContainer.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
+            //_unityContainer.RegisterType<IHistoryFeedViewModel, HistoryFeedViewModel>(new ContainerControlledLifetimeManager());
+            //_unityContainer.RegisterType<ITaskScreenMasterViewModel, TaskScreenMasterViewModel>();
+
             _unityContainer.RegisterType<ISettingsViewModel, SettingsScreen.SettingsView.SettingsViewModel>();
         }
     }
