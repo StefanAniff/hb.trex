@@ -183,12 +183,6 @@
     <None Include="Properties\PublishProfiles\Debug.pubxml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminclient d60 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminclient d60 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminclienttest - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminclienttest - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\trexcustomersadminclient - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexcustomersadminclient - Web Deploy.pubxml" />
     <None Include="Web.Releaseexternal.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

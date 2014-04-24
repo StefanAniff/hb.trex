@@ -262,18 +262,11 @@
     </None>
     <Content Include="packageRestore.proj" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
-    <None Include="Properties\PublishProfiles\Releaseexternal.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <Content Include="Resources\pdf\t_rex_administration_eng.pdf" />
     <Content Include="Resources\pdf\t_rex_adminstration_modul_da.pdf" />
     <Content Include="Resources\pdf\t_rex_bruger_manual_da.pdf" />
     <Content Include="Resources\pdf\t_rex_user_manual_eng.pdf" />
-    <None Include="Properties\PublishProfiles\trexadminservice d60 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminservice d60 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminservicetest - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexadminservicetest - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\trexcustomersadminservice - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexcustomersadminservice - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -209,13 +209,6 @@
     <None Include="Properties\PublishProfiles\Filesystem %28Test%29.pubxml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\Filesystem %28Prod customers%29.pubxml" />
-    <None Include="Properties\PublishProfiles\trexclientservicetest - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexclientservicetest - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\trexcustomerswpfclientservice - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexcustomerswpfclientservice - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\trexwpfclientservice d60 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\trexwpfclientservice d60 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
