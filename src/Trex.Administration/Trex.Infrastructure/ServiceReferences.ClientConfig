@@ -65,21 +65,6 @@
 				contract="FileDownloadService.IFileDownloadService"
         name="Release_FileServiceEndpoint"/>-->
 
-      <!-- ******************** RELEASEEXTERNAL ******************** -->
-      <!--<endpoint
-        address="http://trexcustomersadminservice.azurewebsites.net/service.svc"
-        binding="customBinding"
-        bindingConfiguration="CustomBinding_DomainService"
-				contract="Model.ITrexService"
-        name="ReleaseExternal_DomainServiceEndpoint"/>
-
-      <endpoint
-        address="http://trexcustomersadminservice.azurewebsites.net/FileDownloadService.svc"
-        binding="customBinding"
-        bindingConfiguration="CustomBinding_FileService"
-				contract="FileDownloadService.IFileDownloadService"
-        name="ReleaseExternal_FileServiceEndpoint"/>-->
-
     </client>
 	</system.serviceModel>
 </configuration>

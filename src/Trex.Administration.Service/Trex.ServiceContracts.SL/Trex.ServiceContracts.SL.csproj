@@ -49,18 +49,7 @@
     <OutputPath>bin\Test\</OutputPath>
     <NoConfig>true</NoConfig>
     <NoStdLib>true</NoStdLib>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Releaseexternal|AnyCPU'">
-    <OutputPath>bin\Releaseexternal\</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoStdLib>true</NoStdLib>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <NoConfig>true</NoConfig>
-  </PropertyGroup>
+  </PropertyGroup>  
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="System.Runtime.Serialization" />
