@@ -51,19 +51,19 @@
         name="Test_FileServiceEndpoint"/>-->
 
       <!-- ******************** RELEASE ******************** -->
-      <!--<endpoint
-        address="http://trexadminservice.azurewebsites.net/service.svc"
+      <endpoint
+        address="http://hbtrexadminservice.azurewebsites.net/service.svc"
         binding="customBinding"
         bindingConfiguration="CustomBinding_DomainService"
 				contract="Model.ITrexService"
         name="Release_DomainServiceEndpoint"/>
 
       <endpoint
-        address="http://trexadminservice.azurewebsites.net/FileDownloadService.svc"
+        address="http://hbtrexadminservice.azurewebsites.net/FileDownloadService.svc"
         binding="customBinding"
         bindingConfiguration="CustomBinding_FileService"
 				contract="FileDownloadService.IFileDownloadService"
-        name="Release_FileServiceEndpoint"/>-->
+        name="Release_FileServiceEndpoint"/>
 
     </client>
 	</system.serviceModel>

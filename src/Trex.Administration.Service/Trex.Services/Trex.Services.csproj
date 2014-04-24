@@ -249,8 +249,10 @@
       <DependentUpon>log4net.config</DependentUpon>
       <IsTransformFile>True</IsTransformFile>
       <SubType>Designer</SubType>
-    </None>    
+    </None>
     <Content Include="packageRestore.proj" />
+    <None Include="Properties\PublishProfiles\hbtrexadminservice - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\hbtrexadminservice - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <Content Include="Resources\pdf\t_rex_administration_eng.pdf" />
@@ -273,7 +275,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <ExcludeApp_Data>true</ExcludeApp_Data>
     <PublishDatabases>false</PublishDatabases>
-  </PropertyGroup>  
+  </PropertyGroup>
   <PropertyGroup Label="SlowCheetah">
     <SlowCheetah_EnableImportFromNuGet Condition=" '$(SC_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
     <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.8\tools\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>

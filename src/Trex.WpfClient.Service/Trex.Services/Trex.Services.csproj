@@ -190,21 +190,14 @@
     <None Include="log4net.Release.config">
       <DependentUpon>log4net.config</DependentUpon>
       <IsTransformFile>True</IsTransformFile>
-    </None>    
-    <None Include="log4net.WebDeploy %28Prod%29.config">
-      <DependentUpon>log4net.config</DependentUpon>
-      <IsTransformFile>True</IsTransformFile>
-    </None>
-    <None Include="log4net.Webdeploy %28Test%29.config">
-      <DependentUpon>log4net.config</DependentUpon>
-      <IsTransformFile>True</IsTransformFile>
-      <SubType>Designer</SubType>
     </None>
     <Content Include="packageRestore.proj" />
     <None Include="Properties\PublishProfiles\Filesystem %28Prod%29.pubxml" />
     <None Include="Properties\PublishProfiles\Filesystem %28Test%29.pubxml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\hbtrexwpfclientservice - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\hbtrexwpfclientservice - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -309,7 +302,7 @@
     <SlowCheetah_EnableImportFromNuGet Condition=" '$(SC_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
     <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.5\tools\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
     <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
-  </PropertyGroup>  
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
