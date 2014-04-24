@@ -26,16 +26,18 @@ namespace Trex.SmartClient.Overview.OverviewScreen
             var reportScreen = new OverviewScreen(guid, _unityContainer);
             reportScreen.InitializeScreen(region, guid);
 
-            var dailyOverview = new DayOverviewScreen.DayOverviewScreen();
-            var desktopPanelViewModel = _unityContainer.Resolve<IDayOverviewViewModel>();
-            dailyOverview.ApplyViewModel(desktopPanelViewModel);
+            // Disabled for H&B
+            //var dailyOverview = new DayOverviewScreen.DayOverviewScreen();
+            //var desktopPanelViewModel = _unityContainer.Resolve<IDayOverviewViewModel>();
+            //dailyOverview.ApplyViewModel(desktopPanelViewModel);
 
             var weeklyOverview = new WeeklyOverviewScreen.WeeklyOverviewScreen();
             var weeklyOverviewViewModel = _unityContainer.Resolve<IWeeklyOverviewViewmodel>();
             weeklyOverview.ApplyViewModel(weeklyOverviewViewModel);
 
-            string desktopRegion = _regionNames.SubmenuRegion;
-            reportScreen.AddRegion(desktopRegion, dailyOverview);
+            var desktopRegion = _regionNames.SubmenuRegion;
+            // Disabled for H&B
+            //reportScreen.AddRegion(desktopRegion, dailyOverview);
             reportScreen.AddRegion(desktopRegion, weeklyOverview);
 
             return reportScreen;

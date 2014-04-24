@@ -34,7 +34,10 @@ namespace Trex.SmartClient.Overview
             _unityContainer = unityContainer;
 
             _unityContainer.RegisterType<IOverviewScreenMasterviewModel, OverviewScreenMasterviewModel>();
-            _unityContainer.RegisterType<IDayOverviewViewModel, DayOverviewViewModel>();
+
+            // Disabled for H&B
+            //_unityContainer.RegisterType<IDayOverviewViewModel, DayOverviewViewModel>();
+
             _unityContainer.RegisterType<IWeeklyOverviewViewmodel, WeeklyOverviewViewmodel>();
             _unityContainer.RegisterType<IOverviewSwitcherService, OverviewSwitcherService>(new ContainerControlledLifetimeManager());
             _unityContainer.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
@@ -54,17 +57,18 @@ namespace Trex.SmartClient.Overview
 
             _menuRegistry.RegisterMenuInfo(taskAdminScreenInfo);
 
-            _subMenuDailyOverview = SubMenuInfo.Create("Daily", typeof(DayOverviewScreen.DayOverviewScreen).Name, taskAdminScreenInfo);
-            _subMenuDailyOverview.IsActive = !_appSettings.StartScreenIsWeekOverview;
+            // Disabled for H&B
+            //_subMenuDailyOverview = SubMenuInfo.Create("Daily", typeof(DayOverviewScreen.DayOverviewScreen).Name, taskAdminScreenInfo);
+            //_subMenuDailyOverview.IsActive = !_appSettings.StartScreenIsWeekOverview;
+            //taskAdminScreenInfo.AddSubMenu(_subMenuDailyOverview);
 
             _subMenuWeekly = SubMenuInfo.Create("Weekly", typeof(WeeklyOverviewScreen.WeeklyOverviewScreen).Name, taskAdminScreenInfo);
             _subMenuWeekly.IsActive = _appSettings.StartScreenIsWeekOverview;
-
-            taskAdminScreenInfo.AddSubMenu(_subMenuDailyOverview);
             taskAdminScreenInfo.AddSubMenu(_subMenuWeekly);
 
             var overview = _unityContainer.Resolve<IOverviewSwitcherService>();
-            overview.AttachDailyOverviewSubmenu(_subMenuDailyOverview);
+            // Disabled for H&B
+            //overview.AttachDailyOverviewSubmenu(_subMenuDailyOverview);
             overview.AttachWeeklyOverviewSubmenu(_subMenuWeekly);
 
             _unityContainer.Resolve<IDialogService>();

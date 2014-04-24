@@ -11,7 +11,8 @@ namespace Trex.SmartClient.Overview
 {
     public class OverviewSwitcherService : IOverviewSwitcherService
     {
-        private SubMenuInfo SubMenuDailyOverview;
+        // Disabled for H&B
+        //private SubMenuInfo SubMenuDailyOverview;
         private SubMenuInfo SubMenuWeekly;
 
         private bool IsInDayView { get; set; }
@@ -34,32 +35,37 @@ namespace Trex.SmartClient.Overview
             }
             else
             {
-                ApplicationCommands.ChangeSubmenuCommand.Execute(SubMenuDailyOverview);
+                //ApplicationCommands.ChangeSubmenuCommand.Execute(SubMenuDailyOverview);
             }
         }
 
         private void ChangeSubmenuExecute(SubMenuInfo obj)
         {
             history.Add(obj);
-            if (obj.Guid == SubMenuDailyOverview.Guid)
-            {
-                IsInDayView = true;
-            }
-            else
-            {
-                IsInDayView = false;
-            }
+            IsInDayView = false;
+
+            // Disabled for H&B
+            //if (obj.Guid == SubMenuDailyOverview.Guid)
+            //{
+            //    IsInDayView = true;
+            //}
+            //else
+            //{
+            //    IsInDayView = false;
+            //}
         }
 
         private void GoToDaySubMenuExecute(object obj)
         {
-            SubMenuDailyOverview.AddArguement(obj);
-            ApplicationCommands.ChangeSubmenuCommand.Execute(SubMenuDailyOverview);
+            // Disabled for H&B
+            //SubMenuDailyOverview.AddArguement(obj);
+            //ApplicationCommands.ChangeSubmenuCommand.Execute(SubMenuDailyOverview);
         }
 
         public void AttachDailyOverviewSubmenu(SubMenuInfo subMenuDailyOverview)
         {
-            SubMenuDailyOverview = subMenuDailyOverview;
+            // Disabled for H&B
+            //SubMenuDailyOverview = subMenuDailyOverview;
         }
 
         public void AttachWeeklyOverviewSubmenu(SubMenuInfo subMenuWeekly)

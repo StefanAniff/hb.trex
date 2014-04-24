@@ -25,9 +25,10 @@ namespace Trex.SmartClient.Reporting
         /// </summary>
         public void Initialize()
         {
-            var taskAdminScreenInfo = MenuInfo.Create(1, "Reports", true, false, false, true);
-            _screenFactoryRegistry.RegisterFactory(taskAdminScreenInfo.ScreenGuid, new ReportScreen.ReportScreenFactory(_unityContainer));
-            _menuRegistry.RegisterMenuInfo(taskAdminScreenInfo);
+            // Disabled for H&B
+            //var taskAdminScreenInfo = MenuInfo.Create(1, "Reports", true, false, false, true);
+            //_screenFactoryRegistry.RegisterFactory(taskAdminScreenInfo.ScreenGuid, new ReportScreen.ReportScreenFactory(_unityContainer));
+            //_menuRegistry.RegisterMenuInfo(taskAdminScreenInfo);
         }
     }
 }

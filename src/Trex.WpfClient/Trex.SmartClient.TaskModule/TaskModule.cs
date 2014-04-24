@@ -37,6 +37,7 @@ namespace Trex.SmartClient.TaskModule
         public void Initialize()
         {
             RegisterViewModels();
+            // Disabled for H&B
             //var taskAdminScreenInfo = MenuInfo.Create(0, "Registration", true, _appSettings.StartScreenIsRegistration, false, true);
             //_screenFactoryRegistry.RegisterFactory(taskAdminScreenInfo.ScreenGuid, new TaskScreenFactory(_unityContainer, _userSession));
             //_menuRegistry.RegisterMenuInfo(taskAdminScreenInfo);
@@ -51,6 +52,7 @@ namespace Trex.SmartClient.TaskModule
 
         private void RegisterViewModels()
         {
+            // Disabled for H&B
             //_unityContainer.RegisterType<IDialogService, DialogService>(new ContainerControlledLifetimeManager());
             //_unityContainer.RegisterType<IHistoryFeedViewModel, HistoryFeedViewModel>(new ContainerControlledLifetimeManager());
             //_unityContainer.RegisterType<ITaskScreenMasterViewModel, TaskScreenMasterViewModel>();
