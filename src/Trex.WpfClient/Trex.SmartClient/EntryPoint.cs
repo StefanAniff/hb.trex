@@ -33,7 +33,10 @@ namespace Trex.SmartClient
 
         public SingleInstanceManager()
         {
+            // Developer must be able to run production trex while developing on trex
+            #if !DEBUG
             IsSingleInstance = true;
+            #endif
         }
 
         protected override bool OnStartup(Microsoft.VisualBasic.ApplicationServices.StartupEventArgs e)

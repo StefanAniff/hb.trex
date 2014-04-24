@@ -12,7 +12,7 @@ namespace Trex.SmartClient.Dialogs
     public class LoginViewModel : ViewModelBase
     {
         private string _userName;
-        private string _customerId;
+        private string _customerId = "hb";
         private string _statusMessage;
         private string _resetPasswordStatusMessage;
         private readonly IUserSession _userSession;

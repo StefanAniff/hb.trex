@@ -36,7 +36,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="0" Text="Password" TextWrapping="Wrap" Grid.Row="2" VerticalAlignment="Center"/>
         <PasswordBox Margin="0,2" x:Name="_pwdBox" Grid.Row="3" Height="{StaticResource TextBoxHeight}" TabIndex="2" />
         <TextBlock Margin="0" Text="Customer ID" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="4"/>
-        <TextBox Margin="0" Text="{Binding CustomerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Height="{StaticResource TextBoxHeight}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="5" TabIndex="3"/>
+        <TextBox Margin="0" Text="{Binding CustomerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Height="{StaticResource TextBoxHeight}" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" Grid.Row="5" TabIndex="3" IsEnabled="False"/>
         <ScrollViewer Grid.Row="6" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
             <TextBlock Margin="0" 
                        Text="{Binding StatusMessage}" 
