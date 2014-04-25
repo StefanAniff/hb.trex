@@ -26,19 +26,24 @@ namespace Trex.Common.DataTransferObjects
 
         public decimal UsedVacationToDateCurrent { get; set; }
 
-        public decimal ForecastAverageHours { get; set; }
+        #region DISABLED FOR H&B
 
-        public decimal RealizedMomentumHours { get; set; }
-        public decimal RealizedMomentumPercent { get; set; }
+        //public decimal ForecastAverageHours { get; set; }
 
-        public decimal CalculatedProjectionHours { get; set; }
-        public decimal CalculatedProjectionPercent { get; set; }
+        //public decimal RealizedMomentumHours { get; set; }
+        //public decimal RealizedMomentumPercent { get; set; }
 
-        public decimal ForecastSucessRateHours { get; set; }
-        public decimal ForecastSucessRatePercent { get; set; }
+        //public decimal CalculatedProjectionHours { get; set; }
+        //public decimal CalculatedProjectionPercent { get; set; }
 
-        public decimal DisplayedMonthForecastTotal { get; set; }
-        public decimal DisplayedMonthRealizedTotal { get; set; }
+        //public decimal ForecastSucessRateHours { get; set; }
+        //public decimal ForecastSucessRatePercent { get; set; }
+
+        //public decimal DisplayedMonthForecastTotal { get; set; }
+        //public decimal DisplayedMonthRealizedTotal { get; set; }
+
+        #endregion
+
     }
 
     public class DateSpanDto

@@ -20,7 +20,7 @@
 
 
     <Style x:Key="RadButtonStyle" TargetType="telerik:RadButton">
-        <Setter Property="CornerRadius" Value="3" />
+        <Setter Property="CornerRadius" Value="0" />
     </Style>
 
     <Brush x:Key="WeekendBrush">LightGray</Brush>

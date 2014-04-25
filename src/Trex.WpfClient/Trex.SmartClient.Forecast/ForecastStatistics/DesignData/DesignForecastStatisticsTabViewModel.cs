@@ -20,14 +20,14 @@ namespace Trex.SmartClient.Forecast.ForecastStatistics.DesignData
                                                         PlannedVacationNextDateSpan = new DateSpanDto { From = new DateTime(2014, 5, 1), To = new DateTime(2015, 4, 30) },
                                                         PlannedVacationNext = 2,
                                                         UsedVacationToDateCurrent = 16,
-                                                        ForecastAverageHours = 7.5m,
-                                                        RealizedMomentumHours = 5.0m,
-                                                        RealizedMomentumPercent = -0.25m,
-                                                        CalculatedProjectionHours =300,
-                                                        CalculatedProjectionPercent = 0.9m,
-                                                        ForecastSucessRateHours = 100,
-                                                        ForecastSucessRatePercent = 0.1m,
-                                                        DisplayedMonthForecastTotal = 200
+                                                        //ForecastAverageHours = 7.5m,
+                                                        //RealizedMomentumHours = 5.0m,
+                                                        //RealizedMomentumPercent = -0.25m,
+                                                        //CalculatedProjectionHours =300,
+                                                        //CalculatedProjectionPercent = 0.9m,
+                                                        //ForecastSucessRateHours = 100,
+                                                        //ForecastSucessRatePercent = 0.1m,
+                                                        //DisplayedMonthForecastTotal = 200
                                                     };
 
         public void Dispose()

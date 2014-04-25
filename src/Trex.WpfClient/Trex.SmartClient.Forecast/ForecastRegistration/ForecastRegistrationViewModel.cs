@@ -14,6 +14,7 @@ using Trex.SmartClient.Forecast.ForecastRegistration.Helpers;
 using System.Linq;
 using Trex.SmartClient.Forecast.Shared;
 using Trex.SmartClient.Infrastructure.Commands;
+using Task = System.Threading.Tasks.Task;
 using TimeRegistrationTypeEnum = Trex.SmartClient.Core.Model.TimeRegistrationTypeEnum;
 
 namespace Trex.SmartClient.Forecast.ForecastRegistration
@@ -352,9 +353,8 @@ namespace Trex.SmartClient.Forecast.ForecastRegistration
             _forecastRegistrationDataGenerator.MergeForecastMonth(this, response.ForecastMonth);
             _projectForecastTypeId = response.ProjectForecastTypeId;
 
-            var timeEntriesForMonth = await _timeEntryService.GetTimeEntriesByDateIgnoreEmptyTimeEntries(SelectedDate, SelectedDate.AddMonths(1));
+            //await FetchTimeEntries();
 
-            DateRealizedTotals = GenerateRealizedTotals(timeEntriesForMonth);
             IsBusy = false;
             RaisePresenceRegistrationsOnPropertyChanged();
             InitializeDirtyCheck();
@@ -362,7 +362,7 @@ namespace Trex.SmartClient.Forecast.ForecastRegistration
 
             // Fetch statistics
             FetchStatistics();
-        }
+        }        
 
         private void FetchStatistics()
         {
@@ -370,36 +370,7 @@ namespace Trex.SmartClient.Forecast.ForecastRegistration
             {
                 ApplicationCommands.GetForecastStatistics.Execute(SelectedDate);
             }
-        }
-
-        private IEnumerable<decimal?> GenerateRealizedTotals(IEnumerable<TimeEntry> timeEntriesForMonth)
-        {
-            var tmptimeEntriesForMonth = timeEntriesForMonth
-                .Where(x => x.Task.TimeRegistrationType == TimeRegistrationTypeEnum.Standard)
-                .ToList();
-            if (_appSettings.WorkPlanRealizedHourBillableOnly)
-            {
-                tmptimeEntriesForMonth = tmptimeEntriesForMonth.Where(x => x.Billable).ToList();
-            }
-            var tmpDateRealizedTotals = new List<decimal?>();
-            foreach (var hourRegistration in DateTotals)
-            {
-                var forecastDateColumn = hourRegistration.DateColumn;
-                var timeSpentOnDate = (decimal)tmptimeEntriesForMonth.Where(x => x.StartTime.Date == forecastDateColumn.Date)
-                    .Sum(x => x.TimeSpent.TotalHours);
-                var normalDay = forecastDateColumn.IsWorkDay && forecastDateColumn.ForecastType.SupportsProjectHours;
-                if (timeSpentOnDate == decimal.Zero && !normalDay)
-                {
-                    tmpDateRealizedTotals.Add(null);
-                }
-                else
-                {
-                    tmpDateRealizedTotals.Add(timeSpentOnDate);
-                }
-            }
-
-            return tmpDateRealizedTotals;
-        }
+        }        
 
         public bool Initializing { get; set; }
 
@@ -525,5 +496,46 @@ namespace Trex.SmartClient.Forecast.ForecastRegistration
 
             return true;
         }
+
+        #region DISABLED FOR H&B
+
+        //private async Task FetchTimeEntries()
+        //{
+        //    var timeEntriesForMonth =
+        //        await _timeEntryService.GetTimeEntriesByDateIgnoreEmptyTimeEntries(SelectedDate, SelectedDate.AddMonths(1));
+        //    DateRealizedTotals = GenerateRealizedTotals(timeEntriesForMonth);
+        //}
+
+        //private IEnumerable<decimal?> GenerateRealizedTotals(IEnumerable<TimeEntry> timeEntriesForMonth)
+        //{
+        //    var tmptimeEntriesForMonth = timeEntriesForMonth
+        //        .Where(x => x.Task.TimeRegistrationType == TimeRegistrationTypeEnum.Standard)
+        //        .ToList();
+        //    if (_appSettings.WorkPlanRealizedHourBillableOnly)
+        //    {
+        //        tmptimeEntriesForMonth = tmptimeEntriesForMonth.Where(x => x.Billable).ToList();
+        //    }
+        //    var tmpDateRealizedTotals = new List<decimal?>();
+        //    foreach (var hourRegistration in DateTotals)
+        //    {
+        //        var forecastDateColumn = hourRegistration.DateColumn;
+        //        var timeSpentOnDate = (decimal)tmptimeEntriesForMonth.Where(x => x.StartTime.Date == forecastDateColumn.Date)
+        //            .Sum(x => x.TimeSpent.TotalHours);
+        //        var normalDay = forecastDateColumn.IsWorkDay && forecastDateColumn.ForecastType.SupportsProjectHours;
+        //        if (timeSpentOnDate == decimal.Zero && !normalDay)
+        //        {
+        //            tmpDateRealizedTotals.Add(null);
+        //        }
+        //        else
+        //        {
+        //            tmpDateRealizedTotals.Add(timeSpentOnDate);
+        //        }
+        //    }
+
+        //    return tmpDateRealizedTotals;
+        //}
+
+        #endregion
+
     }
 }

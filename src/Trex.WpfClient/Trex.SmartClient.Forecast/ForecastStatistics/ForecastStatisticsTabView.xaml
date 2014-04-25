@@ -182,7 +182,8 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox
+            
+            <!--<GroupBox
                 Grid.Column="2"
                 Grid.Row="0"
                 Margin="0,8,8,8"
@@ -276,7 +277,7 @@
                                 Converter={StaticResource ValueToBackgroundConverter}}"
                                Style="{StaticResource CellNumberStyle}" />
                 </Grid>
-            </GroupBox>
+            </GroupBox>-->
         </Grid>
     </Grid>
 </UserControl>
