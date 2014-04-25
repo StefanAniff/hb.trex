@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.ServiceModel;
@@ -46,7 +47,7 @@ namespace Trex.SmartClient.Overview.WeeklyOverviewScreen.Viewmodels
         public DelegateCommand<object> CopyPreviousTasksToSelectedDate { get; set; }
         public DelegateCommand<object> DeleteTimeEntry { get; set; }
         public DelegateCommand<object> AddTaskCommand { get; set; }
-        public DelegateCommand<object> TodayCommand { get; set; }
+        public DelegateCommand<object> TodayCommand { get; set; }              
 
         private bool _isSyncing;
 
@@ -117,6 +118,7 @@ namespace Trex.SmartClient.Overview.WeeklyOverviewScreen.Viewmodels
                 _startDate = localDate;
                 OnPropertyChanged(() => StartDate);
                 OnPropertyChanged(() => StartDate);
+                OnPropertyChanged(() => SelectedWeekNumber);
                 LoadTimeEntries();
             }
         }
@@ -171,6 +173,11 @@ namespace Trex.SmartClient.Overview.WeeklyOverviewScreen.Viewmodels
                     Rows.SelectMany(x => x.AllDays).Where(x => x.Billable).Sum(x => x.RegisteredHours.GetValueOrDefault()),
                                      Rows.SelectMany(x => x.AllDays).Where(x => !x.Billable).Sum(x => x.RegisteredHours.GetValueOrDefault()));
             }
+        }
+
+        public string SelectedWeekNumber
+        {
+            get { return StartDate.WeeknumberDk().ToString(CultureInfo.InvariantCulture); }
         }
 
         public WeeklyOverviewViewmodel(ITimeEntryService timeEntryService, IBusyService busyService, ITimeEntryRepository timeEntryRepository,

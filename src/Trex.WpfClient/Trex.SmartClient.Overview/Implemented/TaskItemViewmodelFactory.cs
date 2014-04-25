@@ -19,7 +19,7 @@ namespace Trex.SmartClient.Overview.Implemented
 
         public TaskItemViewmodel CreateEmptyTaskItemViewmodel(Task task, DateTime startdate)
         {
-            return new TaskItemViewmodel(task, new List<TimeEntry>(), startdate, false, false);
+            return new TaskItemViewmodel(task, new List<TimeEntry>(), startdate, true, false);
         }
 
         public List<TimeEntry> ResetTimeEntries(List<TaskItemViewmodel> deletedRows)

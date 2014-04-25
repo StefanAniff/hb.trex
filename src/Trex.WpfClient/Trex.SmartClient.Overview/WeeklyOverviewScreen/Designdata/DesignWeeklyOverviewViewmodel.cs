@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.Prism.Commands;
 using Telerik.Windows.Data;
+using Trex.SmartClient.Core.Extensions;
 using Trex.SmartClient.Core.Implemented;
 using Trex.SmartClient.Core.Interfaces;
 using Trex.SmartClient.Core.Model;
@@ -39,6 +41,7 @@ namespace Trex.SmartClient.Overview.WeeklyOverviewScreen
         bool IsSyncing { get; }
         DelegateCommand<object> AddTaskCommand { get; set; }
         DelegateCommand<object> TodayCommand { get; set; }
+        string SelectedWeekNumber { get; }
     }
 
     public class DesignWeeklyOverviewViewmodel : IWeeklyOverviewViewmodel
@@ -222,6 +225,14 @@ namespace Trex.SmartClient.Overview.WeeklyOverviewScreen
         public DelegateCommand<object> AddTaskCommand { get; set; }
 
         public DelegateCommand<object> TodayCommand { get; set; }
+
+        public string SelectedWeekNumber
+        {
+            get
+            {
+                return StartDate.WeeknumberDk().ToString(CultureInfo.InvariantCulture);
+            }
+        }
 
         public void Dispose()
         {

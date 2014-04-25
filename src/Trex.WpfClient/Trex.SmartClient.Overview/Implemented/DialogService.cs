@@ -49,5 +49,7 @@ namespace Trex.SmartClient.Overview.Implemented
             OpenDialog(dialog, SaveTaskRegionName);
             _screenIsOpen = true;
         }
+
+        // IVA: Placer popups her!
     }
 }

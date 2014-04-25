@@ -58,6 +58,10 @@
                             <ColumnDefinition Width="60" />
                             <ColumnDefinition Width="60" />
                         </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="Week number" HorizontalAlignment="Center" FontSize="{StaticResource FontHeaderDateSize}" />
+                            <TextBlock Text="{Binding SelectedWeekNumber, Mode=OneWay}" HorizontalAlignment="Center" FontSize="{StaticResource FontHeaderSize}" />
+                        </StackPanel>
                         <Button Grid.Column="1"
                                 Style="{StaticResource Dayheader}"
                                 DataContext="{Binding Day1}"
@@ -76,9 +80,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="2"
@@ -98,9 +99,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="3"
@@ -121,9 +119,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="4"
@@ -144,9 +139,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="5"
@@ -167,9 +159,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="6"
@@ -190,9 +179,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                         <Button Grid.Column="7"
@@ -213,9 +199,6 @@
                                 <TextBlock Text="{Binding Date, StringFormat=dd MMMM}"
                                            TextAlignment="Left"
                                            FontSize="{StaticResource FontHeaderDateSize}" />
-                                <controls:RadComboBox
-                                    telerikControls:StyleManager.Theme="Windows8"
-                                    Style="{StaticResource timeEntryTypesBox}" />
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -261,11 +244,12 @@
                                                             Template="{StaticResource TaskDescriptionTooltip}" />
                                         </ContentControl.ToolTip>
                                     </ContentControl>
-                                    <ContentControl Template="{StaticResource BillableBannerButton}"
+                                    <!-- DISABLED FOR H&B -->
+                                    <!--<ContentControl Template="{StaticResource BillableBannerButton}"
                                                     KeyboardNavigation.IsTabStop="False"
                                                     PreviewMouseMove="OnPreviewMouseMove"
                                                     MouseLeave="OnMouseLeave">
-                                    </ContentControl>
+                                    </ContentControl>-->
                                 </Grid>
                                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"
                                             HorizontalAlignment="Left"
@@ -275,7 +259,7 @@
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}"
                                         TabIndex="1" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal"
@@ -286,7 +270,7 @@
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}"
                                         TabIndex="2" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal"
                                             HorizontalAlignment="Left"
@@ -296,7 +280,7 @@
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}"
                                         TabIndex="3" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Grid.Column="4" Orientation="Horizontal"
                                             HorizontalAlignment="Left"
@@ -306,7 +290,7 @@
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}"
                                         TabIndex="4" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Grid.Column="5" Orientation="Horizontal"
                                             HorizontalAlignment="Left"
@@ -315,7 +299,7 @@
                                         KeyDown="TimeEntry_OnKeyDown"
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}" TabIndex="5" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Grid.Column="6" Orientation="Horizontal"
                                             HorizontalAlignment="Left"
@@ -324,7 +308,7 @@
                                         KeyDown="TimeEntry_OnKeyDown"
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}" TabIndex="6" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" Grid.Column="7" Orientation="Horizontal"
                                             HorizontalAlignment="Left"
@@ -334,7 +318,7 @@
                                         utils:EnterKeyTraversal.IsEnabled="True"
                                         Style="{StaticResource TimeEntryTextbox}"
                                         TabIndex="7" />
-                                    <dialog:SpeechBubble />
+                                    <!--<dialog:SpeechBubble />-->
                                 </StackPanel>
                                 <TextBlock Grid.Column="8" Grid.Row="1"
                                            Margin="0,0,5,0"
@@ -417,13 +401,14 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                <TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" HorizontalAlignment="Center"
+                <!-- DISABLED FOR H&B -->
+                <!--<TextBlock Grid.Row="2" Grid.Column="1" FontSize="18" HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Visibility="{Binding CanCopyPreviousTimesheet, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Hyperlink Command="{Binding CopyPreviousTasksToSelectedDate}">
                         <TextBlock Text="Copy over rows from previous timesheet!" />
                     </Hyperlink>
-                </TextBlock>
+                </TextBlock>-->
                 <!-- Footer -->
                 <Border Grid.Column="1" Grid.Row="3" Style="{StaticResource MainBorder}"
                         CornerRadius="0,0,0,10">
@@ -447,8 +432,7 @@
                             <Button Height="25" Width="Auto" Padding="5,0" Margin="0,0,10,0"
                                     Command="{Binding AddTaskCommand}">
                                 <StackPanel Orientation="Horizontal">
-                                    <ContentControl Template="{StaticResource PlusPath}" />
-                                    <TextBlock Text="Add Task" VerticalAlignment="Center" />
+                                    <TextBlock Text="Add Task *REMOVE ME*" VerticalAlignment="Center" />
                                 </StackPanel>
                             </Button>
                             <Button Content="Save" Height="25" Width="75" Padding="5,0"
