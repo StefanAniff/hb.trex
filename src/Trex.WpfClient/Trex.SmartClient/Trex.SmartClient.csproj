@@ -41,12 +41,12 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>d60</PublisherName>
-    <SuiteName>T.Rex</SuiteName>
+    <SuiteName>T.Rex H&amp;B</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>download.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>4</ApplicationRevision>
-    <ApplicationVersion>3.15.3.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -75,10 +75,10 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <PublishUrl>C:\Release\Trex.Smartclient\</PublishUrl>
-    <InstallUrl>http://trexdownload.d60.dk/</InstallUrl>
+    <PublishUrl>C:\Release\Trex.Smartclient.Hildebrandt\</PublishUrl>
+    <InstallUrl>http://hbtrexdownload.azurewebsites.net/</InstallUrl>
     <UpdateUrl>http://trexdownload.d60.dk/</UpdateUrl>
-    <ProductName>T.Rex Smartclient</ProductName>
+    <ProductName>T.Rex Smartclient H&amp;B</ProductName>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -105,7 +105,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>  
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CPSystemHotkey">
       <HintPath>..\Assemblies\CPSystemHotkey.dll</HintPath>
