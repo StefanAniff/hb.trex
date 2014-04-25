@@ -12,7 +12,7 @@ namespace Trex.SmartClient.Dialogs
     public class LoginViewModel : ViewModelBase
     {
         private string _userName;
-        private string _customerId = "hb";
+        private string _customerId;
         private string _statusMessage;
         private string _resetPasswordStatusMessage;
         private readonly IUserSession _userSession;
@@ -32,6 +32,7 @@ namespace Trex.SmartClient.Dialogs
 
             UserName = appSettings.UserName;
             CustomerId = appSettings.CustomerId;
+            CustomerId = "hb";
             ApplicationCommands.LoginFailed.RegisterCommand(new DelegateCommand<string>(UserLoginFailed));
             ApplicationCommands.ConnectivityChanged.RegisterCommand(new DelegateCommand<object>(ConnectivityChanged));
         }

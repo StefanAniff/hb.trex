@@ -328,7 +328,7 @@ namespace Trex.SmartClient.Infrastructure {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool StartScreenIsWeekOverview {
             get {
                 return ((bool)(this["StartScreenIsWeekOverview"]));
@@ -340,7 +340,7 @@ namespace Trex.SmartClient.Infrastructure {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool StartScreenIsRegistration {
             get {
                 return ((bool)(this["StartScreenIsRegistration"]));
