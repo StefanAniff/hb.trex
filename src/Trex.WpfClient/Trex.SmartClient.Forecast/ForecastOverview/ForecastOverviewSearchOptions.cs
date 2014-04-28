@@ -208,20 +208,10 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
         {
             ForecastSearchResponse response = null;
 
-            // Search by registration
-            if (SelectedTabIndex == 0)
-            {
-                response = await _forecastService.GetBySearch(month
-                                                            , year
-                                                            , SelectedProjectId
-                                                            , SelectedCompanyId
-                                                            , SelectedForecastTypeId);
-            }
-
             // Search by users
-            if (SelectedTabIndex == 1)
+            if (SelectedTabIndex == ForecastOverviewViewSetup.SearchByUserTabIndex)
             {
-                var requestedUsers = SelectedUsers.Select(x => x.UserId).ToList();
+                var requestedUsers = GetUsersToSearchFor().ToList();
                 response = await _forecastService.GetBySearch(month, year, requestedUsers);
 
                 if (response != null)
@@ -230,7 +220,27 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
                 }
             }
 
+            // Search by registration
+            if (SelectedTabIndex == ForecastOverviewViewSetup.SearchByRegistrationTabIndex)
+            {
+                response = await _forecastService.GetBySearch(month
+                                                            , year
+                                                            , SelectedProjectId
+                                                            , SelectedCompanyId
+                                                            , SelectedForecastTypeId);
+            }            
+
             return response;
+        }
+
+        private IEnumerable<int> GetUsersToSearchFor()
+        {
+            var allUsersMarker = SelectedUsers.FirstOrDefault(x => x.IsAllUsers);
+
+            // If allUsersMarker, get all users
+            return allUsersMarker != null 
+                ? Users.Where(x => !x.IsAllUsers).Select(x => x.UserId) 
+                : SelectedUsers.Select(x => x.UserId);
         }
 
         /// <summary>
@@ -244,7 +254,7 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
         public virtual void TryAddMissingUsers(int month, int year, ForecastSearchResponse response)
         {
             var responsedUsersIds = response.ForecastMonths.Select(x => x.UserId).ToList();
-            var requestedUserIds = SelectedUsers.Select(x => x.UserId).ToList();
+            var requestedUserIds = SelectedUsers.Where(x => !x.IsAllUsers).Select(x => x.UserId).ToList();
             var userEmptyResult = requestedUserIds.Where(x => responsedUsersIds.All(y => y != x));
             foreach (
                 var user in

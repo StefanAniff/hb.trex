@@ -173,111 +173,6 @@
                         Focusable="False">
                         <Tk:RadTabControl.Items>
 
-                            <!-- BY REGISTRATION -->
-                            <Tk:RadTabItem>
-                                <Tk:RadTabItem.HeaderTemplate>
-                                    <DataTemplate>
-                                        <Label 
-                                            Content="By _registration"
-                                            FontWeight="Bold"
-                                            Target="{Binding ElementName=_projectAutoCompleteBox}"/>
-                                    </DataTemplate>
-                                </Tk:RadTabItem.HeaderTemplate>
-
-                                <Grid Margin="{StaticResource GroupMargin}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Grid.Column="0">
-
-                                        <!-- PROJECT SEARCH OPTION -->
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="_Project:" 
-                                               Width="50"
-                                               Target="{Binding ElementName=_projectAutoCompleteBox}" />
-                                            <Tk:RadAutoCompleteBox 
-                                                Name="_projectAutoCompleteBox"
-                                                Width="200"
-                                                WatermarkContent="Project name"
-                                                TextSearchMode="Contains"
-                                                TextSearchPath="Name"
-                                                AutoCompleteMode="Suggest"
-                                                SelectionMode="Single"
-                                                SelectedItem="{Binding SearchOptions.SelectedProject, Mode=TwoWay}"
-                                                DisplayMemberPath="Name"
-                                                ItemsSource="{Binding SearchOptions.Projects}"
-                                                DropDownWidth="Auto">
-                                                <Tk:RadAutoCompleteBox.DropDownItemTemplate>
-                                                    <DataTemplate>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <TextBlock Text="{Binding Name}" />
-                                                            <TextBlock Text="  - " />
-                                                            <TextBlock Text="{Binding Company.Name}" FontStyle="Italic" FontWeight="Bold"/>
-                                                        </StackPanel>
-                                                    </DataTemplate>
-                                                </Tk:RadAutoCompleteBox.DropDownItemTemplate>
-                                            </Tk:RadAutoCompleteBox>
-                                        </StackPanel>
-
-                                        <TextBlock 
-                                            FontStyle="Italic"
-                                            Text="or" 
-                                            Margin="17,2,0,2" />
-                                        
-                                        <!-- SEARCH BY CLIENT -->
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="_Client:" 
-                                                   Width="50"
-                                                   Target="{Binding ElementName=_clientAutoCompleteBox}" />
-                                            <Tk:RadAutoCompleteBox 
-                                                Name="_clientAutoCompleteBox"
-                                                Width="200"
-                                                MaxHeight="80"
-                                                WatermarkContent="Client name"
-                                                TextSearchMode="Contains"
-                                                TextSearchPath="Name"
-                                                AutoCompleteMode="Suggest"
-                                                SelectionMode="Single"
-                                                SelectedItem="{Binding SearchOptions.SelectedCompany, Mode=TwoWay}"
-                                                DisplayMemberPath="Name"
-                                                ItemsSource="{Binding SearchOptions.Companies}"
-                                                DropDownWidth="Auto">
-                                            </Tk:RadAutoCompleteBox>
-                                        </StackPanel>
-
-                                    </StackPanel>
-
-                                    <StackPanel Grid.Column="1">
-
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Content="_Status type:" 
-                                            Width="80"
-                                            Target="{Binding ElementName=_forecastTypeComboBox}" />
-                                            <Tk:RadComboBox  
-                                                Name="_forecastTypeComboBox"
-                                                Width="150"
-                                                MaxHeight="80"
-                                                SelectedItem="{Binding SearchOptions.SelectedForecastType, Mode=TwoWay}"
-                                                ItemsSource="{Binding SearchOptions.ForecastTypes}"
-                                                DropDownWidth="Auto">
-                                                <Tk:RadComboBox.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <StackPanel Orientation="Horizontal">
-                                                            <Rectangle Style="{StaticResource ForecastTypeColorRectangleStyle}"/>
-                                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="3,0,0,0" />
-                                                        </StackPanel>
-                                                    </DataTemplate>
-                                                </Tk:RadComboBox.ItemTemplate>
-                                            </Tk:RadComboBox>
-                                        </StackPanel>
-
-                                    </StackPanel>
-                                </Grid>
-                            </Tk:RadTabItem>
-
                             <!-- BY USER -->
                             <Tk:RadTabItem>
                                 <Tk:RadTabItem.HeaderTemplate>
@@ -298,7 +193,7 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                
+
                                     <!-- SEARCH BY USER -->
                                     <StackPanel 
                                         Orientation="Horizontal" 
@@ -326,9 +221,9 @@
                                             ToolTip="Write users initials or username">
                                             <Tk:RadAutoCompleteBox.Resources>
                                                 <Style TargetType="Tk:RadAutoCompleteBoxItem">
-                                                   <Setter Property="Template"> 
-                                                       <Setter.Value>
-                                                           <ControlTemplate TargetType="Tk:RadAutoCompleteBoxItem">
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="Tk:RadAutoCompleteBoxItem">
                                                                 <Grid>
                                                                     <Border 
                                                                         x:Name="Border" 
@@ -355,8 +250,8 @@
                                                                     </Border>
                                                                 </Grid>
                                                             </ControlTemplate>
-                                                       </Setter.Value>
-                                                   </Setter>
+                                                        </Setter.Value>
+                                                    </Setter>
                                                 </Style>
                                             </Tk:RadAutoCompleteBox.Resources>
                                             <Tk:RadAutoCompleteBox.DropDownItemTemplate>
@@ -367,7 +262,7 @@
                                                         <TextBlock Text="{Binding UserName}" />
                                                     </StackPanel>
                                                 </DataTemplate>
-                                            </Tk:RadAutoCompleteBox.DropDownItemTemplate>    
+                                            </Tk:RadAutoCompleteBox.DropDownItemTemplate>
                                         </Tk:RadAutoCompleteBox>
                                     </StackPanel>
 
@@ -376,7 +271,7 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Margin="5,0,5,0">
-                                        
+
                                         <Tk:RadButton
                                             Command="{Binding SearchOptions.UserSearchOptions.SaveNewUserPresetListCommand}">
                                             <StackPanel Orientation="Horizontal" ToolTip="Save user(s) list as bookmark">
@@ -393,7 +288,7 @@
                                             </StackPanel>
                                         </Tk:RadButton>
                                     </StackPanel>
-                                    
+
                                     <!-- UsersListPresets listbox -->
                                     <StackPanel Grid.Column="2">
                                         <ListBox 
@@ -405,7 +300,8 @@
                                             HorizontalContentAlignment="Stretch"
                                             Name="_usrPresetListBox"
                                             ItemsSource="{Binding SearchOptions.UserSearchOptions.UserListPresets}"
-                                            SelectedItem="{Binding SearchOptions.UserSearchOptions.SelectedUserListPreset, Mode=TwoWay}">
+                                            SelectedItem="{Binding SearchOptions.UserSearchOptions.SelectedUserListPreset, Mode=TwoWay}"
+                                            ToolTip="List of custom user bookmarks">
                                             <ListBox.Resources>
                                                 <DataTemplate x:Key="NonEditableUsersPresetTemplate">
                                                     <Grid Focusable="True">
@@ -427,7 +323,7 @@
                                                             VerticalAlignment="Center"
                                                             Text="{Binding Name}"
                                                             Width="Auto"
-                                                            ToolTip="{Binding Description}">                                                            
+                                                            ToolTip="{Binding Description}">
                                                         </TextBlock>
                                                     </Grid>
                                                 </DataTemplate>
@@ -442,7 +338,7 @@
                                                             </Style.Triggers>
                                                         </Style>
                                                     </DataTemplate.Resources>
-                                                    <StackPanel>                                                        
+                                                    <StackPanel>
                                                         <TextBox 
                                                             Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                                                             Style="{StaticResource ListBoxSelectableTextBox}"
@@ -462,7 +358,7 @@
                                                                         Command="{Binding Path=DataContext.SearchOptions.UserSearchOptions.DisableEditUsersPresetCommand, ElementName=_windowRoot}" 
                                                                         CommandParameter="{Binding}" />
                                                                 </i:EventTrigger>
-                                                            </i:Interaction.Triggers>                                                        
+                                                            </i:Interaction.Triggers>
                                                         </TextBox>
                                                         <Popup
                                                             Name="_bookmarkNamePopup"
@@ -488,40 +384,146 @@
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </ListBox.Resources>
-                                            <i:Interaction.Triggers>                                                
+                                            <i:Interaction.Triggers>
                                                 <!-- Select bookmark command -->
                                                 <i:EventTrigger EventName="MouseDoubleClick">
                                                     <i:InvokeCommandAction Command="{ Binding SearchOptions.UserSearchOptions.LoadUserPresetListCommand}" />
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
-                                                            
+
                                             <!-- Rename command -->
-                                            <ListBox.InputBindings> 
+                                            <ListBox.InputBindings>
                                                 <KeyBinding 
                                                     Key="F2"
                                                     Command="{Binding SearchOptions.UserSearchOptions.EnableEditUsersPresetCommand}" 
-                                                    CommandParameter="{Binding SearchOptions.UserSearchOptions.SelectedUserListPreset}" />                                                
+                                                    CommandParameter="{Binding SearchOptions.UserSearchOptions.SelectedUserListPreset}" />
                                             </ListBox.InputBindings>
-                                            
+
                                             <ListBox.ItemTemplate>
                                                 <DataTemplate>
-                                                  <ContentControl 
+                                                    <ContentControl 
                                                       Content="{Binding}" 
                                                       Focusable="False">
-                                                      <ContentControl.Style>
-                                                          <Style TargetType="{x:Type ContentControl}">
-                                                              <Setter Property="ContentTemplate" Value="{StaticResource NonEditableUsersPresetTemplate}" />
-                                                              <Style.Triggers>
-                                                                  <DataTrigger Binding="{Binding IsEditMode}" Value="true">
+                                                        <ContentControl.Style>
+                                                            <Style TargetType="{x:Type ContentControl}">
+                                                                <Setter Property="ContentTemplate" Value="{StaticResource NonEditableUsersPresetTemplate}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding IsEditMode}" Value="true">
                                                                         <Setter Property="ContentTemplate" Value="{StaticResource EditableUsersPresetTemplate }" />
-                                                                  </DataTrigger>
-                                                              </Style.Triggers>
-                                                          </Style>
-                                                      </ContentControl.Style>
-                                                  </ContentControl>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </ContentControl.Style>
+                                                    </ContentControl>
                                                 </DataTemplate>
                                             </ListBox.ItemTemplate>
                                         </ListBox>
+                                    </StackPanel>                                                                        
+                                </Grid>
+                            </Tk:RadTabItem>
+
+                            <!-- BY REGISTRATION -->
+                            <Tk:RadTabItem>
+                                <Tk:RadTabItem.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Label 
+                                            Content="By _registration"
+                                            FontWeight="Bold"
+                                            Target="{Binding ElementName=_projectAutoCompleteBox}"/>
+                                    </DataTemplate>
+                                </Tk:RadTabItem.HeaderTemplate>
+
+                                <Grid Margin="{StaticResource GroupMargin}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0">
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="_Status type:" 
+                                            Width="80"
+                                            Target="{Binding ElementName=_forecastTypeComboBox}" />
+                                            <Tk:RadComboBox  
+                                                Name="_forecastTypeComboBox"
+                                                Width="150"
+                                                MaxHeight="80"
+                                                SelectedItem="{Binding SearchOptions.SelectedForecastType, Mode=TwoWay}"
+                                                ItemsSource="{Binding SearchOptions.ForecastTypes}"
+                                                DropDownWidth="Auto">
+                                                <Tk:RadComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Rectangle Style="{StaticResource ForecastTypeColorRectangleStyle}"/>
+                                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="3,0,0,0" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </Tk:RadComboBox.ItemTemplate>
+                                            </Tk:RadComboBox>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                    
+                                    <!-- H&B Disabled for now. Wait to delete, they may request it -->
+                                    <StackPanel Grid.Column="1">
+
+                                        <!-- PROJECT SEARCH OPTION -->
+                                        <!--<StackPanel Orientation="Horizontal">
+                                            <Label Content="_Project:" 
+                                               Width="50"
+                                               Target="{Binding ElementName=_projectAutoCompleteBox}" />
+                                            <Tk:RadAutoCompleteBox 
+                                                Name="_projectAutoCompleteBox"
+                                                Width="200"
+                                                WatermarkContent="Project name"
+                                                TextSearchMode="Contains"
+                                                TextSearchPath="Name"
+                                                AutoCompleteMode="Suggest"
+                                                SelectionMode="Single"
+                                                SelectedItem="{Binding SearchOptions.SelectedProject, Mode=TwoWay}"
+                                                DisplayMemberPath="Name"
+                                                ItemsSource="{Binding SearchOptions.Projects}"
+                                                DropDownWidth="Auto">
+                                                <Tk:RadAutoCompleteBox.DropDownItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding Name}" />
+                                                            <TextBlock Text="  - " />
+                                                            <TextBlock Text="{Binding Company.Name}" FontStyle="Italic" FontWeight="Bold"/>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </Tk:RadAutoCompleteBox.DropDownItemTemplate>
+                                            </Tk:RadAutoCompleteBox>
+                                        </StackPanel>-->
+
+                                        <!--<TextBlock 
+                                            FontStyle="Italic"
+                                            Text="or" 
+                                            Margin="17,2,0,2" />-->
+                                        
+                                        <!-- SEARCH BY CLIENT -->
+                                        <!--<StackPanel Orientation="Horizontal">
+                                            <Label Content="_Client:" 
+                                                   Width="50"
+                                                   Target="{Binding ElementName=_clientAutoCompleteBox}" />
+                                            <Tk:RadAutoCompleteBox 
+                                                Name="_clientAutoCompleteBox"
+                                                Width="200"
+                                                MaxHeight="80"
+                                                WatermarkContent="Client name"
+                                                TextSearchMode="Contains"
+                                                TextSearchPath="Name"
+                                                AutoCompleteMode="Suggest"
+                                                SelectionMode="Single"
+                                                SelectedItem="{Binding SearchOptions.SelectedCompany, Mode=TwoWay}"
+                                                DisplayMemberPath="Name"
+                                                ItemsSource="{Binding SearchOptions.Companies}"
+                                                DropDownWidth="Auto">
+                                            </Tk:RadAutoCompleteBox>
+                                        </StackPanel>-->
+
                                     </StackPanel>
                                     
                                 </Grid>

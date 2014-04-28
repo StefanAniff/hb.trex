@@ -110,7 +110,7 @@ namespace Trex.SmartClient.Service
                 , () => "An error occured while searching for forecasts");
 
             return result;
-        }
+        }        
 
         public async Task<ForecastSearchOptionsResponse> GetOverivewSearchOptions()
         {

@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>    
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
     <OutputPath>bin\Test\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -278,6 +278,7 @@
       <DependentUpon>ForecastOverviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ForecastOverview\ForecastOverviewViewModel.cs" />
+    <Compile Include="ForecastOverview\ForecastOverviewViewSetup.cs" />
     <Compile Include="ForecastOverview\Helpers\EmptyDisplayHandler.cs" />
     <Compile Include="ForecastOverview\Helpers\ForecastOverviewDataGenerator.cs" />
     <Compile Include="ForecastOverview\Helpers\ForecastOverviewDisplayHandlerBase.cs" />

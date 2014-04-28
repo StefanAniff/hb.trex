@@ -39,10 +39,10 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
         {
             switch (_searchTabControl.SelectedIndex)
             {
-                case 0:
-                    Dispatcher.BeginInvoke(new Action(() => _projectAutoCompleteBox.Focus()));
+                case ForecastOverviewViewSetup.SearchByRegistrationTabIndex:
+                    //Dispatcher.BeginInvoke(new Action(() => _projectAutoCompleteBox.Focus())); // H&B disabled for now. Don't delete. They may request it.
                     break;
-                case 1:
+                case ForecastOverviewViewSetup.SearchByUserTabIndex:
                     Dispatcher.BeginInvoke(new Action(() => _usrAutoCompleteBox.Focus()));
                     break;
             }

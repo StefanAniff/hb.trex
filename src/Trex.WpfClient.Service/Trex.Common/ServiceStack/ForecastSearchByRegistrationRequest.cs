@@ -23,6 +23,7 @@ namespace Trex.Common.ServiceStack
         public int ForecastMonth { get; set; }
         public int ForecastYear { get; set; }
         public List<int> UserIds { get; set; }
+        public bool GetAllUsers { get; set; }
     }
 
     public class ForecastSearchResponse

@@ -44,7 +44,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>  
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=2.1.267.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -130,6 +130,7 @@
     <Compile Include="Nhibernate\DataGenerator.cs" />
     <Compile Include="Nhibernate\DataSession.cs" />
     <Compile Include="Nhibernate\ForecastMonthRepositoryTest.cs" />
+    <Compile Include="Trex.Common\DataTransferObjects\ForecastUserDtoTest.cs" />
     <Compile Include="Trex.Server.Core\Model\DateSpanTest.cs" />
     <Compile Include="Nhibernate\ForecastRepositoryTest.cs" />
     <Compile Include="Nhibernate\HolidayRepositoryTest.cs" />

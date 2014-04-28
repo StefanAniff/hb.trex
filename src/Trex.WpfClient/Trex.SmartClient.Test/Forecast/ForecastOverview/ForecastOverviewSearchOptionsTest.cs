@@ -140,11 +140,14 @@ namespace Trex.SmartClient.Test.Forecast.ForecastOverview
         }
 
         [Test]
-        public void DoSearch_SelectedTabIndexIsZero_InvokesGetBySearchWithRegistrationSpecificParams()
+        public void DoSearch_SelectedTabIndexIsSearchByRegistration_InvokesGetBySearchWithRegistrationSpecificParams()
         {
             // Arrange
             var forecastServiceMock = CreateMock<IForecastService>();
-            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, CreateMock<ForecastOverviewUserSearchOptions>().Object) { SelectedTabIndex = 0 };
+            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, CreateMock<ForecastOverviewUserSearchOptions>().Object)
+                {
+                    SelectedTabIndex = ForecastOverviewViewSetup.SearchByRegistrationTabIndex
+                };
 
             // Act
             var result = sut.DoSearch(1, 2013);
@@ -154,17 +157,58 @@ namespace Trex.SmartClient.Test.Forecast.ForecastOverview
         }
 
         [Test]
-        public void DoSearch_SelectedTabIndexIsOne_InvokesGetBySearchWithUserIdsParams()
+        public void DoSearch_SelectedTabIndexIsSearchByUser_InvokesGetBySearchWithUserIdsParams()
         {
             // Arrange
             var forecastServiceMock = CreateMock<IForecastService>();
-            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, CreateMock<ForecastOverviewUserSearchOptions>().Object) { SelectedTabIndex = 1 };
+            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, CreateMock<ForecastOverviewUserSearchOptions>().Object)
+                {
+                    SelectedTabIndex = ForecastOverviewViewSetup.SearchByUserTabIndex
+                };
 
             // Act
             var result = sut.DoSearch(1, 2013);
 
             // Assert
             forecastServiceMock.Verify(x => x.GetBySearch(1, 2013, It.IsAny<IEnumerable<int>>()));
+        }
+
+        [Test]
+        public void DoSearch_AllUsersMarkerSelected_InvokesGetBySearchWithAllUserIds()
+        {
+            // Arrange
+            var forecastServiceMock = CreateMock<IForecastService>();
+
+            var users = new[]
+                {
+                    ForecastUserDto.AllUsersDto(),
+                    new ForecastUserDto { UserId = 1},
+                    new ForecastUserDto { UserId = 2}, 
+                };
+
+            var userSearchOptionsMock = CreateMock<ForecastOverviewUserSearchOptions>();
+            userSearchOptionsMock.SetupGet(x => x.Users).Returns(new ObservableCollection<ForecastUserDto>(users));
+            userSearchOptionsMock.SetupGet(x => x.SelectedUsers).Returns(new ObservableCollection<ForecastUserDto>(users.Where(x => x.IsAllUsers)));            
+
+            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, userSearchOptionsMock.Object)
+            {
+                SelectedTabIndex = ForecastOverviewViewSetup.SearchByUserTabIndex
+            };
+
+            // Act            
+            IEnumerable<int> invokedWithUserIds = new List<int>();
+            forecastServiceMock
+                .Setup(x => x.GetBySearch(1, 2013, It.IsAny<IEnumerable<int>>()))
+                .Callback<int, int, IEnumerable<int>>((x, y, z) => invokedWithUserIds = z);
+
+            sut.DoSearch(1, 2013);
+
+            // Assert
+            forecastServiceMock.Verify(x => x.GetBySearch(1, 2013, It.IsAny<IEnumerable<int>>()));
+            Assert.That(invokedWithUserIds.Count(), Is.EqualTo(2));
+            Assert.That(invokedWithUserIds.ElementAt(0), Is.EqualTo(1));
+            Assert.That(invokedWithUserIds.ElementAt(1), Is.EqualTo(2));
+
         }
 
         [Test]

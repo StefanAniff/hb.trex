@@ -627,7 +627,7 @@
                     <Dialog:CircularProgressBar Grid.Row="1" Grid.RowSpan="5"
                                                 Grid.ColumnSpan="2" Grid.Column="0"
                                                 Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"
-                                                Height="120" Width="120" />
+                                                Height="100" Width="120" />
                 </Grid>
             </ScrollViewer>
         </Border>

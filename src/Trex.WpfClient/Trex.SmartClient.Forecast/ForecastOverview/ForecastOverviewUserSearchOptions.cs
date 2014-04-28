@@ -121,7 +121,7 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
                     usr => ForecastUserSearchPreset.Create(usr.Name, new List<int>(usr.Users.Select(y => y.UserId)))));
         }
 
-        public ObservableCollection<ForecastUserDto> Users
+        public virtual ObservableCollection<ForecastUserDto> Users
         {
             get { return _users; }
             set
@@ -131,7 +131,7 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
             }
         }
 
-        public ObservableCollection<ForecastUserDto> SelectedUsers
+        public virtual ObservableCollection<ForecastUserDto> SelectedUsers
         {
             get { return _selectedUsers; }
             set
@@ -144,11 +144,22 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
         public void InitializeUsers(IEnumerable<ForecastUserDto> newUsers)
         {
             Users.Clear();
+            AddAllUsersMarkerAndSelect();
+
             foreach (var newUser in newUsers.OrderBy(x => x.Name))
             {
                 Users.Add(newUser);
-            }
+            }                       
+
             BuildUserListPresets();
+        }
+
+        private void AddAllUsersMarkerAndSelect()
+        {
+            var allUsersDto = ForecastUserDto.AllUsersDto();
+            Users.Add(allUsersDto);
+            SelectedUsers.Clear();
+            SelectedUsers.Add(allUsersDto);
         }
 
         private void BuildUserListPresets()

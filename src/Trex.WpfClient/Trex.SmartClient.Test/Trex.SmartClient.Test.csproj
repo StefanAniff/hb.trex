@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>    
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
     <OutputPath>bin\Test\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -127,6 +127,7 @@
     <Compile Include="Forecast\ForecastAutoMapperExtensionsTest.cs" />
     <Compile Include="Forecast\ForecastOverview\ForecastOverviewForecastMonthsTest.cs" />
     <Compile Include="Forecast\ForecastOverview\ForecastOverviewSearchOptionsTest.cs" />
+    <Compile Include="Forecast\ForecastOverview\ForecastOverviewUserSearchOptionsTest.cs" />
     <Compile Include="Forecast\ForecastOverview\Helpers\ForecastOverviewDataGeneratorTest.cs" />
     <Compile Include="Forecast\ForecastOverview\Helpers\PureProjectTypeDisplayHandlerTest.cs" />
     <Compile Include="Forecast\ForecastOverview\Helpers\SupportsProjectsNoFocusDisplayHandlerTest.cs" />

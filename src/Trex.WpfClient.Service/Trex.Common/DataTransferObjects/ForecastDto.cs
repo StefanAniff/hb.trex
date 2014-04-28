@@ -59,5 +59,29 @@ namespace Trex.Common.DataTransferObjects
         {
             get { return string.Format("{0} {1}", UserName, Name); }
         }
+
+
+        #region "All-users" state
+
+        private const string AllUsersName = "*";
+        private const int AllUsersId = 0;
+
+        public static ForecastUserDto AllUsersDto()
+        {
+            return new ForecastUserDto
+                {
+                    UserId = AllUsersId,
+                    UserName = AllUsersName,
+                    Name = "ALL USERS"
+                };
+        }
+
+        public bool IsAllUsers
+        {
+            get { return (UserName != null && UserName.Equals(AllUsersName)) && UserId.Equals(AllUsersId); }
+        }
+
+        #endregion
+
     }
 }
