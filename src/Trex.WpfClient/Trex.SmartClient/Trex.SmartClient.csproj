@@ -394,6 +394,10 @@
       <Project>{3cf56d81-82e7-4c91-9353-b0cb6993849d}</Project>
       <Name>Trex.SmartClient.Overview</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Project\Trex.SmartClient.Project.csproj">
+      <Project>{6887890d-d2d0-4d94-afec-6b3492a22642}</Project>
+      <Name>Trex.SmartClient.Project</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Trex.SmartClient.Reporting\Trex.SmartClient.Reporting.csproj">
       <Project>{29743B45-8C75-482E-AFF5-C7FDB85C43FA}</Project>
       <Name>Trex.SmartClient.Reporting</Name>

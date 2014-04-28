@@ -27,13 +27,13 @@ namespace Trex.SmartClient.Forecast.ForecastMasterScreen
             var registrationRootView = _unityContainer.Resolve<IForecastRegistrationRootView>();
             var registrationRootViewModel = _unityContainer.Resolve<IForecastRegistrationRootViewModel>();
             registrationRootView.ApplyViewModel(registrationRootViewModel);
-            var desktopRegion = _regionNames.SubmenuRegion;
-            forecastScreen.AddRegion(desktopRegion, registrationRootView);
+            forecastScreen.AddRegion(_regionNames.SubmenuRegion, registrationRootView);
 
             // Forecast overview
             var overviewView = _unityContainer.Resolve<IForecastOverviewView>();
             var overviewModel = _unityContainer.Resolve<IForecastOverviewViewModel>();
             overviewView.ApplyViewModel(overviewModel);
+
             forecastScreen.AddRegion(_regionNames.SubmenuRegion, overviewView);
             overviewModel.Initialize();
 

@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using Trex.SmartClient.Core.Interfaces;
 
-namespace Trex.SmartClient.Project.Project
+namespace Trex.SmartClient.Project.ProjectAdministration
 {
     /// <summary>
     /// Interaction logic for ProjectAdministrationView.xaml
     /// </summary>
-    public partial class ProjectAdministrationView : UserControl
+    public partial class ProjectAdministrationView : UserControl, IProjectAdministrationView
     {
         public ProjectAdministrationView()
         {
             InitializeComponent();
+        }
+
+        public void ApplyViewModel(IViewModel viewModel)
+        {
+            DataContext = viewModel;
         }
     }
 }
