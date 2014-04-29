@@ -253,26 +253,40 @@ namespace Trex.SmartClient.Forecast.ForecastOverview
         /// <param name="response"></param>
         public virtual void TryAddMissingUsers(int month, int year, ForecastSearchResponse response)
         {
+            var allUsersSelected = SelectedUsers.SingleOrDefault(x => x.IsAllUsers);
+            
+            if (allUsersSelected != null)
+            {
+                DoAddMissingUsersPostSearch(Users, month, year, response);
+            }
+            else
+            {
+                DoAddMissingUsersPostSearch(SelectedUsers, month, year, response);                
+            }            
+        }
+
+        private void DoAddMissingUsersPostSearch(IList<ForecastUserDto> usersCriteria, int month, int year, ForecastSearchResponse response)
+        {
+            var requestedUserIds = usersCriteria.Where(x => !x.IsAllUsers).Select(x => x.UserId);
             var responsedUsersIds = response.ForecastMonths.Select(x => x.UserId).ToList();
-            var requestedUserIds = SelectedUsers.Where(x => !x.IsAllUsers).Select(x => x.UserId).ToList();
             var userEmptyResult = requestedUserIds.Where(x => responsedUsersIds.All(y => y != x));
             foreach (
                 var user in
-                    userEmptyResult.Select(userId => SelectedUsers.SingleOrDefault(x => x.UserId == userId)) // Select the local user-object
+                    userEmptyResult.Select(userId => usersCriteria.SingleOrDefault(x => x.UserId == userId)) // Select the local user-object
                                    .Where(user => user != null))
             {
                 response.ForecastMonths.Add(new ForecastMonthDto
-                    {
-                        UserId = user.UserId,
-                        UserName = user.Name,
-                        CreatedById = 0,
-                        Id = 0,
-                        IsLocked = false,
-                        Month = month,
-                        Year = year,
-                        ForecastDtos = new Collection<ForecastDto>()
-                    });
-            }
+                {
+                    UserId = user.UserId,
+                    UserName = user.Name,
+                    CreatedById = 0,
+                    Id = 0,
+                    IsLocked = false,
+                    Month = month,
+                    Year = year,
+                    ForecastDtos = new Collection<ForecastDto>()
+                });
+            }   
         }
 
         public void Reset()

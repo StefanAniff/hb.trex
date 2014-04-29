@@ -217,6 +217,12 @@ namespace Trex.SmartClient.Test.Forecast.ForecastOverview
             // Arrange
             var forecastServiceMock = CreateMock<IForecastService>();
             var userSearchOptionsMock = CreateMock<ForecastOverviewUserSearchOptions>();
+            userSearchOptionsMock.SetupGet(x => x.SelectedUsers).Returns(new ObservableCollection<ForecastUserDto>
+                {
+                    new ForecastUserDto {UserId = 2},
+                    new ForecastUserDto {UserId = 3},
+                    new ForecastUserDto {UserId = 4},
+                });
 
             var response = new ForecastSearchResponse
                 {
@@ -227,21 +233,49 @@ namespace Trex.SmartClient.Test.Forecast.ForecastOverview
                         }
                 };
 
-            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, userSearchOptionsMock.Object)
-                {
-                    SelectedUsers = new ObservableCollection<ForecastUserDto>
-                        {
-                            new ForecastUserDto { UserId = 2 },
-                            new ForecastUserDto { UserId = 3 },
-                            new ForecastUserDto { UserId = 4 },
-                        }
-                };
+            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, userSearchOptionsMock.Object);
 
             // Act
             sut.TryAddMissingUsers(1, 2013, response);
 
             // Assert
             Assert.That(response.ForecastMonths.FirstOrDefault(x => x.UserId == 3), Is.Not.Null);
+        }
+
+        [Test]
+        public void TryAddMissingUsers_AllUsersIsSelected_AllUsersAreAdded()
+        {
+            // Arrange
+            var allUserDto = ForecastUserDto.AllUsersDto();
+
+            var forecastServiceMock = CreateMock<IForecastService>();
+            var userSearchOptionsMock = CreateMock<ForecastOverviewUserSearchOptions>();
+            userSearchOptionsMock.SetupGet(x => x.Users).Returns(new ObservableCollection<ForecastUserDto>
+                {
+                    allUserDto,
+                    new ForecastUserDto {UserId = 2},
+                    new ForecastUserDto {UserId = 3},
+                    new ForecastUserDto {UserId = 4},
+                });
+            userSearchOptionsMock.SetupGet(x => x.SelectedUsers).Returns(new ObservableCollection<ForecastUserDto> { allUserDto });
+
+            var response = new ForecastSearchResponse
+            {
+                ForecastMonths = new List<ForecastMonthDto>
+                        {
+                            new ForecastMonthDto { UserId = 4 }, // Month with userid 2 and 3 is intentionally missing
+                        }
+            };
+
+            var sut = new ForecastOverviewSearchOptions(forecastServiceMock.Object, userSearchOptionsMock.Object);
+
+            // Act
+            sut.TryAddMissingUsers(1, 2013, response);
+
+            // Assert
+            Assert.That(response.ForecastMonths.FirstOrDefault(x => x.UserId == 2), Is.Not.Null);
+            Assert.That(response.ForecastMonths.FirstOrDefault(x => x.UserId == 3), Is.Not.Null);
+            Assert.That(response.ForecastMonths.FirstOrDefault(x => x.UserId == 4), Is.Not.Null);
         }
     }
 }

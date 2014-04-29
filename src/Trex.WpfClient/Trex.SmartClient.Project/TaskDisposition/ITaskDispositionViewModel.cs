@@ -2,7 +2,7 @@
 
 namespace Trex.SmartClient.Project.TaskDisposition
 {
-    public interface ITaskDispositionViewModel : IViewModel
+    public interface ITaskDispositionViewModel : IViewModelInitializable
     {
          
     }

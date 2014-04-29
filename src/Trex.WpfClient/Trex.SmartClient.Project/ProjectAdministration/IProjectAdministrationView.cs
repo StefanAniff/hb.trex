@@ -2,7 +2,7 @@
 
 namespace Trex.SmartClient.Project.ProjectAdministration
 {
-    public interface IProjectAdministrationView : IView
+    public interface IProjectAdministrationView : IViewInitializable
     {
          
     }

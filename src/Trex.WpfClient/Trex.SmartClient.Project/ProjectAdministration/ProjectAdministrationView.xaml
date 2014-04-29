@@ -1,21 +1,22 @@
-﻿<UserControl x:Class="Trex.SmartClient.Project.ProjectAdministration.ProjectAdministrationView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:DesignData="clr-namespace:Trex.SmartClient.Project.DesignData"
-             xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
-             Mc:Ignorable="D" 
-             D:DesignHeight="660"
-             D:DesignWidth="900"
-             D:DataContext="{D:DesignInstance  DesignData:DesignProjectAdministration, IsDesignTimeCreatable=True }">
-    <UserControl.Resources>
+﻿<Imp:ViewBase x:Class="Trex.SmartClient.Project.ProjectAdministration.ProjectAdministrationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:D="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:DesignData="clr-namespace:Trex.SmartClient.Project.DesignData"
+    xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:Imp="clr-namespace:Trex.SmartClient.Core.Implemented;assembly=Trex.SmartClient.Core"
+    Mc:Ignorable="D" 
+    D:DesignHeight="660"
+    D:DesignWidth="900"
+    D:DataContext="{D:DesignInstance  DesignData:DesignProjectAdministration, IsDesignTimeCreatable=True }">
+    <Imp:ViewBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </UserControl.Resources>
+    </Imp:ViewBase.Resources>
     <Grid Margin="50">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -212,4 +213,4 @@
             </StackPanel>
         </Border>
     </Grid>
-</UserControl>
+</Imp:ViewBase>

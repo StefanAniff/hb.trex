@@ -3,7 +3,7 @@ using Trex.SmartClient.Core.Interfaces;
 
 namespace Trex.SmartClient.Project.ProjectAdministration
 {
-    public interface IProjectAdministrationViewModel : IViewModel
+    public interface IProjectAdministrationViewModel : IViewModelInitializable
     {
          
     }

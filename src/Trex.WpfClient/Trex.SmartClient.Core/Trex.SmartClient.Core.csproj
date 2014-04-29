@@ -311,6 +311,7 @@
     <Compile Include="Implemented\ScreenBase.cs" />
     <Compile Include="Implemented\SubMenuInfo.cs" />
     <Compile Include="Implemented\ValidationEnabledViewModelBase.cs" />
+    <Compile Include="Implemented\ViewBase.cs" />
     <Compile Include="Implemented\ViewModelBase.cs" />
     <Compile Include="Implemented\ViewModelDirtyHandlingBase.cs" />
     <Compile Include="Interfaces\ICommonDialogs.cs" />
@@ -323,6 +324,7 @@
     <Compile Include="Interfaces\IUserWlanSettingsService.cs" />
     <Compile Include="Interfaces\IUserWLanTimeEntryType.cs" />
     <Compile Include="Interfaces\IVersionViewModel.cs" />
+    <Compile Include="Interfaces\IViewInitializable.cs" />
     <Compile Include="Interfaces\IViewModelValidationRule.cs" />
     <Compile Include="Model\ApplicationState.cs" />
     <Compile Include="Model\Consts\HelperTextConsts.cs" />

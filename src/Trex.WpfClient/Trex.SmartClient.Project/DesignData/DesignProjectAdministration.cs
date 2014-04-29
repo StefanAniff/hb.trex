@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Commands;
 using Trex.SmartClient.Core.Implemented;
+using Trex.SmartClient.Project.ProjectAdministration;
 
 namespace Trex.SmartClient.Project.DesignData
 {
-    public class DesignProjectAdministration : ViewModelDirtyHandlingBase
+    public class DesignProjectAdministration : ViewModelDirtyHandlingBase, IProjectAdministrationViewModel
     {
         private const string DefaultInvoiceGroup = "Default invoicegroup";
 
@@ -55,7 +56,9 @@ namespace Trex.SmartClient.Project.DesignData
                         new DummyObject { Id = 2, Name = "Project x noter", Field1 = "Assorted", Field2 = "Initiel møde - noter.doc"}
                     };
             }
-        }        
+        }
+
+        public void Initialize() { }
     }
 
     public class DummyObject

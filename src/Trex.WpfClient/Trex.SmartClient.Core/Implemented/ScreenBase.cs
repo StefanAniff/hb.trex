@@ -66,6 +66,12 @@ namespace Trex.SmartClient.Core.Implemented
             var region = LocalRegionManager.Regions[regionName];
             var view = region.GetView(viewName);
             region.Activate(view);
+
+            var initializable = view as IViewInitializable;
+            if (initializable == null)
+                return;
+
+            initializable.InitializeViewModel();
         }
 
         public void DeactivateView(string viewName, string regionName)
