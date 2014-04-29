@@ -52,18 +52,39 @@ namespace Trex.SmartClient.Infrastructure.Implemented
             ApplicationCommands.UserLoggedOut.RegisterCommand(new DelegateCommand<object>(UserLoggedOut));
             ApplicationCommands.ChangeScreenCommand.RegisterCommand(new DelegateCommand<IMenuInfo>(SwitchScreen));
             ApplicationCommands.ChangeSubmenuCommand.RegisterCommand(new DelegateCommand<SubMenuInfo>(ChangeSubmenuExecute));
+            ApplicationCommands.JumpToSubmenuCommand.RegisterCommand(new DelegateCommand<Type>(JumpToSubMenuExecute));
         }
 
+        /// <summary>
+        /// Change active screen by given type
+        /// </summary>
+        /// <param name="viewType"></param>
+        private void JumpToSubMenuExecute(Type viewType)
+        {
+            
+        }
+
+        /// <summary>
+        /// Change active screen by given subMenuInfo
+        /// </summary>
+        /// <param name="subMenuInfo"></param>
         private void ChangeSubmenuExecute(SubMenuInfo subMenuInfo)
         {
-            var menuInfo = subMenuInfo.Parent;
+            var masterScreenInfo = subMenuInfo.Parent;
+            InactiveAllSubMenuInfos(masterScreenInfo);
+            ActivateSubmenu(subMenuInfo, _screenDictionary[masterScreenInfo.ScreenGuid]);
+        }
 
-            var screen = _screenDictionary[menuInfo.ScreenGuid];
-            foreach (var submenu in menuInfo.SubMenuInfos)
+        private static void InactiveAllSubMenuInfos(IMenuInfo masterScreenInfo)
+        {
+            foreach (var submenu in masterScreenInfo.SubMenuInfos)
             {
                 submenu.IsActive = false;
             }
+        }
 
+        private void ActivateSubmenu(SubMenuInfo subMenuInfo, IScreen screen)
+        {
             subMenuInfo.IsActive = true;
             screen.ActivateView(subMenuInfo.SubMenuName, _regionNames.SubmenuRegion);
         }
@@ -112,7 +133,6 @@ namespace Trex.SmartClient.Infrastructure.Implemented
                 var mainRegion = _regionManager.Regions[_appSettings.RegionNames.MainRegion];
 
                 screen = factory.CreateScreen(mainRegion, menuInfo.ScreenGuid);
-                var screenAttribute = screen.GetScreenAttribute();
                 if (screen is IDialogScreen)
                 {
                     ((IDialogScreen)screen).Open();
@@ -127,7 +147,7 @@ namespace Trex.SmartClient.Infrastructure.Implemented
                 screen.IsActive = true;
                 _screenDictionary.Add(menuInfo.ScreenGuid, screen);
             }
-            //_busyService.HideBusy("SwitchScreen");
+
             _transitionService.EnterViewAnimation(screen.MasterView);
 
         }

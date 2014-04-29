@@ -3,6 +3,7 @@ using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
 using Trex.SmartClient.Core.Interfaces;
 using Trex.SmartClient.Project.ProjectAdministration;
+using Trex.SmartClient.Project.TaskDisposition;
 
 namespace Trex.SmartClient.Project.ProjectMasterScreen
 {
@@ -29,7 +30,10 @@ namespace Trex.SmartClient.Project.ProjectMasterScreen
             projectScreen.AddRegion(_regionNames.SubmenuRegion, projectAdminView);
 
             // Disposition
-            // IVA: Do me!!
+            var taskDispositionView = _unityContainer.Resolve<ITaskDispositionView>();
+            var taskDispositionViewModel = _unityContainer.Resolve<ITaskDispositionViewModel>();
+            taskDispositionView.ApplyViewModel(taskDispositionViewModel);
+            projectScreen.AddRegion(_regionNames.SubmenuRegion, taskDispositionView);
 
             return projectScreen;
         }

@@ -20,6 +20,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/ForecastStyles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <GridLength x:Key="DescriptionWidth">150</GridLength>
             <sys:Double x:Key="CellTemplateWidth">30</sys:Double>
@@ -122,12 +123,9 @@
 
                     <!--MONTHSELECTOR-->
                     <Border
-                        Margin="3"
-                        BorderThickness="0,0,0,2"
-                        BorderBrush="#FFBDBDBD"
+                        Style="{StaticResource WindowTitleBorderStyle}"                        
                         Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        Background="{StaticResource ResourceKey=SelectionGradientBrush}">
+                        Grid.ColumnSpan="2">
                         <StackPanel
                             Margin="3"
                             Orientation="Horizontal"
@@ -142,11 +140,8 @@
                                 </StackPanel>
                             </telerik:RadButton>
                             <TextBlock
-                                Width="200"
-                                TextAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Foreground="White"
+                                Style="{StaticResource WindowTitleInBorderTextBlockStyle}"
+                                Width="200"                                
                                 Text="{Binding SelectedMonthString, Mode=OneWay}" />
                             <telerik:RadButton 
                                 Width="15"

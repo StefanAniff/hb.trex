@@ -22,6 +22,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/ForecastStyles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -76,21 +77,11 @@
             
             <!-- Window header -->
             <Border 
-                Background="{StaticResource SelectionGradientBrush}"
-                Margin="3"
-                BorderThickness="0,0,0,2"
-                BorderBrush="#FFBDBDBD"
-                Height="30"
-                Grid.Row="0"
-                Focusable="False">
+                Style="{StaticResource WindowTitleBorderStyle}"
+                Grid.Row="0" Margin="3">
                 <TextBlock
-                    Margin="10,0,0,0"
-                    Text="Workplan overview"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Foreground="White"
-                    FontSize="20"
-                    />
+                    Style="{StaticResource WindowTitleInBorderTextBlockStyle}"
+                    Text="Workplan overview" />
             </Border>
             
             <!-- TOOLBAR -->
@@ -605,7 +596,7 @@
                         
                         <!-- MONTHSELECTOR -->
                         <Border Grid.Row="0"
-                            Background="{StaticResource SelectionGradientBrush}">
+                            Background="{StaticResource TitleBorderGradientBrush}">
                             <StackPanel
                                 Margin="3"
                                 Orientation="Horizontal"

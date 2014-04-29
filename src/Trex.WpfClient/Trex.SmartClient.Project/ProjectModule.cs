@@ -45,20 +45,22 @@ namespace Trex.SmartClient.Project
             _adminScreenInfo.AddSubMenu(subProjectAdministration);
 
             // Sub module Disposition
-            var subProjectDisposition = SubMenuInfo.Create("Disposition", typeof(TaskDispositionRegistrationView).Name, _adminScreenInfo);
-            _adminScreenInfo.AddSubMenu(subProjectDisposition);
+            var subTaskDisposition = SubMenuInfo.Create("Disposition", typeof(TaskDispositionView).Name, _adminScreenInfo);
+            _adminScreenInfo.AddSubMenu(subTaskDisposition);
         }
 
         private void RegisterViewModels()
         {
             _unityContainer.RegisterType<IProjectMasterViewModel, ProjectMasterViewModel>();
             _unityContainer.RegisterType<IProjectAdministrationViewModel, ProjectAdministrationViewModel>();
+            _unityContainer.RegisterType<ITaskDispositionViewModel, TaskDispositionViewModel>();
         }
 
         private void RegisterViews()
         {
             _unityContainer.RegisterType<IProjectMasterView, ProjectMasterView>();
             _unityContainer.RegisterType<IProjectAdministrationView, ProjectAdministrationView>();
+            _unityContainer.RegisterType<ITaskDispositionView, TaskDispositionView>();
         }
 
         private void RegisterServices()

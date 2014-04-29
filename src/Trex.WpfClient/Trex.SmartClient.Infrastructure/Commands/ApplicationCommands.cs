@@ -8,6 +8,7 @@ namespace Trex.SmartClient.Infrastructure.Commands
     {
         public static CompositeCommand ChangeScreenCommand = new ExtendedCompositeCommand();
         public static CompositeCommand ChangeSubmenuCommand = new ExtendedCompositeCommand();
+        public static CompositeCommand JumpToSubmenuCommand = new ExtendedCompositeCommand();
         public static CompositeCommand InActiveTaskLayoutChanged = new ExtendedCompositeCommand();
 
         public static CompositeCommand LoginSucceeded = new ExtendedCompositeCommand();

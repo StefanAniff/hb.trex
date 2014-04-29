@@ -10,14 +10,7 @@
         <Setter Property="Margin" Value="0,0,10,0" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-    </Style>
-
-    <LinearGradientBrush x:Key="SelectionGradientBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop Color="#FF5D5D5D" Offset="0.069" />
-        <GradientStop Color="#FF4E4E4E" Offset="0.534" />
-        <GradientStop Color="#FF393939" Offset="0.552" />
-    </LinearGradientBrush>
-
+    </Style>    
 
     <Style x:Key="RadButtonStyle" TargetType="telerik:RadButton">
         <Setter Property="CornerRadius" Value="0" />

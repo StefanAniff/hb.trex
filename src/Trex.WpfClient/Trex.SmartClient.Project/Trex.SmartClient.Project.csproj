@@ -208,7 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignData\DesignProjectAdministration.cs" />
-    <Compile Include="DesignData\DesignTaskDispositionRegistration.cs" />
+    <Compile Include="DesignData\DesignTaskDispositionViewModel.cs" />
     <Compile Include="ProjectAdministration\IProjectAdministrationView.cs" />
     <Compile Include="ProjectAdministration\IProjectAdministrationViewModel.cs" />
     <Compile Include="ProjectAdministration\ProjectAdministrationView.xaml.cs">
@@ -228,9 +228,12 @@
     <Compile Include="TaskDisposition\EditDispositionParticipantView.xaml.cs">
       <DependentUpon>EditDispositionParticipantView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TaskDisposition\TaskDispositionRegistrationView.xaml.cs">
-      <DependentUpon>TaskDispositionRegistrationView.xaml</DependentUpon>
+    <Compile Include="TaskDisposition\ITaskDispositionView.cs" />
+    <Compile Include="TaskDisposition\ITaskDispositionViewModel.cs" />
+    <Compile Include="TaskDisposition\TaskDispositionView.xaml.cs">
+      <DependentUpon>TaskDispositionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TaskDisposition\TaskDispositionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="ProjectAdministration\ProjectAdministrationView.xaml">
@@ -245,7 +248,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TaskDisposition\TaskDispositionRegistrationView.xaml">
+    <Page Include="TaskDisposition\TaskDispositionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

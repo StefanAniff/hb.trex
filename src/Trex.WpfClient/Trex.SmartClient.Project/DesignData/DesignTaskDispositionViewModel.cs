@@ -2,7 +2,7 @@
 
 namespace Trex.SmartClient.Project.DesignData
 {
-    public class DesignTaskDispositionRegistration : ViewModelDirtyHandlingBase
+    public class DesignTaskDispositionViewModel : ViewModelDirtyHandlingBase
     {
          
     }
