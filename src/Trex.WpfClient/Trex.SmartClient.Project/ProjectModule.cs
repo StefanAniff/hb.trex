@@ -40,12 +40,12 @@ namespace Trex.SmartClient.Project
             _menuRegistry.RegisterMenuInfo(_adminScreenInfo);
 
             // Sub module Administration
-            var subProjectAdministration = SubMenuInfo.Create("Administration", typeof(ProjectAdministrationView).Name, _adminScreenInfo);
+            var subProjectAdministration = SubMenuInfo.Create("Administration", typeof(ProjectAdministrationView), _adminScreenInfo);
             subProjectAdministration.IsActive = true;
             _adminScreenInfo.AddSubMenu(subProjectAdministration);
 
             // Sub module Disposition
-            var subTaskDisposition = SubMenuInfo.Create("Disposition", typeof(TaskDispositionView).Name, _adminScreenInfo);
+            var subTaskDisposition = SubMenuInfo.Create("Disposition", typeof(TaskDispositionView), _adminScreenInfo);
             _adminScreenInfo.AddSubMenu(subTaskDisposition);
         }
 

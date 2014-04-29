@@ -40,14 +40,14 @@
             <DataTemplate x:Key="SubMenuItemTemplate">
                 <ToggleButton d:DataContext="{d:DesignInstance menuView:SubMenuItemViewModel}"
                     Content="{Binding DisplayName, Mode=OneWay}"
-                        Command="{Binding ItemClicked}"
-                              IsChecked="{Binding IsChecked, Mode=OneWay}"
-                        MinWidth="100"
-                              IsEnabled="{Binding CanClick}"
-                        Margin="10,0,0,0"
-                        Foreground="Black"
-                        Style="{StaticResource MenuSubButton}" 
-                        Focusable="False"/>
+                    Command="{Binding ItemClicked}"
+                    IsChecked="{Binding IsChecked, Mode=TwoWay}"
+                    MinWidth="100"
+                    IsEnabled="{Binding CanClick}"
+                    Margin="10,0,0,0"
+                    Foreground="Black"
+                    Style="{StaticResource MenuSubButton}" 
+                    Focusable="False"/>
             </DataTemplate>
         </ResourceDictionary>
     </UserControl.Resources>

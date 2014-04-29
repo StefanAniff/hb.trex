@@ -62,7 +62,7 @@ namespace Trex.SmartClient.Overview
             //_subMenuDailyOverview.IsActive = !_appSettings.StartScreenIsWeekOverview;
             //taskAdminScreenInfo.AddSubMenu(_subMenuDailyOverview);
 
-            _subMenuWeekly = SubMenuInfo.Create("Weekly", typeof(WeeklyOverviewScreen.WeeklyOverviewScreen).Name, taskAdminScreenInfo);
+            _subMenuWeekly = SubMenuInfo.Create("Weekly", typeof(WeeklyOverviewScreen.WeeklyOverviewScreen), taskAdminScreenInfo);
             _subMenuWeekly.IsActive = _appSettings.StartScreenIsWeekOverview;
             taskAdminScreenInfo.AddSubMenu(_subMenuWeekly);
 

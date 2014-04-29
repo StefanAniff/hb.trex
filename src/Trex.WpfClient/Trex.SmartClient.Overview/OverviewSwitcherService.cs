@@ -58,7 +58,7 @@ namespace Trex.SmartClient.Overview
         private void GoToDaySubMenuExecute(object obj)
         {
             // Disabled for H&B
-            //SubMenuDailyOverview.AddArguement(obj);
+            //SubMenuDailyOverview.AddArgument(obj);
             //ApplicationCommands.ChangeSubmenuCommand.Execute(SubMenuDailyOverview);
         }
 

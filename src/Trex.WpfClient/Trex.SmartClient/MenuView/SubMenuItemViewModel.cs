@@ -20,8 +20,7 @@ namespace Trex.SmartClient.MenuView
 
         public void LayoutChanged()
         {
-            OnPropertyChanged(() => IsChecked);
-            OnPropertyChanged(() => CanClick);
+           RaiseIsCheckedChanged();
         }
 
         public SubMenuItemViewModel(SubMenuInfo subMenuInfo)
@@ -30,6 +29,7 @@ namespace Trex.SmartClient.MenuView
             DisplayName = _subMenuInfo.DisplayName;
             IsChecked = subMenuInfo.IsActive;
             ItemClicked = new DelegateCommand<object>(ItemClickedExecuted);
+            subMenuInfo.IsActiveChanged += (x, y) => RaiseIsCheckedChanged();
         }
 
         private void ItemClickedExecuted(object obj)
@@ -56,9 +56,14 @@ namespace Trex.SmartClient.MenuView
             set
             {
                 _subMenuInfo.IsActive = value;
-                OnPropertyChanged(() => IsChecked);
-                OnPropertyChanged(() => CanClick);
+                RaiseIsCheckedChanged();
             }
+        }
+
+        private void RaiseIsCheckedChanged()
+        {
+            OnPropertyChanged(() => IsChecked);
+            OnPropertyChanged(() => CanClick);
         }
 
         public bool CanClick

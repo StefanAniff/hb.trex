@@ -13,7 +13,7 @@ namespace Trex.SmartClient.Core.Interfaces
         void InitializeScreen(IRegion region, Guid screenID);
         void AddRegion(string region, IView view, bool asDeactivated = true);
         void AddRegion(string region, IView view, string viewName, bool asDeactivated = true);
-        void ActivateView(string argument, string regionName);
+        void ActivateView(string viewName, string regionName);
         void DeactivateView(string viewName, string regionName);
     }
 }

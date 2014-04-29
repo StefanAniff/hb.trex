@@ -77,7 +77,8 @@
                                     Margin="5" 
                                     Width="50"/>
                                 <Telerik:RadButton 
-                                    Content="Next 6 months" 
+                                    Content="Next" 
+                                    ToolTip="Next 6 months"
                                     Margin="5" 
                                     Width="50"/>
                         </StackPanel>

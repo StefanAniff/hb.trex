@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Microsoft.Practices.Prism.Commands;
 using Trex.SmartClient.Core.Implemented;
 
 namespace Trex.SmartClient.Project.DesignData
@@ -11,6 +12,8 @@ namespace Trex.SmartClient.Project.DesignData
         private readonly DummyObject _selectedInvoiceGroup = new DummyObject {Id = 1, Name = DefaultInvoiceGroup};
         private readonly DummyObject _selectedProjectManager = new DummyObject {Id = 1, Name = "Anders Andersen"};
         private readonly DummyObject _selectedFileType = new DummyObject { Id = 1, Name = "Estimate" };
+
+        public DelegateCommand<object> GotoProjectDispositionCommand { get; set; }
 
         public ObservableCollection<DummyObject> Projects
         {
@@ -52,7 +55,7 @@ namespace Trex.SmartClient.Project.DesignData
                         new DummyObject { Id = 2, Name = "Project x noter", Field1 = "Assorted", Field2 = "Initiel møde - noter.doc"}
                     };
             }
-        }
+        }        
     }
 
     public class DummyObject

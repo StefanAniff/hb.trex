@@ -8,9 +8,9 @@ namespace Trex.SmartClient.Core.Implemented
 {
     public class ScreenBase : IScreen
     {
-        private Dictionary<string, IView> _regions = new Dictionary<string, IView>();
+        private readonly Dictionary<string, IView> _regions = new Dictionary<string, IView>();
         public IRegionManager LocalRegionManager { get; private set; }
-        protected bool _hasBeenInitialized = false;
+        protected bool HasBeenInitialized = false;
 
         public ScreenBase(Guid guid)
         {
@@ -20,10 +20,10 @@ namespace Trex.SmartClient.Core.Implemented
 
         public void InitializeScreen(IRegion region, Guid screenID)
         {
-            if (!_hasBeenInitialized)
+            if (!HasBeenInitialized)
             {
                 LocalRegionManager = region.Add(MasterView, screenID.ToString(), true);
-                _hasBeenInitialized = true;
+                HasBeenInitialized = true;
             }
         }
 
@@ -61,10 +61,10 @@ namespace Trex.SmartClient.Core.Implemented
             AddRegion(region, view, viewName, asDeactivated);
         }
 
-        public void ActivateView(string argument, string regionName)
+        public void ActivateView(string viewName, string regionName)
         {
             var region = LocalRegionManager.Regions[regionName];
-            var view = region.GetView(argument);
+            var view = region.GetView(viewName);
             region.Activate(view);
         }
 

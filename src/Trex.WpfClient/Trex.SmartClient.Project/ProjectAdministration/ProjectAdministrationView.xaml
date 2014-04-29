@@ -199,7 +199,8 @@
                         Width="Auto" 
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
-                        Margin="5,5,0,5">
+                        Margin="5,5,0,5"
+                        Command="{Binding GotoProjectDispositionCommand}">
                         <ContentControl>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="To projectdisposition" />

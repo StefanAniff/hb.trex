@@ -64,7 +64,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
-  </PropertyGroup>  
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
     <OutputPath>bin\Test\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -305,6 +305,7 @@
     <Compile Include="Exceptions\UserNotFoundException.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Implemented\DirtyStateHandler.cs" />
+    <Compile Include="Implemented\JumpToSubmenuParam.cs" />
     <Compile Include="Implemented\MenuInfo.cs" />
     <Compile Include="Implemented\ObservableCollectionExtended.cs" />
     <Compile Include="Implemented\ScreenBase.cs" />

@@ -50,12 +50,12 @@ namespace Trex.SmartClient.Forecast
             _menuRegistry.RegisterMenuInfo(_adminScreenInfo);
             
             // Sub module Registration
-            var submenuForecastRegistration = SubMenuInfo.Create("Registration", typeof(ForecastRegistrationRootView).Name, _adminScreenInfo);
+            var submenuForecastRegistration = SubMenuInfo.Create("Registration", typeof(ForecastRegistrationRootView), _adminScreenInfo);
             submenuForecastRegistration.IsActive = true;
             _adminScreenInfo.AddSubMenu(submenuForecastRegistration);
 
             // Sub module Overview
-            var submenuForecastOverview = SubMenuInfo.Create("Overview", typeof(ForecastOverviewView).Name, _adminScreenInfo);
+            var submenuForecastOverview = SubMenuInfo.Create("Overview", typeof(ForecastOverviewView), _adminScreenInfo);
             _adminScreenInfo.AddSubMenu(submenuForecastOverview);
         }
 

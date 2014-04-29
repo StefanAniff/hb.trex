@@ -258,6 +258,10 @@
       <Project>{B97E0761-2167-49FD-84C9-0BD68705C58B}</Project>
       <Name>Trex.SmartClient.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Infrastructure\Trex.SmartClient.Infrastructure.csproj">
+      <Project>{f2f238bf-8c25-4619-b46c-12577edffff4}</Project>
+      <Name>Trex.SmartClient.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -267,6 +271,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProjectAdministration\CommandHandlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
