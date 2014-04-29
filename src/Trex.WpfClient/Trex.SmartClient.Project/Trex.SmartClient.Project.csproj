@@ -254,6 +254,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Trex.WpfClient.Service\Trex.Common\Trex.Common.csproj">
+      <Project>{DF1F8985-9636-40AB-9E0F-5DD627EF10DD}</Project>
+      <Name>Trex.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Trex.SmartClient.Core\Trex.SmartClient.Core.csproj">
       <Project>{B97E0761-2167-49FD-84C9-0BD68705C58B}</Project>
       <Name>Trex.SmartClient.Core</Name>
@@ -261,6 +265,10 @@
     <ProjectReference Include="..\Trex.SmartClient.Infrastructure\Trex.SmartClient.Infrastructure.csproj">
       <Project>{f2f238bf-8c25-4619-b46c-12577edffff4}</Project>
       <Name>Trex.SmartClient.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.SmartClient.Service\Trex.SmartClient.Service.csproj">
+      <Project>{F6539617-0432-48CB-8203-6A4301D777EC}</Project>
+      <Name>Trex.SmartClient.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

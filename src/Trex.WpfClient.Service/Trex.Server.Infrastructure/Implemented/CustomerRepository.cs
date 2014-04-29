@@ -47,5 +47,13 @@ namespace Trex.Server.Infrastructure.Implemented
                 .List();
         }
 
+        public IEnumerable<Company> GetAllActive()
+        {
+            return Session
+                .QueryOver<Company>()
+                .Where(x => !x.Inactive)
+                .List();
+        }
+
     }
 }

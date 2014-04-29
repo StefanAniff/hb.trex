@@ -361,6 +361,7 @@
     <Compile Include="Services\ICompanyRepository.cs" />
     <Compile Include="Services\ICompanyService.cs" />
     <Compile Include="Services\IConnectivityService.cs" />
+    <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\IDialogManager.cs" />
     <Compile Include="Services\IFeedItem.cs" />
     <Compile Include="Services\IFeedItemFormatter.cs" />

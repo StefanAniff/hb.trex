@@ -256,6 +256,7 @@
     <Compile Include="ServiceStackServices\Forecast\Helpers\HolidaysByPeriodProvider.cs" />
     <Compile Include="ServiceStackServices\Forecast\SaveForecastsService.cs" />
     <Compile Include="ServiceStackServices\GeneralSettingss\GeneralSettingsService.cs" />
+    <Compile Include="ServiceStackServices\ProjectManagement\AllCustomersRequestHandler.cs" />
     <Compile Include="ServiceStackServices\Task\TaskService.cs" />
     <Compile Include="ServiceStackServices\TimeEntry\TimeEntryService.cs" />
   </ItemGroup>
@@ -282,9 +283,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ServiceStackServices\ProjectManagement\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -7,19 +7,21 @@ using Trex.SmartClient.Core.Model;
 using Trex.SmartClient.Core.Services;
 using Trex.SmartClient.Infrastructure.Commands;
 using Trex.SmartClient.Project.TaskDisposition;
+using System.Linq;
 
 namespace Trex.SmartClient.Project.ProjectAdministration
 {
     public class ProjectAdministrationViewModel : ViewModelDirtyHandlingBase, IProjectAdministrationViewModel
     {
-        private readonly ICompanyRepository _companyRepository;
+        private readonly ICustomerService _customerService;
         private Company _someCompany;
+        private ObservableCollection<Company> _availableCompanies;
 
         public DelegateCommand<object> GotoProjectDispositionCommand { get; private set; }
 
-        public ProjectAdministrationViewModel(ICompanyRepository companyRepository)
+        public ProjectAdministrationViewModel(ICustomerService customerService)
         {
-            _companyRepository = companyRepository;
+            _customerService = customerService;
             InitializeCommands();
         }
 
@@ -36,9 +38,14 @@ namespace Trex.SmartClient.Project.ProjectAdministration
             }
         }
 
-        public ObservableCollectionExtended<Company> AvailableCompanies
+        public ObservableCollection<Company> AvailableCompanies
         {
-            get { return new ObservableCollectionExtended<Company> { _someCompany }; }
+            get { return _availableCompanies; }
+            set
+            {
+                _availableCompanies = value;
+                OnPropertyChanged(() => AvailableCompanies);
+            }
         }
 
         #region Commandhandlers
@@ -64,7 +71,13 @@ namespace Trex.SmartClient.Project.ProjectAdministration
 
         public void Initialize()
         {
-            MessageBox.Show("Get stuff!!");
+            FetchCustomers();
+        }
+
+        private async void FetchCustomers()
+        {
+            var result = await _customerService.GetAllActiveCustomers();
+            AvailableCompanies = new ObservableCollection<Company>(result.Select(x => Company.Create(x.Name, x.Id, false, false)));
         }
     }
 }

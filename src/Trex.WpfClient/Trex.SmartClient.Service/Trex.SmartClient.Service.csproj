@@ -63,7 +63,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>d60codesigning.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>    
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
     <OutputPath>bin\Test\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerService.cs" />
     <Compile Include="Helpers\ClientServiceBase.cs" />
     <Compile Include="CompanyService.cs" />
     <Compile Include="CustomBehavior\EndpointBehavior.cs" />

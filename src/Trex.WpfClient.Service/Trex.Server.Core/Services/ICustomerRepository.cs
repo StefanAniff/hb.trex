@@ -8,5 +8,6 @@ namespace Trex.Server.Core.Services
     {
         IEnumerable<Company> GetByChangeDate(DateTime startDate);
         IEnumerable<Company> GetByNameSearchString(string searchString);
+        IEnumerable<Company> GetAllActive();
     }
 }

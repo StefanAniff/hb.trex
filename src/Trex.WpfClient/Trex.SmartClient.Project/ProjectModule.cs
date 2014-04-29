@@ -2,9 +2,11 @@
 using Microsoft.Practices.Unity;
 using Trex.SmartClient.Core.Implemented;
 using Trex.SmartClient.Core.Interfaces;
+using Trex.SmartClient.Core.Services;
 using Trex.SmartClient.Project.ProjectAdministration;
 using Trex.SmartClient.Project.ProjectMasterScreen;
 using Trex.SmartClient.Project.TaskDisposition;
+using Trex.SmartClient.Service;
 
 namespace Trex.SmartClient.Project
 {
@@ -65,7 +67,7 @@ namespace Trex.SmartClient.Project
 
         private void RegisterServices()
         {
-            
+            _unityContainer.RegisterType<ICustomerService, CustomerService>();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Trex.Common.DataTransferObjects.ProjectAdministration;
+using Trex.Common.ServiceStack;
 using Trex.SmartClient.Core.Exceptions;
 using Trex.SmartClient.Core.Services;
 using Trex.SmartClient.Service.Helpers;

@@ -487,23 +487,6 @@
                             HorizontalAlignment="Right"
                             Style="{StaticResource TitleLabelFontStyle}"
                             ToolTipService.ShowDuration="30000">
-                            <!--<Label.ToolTip>
-                                <TextBlock>
-                                    If you're not working 100% on a customer, then select a status other than 'Project'.
-                                    <LineBreak />
-                                    <LineBreak />
-                                    Fx:
-                                    <Italic>I'm Open 2 hours on wednesday, but working 4 hours on a project...</Italic>
-                                    <LineBreak />
-                                    The registration would be Open with 2 hours and 4 on the given project.
-                                    <LineBreak />
-                                    <LineBreak />
-                                    Only the types Project, Open and Training can be combined with project hours
-                                    <LineBreak />
-                                    <LineBreak />
-                                    <Bold>NB</Bold> If you have day with both Training and Open, then Open has highest priority.
-                                </TextBlock>
-                            </Label.ToolTip>-->
                         </Label>
 
                         <ItemsControl

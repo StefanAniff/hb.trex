@@ -38,7 +38,11 @@
                             MinWidth="200" 
                             DisplayMemberPath="Name"
                             SelectedItem="{Binding SelectedCompany, Mode=TwoWay}"
-                            ItemsSource="{Binding AvailableCompanies, Mode=OneWay}"/>
+                            ItemsSource="{Binding AvailableCompanies, Mode=OneWay}"
+                            DropDownWidth="Auto"
+                            IsEditable="True" 
+                            CanAutocompleteSelectItems="True"
+                            TextSearchMode="Contains"/>
                     </StackPanel>                
                 
                     <!-- Projects MASTER overview  -->

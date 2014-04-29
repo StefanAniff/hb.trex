@@ -99,6 +99,8 @@
     <Compile Include="DataTransferObjects\ForecastStatisticsDto.cs" />
     <Compile Include="DataTransferObjects\HolidayDto.cs" />
     <Compile Include="DataTransferObjects\FullTaskDto.cs" />
+    <Compile Include="DataTransferObjects\ProjectAdministration\BasicEntityDto.cs" />
+    <Compile Include="DataTransferObjects\ProjectAdministration\CompanySmallDto.cs" />
     <Compile Include="DataTransferObjects\ProjectDto.cs" />
     <Compile Include="DataTransferObjects\TimeEntryDto.cs" />
     <Compile Include="DataTransferObjects\TimeEntryUpdatedStatusDto.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Interfaces\IEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataTransferObjects\TaskDto.cs" />
+    <Compile Include="ServiceStack\AllCustomersRequest.cs" />
     <Compile Include="ServiceStack\ForecastsByUserAndMonthRequest.cs" />
     <Compile Include="ServiceStack\ForecastSearchOptionsRequest.cs" />
     <Compile Include="ServiceStack\ForecastSearchByRegistrationRequest.cs" />
