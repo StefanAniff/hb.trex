@@ -11,8 +11,8 @@ namespace Trex.SmartClient.Overview.WeeklyOverviewScreen.Costs.DesignData
             {
                 return new ObservableCollection<DummyObject>
                     {
-                        new DummyObject { Name = "Unit (kr)", Field1 = "Parkering Århus midtby", Field2 = "100"},
-                        new DummyObject { Name = "Unit (notepad)", Field1 = "Kursus hos d60", Field2 = "8"},
+                        new DummyObject { Name = "Type (kr)", Field1 = "Parkering Århus midtby", Field2 = "100"},
+                        new DummyObject { Name = "Type (notepad)", Field1 = "Kursus hos d60", Field2 = "8"},
                         new DummyObject { Name = "Km", Field1 = "Århus - Horsens. Møde med klient X", Field2 = "96"}
                     };
             }

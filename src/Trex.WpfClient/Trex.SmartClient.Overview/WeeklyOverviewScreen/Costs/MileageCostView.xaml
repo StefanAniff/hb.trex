@@ -6,7 +6,7 @@
              xmlns:Telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
              xmlns:TelerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
              Mc:Ignorable="D" 
-             D:DesignHeight="210" 
+             D:DesignHeight="190" 
              D:DesignWidth="300">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -32,18 +32,15 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-
-                    <Label Content="_Description:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=_descriptionTbx}" />
-                    <TextBox Text="Møde med klient X" Name="_descriptionTbx" Grid.Row="0" Grid.Column="1" />
                     
-                    <Label Content="_From:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=_fromTbx}" />
-                    <TextBox Text="Århus" Name="_fromTbx" Grid.Row="1" Grid.Column="1" />
+                    <Label Content="_From:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=_fromTbx}" />
+                    <TextBox Text="Århus" Name="_fromTbx" Grid.Row="0" Grid.Column="1" />
 
-                    <Label Content="_To:" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=_toTbx}" />
-                    <TextBox Text="Horsens" Name="_toTbx" Grid.Row="2" Grid.Column="1" />
+                    <Label Content="_To:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=_toTbx}" />
+                    <TextBox Text="Horsens" Name="_toTbx" Grid.Row="1" Grid.Column="1" />
 
-                    <Label Content="_Km" Grid.Row="3" Grid.Column="0" Target="{Binding ElementName=_kmTbx}" />
-                    <TextBox Text="96" Name="_kmTbx" Grid.Row="3" Grid.Column="1" />
+                    <Label Content="Total _km" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=_kmTbx}" />
+                    <TextBox Text="96" Name="_kmTbx" Grid.Row="2" Grid.Column="1" />
 
                 </Grid>
 

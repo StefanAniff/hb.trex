@@ -7,7 +7,7 @@
              xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
               xmlns:Imp="clr-namespace:Trex.SmartClient.Core.Implemented;assembly=Trex.SmartClient.Core"
               mc:Ignorable="d" 
-             d:DesignHeight="640"
+             d:DesignHeight="500"
              d:DesignWidth="1000"
              d:DataContext="{d:DesignInstance DesignData:DesignTaskDispositionViewModel, IsDesignTimeCreatable=True}">
     <Imp:ViewBase.Resources>
@@ -425,43 +425,7 @@
                         <TextBlock Grid.Row="7" Grid.Column="4" Text="548.100 kr" Style="{StaticResource TotalTextBlockStyle}" />
                         <TextBlock Grid.Row="7" Grid.Column="5" Text="542.800 kr" Style="{StaticResource TotalTextBlockStyle}" />
                         <TextBlock Grid.Row="7" Grid.Column="6" Text="543.600 kr" Style="{StaticResource TotalTextBlockStyle}" />
-                    </Grid>
-                    
-                    <!-- Project economy -->
-                    <Border BorderThickness="1" BorderBrush="DarkGray" Margin="0,20,0,10">
-                        <StackPanel>
-                            <Label Content="Project economy" />
-                        
-                            <Grid Margin="20,0,0,0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80" />
-                                    <ColumnDefinition Width="100" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.Resources>
-                                    <Style TargetType="Label" x:Key="MoneyLabel">
-                                        <Setter Property="HorizontalAlignment" Value="Right" />
-                                    </Style>
-                                </Grid.Resources>
-                                <Label Grid.Row="0" Grid.Column="0" Content="Invoiced:" />
-                                <Label Grid.Row="0" Grid.Column="1" Content="2.168.900 kr" Style="{StaticResource MoneyLabel}" />
-                            
-                                <Label Grid.Row="1" Grid.Column="0" Content="Pending:" />
-                                <Label Grid.Row="1" Grid.Column="1" Content="412.800 kr" Style="{StaticResource MoneyLabel}" />
-
-                                <Label Grid.Row="2" Grid.Column="0" Content="Planned:" />
-                                <Label Grid.Row="2" Grid.Column="1" Content="4.568.900 kr" Style="{StaticResource MoneyLabel}" />
-                            
-                                <Label Grid.Row="3" Grid.Column="0" Content="Total:" />
-                                <Label Grid.Row="3" Grid.Column="1" Content="7.150.600 kr" Style="{StaticResource MoneyLabel}" />
-                            </Grid>                                              
-                        </StackPanel>
-                    </Border>
+                    </Grid>                    
                 </StackPanel>
             </ScrollViewer>
             </StackPanel>

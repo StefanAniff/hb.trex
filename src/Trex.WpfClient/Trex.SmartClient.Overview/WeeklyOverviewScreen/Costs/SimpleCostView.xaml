@@ -34,7 +34,7 @@
                     <Label Content="_Description:" Grid.Row="0" Grid.Column="0" />
                     <TextBox Text="Parkering Århus midtby" Grid.Row="0" Grid.Column="1" />
 
-                    <Label Content="_Unit:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=_unitCbx}"/>
+                    <Label Content="_Type:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=_unitCbx}"/>
                     <Telerik:RadComboBox 
                         x:Name="_unitCbx"
                         Grid.Row="1"
