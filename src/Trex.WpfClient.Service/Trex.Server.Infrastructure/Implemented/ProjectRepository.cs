@@ -40,5 +40,17 @@ namespace Trex.Server.Infrastructure.Implemented
 
             return project.List();
         }
+
+        public IEnumerable<Project> GetByCustomerId(int customerId)
+        {
+            Company companyAlias = null;
+
+            var result = Session
+                .QueryOver<Project>()
+                .JoinAlias(x => x.Company, () => companyAlias)
+                .Where(x => companyAlias.CustomerID == customerId);
+
+            return result.List();
+        }
     }
 }

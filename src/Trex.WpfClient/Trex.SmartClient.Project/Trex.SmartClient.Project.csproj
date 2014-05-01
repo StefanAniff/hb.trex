@@ -207,6 +207,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonViewModels\CompanyViewModel.cs" />
+    <Compile Include="CommonViewModels\ProjectViewModel.cs" />
+    <Compile Include="CommonViewModels\UserViewModel.cs" />
     <Compile Include="DesignData\DesignProjectAdministration.cs" />
     <Compile Include="DesignData\DesignTaskDispositionViewModel.cs" />
     <Compile Include="ProjectAdministration\IProjectAdministrationView.cs" />
@@ -257,6 +260,10 @@
     <ProjectReference Include="..\..\Trex.WpfClient.Service\Trex.Common\Trex.Common.csproj">
       <Project>{DF1F8985-9636-40AB-9E0F-5DD627EF10DD}</Project>
       <Name>Trex.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Trex.Dialog\Trex.Dialog.csproj">
+      <Project>{72ad292d-e0bc-489a-9d6d-4a8d3540ae1f}</Project>
+      <Name>Trex.Dialog</Name>
     </ProjectReference>
     <ProjectReference Include="..\Trex.SmartClient.Core\Trex.SmartClient.Core.csproj">
       <Project>{B97E0761-2167-49FD-84C9-0BD68705C58B}</Project>

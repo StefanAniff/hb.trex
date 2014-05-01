@@ -28,6 +28,7 @@ namespace TRex.Services.Test.Nhibernate
                                               0,
                                               0,
                                               9);
+            newTask.ProjectManager = _user;
             return newTask;
         }
         public static Project GetProject(User user, Company company)

@@ -130,6 +130,7 @@
     <Compile Include="Nhibernate\DataGenerator.cs" />
     <Compile Include="Nhibernate\DataSession.cs" />
     <Compile Include="Nhibernate\ForecastMonthRepositoryTest.cs" />
+    <Compile Include="Nhibernate\ProjectRepositoryTest.cs" />
     <Compile Include="Trex.Common\DataTransferObjects\ForecastUserDtoTest.cs" />
     <Compile Include="Trex.Server.Core\Model\DateSpanTest.cs" />
     <Compile Include="Nhibernate\ForecastRepositoryTest.cs" />

@@ -53,7 +53,7 @@ namespace TRex.Services.Test.Nhibernate
 
             //create timeEntryType
             var timeEntryTypeRepository = new TimeEntryTypeRepository(_session);
-            _timeEntryType = timeEntryTypeRepository.SaveOrUpdate(DataGenerator.GetTimeEntryType(customer));
+            _timeEntryType = timeEntryTypeRepository.SaveOrUpdate(DataGenerator.GetTimeEntryType(customer));            
         }
 
         public void BuildSchema(ISession session, Configuration configuration)
@@ -77,13 +77,17 @@ namespace TRex.Services.Test.Nhibernate
         public void SetUp()
         {
             _session.CreateSQLQuery("DELETE FROM " + ObjectNames.TableTask).ExecuteUpdate();
+
+            // DocumentTypes
+            _session.CreateSQLQuery("delete from DocumentType").ExecuteUpdate();
+            _session.CreateSQLQuery("INSERT INTO [dbo].[DocumentType] ([Name]) VALUES('dummy')").ExecuteUpdate();
         }
 
         [Test]
         public void CanSaveNewTimeEntry()
         {
-            var _timeEntryRepository = new TimeEntryRepository(_session);
-            var savedTimeEntry = _timeEntryRepository.SaveOrUpdate(DataGenerator.GetTimeEntry(_task, _user, _timeEntryType));
+            var timeEntryRepository = new TimeEntryRepository(_session);
+            var savedTimeEntry = timeEntryRepository.SaveOrUpdate(DataGenerator.GetTimeEntry(_task, _user, _timeEntryType));
 
             Assert.AreNotEqual(0, savedTimeEntry.Id);
             Assert.AreNotEqual(Guid.Empty, savedTimeEntry.Guid);

@@ -75,8 +75,8 @@ namespace TRex.Services.Test.Nhibernate
         [Test]
         public void CanSaveNewTask()
         {
-            var _taskRepository = new TaskRepository(_session);
-            var savedTask = _taskRepository.SaveOrUpdate(DataGenerator.GetTask(_project, _user));
+            var taskRepository = new TaskRepository(_session);
+            var savedTask = taskRepository.SaveOrUpdate(DataGenerator.GetTask(_project, _user));
 
             Assert.AreNotEqual(0, savedTask.TaskID);
             Assert.AreNotEqual(Guid.Empty, savedTask.Guid);

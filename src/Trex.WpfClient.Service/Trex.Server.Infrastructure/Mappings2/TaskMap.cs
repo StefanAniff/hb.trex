@@ -16,6 +16,7 @@ namespace Trex.Server.Infrastructure.Mappings2
             Map(x => x.Guid);
             References(x => x.CreatedBy).Column("CreatedBy");
             References(x => x.ChangedBy).Column("ChangedBy").Nullable();
+            References(x => x.ProjectManager).Column("ProjectManagerUserId").Not.Nullable();
 
             Map(x => x.CreateDate);
             Map(x => x.TaskName);

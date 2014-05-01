@@ -10,5 +10,6 @@ namespace Trex.SmartClient.Core.Services
     public interface IProjectService
     {
         Task<List<Project>> GetUnsynced(DateTime lastSyncDate);
+        void GetProjects(int companyId);
     }
 }

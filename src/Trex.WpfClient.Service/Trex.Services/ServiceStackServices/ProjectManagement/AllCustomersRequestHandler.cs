@@ -27,7 +27,7 @@ namespace TrexSL.Web.ServiceStackServices.ProjectManagement
 
             var result = new AllCustomersResponse
                 {
-                    Customers = new Collection<BasicEntityDto>(domCustomers.Select(x => new BasicEntityDto { Id = x.CustomerID, Name = x.CustomerName}).ToList())
+                    Customers = new Collection<BasicEntityDto>(domCustomers.Select(x => new BasicEntityDto { Id = x.CustomerID, Name = x.CustomerName, Inactive = x.Inactive}).ToList())
                 };
 
             return result;

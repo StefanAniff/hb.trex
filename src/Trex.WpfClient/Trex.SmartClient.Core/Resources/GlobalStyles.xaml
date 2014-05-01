@@ -28,7 +28,10 @@
     <Style TargetType="Telerik:RadButton">
         <Setter Property="Telerik:StyleManager.Theme" Value="Windows8" />
     </Style>
-
+    <Style TargetType="CheckBox">
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    
     <!-- STYLES -->
     <Style x:Key="RootBorderStyle" TargetType="Border">
         <Setter Property="CornerRadius" Value="5" />

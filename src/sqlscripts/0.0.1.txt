@@ -1,0 +1,21 @@
+/*
+   1. maj 2014
+   User: IVA    
+*/
+
+-- ADD PROJECT MANAGER RELATION
+alter table tasks
+add ProjectManagerUserId int not null default(0)
+
+ALTER TABLE [dbo].tasks  WITH CHECK ADD  CONSTRAINT [FK_Tasks_ProjectMangerUser] FOREIGN KEY(ProjectManagerUserId)
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].tasks CHECK CONSTRAINT [FK_Tasks_ProjectMangerUser]
+GO
+
+
+
+-- VERSION
+INSERT INTO Version ([Version], [Date], [Creator], [Description])
+  VALUES ('0.0.1', GETDATE(), 'IVA', 'HB projectstructure requirements')
+GO 

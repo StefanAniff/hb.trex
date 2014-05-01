@@ -49,6 +49,8 @@ namespace Trex.Server.Core.Model
 
         public virtual int TimeRegistrationTypeId { get; set; }
 
+        public virtual User ProjectManager { get; set; }
+
         public virtual TimeRegistrationTypeEnum TimeRegistrationTypeEnum
         {
             get { return (TimeRegistrationTypeEnum) TimeRegistrationTypeId; }

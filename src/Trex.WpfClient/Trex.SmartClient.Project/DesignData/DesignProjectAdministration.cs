@@ -1,6 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Commands;
 using Trex.SmartClient.Core.Implemented;
+using Trex.SmartClient.Project.CommonViewModels;
 using Trex.SmartClient.Project.ProjectAdministration;
 
 namespace Trex.SmartClient.Project.DesignData
@@ -9,31 +11,49 @@ namespace Trex.SmartClient.Project.DesignData
     {
         private const string DefaultInvoiceGroup = "Default invoicegroup";
 
-        private readonly DummyObject _someCompany = new DummyObject { Id = 25, Name = "Company X"};
+        private readonly CompanyViewModel _selectedCompany = CompanyViewModel.Create("Company X", 25, false);
         private readonly DummyObject _selectedInvoiceGroup = new DummyObject {Id = 1, Name = DefaultInvoiceGroup};
         private readonly DummyObject _selectedProjectManager = new DummyObject {Id = 1, Name = "Anders Andersen"};
         private readonly DummyObject _selectedFileType = new DummyObject { Id = 1, Name = "Estimate" };
 
-        public DelegateCommand<object> GotoProjectDispositionCommand { get; set; }
+        private readonly UserViewModel _projectManager = new UserViewModel {Id = 1, Name = "IVA"};
 
-        public ObservableCollection<DummyObject> Projects
+        private readonly ProjectViewModel _selectedProject;
+
+        public DesignProjectAdministration()
         {
-            get
-            {
-                return new ObservableCollection<DummyObject>
-                    {
-                        new DummyObject { Id = 1, Name = "Optimize cashflow", Field1 = DefaultInvoiceGroup, Field2 = "Anders Andersen"},
-                        new DummyObject { Id = 2, Name = "Resource optimization", Field1 = DefaultInvoiceGroup, Field2 = "Lone Pedersen"},
-                        new DummyObject { Id = 3, Name = "Peptalk training", Field1 = DefaultInvoiceGroup, Field2 = "Peter Pedersen"}                        
-                    };
-            }
+            _selectedProject = new ProjectViewModel
+                {
+                    Id = 1, 
+                    Name = "Optimize cashflow", 
+                    Inactive = true, 
+                    IsFixedPrice = true, 
+                    IsInternal = true , 
+                    Manager = _projectManager,
+                    AvailableProjectManagers = new List<UserViewModel> { _projectManager }
+                };
+            _selectedCompany = new CompanyViewModel
+                {
+                    Id = 25,
+                    Name = "Company X",
+                    Inactive = false,                    
+                    Projects = new ObservableCollectionExtended<ProjectViewModel>
+                        {
+                            _selectedProject,
+                            new ProjectViewModel { Id = 2, Name = "Resource optimization", Manager = _projectManager },
+                            new ProjectViewModel { Id = 1, Name = "Peptalk training", Manager = _projectManager }
+                        }
+                };
         }
 
-        public DummyObject SelectedCompany { get { return _someCompany; } set { value = null; } }
+        public DelegateCommand<object> GotoProjectDispositionCommand { get; set; }        
 
-        public ObservableCollection<DummyObject> AvailableCompanies
+        public CompanyViewModel SelectedCompany { get { return _selectedCompany; } set { value = null; } }
+
+        public ObservableCollection<CompanyViewModel> AvailableCompanies
         {
-            get { return new ObservableCollection<DummyObject> { _someCompany }; }
+            get { return new ObservableCollection<CompanyViewModel> { _selectedCompany }; }
+            set {}
         }
 
 
@@ -57,6 +77,10 @@ namespace Trex.SmartClient.Project.DesignData
                     };
             }
         }
+
+        public bool IsBusy { get; set; }
+
+        public ProjectViewModel SelectedProject { get { return _selectedProject; } set {} }
 
         public void Initialize() { }
     }

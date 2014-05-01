@@ -100,7 +100,7 @@
     <Compile Include="DataTransferObjects\HolidayDto.cs" />
     <Compile Include="DataTransferObjects\FullTaskDto.cs" />
     <Compile Include="DataTransferObjects\ProjectAdministration\BasicEntityDto.cs" />
-    <Compile Include="DataTransferObjects\ProjectAdministration\CompanySmallDto.cs" />
+    <Compile Include="DataTransferObjects\ProjectAdministration\ProjectTaskDto.cs" />
     <Compile Include="DataTransferObjects\ProjectDto.cs" />
     <Compile Include="DataTransferObjects\TimeEntryDto.cs" />
     <Compile Include="DataTransferObjects\TimeEntryUpdatedStatusDto.cs" />
@@ -119,6 +119,7 @@
     <Compile Include="ServiceStack\GetTimeEntryByPeriodAndUserRequest.cs" />
     <Compile Include="ServiceStack\GetTimeEntryByPeriodAndUserResponse.cs" />
     <Compile Include="ServiceStack\GetUserStatisticsRequest.cs" />
+    <Compile Include="ServiceStack\ProjectsByCustomerRequest.cs" />
     <Compile Include="ServiceStack\ReadonlyRequest.cs" />
     <Compile Include="ServiceStack\SaveForecastsRequest.cs" />
     <Compile Include="ServiceStack\SaveOrUpdateTimeEntriesRequest.cs" />

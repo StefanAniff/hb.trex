@@ -6,8 +6,9 @@
     xmlns:DesignData="clr-namespace:Trex.SmartClient.Project.DesignData"
     xmlns:Telerik="http://schemas.telerik.com/2008/xaml/presentation"
     xmlns:Imp="clr-namespace:Trex.SmartClient.Core.Implemented;assembly=Trex.SmartClient.Core"
-    Mc:Ignorable="D" 
-    D:DesignHeight="660"
+              xmlns:Dialog="clr-namespace:Trex.Dialog;assembly=Trex.Dialog"
+              Mc:Ignorable="D" 
+    D:DesignHeight="750"
     D:DesignWidth="900"
     D:DataContext="{D:DesignInstance  DesignData:DesignProjectAdministration, IsDesignTimeCreatable=True }">
     <Imp:ViewBase.Resources>
@@ -15,6 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Trex.SmartClient.Core;component/Resources/GlobalStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         </ResourceDictionary>
     </Imp:ViewBase.Resources>
     <Grid Margin="50">
@@ -23,14 +25,19 @@
         </Grid.RowDefinitions>               
         
         <Border Style="{StaticResource RootBorderStyle}">
-            <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
                 <!-- WINDOW TITLE -->
-                <Border Style="{StaticResource WindowTitleBorderStyle}">
+                <Border Style="{StaticResource WindowTitleBorderStyle}" Grid.Row="0">
                     <TextBlock Style="{StaticResource WindowTitleInBorderTextBlockStyle}" Text="Project administration" />
                 </Border>
                 
                 <!-- WINDOW BODY -->
-                <StackPanel Margin="10">
+                <StackPanel Margin="10" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="_Customer:"  Target="{Binding ElementName=_customerCbx}"/>
                         <Telerik:RadComboBox 
@@ -60,7 +67,9 @@
                             AutoGenerateColumns="False"
                             RowIndicatorVisibility="Collapsed"
                             x:Name="_projectsGrid"
-                            ItemsSource="{Binding Projects, Mode=OneWay}">
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                            ItemsSource="{Binding SelectedCompany.Projects, Mode=OneWay}">
                             <Telerik:RadGridView.Resources>
                                 <Style TargetType="Telerik:GridViewDataColumn">
                                     <Setter Property="IsReadOnly" Value="True" />
@@ -69,8 +78,10 @@
                             <Telerik:RadGridView.Columns>
                                 <Telerik:GridViewDataColumn Header="Id" MinWidth="30" DataMemberBinding="{Binding Id}" TextAlignment="Right" />
                                 <Telerik:GridViewDataColumn Header="Name" MinWidth="200" DataMemberBinding="{Binding Name}" />
-                                <Telerik:GridViewDataColumn Header="Invoicegroup" MinWidth="160" DataMemberBinding="{Binding Field1}" />
-                                <Telerik:GridViewDataColumn Header="Manager" MinWidth="160" DataMemberBinding="{Binding Field2}" />
+                                <Telerik:GridViewDataColumn Header="Manager" MinWidth="160" DataMemberBinding="{Binding Manager.Name}" />
+                                <Telerik:GridViewDataColumn Header="Internal" MinWidth="20" DataMemberBinding="{Binding IsInternal}" IsEnabled="False" />
+                                <Telerik:GridViewDataColumn Header="Fixed price" DataMemberBinding="{Binding IsFixedPrice}" IsEnabled="False" />
+                                <Telerik:GridViewDataColumn Header="Inactive" DataMemberBinding="{Binding Inactive}" IsEnabled="False" />
                             </Telerik:RadGridView.Columns>
                         </Telerik:RadGridView>
                     </Grid>
@@ -98,35 +109,33 @@
                                         <ColumnDefinition Width="300" />
                                     </Grid.ColumnDefinitions>
                                 
-                                    <Label Content="Projectname:" Grid.Row="0" Grid.Column="0" />
-                                    <TextBox Text="Optimize Cashflow" Grid.Row="0" Grid.Column="1" />
+                                    <Label Content="Projectname:" Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=_projectNameTbx}" />
+                                    <TextBox Text="Optimize Cashflow" Grid.Row="0" Grid.Column="1" Name="_projectNameTbx" />
 
-                                    <Label Content="Description:" Grid.Row="1" Grid.Column="0" />
-                                    <TextBox Text="Some project description" Grid.Row="1" Grid.Column="1" />
+                                    <Label Content="Description:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=_desciptionTbx}" />
+                                    <TextBox Text="Some project description" Grid.Row="1" Grid.Column="1" Name="_desciptionTbx"/>
 
-                                    <Label Content="Invoicegroup:" Grid.Row="2" Grid.Column="0" />
+                                    <Label Content="Project manager:" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=_managerCbx}" />
                                     <Telerik:RadComboBox 
+                                        Name="_managerCbx"
                                         Grid.Row="2"
                                         Grid.Column="1"
-                                        x:Name="_invoiceGroupCbx"
                                         MinWidth="100"
                                         DisplayMemberPath="Name"
                                         HorizontalContentAlignment="Right"
                                         HorizontalAlignment="Left"
-                                        SelectedItem="{Binding SelectedInvoiceGroup, Mode=TwoWay}"
-                                        ItemsSource="{Binding AvailableInvoiceGroups, Mode=OneWay}"/>
+                                        SelectedItem="{Binding SelectedProject.Manager, Mode=TwoWay}"
+                                        ItemsSource="{Binding SelectedProject.AvailableProjectManagers, Mode=OneWay}"/>
 
-                                    <Label Content="Project manager:" Grid.Row="3" Grid.Column="0" />
-                                    <Telerik:RadComboBox 
-                                        Grid.Row="3"
-                                        Grid.Column="1"
-                                        MinWidth="100"
-                                        DisplayMemberPath="Name"
-                                        HorizontalContentAlignment="Right"
-                                        HorizontalAlignment="Left"
-                                        SelectedItem="{Binding SelectedProjectManager, Mode=TwoWay}"
-                                        ItemsSource="{Binding AvailableProjectManagers, Mode=OneWay}"/>
-                                
+                                    <Label Content="Internal" Grid.Row="3" Grid.Column="0" Target="{Binding ElementName=_internalCbx}" />
+                                    <CheckBox Grid.Row="3" Grid.Column="1" Name="_internalCbx" IsChecked="{Binding SelectedProject.IsInternal, Mode=TwoWay}" />
+
+                                    <Label Content="Fixed price" Grid.Row="4" Grid.Column="0" Target="{Binding ElementName=_fixedPriceCbx}" />
+                                    <CheckBox Grid.Row="4" Grid.Column="1" Name="_fixedPriceCbx" IsChecked="{Binding SelectedProject.IsFixedPrice, Mode=TwoWay}"/>
+
+                                    <Label Content="Inactive" Grid.Row="5" Grid.Column="0" Target="{Binding ElementName=_inactiveCbx}" />
+                                    <CheckBox Grid.Row="5" Grid.Column="1" Name="_inactiveCbx" IsChecked="{Binding SelectedProject.Inactive}" />
+
                                     <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2" Margin="0,10" Height="30">
                                         <Telerik:RadButton Content="Save" Style="{StaticResource ButtonClusterStyle}" />
                                         <Telerik:RadButton Content="New" Style="{StaticResource ButtonClusterStyle}" />
@@ -214,7 +223,13 @@
                         </ContentControl>
                     </Telerik:RadButton>
                 </StackPanel>
-            </StackPanel>
+
+                <Dialog:CircularProgressBar Grid.Row="0"
+                                            Grid.RowSpan="2"                                            
+                                            Height="100" 
+                                            Width="120"
+                                            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
+            </Grid>
         </Border>
     </Grid>
 </Imp:ViewBase>

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Trex.Common.DataTransferObjects.ProjectAdministration;
-using Trex.Common.ServiceStack;
 using Trex.SmartClient.Core.Exceptions;
 using Trex.SmartClient.Core.Services;
 using Trex.SmartClient.Service.Helpers;
@@ -57,6 +55,11 @@ namespace Trex.SmartClient.Service
                     throw new ServiceAccessException("Error contacting service", ex);
                 }
             }
+        }
+
+        public void GetProjects(int companyId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

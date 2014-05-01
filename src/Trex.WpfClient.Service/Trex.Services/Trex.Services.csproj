@@ -257,6 +257,7 @@
     <Compile Include="ServiceStackServices\Forecast\SaveForecastsService.cs" />
     <Compile Include="ServiceStackServices\GeneralSettingss\GeneralSettingsService.cs" />
     <Compile Include="ServiceStackServices\ProjectManagement\AllCustomersRequestHandler.cs" />
+    <Compile Include="ServiceStackServices\ProjectManagement\ProjectTasksByCustomerRequestHandler.cs" />
     <Compile Include="ServiceStackServices\Task\TaskService.cs" />
     <Compile Include="ServiceStackServices\TimeEntry\TimeEntryService.cs" />
   </ItemGroup>

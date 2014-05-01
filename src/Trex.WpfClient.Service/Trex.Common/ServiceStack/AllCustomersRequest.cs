@@ -12,5 +12,5 @@ namespace Trex.Common.ServiceStack
     public class AllCustomersResponse
     {
         public ICollection<BasicEntityDto> Customers { get; set; }
-    }
+    }    
 }
